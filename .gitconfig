@@ -1,0 +1,14 @@
+[user]
+	name = Matt Rathbun
+	email = matt@rathbun.cc
+[diff]
+	tool = vimdiff
+[alias]
+	s = status
+	last = log -1 HEAD
+[mergetool]
+	path = nvim
+[merge]
+	tool = vimdiff
+[mergetool "vimdiff"]
+	cmd = nvim -n -d $LOCAL $BASE

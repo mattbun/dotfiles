@@ -1,0 +1,9 @@
+*
+
+!.gitignore
+!.gitconfig
+!.zshrc
+
+!.config
+!.config/nvim
+!.config/nvim/init.vim
