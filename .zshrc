@@ -17,6 +17,10 @@ promptinit
 #bindkey -v
 #bindkey '\e' send-break
 
+# Get the home and end keys working right
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+
 zstyle ':completion:*' menu select
 
 
