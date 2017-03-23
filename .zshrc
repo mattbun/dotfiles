@@ -52,3 +52,4 @@ export TERM=xterm-256color
 alias vimdiff="nvim -d"
 export EDITOR=nvim
 alias l=k
+eval $(thefuck --alias)
