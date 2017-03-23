@@ -4,6 +4,7 @@
 !.gitconfig
 !.zshrc
 !.zplug
+!.hushlogin
 
 !.setup
 !.setup/*
