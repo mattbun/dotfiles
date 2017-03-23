@@ -5,6 +5,9 @@
 !.zshrc
 !.zplug
 
+!.setup
+!.setup/*
+
 !.config
 !.config/nvim
 !.config/nvim/init.vim
