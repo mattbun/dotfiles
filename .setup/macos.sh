@@ -21,6 +21,8 @@ installMaybe ag "brew install the_silver_searcher"
 installMaybe ansible "brew install ansible"
 installMaybe fuck "brew install thefuck"
 
+brew cask install caskroom/fonts/font-hack
+
 # Quick look pluginsssss (https://github.com/sindresorhus/quick-look-plugins)
 brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql qlimagesize webpquicklook suspicious-package quicklookase qlvideo
 brew cask install provisionql quicklookapk
