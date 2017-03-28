@@ -64,3 +64,4 @@ alias vimdiff="nvim -d"
 export EDITOR=nvim
 alias l=k
 eval $(thefuck --alias)
+alias gti=git
