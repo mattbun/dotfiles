@@ -4,6 +4,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt autocd extendedglob notify
 # End of lines configured by zsh-newuser-install
+
 # The following lines were added by compinstall
 zstyle :compinstall filename '/Users/matt/.zshrc'
 
@@ -14,15 +15,11 @@ autoload -Uz promptinit
 promptinit
 # End of lines added by compinstall
 
-#bindkey -v
-#bindkey '\e' send-break
-
 # Get the home and end keys working right
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 
 zstyle ':completion:*' menu select
-
 
 source ~/.zplug/init.zsh
 zplug "plugins/git",   from:oh-my-zsh
@@ -45,23 +42,4 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load
 
-# cd to the path of the front Finder window
-cdf() {
-	target=`osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)'`
-	if [ "$target" != "" ]; then
-		cd "$target"; pwd
-	else
-		echo 'No Finder window found' >&2
-	fi
-}
-
-
-alias please='sudo $(fc -ln -1)'
-alias pls=please
-alias vim=nvim
-export TERM=xterm-256color
-alias vimdiff="nvim -d"
-export EDITOR=nvim
-alias l=k
-eval $(thefuck --alias)
-alias gti=git
+. ~/.shrc
