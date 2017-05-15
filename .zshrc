@@ -20,6 +20,7 @@ promptinit
 # Get the home and end keys working right
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
+bindkey "^[[3~" delete-char
 
 zstyle ':completion:*' menu select
 
@@ -64,4 +65,11 @@ alias vimdiff="nvim -d"
 export EDITOR=nvim
 alias l=k
 eval $(thefuck --alias)
+
+# Misspellings
 alias gti=git
+alias duck=fuck
+
+alias qbswagger="swagger_swagger_fileName=./lib/api/swagger/swagger.yaml swagger project edit"
+
+export PATH=$PATH:/Applications/connectiq-sdk/bin
