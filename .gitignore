@@ -2,9 +2,6 @@
 
 !.gitignore
 !.gitconfig
-!.zshrc
-!.shrc
-!.zplug
 !.hushlogin
 
 !.setup
@@ -13,3 +10,9 @@
 !.config
 !.config/nvim
 !.config/nvim/init.vim
+
+!.zshrc
+!.zplug
+!.aliases
+!.exports
+!.functions

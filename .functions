@@ -1,4 +1,4 @@
-# Configuration common to any shell (zsh or bash)
+#!/usr/bin/env bash
 
 # cd to the path of the front Finder window
 cdf() {
@@ -9,14 +9,3 @@ cdf() {
       echo 'No Finder window found' >&2
     fi
 }
-
-#export TERM=xterm-256color
-export EDITOR=nvim
-
-eval $(thefuck --alias)
-alias please='sudo $(fc -ln -1)'
-alias pls=please
-alias vim=nvim
-alias vimdiff="nvim -d"
-alias l=k
-alias gti=git

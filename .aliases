@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Set up thefuck
+eval $(thefuck --alias)
+
+alias please='sudo $(fc -ln -1)'
+alias pls=please
+alias vim=nvim
+alias vimdiff="nvim -d"
+alias l=k
+alias gti=git
