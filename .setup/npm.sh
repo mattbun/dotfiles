@@ -1,7 +1,7 @@
 #!/bin/bash
 
 npm install -g eslint
-npm install -g git+https://mathrath@gitlab.com:mathrath/oops.git
+npm install -g git+https://mathrath@gitlab.com/mathrath/oops.git
 npm install -g emoj
 npm install -g git-standup
 
