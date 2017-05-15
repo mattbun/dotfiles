@@ -52,7 +52,9 @@ Plug 'https://github.com/terryma/vim-multiple-cursors.git'
 Plug 'https://github.com/moll/vim-node.git'
 Plug 'https://github.com/flazz/vim-colorschemes.git'
 Plug 'https://github.com/keith/swift.vim.git'
-Plug 'https://github.com/miyakogi/seiya.vim.git'
+Plug 'https://github.com/tpope/vim-surround.git'
+Plug 'https://github.com/tpope/vim-commentary.git'
+Plug 'https://github.com/tpope/vim-repeat.git'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 call plug#end()
@@ -93,11 +95,9 @@ au VimEnter * if !&diff | tab all | tabfirst | endif
 "Use terminal true color
 set termguicolors
 
-"Seiya makes the background the same as the terminal we're using
-"It looks a little weird with vimdiff so I keep it disabled
-let g:seiya_auto_enable=1
-let g:seiya_target_groups = has('nvim') ? ['guibg'] : ['ctermbg']
-
 "I like badwolf for some reason
 let g:badwolf_tabline = 3
 colorscheme badwolf
+
+"use system clipboard by default
+set clipboard=unnamedplus

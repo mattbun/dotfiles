@@ -18,6 +18,7 @@ promptinit
 # Get the home and end keys working right
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
+bindkey "^[[3~" delete-char
 
 zstyle ':completion:*' menu select
 
