@@ -62,6 +62,9 @@ Plug 'https://github.com/terryma/vim-multiple-cursors.git'
 Plug 'https://github.com/moll/vim-node.git'
 Plug 'https://github.com/flazz/vim-colorschemes.git'
 Plug 'https://github.com/keith/swift.vim.git'
+Plug 'https://github.com/tpope/vim-surround.git'
+Plug 'https://github.com/tpope/vim-commentary.git'
+Plug 'https://github.com/tpope/vim-repeat.git'
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
@@ -90,3 +93,6 @@ set inccommand=nosplit
 set colorcolumn=100
 
 au VimEnter * if !&diff | tab all | tabfirst | endif
+
+"use system clipboard by default
+set clipboard=unnamedplus
