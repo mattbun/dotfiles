@@ -75,8 +75,8 @@ let g:neomake_javascript_enabled_makers = ['eslint']  "use eslint on javascript 
 "let g:neomake_open_list = 2  "show a window below with results
 
 "tabs are two spaces now
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 
 "show bad indentation
