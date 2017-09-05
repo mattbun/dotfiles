@@ -57,6 +57,7 @@ Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/tpope/vim-commentary.git'
 Plug 'https://github.com/tpope/vim-repeat.git'
 Plug 'airblade/vim-gitgutter'
+Plug 'wesQ3/vim-windowswap'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 call plug#end()
