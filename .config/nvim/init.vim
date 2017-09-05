@@ -93,7 +93,7 @@ set inccommand=nosplit
 set colorcolumn=100
 
 "open all files passed in command line as tabs
-au VimEnter * if !&diff | tab all | tabfirst | endif
+"au VimEnter * if !&diff | tab all | tabfirst | endif
 
 "Use terminal true color
 set termguicolors
