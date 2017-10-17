@@ -11,4 +11,4 @@
 [merge]
 	tool = vimdiff
 [mergetool "vimdiff"]
-	cmd = nvim -n -d $LOCAL $BASE
+	path = nvim

@@ -50,11 +50,14 @@ Plug 'https://github.com/rking/ag.vim.git'
 Plug 'https://github.com/AndrewRadev/linediff.vim.git'
 Plug 'https://github.com/terryma/vim-multiple-cursors.git'
 Plug 'https://github.com/moll/vim-node.git'
+Plug 'pangloss/vim-javascript'
 Plug 'https://github.com/flazz/vim-colorschemes.git'
 Plug 'https://github.com/keith/swift.vim.git'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/tpope/vim-commentary.git'
 Plug 'https://github.com/tpope/vim-repeat.git'
+Plug 'airblade/vim-gitgutter'
+Plug 'wesQ3/vim-windowswap'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 call plug#end()
@@ -74,9 +77,19 @@ autocmd! BufWritePost * Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']  "use eslint on javascript files
 "let g:neomake_open_list = 2  "show a window below with results
 
-"tabs are two spaces now
-set tabstop=2
-set shiftwidth=2
+"Nerdtree stuff
+"Open nerdtree if I open a folder
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+"Change color of files based on their file type
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+ exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+ exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+"tabs are four spaces
+set tabstop=4
+set shiftwidth=4
 set expandtab
 
 "show bad indentation
@@ -90,7 +103,7 @@ set inccommand=nosplit
 set colorcolumn=100
 
 "open all files passed in command line as tabs
-au VimEnter * if !&diff | tab all | tabfirst | endif
+"au VimEnter * if !&diff | tab all | tabfirst | endif
 
 "Use terminal true color
 set termguicolors
