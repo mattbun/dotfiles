@@ -87,9 +87,9 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
-"tabs are four spaces
-set tabstop=4
-set shiftwidth=4
+"tabs are two spaces
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 "show bad indentation
