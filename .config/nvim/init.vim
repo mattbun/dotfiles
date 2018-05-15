@@ -6,9 +6,9 @@ set si  "smart indent
 set ic  "ignore case in searches
 set hls  "highlight search matches. disable temporarily with :noh
 
-"tabs are four spaces
-set tabstop=4
-set shiftwidth=4
+"tabs are two spaces
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 "show bad indentation
