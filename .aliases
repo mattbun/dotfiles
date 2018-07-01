@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Make aliases work with sudo
+alias sudo="sudo "
+
 # Set up thefuck
 eval $(thefuck --alias)
 
