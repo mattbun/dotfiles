@@ -1,4 +1,6 @@
 #!/bin/bash
 
-chsh -s /bin/zsh
-sudo pacman -Sy zsh neovim nodejs the_silver_searcher ansible thefuck ttf-hack
+pacman --noconfirm -Sy zsh neovim curl git nodejs npm ripgrep thefuck docker docker-compose
+
+# For graphical install this font
+# pacman -S ttf-hack
