@@ -20,6 +20,13 @@ bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 bindkey "^[[3~" delete-char
 
+# ctl-arrows move one word (like chromeos)
+bindkey ";5D" backward-word
+bindkey ";5C" forward-word
+# alt-arrows home and end
+bindkey ";3D" beginning-of-line
+bindkey ";3C" end-of-line
+
 zstyle ':completion:*' menu select
 
 source ~/.zplug/init.zsh
