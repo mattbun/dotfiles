@@ -84,7 +84,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'cloudhead/neovim-fuzzy'
 Plug 'jremmen/vim-ripgrep'
 Plug 'gcmt/taboo.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'artur-shaik/vim-javacomplete2'
 "Plug 'DonnieWest/VimStudio'
 Plug 'SirVer/ultisnips'
