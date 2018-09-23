@@ -35,6 +35,7 @@ zplug "supercrabtree/k"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "paulirish/git-open", as:command
+zplug "zsh-users/zsh-autosuggestions"
 
 zplug mafredri/zsh-async, from:github
 zplug mathrath/purer, use:pure.zsh, from:github, as:theme
