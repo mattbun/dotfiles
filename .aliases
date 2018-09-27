@@ -3,8 +3,10 @@
 # Make aliases work with sudo
 alias sudo="sudo "
 
-# Set up thefuck
-eval $(thefuck --alias)
+# Set up thefuck TODO this doesn't work in fish
+if which thefuck >/dev/null 2>&1; then
+  eval $(thefuck --alias)
+fi
 
 alias please='sudo $(fc -ln -1)'
 alias pls=please
