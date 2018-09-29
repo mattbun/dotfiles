@@ -91,6 +91,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 "Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
