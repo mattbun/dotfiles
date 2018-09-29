@@ -163,6 +163,9 @@ endfunction"}}}
 "Change ultisnips expand trigger since it interferes with deoplete
 let g:UltiSnipsExpandTrigger = "<leader>e"
 
+"Terminal
+tnoremap <Esc> <C-\><C-n>
+
 "Now for some shortcuts
 nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>g :Commits<CR>
