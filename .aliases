@@ -8,6 +8,10 @@ alias pls=please
 alias vim=nvim
 alias vimdiff="nvim -d"
 alias l=k
+alias gs="git s"
+
+# misspellings
 alias gti=git
+alias tit="echo 😱 && git"
 
 alias qbswagger="swagger_swagger_fileName=./lib/api/swagger/swagger.yaml swagger project edit"
