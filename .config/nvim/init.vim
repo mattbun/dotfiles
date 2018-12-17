@@ -65,7 +65,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'https://github.com/benekastah/neomake.git'
+"Plug 'https://github.com/benekastah/neomake.git'
+Plug 'w0rp/ale'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/AndrewRadev/switch.vim.git'
 Plug 'https://github.com/AndrewRadev/linediff.vim.git'
@@ -95,6 +96,14 @@ Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
+"let b:ale_linters = ['eslint']
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+
+let g:ale_sign_error = '✖'
+let g:ale_sign_warning = '⚠'
+
 "setup switch.vim and some custom definitions
 let g:switch_mapping = "-"
 let g:switch_custom_definitions =
@@ -106,8 +115,8 @@ let g:switch_custom_definitions =
       \ ]
 
 "setup neomake
-autocmd! BufWritePost * Neomake
-let g:neomake_javascript_enabled_makers = ['eslint']  "use eslint on javascript files
+"autocmd! BufWritePost * Neomake
+"let g:neomake_javascript_enabled_makers = ['eslint']  "use eslint on javascript files
 
 "Nerdtree stuff
 "Open nerdtree if I open a folder
