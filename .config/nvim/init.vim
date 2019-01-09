@@ -7,8 +7,8 @@ set ic  "ignore case in searches
 set hls  "highlight search matches. disable temporarily with :noh
 
 "tabs are two spaces
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 
 "show bad indentation
@@ -85,14 +85,15 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'cloudhead/neovim-fuzzy'
 Plug 'jremmen/vim-ripgrep'
 Plug 'gcmt/taboo.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'artur-shaik/vim-javacomplete2'
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'artur-shaik/vim-javacomplete2'
 "Plug 'DonnieWest/VimStudio'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 "Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'sheerun/vim-polyglot'
+Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
@@ -133,7 +134,7 @@ set termguicolors
 
 "I like badwolf for some reason
 let g:badwolf_tabline = 3
-colorscheme badwolf
+colorscheme papercolor
 
 "Custom tab name: [working directory name] [filename][file modified flag]
 let g:taboo_tab_format = " [%P] %f%m "
@@ -171,6 +172,22 @@ endfunction"}}}
 
 "Change ultisnips expand trigger since it interferes with deoplete
 let g:UltiSnipsExpandTrigger = "<leader>e"
+
+"Lightline config
+let g:lightline = {
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \ }
+      \ }
+
+function! LightlineFilename()
+  let root = fnamemodify(get(b:, 'git_dir'), ':h')
+  let path = expand('%:p')
+  if path[:len(root)-1] ==# root
+    return path[len(root)+1:]
+  endif
+  return expand('%')
+endfunction
 
 "Now for some shortcuts
 nnoremap <silent> <leader>f :Files<CR>
