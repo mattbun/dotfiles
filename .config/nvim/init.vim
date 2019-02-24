@@ -7,8 +7,8 @@ set ic  "ignore case in searches
 set hls  "highlight search matches. disable temporarily with :noh
 
 "tabs are two spaces
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 
 "show bad indentation
@@ -65,7 +65,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'https://github.com/benekastah/neomake.git'
+"Plug 'https://github.com/benekastah/neomake.git'
+Plug 'w0rp/ale'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/AndrewRadev/switch.vim.git'
 Plug 'https://github.com/AndrewRadev/linediff.vim.git'
@@ -85,15 +86,24 @@ Plug 'cloudhead/neovim-fuzzy'
 Plug 'jremmen/vim-ripgrep'
 Plug 'gcmt/taboo.vim'
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'artur-shaik/vim-javacomplete2'
+"Plug 'artur-shaik/vim-javacomplete2'
 "Plug 'DonnieWest/VimStudio'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 "Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'sheerun/vim-polyglot'
 Plug 'itchyny/lightline.vim'
 
 call plug#end()
+
+"let b:ale_linters = ['eslint']
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+
+let g:ale_sign_error = '✖'
+let g:ale_sign_warning = '⚠'
 
 "setup switch.vim and some custom definitions
 let g:switch_mapping = "-"
@@ -106,8 +116,8 @@ let g:switch_custom_definitions =
       \ ]
 
 "setup neomake
-autocmd! BufWritePost * Neomake
-let g:neomake_javascript_enabled_makers = ['eslint']  "use eslint on javascript files
+"autocmd! BufWritePost * Neomake
+"let g:neomake_javascript_enabled_makers = ['eslint']  "use eslint on javascript files
 
 "Nerdtree stuff
 "Open nerdtree if I open a folder
@@ -122,9 +132,13 @@ endfunction
 "Use terminal true color
 set termguicolors
 
-"I like badwolf for some reason
-let g:badwolf_tabline = 3
-colorscheme badwolf
+"badwolf is nice
+"let g:badwolf_tabline = 3
+"colorscheme badwolf
+
+"Liking papercolor lately
+colorscheme PaperColor
+set background=dark
 
 "Custom tab name: [working directory name] [filename][file modified flag]
 let g:taboo_tab_format = " [%P] %f%m "
@@ -165,6 +179,22 @@ let g:UltiSnipsExpandTrigger = "<leader>e"
 
 "Terminal
 tnoremap <Esc> <C-\><C-n>
+
+"Lightline config
+let g:lightline = {
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \ }
+      \ }
+
+function! LightlineFilename()
+  let root = fnamemodify(get(b:, 'git_dir'), ':h')
+  let path = expand('%:p')
+  if path[:len(root)-1] ==# root
+    return path[len(root)+1:]
+  endif
+  return expand('%')
+endfunction
 
 "Now for some shortcuts
 nnoremap <silent> <leader>f :Files<CR>
