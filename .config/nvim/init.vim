@@ -7,8 +7,8 @@ set ic  "ignore case in searches
 set hls  "highlight search matches. disable temporarily with :noh
 
 "tabs are two spaces
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 "show bad indentation
