@@ -140,6 +140,14 @@ set termguicolors
 "colorscheme badwolf
 
 "Liking papercolor lately
+"disable background
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default.dark': {
+  \       'transparent_background' : 1
+  \     }
+  \   }
+  \ }
 colorscheme PaperColor
 set background=dark
 
