@@ -54,10 +54,10 @@ installMaybe brew "/usr/bin/ruby -e $(curl -fsSL https://raw.githubusercontent.c
 installMaybe zsh "brew install zsh"
 installMaybe nvim "brew install neovim"
 installMaybe node "brew install node"
-installMaybe yarn "brew install yarn"
-installMaybe ag "brew install the_silver_searcher"
-installMaybe ansible "brew install ansible"
 installMaybe fuck "brew install thefuck"
+installMaybe fzf "brew install fzf"
+installMaybe bat "brew install bat"
+installMaybe jq "brew install jq"
 
 brew cask install caskroom/fonts/font-hack
 
