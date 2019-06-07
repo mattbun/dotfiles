@@ -97,8 +97,11 @@ Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
-"let b:ale_linters = ['eslint']
 let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+
+let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \}
 
