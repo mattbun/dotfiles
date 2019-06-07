@@ -5,7 +5,7 @@
 !.hushlogin
 
 !.setup
-!.setup/*
+!.setup/**
 
 !.config
 !.config/nvim
