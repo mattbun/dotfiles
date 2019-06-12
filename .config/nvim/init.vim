@@ -209,8 +209,17 @@ function! LightlineFilename()
 endfunction
 
 "Now for some shortcuts
-nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader><leader> :Files<CR>
 nnoremap <silent> <leader>g :Commits<CR>
-nnoremap <silent> <leader>r :Rg<CR>
-nnoremap <silent> <leader>n :NERDTreeToggle<CR>
-nnoremap <silent> <leader>s :Snippets<CR>
+nnoremap <leader>r :Rg 
+"rg without regex
+nnoremap <leader>R :Rg -F 
+nnoremap <silent> <leader>n :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR>
+nnoremap <silent> <leader>x :ALEFix<CR>
+"Reload vim config
+nnoremap <silent> <leader>v :so $MYVIMRC<CR>
+nnoremap <leader>V :tabe $MYVIMRC<CR>
+nnoremap <leader>o :Gbrowse<CR>
+nnoremap <leader>m :!open "%"<CR>
+nnoremap <leader>d :Gdiff<CR>
+nnoremap <leader>t :Filetypes<CR>
