@@ -18,8 +18,8 @@ set listchars=tab:!-,trail:-
 "show substitutions
 set inccommand=nosplit
 
-"show a guide line at 100 characters
-set colorcolumn=100
+"show a guide line at 120 characters
+set colorcolumn=120
 
 "oo to insert a new line below where you are, OO to insert above
 nmap oo o<Esc>k
