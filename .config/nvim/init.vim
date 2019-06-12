@@ -67,7 +67,8 @@ call plug#begin('~/.config/nvim/plugged')
 
 "Plug 'https://github.com/benekastah/neomake.git'
 Plug 'w0rp/ale'
-Plug 'https://github.com/tpope/vim-fugitive.git'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'  "github integration for fugitive
 Plug 'https://github.com/AndrewRadev/switch.vim.git'
 Plug 'https://github.com/AndrewRadev/linediff.vim.git'
 Plug 'https://github.com/terryma/vim-multiple-cursors.git'
