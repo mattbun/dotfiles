@@ -68,3 +68,6 @@ brew cask install caskroom/fonts/font-hack
 # Quick look pluginsssss (https://github.com/sindresorhus/quick-look-plugins)
 brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv qlimagesize webpquicklook suspicious-package quicklookase qlvideo
 brew cask install provisionql quicklookapk
+
+# Install zplug
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh

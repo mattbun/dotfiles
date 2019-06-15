@@ -13,3 +13,5 @@ apt-get install -y neovim python-pip python3-pip zsh curl git thefuck docker-com
 pip2 install --user neovim
 pip3 install --user neovim
 
+# Install zplug
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
