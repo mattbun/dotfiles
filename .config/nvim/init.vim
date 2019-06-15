@@ -18,8 +18,8 @@ set listchars=tab:!-,trail:-
 "show substitutions
 set inccommand=nosplit
 
-"show a guide line at 100 characters
-set colorcolumn=100
+"show a guide line at 120 characters
+set colorcolumn=120
 
 "oo to insert a new line below where you are, OO to insert above
 nmap oo o<Esc>k
@@ -67,7 +67,8 @@ call plug#begin('~/.config/nvim/plugged')
 
 "Plug 'https://github.com/benekastah/neomake.git'
 Plug 'w0rp/ale'
-Plug 'https://github.com/tpope/vim-fugitive.git'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'  "github integration for fugitive
 Plug 'https://github.com/AndrewRadev/switch.vim.git'
 Plug 'https://github.com/AndrewRadev/linediff.vim.git'
 Plug 'https://github.com/terryma/vim-multiple-cursors.git'
@@ -97,8 +98,11 @@ Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
-"let b:ale_linters = ['eslint']
 let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+
+let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \}
 
@@ -137,6 +141,14 @@ set termguicolors
 "colorscheme badwolf
 
 "Liking papercolor lately
+"disable background
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default.dark': {
+  \       'transparent_background' : 1
+  \     }
+  \   }
+  \ }
 colorscheme PaperColor
 set background=dark
 
@@ -147,35 +159,35 @@ let g:taboo_tab_format = " [%P] %f%m "
 "autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 "Deoplete stuff
-let g:deoplete#enable_at_startup = 1  "enable deoplete
-let g:deoplete#disable_auto_complete = 1  "disable autocomplete and just use tab when I want it
-"If deoplete autocomplete is on you'll want this:
-"function g:Multiple_cursors_before()
-"    let g:deoplete#disable_auto_complete = 1
-"endfunction
-"function g:Multiple_cursors_after()
-"    let g:deoplete#disable_auto_complete = 0
-"endfunction
-
-" deoplete tab-complete
-"navigate entries using tab
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-"or shift tab
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"close the window when I hit enter
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>" : "\<CR>")
-"show completions when I hit tab
-inoremap <silent><expr> <TAB>
-    \ pumvisible() ? "\<C-n>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ deoplete#mappings#manual_complete()
-function! s:check_back_space() abort "{{{
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
-
-"Change ultisnips expand trigger since it interferes with deoplete
-let g:UltiSnipsExpandTrigger = "<leader>e"
+"let g:deoplete#enable_at_startup = 1  "enable deoplete
+"let g:deoplete#disable_auto_complete = 1  "disable autocomplete and just use tab when I want it
+""If deoplete autocomplete is on you'll want this:
+""function g:Multiple_cursors_before()
+""    let g:deoplete#disable_auto_complete = 1
+""endfunction
+""function g:Multiple_cursors_after()
+""    let g:deoplete#disable_auto_complete = 0
+""endfunction
+"
+"" deoplete tab-complete
+""navigate entries using tab
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+""or shift tab
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+""close the window when I hit enter
+"inoremap <expr> <CR> (pumvisible() ? "\<c-y>" : "\<CR>")
+""show completions when I hit tab
+"inoremap <silent><expr> <TAB>
+"    \ pumvisible() ? "\<C-n>" :
+"    \ <SID>check_back_space() ? "\<TAB>" :
+"    \ deoplete#mappings#manual_complete()
+"function! s:check_back_space() abort "{{{
+"    let col = col('.') - 1
+"    return !col || getline('.')[col - 1]  =~ '\s'
+"endfunction"}}}
+"
+""Change ultisnips expand trigger since it interferes with deoplete
+"let g:UltiSnipsExpandTrigger = "<leader>e"
 
 "Terminal
 tnoremap <Esc> <C-\><C-n>
@@ -197,8 +209,17 @@ function! LightlineFilename()
 endfunction
 
 "Now for some shortcuts
-nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader><leader> :Files<CR>
 nnoremap <silent> <leader>g :Commits<CR>
-nnoremap <silent> <leader>r :Rg<CR>
-nnoremap <silent> <leader>n :NERDTreeToggle<CR>
-nnoremap <silent> <leader>s :Snippets<CR>
+nnoremap <leader>r :Rg 
+"rg without regex
+nnoremap <leader>R :Rg -F 
+nnoremap <silent> <leader>n :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR>
+nnoremap <silent> <leader>x :ALEFix<CR>
+"Reload vim config
+nnoremap <silent> <leader>v :so $MYVIMRC<CR>
+nnoremap <leader>V :tabe $MYVIMRC<CR>
+nnoremap <leader>o :Gbrowse<CR>
+nnoremap <leader>m :!open "%"<CR>
+nnoremap <leader>d :Gdiff<CR>
+nnoremap <leader>t :Filetypes<CR>

@@ -54,13 +54,17 @@ installMaybe brew "/usr/bin/ruby -e $(curl -fsSL https://raw.githubusercontent.c
 installMaybe zsh "brew install zsh"
 installMaybe nvim "brew install neovim"
 installMaybe node "brew install node"
-installMaybe yarn "brew install yarn"
-installMaybe ag "brew install the_silver_searcher"
-installMaybe ansible "brew install ansible"
 installMaybe fuck "brew install thefuck"
+installMaybe fzf "brew install fzf"
+installMaybe bat "brew install bat"
+installMaybe jq "brew install jq"
+installMaybe git-standup "brew install git-standup"
+
+# Fixes file watching in jest
+installMaybe watchman "brew install watchman"
 
 brew cask install caskroom/fonts/font-hack
 
 # Quick look pluginsssss (https://github.com/sindresorhus/quick-look-plugins)
-brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql qlimagesize webpquicklook suspicious-package quicklookase qlvideo
+brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv qlimagesize webpquicklook suspicious-package quicklookase qlvideo
 brew cask install provisionql quicklookapk
