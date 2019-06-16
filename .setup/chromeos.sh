@@ -18,6 +18,10 @@ installApt () {
   fi
 }
 
+# Some prerequisites to install other things
+installApt curl
+installApt git
+
 # zsh
 installApt zsh
 installZplug
@@ -30,10 +34,13 @@ pip2 install --user neovim
 pip3 install --user neovim
 
 # extras
-installApt curl
-installApt git
 installApt thefuck
 installApt htop
+installApt fzf
+
+# ripgrep (through cargo, seriously it's the easiest way)
+installMaybe cargo "curl https://sh.rustup.rs -sSf | sh"
+installMaybe rg "cargo install ripgrep"
 
 # node
 installApt node nodejs
