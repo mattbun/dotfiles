@@ -6,4 +6,4 @@ pacman --noconfirm -Sy zsh neovim curl git nodejs npm ripgrep thefuck docker doc
 # pacman -S ttf-hack
 
 # Install zplug
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+installZplug

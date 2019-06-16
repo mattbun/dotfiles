@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source $(dirname "$0")/common.sh
+
 # Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
@@ -38,14 +40,6 @@ defaults write com.apple.dock dashboard-in-overlay -bool true
 
 
 # Install some stuff I like
-installMaybe () {
-    if ! [ -x "$(command -v $1)" ]; then
-        echo "Installing $1"
-        eval $2
-    else
-        echo "$1 is already installed"
-    fi
-}
 
 # Install homebrew if it isn't installed
 installMaybe brew "/usr/bin/ruby -e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -70,4 +64,4 @@ brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch 
 brew cask install provisionql quicklookapk
 
 # Install zplug
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+installZplug
