@@ -13,7 +13,11 @@ alias pls=please
 alias vim=nvim
 alias vimdiff="nvim -d"
 alias l=k
+alias la="k -a"
 alias gs="git s"
+
+# Run git status on all folders inside the current directory
+alias gsr="find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status -sb && echo)' \;"
 
 # misspellings
 alias gti=git
