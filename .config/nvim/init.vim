@@ -223,3 +223,7 @@ nnoremap <leader>o :Gbrowse<CR>
 nnoremap <leader>m :!open "%"<CR>
 nnoremap <leader>d :Gdiff<CR>
 nnoremap <leader>t :Filetypes<CR>
+
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>\| :Buffers<CR>
+nnoremap <leader>] :b#<CR>
