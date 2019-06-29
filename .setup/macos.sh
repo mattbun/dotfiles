@@ -67,6 +67,12 @@ installMaybe git-standup "brew install git-standup"
 # Fixes file watching in jest
 installMaybe watchman "brew install watchman"
 
+# Add python to neovim
+installMaybe python "brew install python"
+installMaybe python3 "brew install python3"
+pip2 install neovim --upgrade
+pip3 install neovim --upgrade
+
 brew cask install caskroom/fonts/font-hack
 
 # Quick look pluginsssss (https://github.com/sindresorhus/quick-look-plugins)
