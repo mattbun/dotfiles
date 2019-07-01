@@ -36,7 +36,6 @@ zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "paulirish/git-open", as:command
-zplug "zsh-users/zsh-autosuggestions"
 
 zplug mafredri/zsh-async, from:github
 
@@ -48,20 +47,20 @@ SPACESHIP_PROMPT_SEPARATE_LINE=false
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 
 SPACESHIP_DIR_PREFIX=""
-SPACESHIP_DIR_TRUNC_REPO=false  # Disabled because it doesn't show '~' for home folder
+SPACESHIP_DIR_TRUNC_REPO=true  # Doesn't show '~' for home folder :(
 
 SPACESHIP_GIT_PREFIX=""
 SPACESHIP_GIT_SYMBOL=""
-SPACESHIP_GIT_STATUS_PREFIX=""
-SPACESHIP_GIT_STATUS_SUFFIX=""
+SPACESHIP_GIT_STATUS_PREFIX="["
+SPACESHIP_GIT_STATUS_SUFFIX="]"
 SPACESHIP_GIT_STATUS_COLOR=8
-SPACESHIP_GIT_STATUS_UNTRACKED=""
-SPACESHIP_GIT_STATUS_ADDED=""
+#SPACESHIP_GIT_STATUS_UNTRACKED=""
+#SPACESHIP_GIT_STATUS_ADDED=""
 SPACESHIP_GIT_STATUS_MODIFIED=*
-SPACESHIP_GIT_STATUS_RENAMED=""
-SPACESHIP_GIT_STATUS_DELETED=""
+#SPACESHIP_GIT_STATUS_RENAMED=""
+#SPACESHIP_GIT_STATUS_DELETED=""
 SPACESHIP_GIT_STATUS_STASHED=""
-SPACESHIP_GIT_STATUS_UNMERGED=""
+#SPACESHIP_GIT_STATUS_UNMERGED=""
 SPACESHIP_GIT_BRANCH_COLOR=8  # Gray
 
 SPACESHIP_EXEC_TIME_PREFIX=""
@@ -69,6 +68,20 @@ SPACESHIP_EXEC_TIME_COLOR=8  # Gray
 
 SPACESHIP_CHAR_COLOR_SUCCESS=white
 SPACESHIP_CHAR_SYMBOL="$ "
+
+SPACESHIP_PROMPT_ORDER=(
+  time          # Time stamps section
+  user          # Username section
+  dir           # Current directory section
+  host          # Hostname section
+  git           # Git section (git_branch + git_status)
+  hg            # Mercurial section (hg_branch  + hg_status)
+  exec_time     # Execution time
+  line_sep      # Line break
+  jobs          # Background jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
+)
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
