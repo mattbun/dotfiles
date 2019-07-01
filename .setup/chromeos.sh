@@ -43,6 +43,7 @@ installApt terminator
 # ripgrep (through cargo, seriously it's the easiest way)
 installMaybe cargo "curl https://sh.rustup.rs -sSf | sh"
 installMaybe rg "cargo install ripgrep"
+installMaybe bat "cargo install bat"
 
 # node
 installApt node nodejs
