@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source $(dirname "$0")/common.sh
+
 # Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
@@ -42,14 +44,6 @@ killall Dock
 
 
 # Install some stuff I like
-installMaybe () {
-    if ! [ -x "$(command -v $1)" ]; then
-        echo "Installing $1"
-        eval $2
-    else
-        echo "$1 is already installed"
-    fi
-}
 
 # Install homebrew if it isn't installed
 installMaybe brew "/usr/bin/ruby -e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -78,3 +72,6 @@ brew cask install caskroom/fonts/font-hack
 # Quick look pluginsssss (https://github.com/sindresorhus/quick-look-plugins)
 brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv qlimagesize webpquicklook suspicious-package quicklookase qlvideo
 brew cask install provisionql quicklookapk
+
+# Install zplug
+installZplug
