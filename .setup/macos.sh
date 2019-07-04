@@ -38,6 +38,10 @@ defaults write com.apple.dashboard mcx-disabled -bool true
 # Don’t show Dashboard as a Space
 defaults write com.apple.dock dashboard-in-overlay -bool true
 
+# Don't auto rearrange spaces
+defaults write com.apple.dock mru-spaces -bool false
+killall Dock
+
 
 # Install some stuff I like
 
@@ -56,6 +60,12 @@ installMaybe git-standup "brew install git-standup"
 
 # Fixes file watching in jest
 installMaybe watchman "brew install watchman"
+
+# Add python to neovim
+installMaybe python "brew install python"
+installMaybe python3 "brew install python3"
+pip2 install neovim --upgrade
+pip3 install neovim --upgrade
 
 brew cask install caskroom/fonts/font-hack
 
