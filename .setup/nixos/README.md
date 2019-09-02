@@ -11,5 +11,3 @@
       /home/matt/.setup/nixos/graphical.nix  # Install packages for a graphical environment like plasma and web browser
     ];
 ```
-
-2. Run the `installZplug` script here to install zplug

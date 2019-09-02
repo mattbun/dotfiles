@@ -29,6 +29,12 @@ bindkey ";3C" end-of-line
 
 zstyle ':completion:*' menu select
 
+# Install zplug if it isn't installed
+if [ ! -e ~/.zplug ]; then
+  echo "Installing zplug"
+  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+fi
+
 source ~/.zplug/init.zsh
 zplug "plugins/git",   from:oh-my-zsh
 zplug "supercrabtree/k"

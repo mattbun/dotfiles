@@ -4,6 +4,3 @@ pacman --noconfirm -Sy zsh neovim curl git nodejs npm ripgrep thefuck docker doc
 
 # For graphical install this font
 # pacman -S ttf-hack
-
-# Install zplug
-installZplug

@@ -24,7 +24,6 @@ installApt git
 
 # zsh
 installApt zsh
-installZplug
 
 # neovim with python
 installApt nvim neovim

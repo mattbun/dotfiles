@@ -15,13 +15,3 @@ installMaybe () {
     echo "$1 is already installed"
   fi
 }
-
-# Install zplug if it isn't installed
-installZplug () {
-  if [ -e ~/.zplug ]; then
-    echo "zplug is already installed"
-  else
-    echo "Installing zplug"
-    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-  fi
-}
