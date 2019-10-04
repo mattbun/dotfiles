@@ -86,11 +86,14 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'cloudhead/neovim-fuzzy'
 Plug 'jremmen/vim-ripgrep'
 Plug 'gcmt/taboo.vim'
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'wokalski/autocomplete-flow'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'ternjs/tern_for_vim'
 "Plug 'artur-shaik/vim-javacomplete2'
 "Plug 'DonnieWest/VimStudio'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
 "Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'sheerun/vim-polyglot'
@@ -159,35 +162,37 @@ let g:taboo_tab_format = " [%P] %f%m "
 "autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 "Deoplete stuff
-"let g:deoplete#enable_at_startup = 1  "enable deoplete
-"let g:deoplete#disable_auto_complete = 1  "disable autocomplete and just use tab when I want it
-""If deoplete autocomplete is on you'll want this:
-""function g:Multiple_cursors_before()
-""    let g:deoplete#disable_auto_complete = 1
-""endfunction
-""function g:Multiple_cursors_after()
-""    let g:deoplete#disable_auto_complete = 0
-""endfunction
-"
-"" deoplete tab-complete
-""navigate entries using tab
-"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-""or shift tab
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-""close the window when I hit enter
-"inoremap <expr> <CR> (pumvisible() ? "\<c-y>" : "\<CR>")
-""show completions when I hit tab
-"inoremap <silent><expr> <TAB>
-"    \ pumvisible() ? "\<C-n>" :
-"    \ <SID>check_back_space() ? "\<TAB>" :
-"    \ deoplete#mappings#manual_complete()
-"function! s:check_back_space() abort "{{{
-"    let col = col('.') - 1
-"    return !col || getline('.')[col - 1]  =~ '\s'
-"endfunction"}}}
+let g:deoplete#enable_at_startup = 1  "enable deoplete
+let g:deoplete#disable_auto_complete = 1  "disable autocomplete and just use tab when I want it
+"If deoplete autocomplete is on you'll want this:
+"function g:Multiple_cursors_before()
+"    let g:deoplete#disable_auto_complete = 1
+"endfunction
+"function g:Multiple_cursors_after()
+"    let g:deoplete#disable_auto_complete = 0
+"endfunction
+
+" deoplete tab-complete
+"navigate entries using tab
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"or shift tab
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"close the window when I hit enter
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>" : "\<CR>")
+"show completions when I hit tab
+inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
 "
 ""Change ultisnips expand trigger since it interferes with deoplete
 "let g:UltiSnipsExpandTrigger = "<leader>e"
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
 
 "Terminal
 tnoremap <Esc> <C-\><C-n>
