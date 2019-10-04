@@ -1,4 +1,5 @@
 set title  "set the terminal title
+set titlestring=%f%m  "terminal title is the filepath relative to working directory and then modified flags
 set number  "show line numbers on the side
 set mouse=a  "be able to use a mouse with vim. you won't be able to do a normal copy/paste though. Instead, use "+y to copy and "+p to paste
 set ai  "auto indent
@@ -156,7 +157,9 @@ colorscheme PaperColor
 set background=dark
 
 "Custom tab name: [working directory name] [filename][file modified flag]
-let g:taboo_tab_format = " [%P] %f%m "
+"let g:taboo_tab_format = " [%P] %f%m "
+let g:taboo_tab_format = " %f%m "
+let g:taboo_tabline = 1
 
 "Turn on javacomplete
 "autocmd FileType java setlocal omnifunc=javacomplete#Complete
@@ -204,13 +207,17 @@ let g:lightline = {
       \ }
       \ }
 
+"function! LightlineFilename()
+"  let root = fnamemodify(get(b:, 'git_dir'), ':h')
+"  let path = expand('%:p')
+"  if path[:len(root)-1] ==# root
+"    return path[len(root)+1:]
+"  endif
+"  return expand('%')
+"endfunction
+
 function! LightlineFilename()
-  let root = fnamemodify(get(b:, 'git_dir'), ':h')
-  let path = expand('%:p')
-  if path[:len(root)-1] ==# root
-    return path[len(root)+1:]
-  endif
-  return expand('%')
+  return expand('%f')
 endfunction
 
 "Now for some shortcuts
