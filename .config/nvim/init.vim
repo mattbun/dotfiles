@@ -234,8 +234,51 @@ nnoremap <leader>V :tabe $MYVIMRC<CR>
 nnoremap <leader>o :Gbrowse<CR>
 nnoremap <leader>m :!open "%"<CR>
 nnoremap <leader>d :Gdiff<CR>
-nnoremap <leader>t :Filetypes<CR>
+"nnoremap <leader>T :Filetypes<CR>
+nnoremap <leader>t :vsplit %<.test.js<CR>
+nnoremap <leader>T :e %<.test.js
 
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>\| :Buffers<CR>
 nnoremap <leader>] :b#<CR>
+
+nnoremap <leader>N :TabooRename 
+
+nnoremap <leader>q :q<CR>
+nnoremap <leader>p :pwd<CR>
+
+let s:term_buf = 0
+let s:term_win = 0
+
+function! TermToggle()
+    if win_gotoid(s:term_win)
+        hide
+    else
+        :terminal
+        try
+            exec "buffer " . s:term_buf
+            exec "bd terminal"
+        catch
+            call termopen($SHELL, {"detach": 0})
+            let s:term_buf = bufnr("")
+            set nonumber
+            set norelativenumber
+            set signcolumn=no
+            set nocursorline
+        endtry
+        startinsert!
+        let s:term_win = win_getid()
+    endif
+endfunction
+
+function! NewTermTab()
+  tabnew
+  terminal
+  set nonumber
+  set norelativenumber
+  set signcolumn=no
+  set nocursorline
+  startinsert!
+endfunction
+
+nnoremap <leader>s :call NewTermTab()<CR>
