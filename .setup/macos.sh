@@ -57,6 +57,7 @@ installMaybe fzf "brew install fzf"
 installMaybe bat "brew install bat"
 installMaybe jq "brew install jq"
 installMaybe git-standup "brew install git-standup"
+installMaybe diff-so-fancy "brew install diff-so-fancy"
 
 # Fixes file watching in jest
 installMaybe watchman "brew install watchman"
