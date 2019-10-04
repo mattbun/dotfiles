@@ -12,7 +12,8 @@
 !.config/nvim/init.vim
 !.config/fish/
 !.config/fish/config.fish
-!.config/iterm/*
+!.config/iterm/
+!.config/iterm/**
 !.ideavimrc
 !.ripgreprc
 
