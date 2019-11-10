@@ -38,6 +38,8 @@ installApt htop
 installApt fzf
 installApt mc
 installApt terminator
+installApt iputils-ping
+apt install fonts-hack-otf
 
 # ripgrep (through cargo, seriously it's the easiest way)
 installMaybe cargo "curl https://sh.rustup.rs -sSf | sh"
