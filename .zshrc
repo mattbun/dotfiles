@@ -52,8 +52,18 @@ zplug mathrath/purer, use:pure.zsh, from:github, as:theme
 SPACESHIP_PROMPT_SEPARATE_LINE=false
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 
+SPACESHIP_USER_PREFIX=
+SPACESHIP_USER_SUFFIX=
+SPACESHIP_USER_COLOR=black
+SPACESHIP_HOST_PREFIX_COLOR=8
+SPACESHIP_HOST_PREFIX="\e[38;5;8m@" # For some reason it wants to be white
+SPACESHIP_HOST_COLOR=8
+SPACESHIP_HOST_COLOR_SSH=8
+
 SPACESHIP_DIR_PREFIX=""
 SPACESHIP_DIR_TRUNC_REPO=true  # Doesn't show '~' for home folder :(
+SPACESHIP_DIR_LOCK_SYMBOL="[RO]"
+SPACESHIP_DIR_LOCK_COLOR=8
 
 SPACESHIP_GIT_PREFIX=""
 SPACESHIP_GIT_SYMBOL=""
@@ -77,8 +87,8 @@ SPACESHIP_CHAR_SYMBOL="$ "
 
 SPACESHIP_PROMPT_ORDER=(
   time          # Time stamps section
-  user          # Username section
   dir           # Current directory section
+  user          # Username section
   host          # Hostname section
   git           # Git section (git_branch + git_status)
   hg            # Mercurial section (hg_branch  + hg_status)
