@@ -58,6 +58,8 @@ installMaybe bat "brew install bat"
 installMaybe jq "brew install jq"
 installMaybe git-standup "brew install git-standup"
 installMaybe rg "brew install ripgrep"
+installMaybe hub "brew install hub"
+installMaybe diff-so-fancy "brew install diff-so-fancy"
 
 # Fixes file watching in jest
 installMaybe watchman "brew install watchman"

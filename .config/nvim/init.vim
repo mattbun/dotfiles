@@ -1,4 +1,5 @@
 set title  "set the terminal title
+set titlestring=%f%m  "terminal title is the filepath relative to working directory and then modified flags
 set number  "show line numbers on the side
 set mouse=a  "be able to use a mouse with vim. you won't be able to do a normal copy/paste though. Instead, use "+y to copy and "+p to paste
 set ai  "auto indent
@@ -86,11 +87,14 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'cloudhead/neovim-fuzzy'
 Plug 'jremmen/vim-ripgrep'
 Plug 'gcmt/taboo.vim'
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'wokalski/autocomplete-flow'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'ternjs/tern_for_vim'
 "Plug 'artur-shaik/vim-javacomplete2'
 "Plug 'DonnieWest/VimStudio'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
 "Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'sheerun/vim-polyglot'
@@ -153,41 +157,45 @@ colorscheme PaperColor
 set background=dark
 
 "Custom tab name: [working directory name] [filename][file modified flag]
-let g:taboo_tab_format = " [%P] %f%m "
+"let g:taboo_tab_format = " [%P] %f%m "
+let g:taboo_tab_format = " %f%m "
+let g:taboo_tabline = 1
 
 "Turn on javacomplete
 "autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 "Deoplete stuff
-"let g:deoplete#enable_at_startup = 1  "enable deoplete
-"let g:deoplete#disable_auto_complete = 1  "disable autocomplete and just use tab when I want it
-""If deoplete autocomplete is on you'll want this:
-""function g:Multiple_cursors_before()
-""    let g:deoplete#disable_auto_complete = 1
-""endfunction
-""function g:Multiple_cursors_after()
-""    let g:deoplete#disable_auto_complete = 0
-""endfunction
-"
-"" deoplete tab-complete
-""navigate entries using tab
-"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-""or shift tab
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-""close the window when I hit enter
-"inoremap <expr> <CR> (pumvisible() ? "\<c-y>" : "\<CR>")
-""show completions when I hit tab
-"inoremap <silent><expr> <TAB>
-"    \ pumvisible() ? "\<C-n>" :
-"    \ <SID>check_back_space() ? "\<TAB>" :
-"    \ deoplete#mappings#manual_complete()
-"function! s:check_back_space() abort "{{{
-"    let col = col('.') - 1
-"    return !col || getline('.')[col - 1]  =~ '\s'
-"endfunction"}}}
+let g:deoplete#enable_at_startup = 1  "enable deoplete
+let g:deoplete#disable_auto_complete = 1  "disable autocomplete and just use tab when I want it
+"If deoplete autocomplete is on you'll want this:
+"function g:Multiple_cursors_before()
+"    let g:deoplete#disable_auto_complete = 1
+"endfunction
+"function g:Multiple_cursors_after()
+"    let g:deoplete#disable_auto_complete = 0
+"endfunction
+
+" deoplete tab-complete
+"navigate entries using tab
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"or shift tab
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"close the window when I hit enter
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>" : "\<CR>")
+"show completions when I hit tab
+inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
 "
 ""Change ultisnips expand trigger since it interferes with deoplete
 "let g:UltiSnipsExpandTrigger = "<leader>e"
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
 
 "Terminal
 tnoremap <Esc> <C-\><C-n>
@@ -199,13 +207,17 @@ let g:lightline = {
       \ }
       \ }
 
+"function! LightlineFilename()
+"  let root = fnamemodify(get(b:, 'git_dir'), ':h')
+"  let path = expand('%:p')
+"  if path[:len(root)-1] ==# root
+"    return path[len(root)+1:]
+"  endif
+"  return expand('%')
+"endfunction
+
 function! LightlineFilename()
-  let root = fnamemodify(get(b:, 'git_dir'), ':h')
-  let path = expand('%:p')
-  if path[:len(root)-1] ==# root
-    return path[len(root)+1:]
-  endif
-  return expand('%')
+  return expand('%f')
 endfunction
 
 "Now for some shortcuts
@@ -222,8 +234,51 @@ nnoremap <leader>V :tabe $MYVIMRC<CR>
 nnoremap <leader>o :Gbrowse<CR>
 nnoremap <leader>m :!open "%"<CR>
 nnoremap <leader>d :Gdiff<CR>
-nnoremap <leader>t :Filetypes<CR>
+"nnoremap <leader>T :Filetypes<CR>
+nnoremap <leader>t :vsplit %<.test.js<CR>
+nnoremap <leader>T :e %<.test.js
 
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>\| :Buffers<CR>
 nnoremap <leader>] :b#<CR>
+
+nnoremap <leader>N :TabooRename 
+
+nnoremap <leader>q :q<CR>
+nnoremap <leader>p :pwd<CR>
+
+let s:term_buf = 0
+let s:term_win = 0
+
+function! TermToggle()
+    if win_gotoid(s:term_win)
+        hide
+    else
+        :terminal
+        try
+            exec "buffer " . s:term_buf
+            exec "bd terminal"
+        catch
+            call termopen($SHELL, {"detach": 0})
+            let s:term_buf = bufnr("")
+            set nonumber
+            set norelativenumber
+            set signcolumn=no
+            set nocursorline
+        endtry
+        startinsert!
+        let s:term_win = win_getid()
+    endif
+endfunction
+
+function! NewTermTab()
+  tabnew
+  terminal
+  set nonumber
+  set norelativenumber
+  set signcolumn=no
+  set nocursorline
+  startinsert!
+endfunction
+
+nnoremap <leader>s :call NewTermTab()<CR>

@@ -1,0 +1,12 @@
+# Allow hidden files to be searched
+--hidden
+
+# Don't follow gitignores
+--no-ignore
+
+# "Searches case insensitively if the pattern is all lowercase. Search case sensitively otherwise."
+--smart-case
+
+# Ignore some folders
+--glob=!**/.git/*
+--glob=!**/node_modules/*

@@ -3,7 +3,8 @@
 #export TERM=xterm-256color
 export EDITOR=nvim
 
-export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case --glob "!.git/*"'
+export PATH="/usr/local/bin:$PATH:$HOME/Library/Android/sdk/platform-tools:$HOME/.cargo/bin"
 export CDPATH=.:~/Dev
 
-export PATH="/usr/local/bin:$PATH:$HOME/Library/Android/sdk/platform-tools:$HOME/.cargo/bin"
+export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore --smart-case --glob "!**/.git/*" --glob "!**/node_modules/*"'
+export RIPGREP_CONFIG_PATH=~/.ripgreprc
