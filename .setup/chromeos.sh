@@ -50,6 +50,8 @@ installMaybe bat "cargo install bat"
 installApt node nodejs
 source $(dirname "$0")/npm.sh
 
-# TODO set default shell to zsh
+# set default shell to zsh
+sudo chsh -s /usr/bin/zsh $USER
+
 
 echo "All done!"
