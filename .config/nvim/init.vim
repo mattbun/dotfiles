@@ -8,9 +8,9 @@ set ic  "ignore case in searches
 set hls  "highlight search matches. disable temporarily with :noh
 set hidden "Allow unsaved changes to be hidden in buffers
 
-"tabs are two spaces
-set tabstop=2
-set shiftwidth=2
+"tabs are four spaces
+set tabstop=4
+set shiftwidth=4
 set expandtab
 
 "show bad indentation
@@ -20,8 +20,11 @@ set listchars=tab:!-,trail:-
 "show substitutions
 set inccommand=nosplit
 
-"show a guide line at 120 characters
-set colorcolumn=120
+"show a guide line at 100 characters
+set colorcolumn=100
+
+"don't add a newline at the end if it's missing
+set nofixendofline
 
 "oo to insert a new line below where you are, OO to insert above
 nmap oo o<Esc>k
