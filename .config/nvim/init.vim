@@ -6,6 +6,7 @@ set ai  "auto indent
 set si  "smart indent
 set ic  "ignore case in searches
 set hls  "highlight search matches. disable temporarily with :noh
+set hidden "Allow unsaved changes to be hidden in buffers
 
 "tabs are two spaces
 set tabstop=2
