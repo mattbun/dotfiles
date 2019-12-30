@@ -208,6 +208,7 @@ nnoremap <leader>V :tabe $MYVIMRC<CR>
 nnoremap <leader>o :Gbrowse<CR>
 nnoremap <leader>m :silent !open "%"<CR>
 nnoremap <leader>d :Gdiff<CR>
+nnoremap <leader>g :G<CR>
 "nnoremap <leader>T :Filetypes<CR>
 nnoremap <leader>t :vsplit %<.test.js<CR>
 nnoremap <leader>T :e %<.test.js
