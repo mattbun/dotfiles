@@ -206,7 +206,7 @@ nnoremap <silent> <leader>n :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR>
 nnoremap <silent> <leader>v :so $MYVIMRC<CR>
 nnoremap <leader>V :tabe $MYVIMRC<CR>
 nnoremap <leader>o :Gbrowse<CR>
-nnoremap <leader>m :!open "%"<CR>
+nnoremap <leader>m :silent !open "%"<CR>
 nnoremap <leader>d :Gdiff<CR>
 "nnoremap <leader>T :Filetypes<CR>
 nnoremap <leader>t :vsplit %<.test.js<CR>
