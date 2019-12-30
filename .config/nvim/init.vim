@@ -26,6 +26,9 @@ set colorcolumn=100
 "don't add a newline at the end if it's missing
 set nofixendofline
 
+"Use terminal true color
+set termguicolors
+
 "oo to insert a new line below where you are, OO to insert above
 nmap oo o<Esc>k
 nmap OO O<Esc>j
@@ -79,7 +82,7 @@ Plug 'https://github.com/AndrewRadev/linediff.vim.git'
 Plug 'https://github.com/terryma/vim-multiple-cursors.git'
 Plug 'https://github.com/moll/vim-node.git'
 Plug 'pangloss/vim-javascript'
-Plug 'https://github.com/flazz/vim-colorschemes.git'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'https://github.com/keith/swift.vim.git'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/tpope/vim-commentary.git'
@@ -137,13 +140,6 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
-
-"Use terminal true color
-set termguicolors
-
-"badwolf is nice
-"let g:badwolf_tabline = 3
-"colorscheme badwolf
 
 "Liking papercolor lately
 "disable background
