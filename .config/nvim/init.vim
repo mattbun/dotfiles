@@ -94,6 +94,7 @@ Plug 'gcmt/taboo.vim' "tab renaming and stuff
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'sheerun/vim-polyglot'
 Plug 'itchyny/lightline.vim'
+Plug 'jparise/vim-graphql'
 
 "coc is cool
 "Plug 'HerringtonDarkholme/yats.vim'
