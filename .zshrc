@@ -1,3 +1,6 @@
+# Generic shell configuration
+source ~/.shrc
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -109,11 +112,6 @@ fi
 
 # Then, source plugins and add commands to $PATH
 zplug load
-
-# Generic shell configuration
-. ~/.aliases
-. ~/.functions
-. ~/.exports
 
 DISABLE_AUTO_TITLE="true"
 
