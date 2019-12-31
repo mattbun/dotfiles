@@ -45,6 +45,7 @@ zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "paulirish/git-open", as:command
+zplug "zdharma/zsh-diff-so-fancy"
 
 zplug mafredri/zsh-async, from:github
 
