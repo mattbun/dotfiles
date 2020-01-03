@@ -106,6 +106,7 @@ let g:coc_global_extensions = [
 \    'coc-yaml',
 \    'coc-highlight',
 \    'coc-git',
+\    'coc-calc',
 \]
 
 call plug#end()
