@@ -161,8 +161,13 @@ highlight SignColumn guibg=#00000000
 let g:taboo_tab_format = " %f%m "
 let g:taboo_tabline = 1
 
-"Terminal
-tnoremap <Esc> <C-\><C-n>
+if has("nvim")
+  "Make escape work right in terminal? TODO is that right?
+  au TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
+
+  "close fzf with escape
+  au FileType fzf tunmap <buffer> <Esc>
+endif
 
 "Lightline config
 let g:lightline = {
