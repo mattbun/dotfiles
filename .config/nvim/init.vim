@@ -130,7 +130,8 @@ let g:switch_custom_definitions =
       \   ['!=', '=='],
       \   ['0', '1'],
       \   ['ON', 'OFF'],
-      \   ['''', '"']
+      \   ['''', '"'],
+      \   ['GET', 'POST', 'PUT', 'DELETE', 'PATCH']
       \ ]
 
 "Nerdtree stuff
