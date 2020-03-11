@@ -41,8 +41,8 @@ zstyle ':completion:*' menu select
 
 # Install zplug if it isn't installed
 if [ ! -e ~/.zplug ]; then
-  echo "Installing zplug"
-  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+  git clone https://github.com/zplug/zplug ~/.zplug
+  source ~/.zplug/init.zsh && zplug update --self
 fi
 
 source ~/.zplug/init.zsh
@@ -53,18 +53,11 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "paulirish/git-open", as:command
 zplug "zdharma/zsh-diff-so-fancy"
-
-zplug mafredri/zsh-async, from:github
-
-zplug romkatv/powerlevel10k, as:theme, depth:1
-
+zplug "romkatv/powerlevel10k", as:theme, depth:1
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+  zplug install
 fi
 
 # Then, source plugins and add commands to $PATH
