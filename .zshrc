@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Generic shell configuration
 source ~/.shrc
 
@@ -49,59 +56,8 @@ zplug "zdharma/zsh-diff-so-fancy"
 
 zplug mafredri/zsh-async, from:github
 
-zplug mathrath/purer, use:pure.zsh, from:github, as:theme
-#zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
+zplug romkatv/powerlevel10k, as:theme, depth:1
 
-# Spaceship prompt configuration
-SPACESHIP_PROMPT_SEPARATE_LINE=false
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-
-SPACESHIP_USER_PREFIX=
-SPACESHIP_USER_SUFFIX=
-SPACESHIP_USER_COLOR=black
-SPACESHIP_HOST_PREFIX_COLOR=8
-SPACESHIP_HOST_PREFIX="\e[38;5;8m@" # For some reason it wants to be white
-SPACESHIP_HOST_COLOR=8
-SPACESHIP_HOST_COLOR_SSH=8
-
-SPACESHIP_DIR_PREFIX=""
-SPACESHIP_DIR_TRUNC_REPO=true  # Doesn't show '~' for home folder :(
-SPACESHIP_DIR_LOCK_SYMBOL="[RO]"
-SPACESHIP_DIR_LOCK_COLOR=8
-
-SPACESHIP_GIT_PREFIX=""
-SPACESHIP_GIT_SYMBOL=""
-SPACESHIP_GIT_STATUS_PREFIX="["
-SPACESHIP_GIT_STATUS_SUFFIX="]"
-SPACESHIP_GIT_STATUS_COLOR=8
-#SPACESHIP_GIT_STATUS_UNTRACKED=""
-#SPACESHIP_GIT_STATUS_ADDED=""
-SPACESHIP_GIT_STATUS_MODIFIED=*
-#SPACESHIP_GIT_STATUS_RENAMED=""
-#SPACESHIP_GIT_STATUS_DELETED=""
-SPACESHIP_GIT_STATUS_STASHED=""
-#SPACESHIP_GIT_STATUS_UNMERGED=""
-SPACESHIP_GIT_BRANCH_COLOR=8  # Gray
-
-SPACESHIP_EXEC_TIME_PREFIX=""
-SPACESHIP_EXEC_TIME_COLOR=8  # Gray
-
-SPACESHIP_CHAR_COLOR_SUCCESS=white
-SPACESHIP_CHAR_SYMBOL="$ "
-
-SPACESHIP_PROMPT_ORDER=(
-  time          # Time stamps section
-  dir           # Current directory section
-  user          # Username section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
-  hg            # Mercurial section (hg_branch  + hg_status)
-  exec_time     # Execution time
-  line_sep      # Line break
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -122,3 +78,6 @@ DISABLE_AUTO_TITLE="true"
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
