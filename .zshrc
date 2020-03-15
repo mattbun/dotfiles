@@ -46,13 +46,16 @@ if [ ! -e ~/.zplug ]; then
 fi
 
 source ~/.zplug/init.zsh
-zplug "plugins/git",   from:oh-my-zsh
 zplug "supercrabtree/k"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "paulirish/git-open", as:command
 zplug "zdharma/zsh-diff-so-fancy"
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/jira", from:oh-my-zsh
+zplug "plugins/osx", from:oh-my-zsh
+zplug "plugins/z", from:oh-my-zsh
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 
 # Install plugins if there are plugins that have not been installed
