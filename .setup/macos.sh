@@ -70,7 +70,11 @@ installMaybe python3 "brew install python3"
 pip2 install neovim --upgrade
 pip3 install neovim --upgrade
 
-brew cask install caskroom/fonts/font-hack
+# Install hack font
+brew cask install font-hack
+
+# This adds some helpful services like capitalize/uncapitalize selected text
+brew cask install wordservice
 
 # Quick look pluginsssss (https://github.com/sindresorhus/quick-look-plugins)
 brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv qlimagesize webpquicklook suspicious-package quicklookase qlvideo

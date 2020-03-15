@@ -8,5 +8,5 @@ export LANG=en_US.UTF-8
 export PATH="/usr/local/bin:$PATH:$HOME/Library/Android/sdk/platform-tools:$HOME/.cargo/bin"
 export CDPATH=.:~/Dev
 
-export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore --smart-case --glob "!**/.git/*" --glob "!**/node_modules/*"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case'
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
