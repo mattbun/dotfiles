@@ -99,7 +99,7 @@ Plug 'jparise/vim-graphql'
 "coc is cool
 "Plug 'HerringtonDarkholme/yats.vim'
 if executable('node')
-  source coc.vim
+  source .config/nvim/coc.vim
 endif
 
 call plug#end()
