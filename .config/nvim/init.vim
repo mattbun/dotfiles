@@ -74,7 +74,6 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 "Plug 'https://github.com/benekastah/neomake.git'
-"Plug 'w0rp/ale'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'  "github integration for fugitive
 Plug 'https://github.com/AndrewRadev/switch.vim.git'
@@ -96,25 +95,15 @@ Plug 'sheerun/vim-polyglot'
 Plug 'itchyny/lightline.vim'
 Plug 'jparise/vim-graphql'
 
-"coc is cool
-"Plug 'HerringtonDarkholme/yats.vim'
+"coc is cool, but not if node isn't installed
 if executable('node')
   source .config/nvim/coc.vim
+else
+  source .config/nvim/ale.vim
 endif
 
 call plug#end()
 
-"let g:ale_linters = {
-"\   'javascript': ['eslint'],
-"\   'typescript': ['tslint'],
-"\}
-"
-"let g:ale_fixers = {
-"\   'javascript': ['eslint'],
-"\}
-"
-"let g:ale_sign_error = '✖'
-"let g:ale_sign_warning = '⚠'
 
 "setup switch.vim and some custom definitions
 let g:switch_mapping = "-"
@@ -207,7 +196,6 @@ nnoremap <silent> <leader><leader> :Files<CR>
 nnoremap <silent> <leader>g :Commits<CR>
 nnoremap <leader>r :Rg<CR>
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR>
-"nnoremap <silent> <leader>x :ALEFix<CR>
 "Reload vim config
 nnoremap <silent> <leader>v :so $MYVIMRC<CR>
 nnoremap <leader>V :tabe $MYVIMRC<CR>
