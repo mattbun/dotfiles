@@ -13,4 +13,4 @@
 [mergetool "vimdiff"]
 	path = nvim
 [core]
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = (diff-so-fancy || cat) | less --tabs=4 -RFX
