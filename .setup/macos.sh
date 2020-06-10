@@ -60,6 +60,7 @@ installMaybe git-standup "brew install git-standup"
 installMaybe rg "brew install ripgrep"
 installMaybe hub "brew install hub"
 installMaybe diff-so-fancy "brew install diff-so-fancy"
+installMaybe exa "brew install exa"
 
 # Fixes file watching in jest
 installMaybe watchman "brew install watchman"

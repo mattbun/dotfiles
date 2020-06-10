@@ -32,6 +32,7 @@ installPacman diff-so-fancy
 installPacman htop
 installPacman mc
 installPacman thefuck
+installPacman exa
 
 # Docker
 installPacman docker

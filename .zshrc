@@ -46,7 +46,6 @@ if [ ! -e ~/.zplug ]; then
 fi
 
 source ~/.zplug/init.zsh
-zplug "supercrabtree/k"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"

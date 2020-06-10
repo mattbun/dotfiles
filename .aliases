@@ -12,8 +12,8 @@ alias please='sudo $(fc -ln -1)'
 alias pls=please
 alias vim=nvim
 alias vimdiff="nvim -d"
-alias l=k
-alias la="k -a"
+alias l="exa --git --long"
+alias la="exa --git --long -a"
 alias gs="git s"
 
 # Run git status on all folders inside the current directory
