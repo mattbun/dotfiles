@@ -83,6 +83,8 @@
 
   # Blue current directory.
   typeset -g POWERLEVEL9K_DIR_FOREGROUND=blue
+  typeset -g POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_unique"
+  typeset -g POWERLEVEL9K_SHORTEN_DELIMITER=""
 
   # Context format when root: user@host. The first part white, the rest grey.
   typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE='%7F%n%f%242F@%m%f'
