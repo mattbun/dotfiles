@@ -97,9 +97,9 @@ Plug 'jparise/vim-graphql'
 
 "coc is cool, but not if node isn't installed
 if executable('node')
-  source .config/nvim/coc.vim
+  source ~/.config/nvim/coc.vim
 else
-  source .config/nvim/ale.vim
+  source ~/.config/nvim/ale.vim
 endif
 
 call plug#end()
