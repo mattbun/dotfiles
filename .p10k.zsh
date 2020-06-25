@@ -43,6 +43,7 @@
       vcs                       # git status
       status                    # exit code of the last command
       command_execution_time    # previous command duration
+      kubecontext               # kubernetes context
       prompt_char               # prompt symbol
   )
 
@@ -145,6 +146,11 @@
   # above must be set to true for this parameter to have effect.
   typeset -g POWERLEVEL9K_DIR_NOT_WRITABLE_VISUAL_IDENTIFIER_EXPANSION='[RO]'
   typeset -g POWERLEVEL9K_DIR_WRITABLE_LOCK_ICON='RO'
+
+  typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|helm|kubens|kubectx|oc|k9s'
+  typeset -g POWERLEVEL9K_KUBECONTEXT_FOREGROUND='grey'
+  typeset -g POWERLEVEL9K_KUBECONTEXT_PREFIX='['
+  typeset -g POWERLEVEL9K_KUBECONTEXT_SUFFIX=']'
 
   # Transient prompt works similarly to the builtin transient_rprompt option. It trims down prompt
   # when accepting a command line. Supported values:
