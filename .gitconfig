@@ -5,6 +5,7 @@
 	tool = vimdiff
 [alias]
 	s = status
+	o = open
 	last = log -1 HEAD
 [mergetool]
 	path = nvim
