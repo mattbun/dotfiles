@@ -37,6 +37,10 @@ fi
 
 source ~/.zplug/init.zsh
 zplug "plugins/git",   from:oh-my-zsh
+zplug "plugins/git-auto-fetch",   from:oh-my-zsh
+zplug "plugins/osx", from:oh-my-zsh
+zplug "plugins/z", from:oh-my-zsh
+zplug "plugins/asdf", from:oh-my-zsh
 zplug "supercrabtree/k"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
