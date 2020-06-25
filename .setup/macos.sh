@@ -60,6 +60,20 @@ installMaybe git-standup "brew install git-standup"
 installMaybe rg "brew install ripgrep"
 installMaybe hub "brew install hub"
 installMaybe diff-so-fancy "brew install diff-so-fancy"
+installMaybe htop "brew install htop"
+installMaybe hyperkit "brew install hyperkit"
+installMaybe docker "brew cask install docker"
+installMaybe wget "brew install wget"
+installMaybe pritunl "brew cask install pritunl"
+
+brew cask install bettertouchtool
+
+installMaybe asdf "brew install asdf"
+asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf plugin-add helm https://github.com/Antiarchitect/asdf-helm.git
+asdf plugin-add terraform https://github.com/Banno/asdf-hashicorp.git
+installMaybe gpg "brew install gpg"
+bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 
 # Fixes file watching in jest
 installMaybe watchman "brew install watchman"
