@@ -228,7 +228,12 @@ nnoremap <leader>T :e %<.test.js
 
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>\| :Buffers<CR>
-nnoremap <leader>] :b#<CR>
+nnoremap <leader>[ :bp<CR>
+nnoremap <leader>] :bn<CR>
+
+"TODO which one of these makes more sense?
+nnoremap <leader>= :b#<CR>
+nnoremap <leader>p :b#<CR>
 
 nnoremap <leader>N :TabooRename 
 
