@@ -85,7 +85,7 @@ pip2 install neovim --upgrade
 pip3 install neovim --upgrade
 
 # Install hack font
-brew cask install font-hack
+brew cask install homebrew/cask-fonts/font-hack
 
 # This adds some helpful services like capitalize/uncapitalize selected text
 brew cask install wordservice
