@@ -9,7 +9,7 @@
 
 !.config
 !.config/nvim
-!.config/nvim/init.vim
+!.config/nvim/*.vim
 !.config/fish/
 !.config/fish/config.fish
 !.config/iterm/
@@ -18,9 +18,13 @@
 !.ripgreprc
 
 !.zshrc
+!.bashrc
+!.shrc
 !.aliases
 !.exports
 !.functions
+!.p10k.zsh
+!.p10k.zsh.colorful
 
 # Created by https://www.gitignore.io/api/linux,macos
 # Edit at https://www.gitignore.io/?templates=linux,macos

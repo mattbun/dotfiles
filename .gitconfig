@@ -1,6 +1,6 @@
 [user]
 	name = Matt Rathbun
-	email = mattrathbun@stockx.com
+	email = 5514636+mattbun@users.noreply.github.com
 [diff]
 	tool = vimdiff
 [alias]
@@ -14,4 +14,4 @@
 [mergetool "vimdiff"]
 	path = nvim
 [core]
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = (diff-so-fancy || cat) | less --tabs=4 -RFX

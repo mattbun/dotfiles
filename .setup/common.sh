@@ -12,6 +12,6 @@ installMaybe () {
     echo "Installing $1"
     eval $2
   else
-    echo "$1 is already installed"
+    echo "Skipping $1"
   fi
 }
