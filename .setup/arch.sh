@@ -12,38 +12,16 @@ installPacman () {
   fi
 }
 
-# Some prerequisites to install other things
-installPacman curl
-installPacman git
-installPacman pip python-pip
 
-# zsh
-installPacman zsh
+# Sync pacman database
+sudo pacman -Syy
 
-# neovim with python support
-installPacman nvim neovim
-pip3 install --user neovim
+# Install yq so we can use the installPackages script
+installMaybe go "sudo pacman -S --noconfirm go"
+installMaybe yq "GO111MODULE=on go get github.com/mikefarah/yq/v3"
 
-# some extras
-installPacman fzf
-installPacman rg ripgrep
-installPacman bat
-installPacman diff-so-fancy
-installPacman htop
-installPacman mc
-installPacman thefuck
-installPacman exa
-
-# Docker
-installPacman docker
-installPacman docker-compose
-
-# Node.js
-installPacman node nodejs
-installPacman npm
-
-# TODO How to separate out graphical stuff?
-sudo pacman -S --noconfirm ttf-hack
+# Install my favorite things
+PLATFORM=arch ~/.setup/installPackages.sh
 
 # set default shell to zsh
 sudo chsh -s /usr/bin/zsh $USER
