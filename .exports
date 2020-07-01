@@ -5,7 +5,11 @@ export EDITOR=nvim
 
 # This fixes some weird prompt behavior
 export LANG=en_US.UTF-8
-export PATH="/usr/local/bin:$PATH:$HOME/Library/Android/sdk/platform-tools:$HOME/.cargo/bin"
+
+export GOPATH="$HOME/.go/bin/bin"
+export CARGOPATH="$HOME/.cargo/bin"
+export PATH="/usr/local/bin:$PATH:$GOPATH:$CARGOPATH"
+
 export CDPATH=.:~/Dev
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case'
