@@ -4,15 +4,6 @@
 
 source $(dirname "$0")/common.sh
 
-installPacman () {
-  if [ $# -eq 1 ]; then
-    installMaybe $1 "sudo pacman --noconfirm -S $1"
-  else
-    installMaybe $1 "sudo pacman --noconfirm -S $2"
-  fi
-}
-
-
 # Sync pacman database
 sudo pacman -Syy
 
