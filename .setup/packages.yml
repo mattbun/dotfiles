@@ -132,3 +132,6 @@ packages:
 
   - name: bettertouchtool
     mac: brew cask install bettertouchtool
+
+  - name: iterm
+    mac: brew cask install iterm2
