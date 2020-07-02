@@ -135,3 +135,9 @@ packages:
 
   - name: iterm
     mac: brew cask install iterm2
+
+  - name: the unarchiver
+    mac: brew cask install the-unarchiver
+
+  - name: notion
+    mac: brew cask install notion
