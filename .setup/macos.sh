@@ -40,7 +40,7 @@ killall Dock
 # Install some stuff I like
 
 # Install homebrew if it isn't installed
-installMaybe brew "/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\""
+installMaybe brew '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'
 
 # Install yq so we can use the installPackages script
 installMaybe yq "brew install yq"
