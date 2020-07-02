@@ -84,6 +84,28 @@ packages:
     mac: brew cask install docker-compose
     arch: sudo pacman -S docker-compose
 
+  - name: gpg
+    executable: gpg
+    mac: brew install gpg
+
+  - name: coreutils
+    mac: brew install coreutils
+
+  - name: asdf
+    executable: asdf
+    mac: brew install asdf
+
+  - name: asdf nodejs plugin
+    mac: |
+      asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+      && bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+
+  - name: asdf helm plugin
+    mac: asdf plugin-add helm https://github.com/Antiarchitect/asdf-helm.git
+
+  - name: asdf terraform plugin
+    mac: asdf plugin-add terraform https://github.com/Banno/asdf-hashicorp.git
+
   - name: hack font
     mac: brew cask install font-hack
     # TODO arch: sudo pacman -S -noconfirm ttf-hack
