@@ -119,5 +119,8 @@ packages:
   - name: quicklook plugins
     mac: brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv qlimagesize webpquicklook suspicious-package quicklookase qlvideo provisionql quicklookapk
 
+  - name: pritunl
+    mac: brew cask install pritunl
+
   - name: bettertouchtool
     mac: brew cask install bettertouchtool
