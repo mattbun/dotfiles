@@ -113,6 +113,10 @@ packages:
   - name: asdf terraform plugin
     mac: asdf plugin-add terraform https://github.com/Banno/asdf-hashicorp.git
 
+  - name: watchman # Fixes file watching in jest
+    executable: watchman
+    mac: brew install watchman
+
   - name: hack font
     mac: brew cask install homebrew/cask-fonts/font-hack
     # TODO arch: sudo pacman -S -noconfirm ttf-hack
