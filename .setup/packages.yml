@@ -6,6 +6,10 @@ packages:
     mac: brew install git
     arch: sudo pacman -S --noconfirm git
 
+  - name: hub
+    executable: hub
+    mac: brew install hub
+
   - name: curl
     executable: curl
     mac: brew install curl
