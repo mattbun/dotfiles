@@ -74,14 +74,17 @@ packages:
     mac: brew install mc
     arch: sudo pacman -S --noconfirm mc
 
+  - name: hyperkit
+    executable: hyperkit
+    mac: brew install hyperkit
+
   - name: docker
     executable: docker
-    mac: brew cask install docker
+    mac: brew cask install docker # Also installs docker-compose
     arch: sudo pacman -S docker
 
   - name: docker-compose
     executable: docker-compose
-    mac: brew cask install docker-compose
     arch: sudo pacman -S docker-compose
 
   - name: gpg
