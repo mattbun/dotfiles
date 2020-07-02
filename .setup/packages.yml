@@ -6,6 +6,10 @@ packages:
     mac: brew install git
     arch: sudo pacman -S --noconfirm git
 
+  - name: hub
+    executable: hub
+    mac: brew install hub
+
   - name: curl
     executable: curl
     mac: brew install curl
@@ -74,18 +78,43 @@ packages:
     mac: brew install mc
     arch: sudo pacman -S --noconfirm mc
 
+  - name: hyperkit
+    executable: hyperkit
+    mac: brew install hyperkit
+
   - name: docker
     executable: docker
-    mac: brew cask install docker
+    mac: brew cask install docker # Also installs docker-compose
     arch: sudo pacman -S docker
 
   - name: docker-compose
     executable: docker-compose
-    mac: brew cask install docker-compose
     arch: sudo pacman -S docker-compose
 
+  - name: gpg
+    executable: gpg
+    mac: brew install gpg
+
+  - name: coreutils
+    mac: brew install coreutils
+
+  - name: asdf
+    executable: asdf
+    mac: brew install asdf
+
+  - name: asdf nodejs plugin
+    mac: |
+      asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+      && bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+
+  - name: asdf helm plugin
+    mac: asdf plugin-add helm https://github.com/Antiarchitect/asdf-helm.git
+
+  - name: asdf terraform plugin
+    mac: asdf plugin-add terraform https://github.com/Banno/asdf-hashicorp.git
+
   - name: hack font
-    mac: brew cask install font-hack
+    mac: brew cask install homebrew/cask-fonts/font-hack
     # TODO arch: sudo pacman -S -noconfirm ttf-hack
 
   - name: wordservice
@@ -93,3 +122,9 @@ packages:
 
   - name: quicklook plugins
     mac: brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv qlimagesize webpquicklook suspicious-package quicklookase qlvideo provisionql quicklookapk
+
+  - name: pritunl
+    mac: brew cask install pritunl
+
+  - name: bettertouchtool
+    mac: brew cask install bettertouchtool

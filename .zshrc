@@ -52,10 +52,12 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "paulirish/git-open", as:command
 zplug "zdharma/zsh-diff-so-fancy"
 zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/git-auto-fetch", from:oh-my-zsh
 zplug "plugins/jira", from:oh-my-zsh
 zplug "plugins/osx", from:oh-my-zsh
 zplug "plugins/z", from:oh-my-zsh
 zplug "romkatv/powerlevel10k", as:theme, depth:1
+zplug "plugins/asdf", from:oh-my-zsh
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then

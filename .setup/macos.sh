@@ -56,10 +56,17 @@ installMaybe fuck "brew install thefuck"
 installMaybe fzf "brew install fzf"
 installMaybe bat "brew install bat"
 installMaybe jq "brew install jq"
+installMaybe yq "brew install yq"
 installMaybe git-standup "brew install git-standup"
 installMaybe rg "brew install ripgrep"
 installMaybe hub "brew install hub"
 installMaybe diff-so-fancy "brew install diff-so-fancy"
+installMaybe asdf "brew install asdf"
+asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf plugin-add helm https://github.com/Antiarchitect/asdf-helm.git
+asdf plugin-add terraform https://github.com/Banno/asdf-hashicorp.git
+installMaybe gpg "brew install gpg"
+bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 installMaybe exa "brew install exa"
 
 # Fixes file watching in jest
@@ -72,7 +79,7 @@ pip2 install neovim --upgrade
 pip3 install neovim --upgrade
 
 # Install hack font
-brew cask install font-hack
+brew cask install homebrew/cask-fonts/font-hack
 
 # This adds some helpful services like capitalize/uncapitalize selected text
 brew cask install wordservice
