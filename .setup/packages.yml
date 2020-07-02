@@ -114,7 +114,7 @@ packages:
     mac: asdf plugin-add terraform https://github.com/Banno/asdf-hashicorp.git
 
   - name: hack font
-    mac: brew cask install font-hack
+    mac: brew cask install homebrew/cask-fonts/font-hack
     # TODO arch: sudo pacman -S -noconfirm ttf-hack
 
   - name: wordservice
