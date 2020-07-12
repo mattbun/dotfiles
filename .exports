@@ -6,9 +6,9 @@ export EDITOR=nvim
 # This fixes some weird prompt behavior
 export LANG=en_US.UTF-8
 
-export GOPATH="$HOME/.go/bin/bin"
-export CARGOPATH="$HOME/.cargo/bin"
-export PATH="/usr/local/bin:$PATH:$GOPATH:$CARGOPATH"
+export GOPATH="$HOME/.go"
+export CARGOPATH="$HOME/.cargo"
+export PATH="/usr/local/bin:$PATH:$GOPATH/bin:$CARGOPATH/bin"
 
 export CDPATH=.:~/Dev
 
