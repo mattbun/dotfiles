@@ -6,6 +6,10 @@ packages:
     mac: brew install git
     arch: sudo pacman -S --noconfirm git
 
+  - name: yay
+    executable: yay
+    arch: go get github.com/Jguer/yay
+
   - name: hub
     executable: hub
     mac: brew install hub
