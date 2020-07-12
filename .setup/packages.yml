@@ -98,6 +98,7 @@ packages:
   - name: gpg
     executable: gpg
     mac: brew install gpg
+    arch: sudo pacman -S --noconfirm gnupg
 
   - name: coreutils
     mac: brew install coreutils
@@ -105,11 +106,15 @@ packages:
   - name: asdf
     executable: asdf
     mac: brew install asdf
+    arch: yay -S --noconfirm asdf-vm
 
   - name: asdf nodejs plugin
     mac: |
       asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-      && bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+      && bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'
+    arch: |
+      asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+      && bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'
 
   - name: asdf helm plugin
     mac: asdf plugin-add helm https://github.com/Antiarchitect/asdf-helm.git
