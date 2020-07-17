@@ -1,43 +1,30 @@
 # These are Matt's dotfiles
 
-## What I use
+## Some personal highlights
 
+### Packages
 * zsh
 * neovim
 * ripgrep
 * fzf
 * jq
-
-## Some highlights
+* bat
+* exa
 
 ### ZSH
 
-* zsh syntax highlighting
-
-* zsh autosuggestions
+* syntax highlighting
+* autosuggestions
+* [`git open`](https://github.com/paulirish/git-open)
+* [`z`](https://github.com/agkozak/zsh-z)
 
 ### Neovim
 
-* switch.vim press `-` on any character in  `true` to turn it to `false`, `'` to `"`, etc. and vice-versa.
-
-### Miscellaneous
-
-* [git-standup](https://github.com/kamranahmedse/git-standup) - See all of your commits so you can remember what you worked on. If you have a folder with multiple git repos in it, it will go through them all.  
-
-  ```
-  cd ~/Dev/qb
-  git standup -d 5 > weekly.txt
-  ```
-
-* [thefuck](https://github.com/nvbn/thefuck) fixes commands entered wrong and a whole lot of other things
-
-* A whole bunch of helpful quicklook plugins like json and csv file support
-
-## A couple things I made that you might not care about
-
-* [My prompt is a fork](https://github.com/mathrath/purer) of [purer](https://github.com/DFurnes/purer), which is a fork of [pure](https://github.com/sindresorhus/pure).
-
-* oops - Copies a file/folder somewhere safe so I don't accidentally lose it. `oops ./test-data -t "WIP data"`
+* [`switch.vim`](https://github.com/AndrewRadev/switch.vim) press `-` on any character in  `true` to turn it to `false`, `'` to `"`, etc. and vice-versa.
+* [`fzf.vim`](https://github.com/junegunn/fzf.vim)
+* [`fugitive`](https://github.com/tpope/vim-fugitive)
+* [`coc`](https://github.com/neoclide/coc.nvim) but it falls back to [ALE](https://github.com/dense-analysis/ale) if node isn't installed
+* [`editorconfig`](https://editorconfig.org/)
 
 ## Setup
 
@@ -46,7 +33,7 @@ To set up on a new computer,
 ```
 cd
 git init
-git remote add origin https://mathrath@github.com/mathrath/dotfiles.git
+git remote add origin git@github.com:mattbun/dotfiles.git
 git fetch
 git checkout -t master or git reset origin/master
 ```
