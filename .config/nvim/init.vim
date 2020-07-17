@@ -94,6 +94,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'sheerun/vim-polyglot'
 Plug 'itchyny/lightline.vim'
 Plug 'jparise/vim-graphql'
+Plug 'editorconfig/editorconfig-vim'
 
 "coc is cool, but not if node isn't installed
 if executable('node')
