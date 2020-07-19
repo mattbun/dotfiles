@@ -96,6 +96,11 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 
+" Handy git shortcuts
+nmap <leader>a :CocCommand git.chunkStage<cr>
+nmap <leader>d :CocCommand git.chunkInfo<cr>
+nmap <leader>u :CocCommand git.chunkUndo<cr>
+
 " Create mappings for function text object, requires document symbols feature of languageserver.
 xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
