@@ -96,7 +96,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'jparise/vim-graphql'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-eunuch'
-Plug 'justinmk/vim-sneak'
 
 "coc is cool, but not if node isn't installed
 if executable('node')
