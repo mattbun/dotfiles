@@ -48,12 +48,19 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" Use `[d` and `]d` to navigate git hunks
+nmap <silent> [d <Plug>(coc-git-prevchunk)
+nmap <silent> ]d <Plug>(coc-git-nextchunk)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+" show chunk diff at current position
+nmap gs <Plug>(coc-git-chunkinfo)
+" show commit contains current position
+nmap gc <Plug>(coc-git-commit)
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -100,6 +107,7 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 nmap <leader>a :CocCommand git.chunkStage<cr>
 nmap <leader>d :CocCommand git.chunkInfo<cr>
 nmap <leader>u :CocCommand git.chunkUndo<cr>
+nmap <leader>o :CocCommand git.browserOpen<CR>
 
 " Create mappings for function text object, requires document symbols feature of languageserver.
 xmap if <Plug>(coc-funcobj-i)

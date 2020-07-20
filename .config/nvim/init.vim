@@ -201,7 +201,6 @@ nnoremap <silent> <leader>n :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR>
 "Reload vim config
 nnoremap <silent> <leader>v :so $MYVIMRC<CR>
 nnoremap <leader>V :tabe $MYVIMRC<CR>
-nnoremap <leader>o :Gbrowse<CR>
 nnoremap <leader>m :silent !open "%"<CR>
 nnoremap <leader>D :Gdiff<CR>
 nnoremap <leader>g :G<CR>
