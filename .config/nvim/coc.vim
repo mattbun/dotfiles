@@ -8,6 +8,8 @@ let g:coc_global_extensions = [
 \    'coc-highlight',
 \    'coc-git',
 \    'coc-calc',
+\    'coc-sh',
+\    'coc-docker',
 \]
 
 
