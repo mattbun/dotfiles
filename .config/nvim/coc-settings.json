@@ -1,0 +1,9 @@
+{
+  "git.branchCharacter": "",
+  "coc.source.emoji.filetypes": [
+    "gitcommit",
+    "markdown",
+    "markdown.mdx",
+    ""
+  ]
+}
