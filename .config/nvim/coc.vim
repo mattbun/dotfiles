@@ -1,17 +1,17 @@
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 let g:coc_global_extensions = [
+\    'coc-calc',
+\    'coc-docker',
+\    'coc-emoji',
+\    'coc-git',
+\    'coc-highlight',
 \    'coc-json',
+\    'coc-marketplace',
+\    'coc-sh',
 \    'coc-tslint-plugin',
 \    'coc-tsserver',
 \    'coc-yaml',
-\    'coc-highlight',
-\    'coc-git',
-\    'coc-calc',
-\    'coc-sh',
-\    'coc-docker',
-\    'coc-marketplace',
-\    'coc-emoji',
 \]
 
 
