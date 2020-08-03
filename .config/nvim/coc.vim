@@ -11,6 +11,7 @@ let g:coc_global_extensions = [
 \    'coc-sh',
 \    'coc-docker',
 \    'coc-marketplace',
+\    'coc-emoji',
 \]
 
 
