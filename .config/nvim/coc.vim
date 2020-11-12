@@ -8,6 +8,7 @@ let g:coc_global_extensions = [
 \    'coc-highlight',
 \    'coc-json',
 \    'coc-marketplace',
+\    'coc-prettier',
 \    'coc-sh',
 \    'coc-tslint-plugin',
 \    'coc-tsserver',
