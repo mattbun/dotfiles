@@ -73,6 +73,10 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
+# And this is the base16 theme I'm using (only set it if one doesn't exist)
+[ ! -s "$HOME/.base16_theme" ] && \
+  base16_classic-dark
+
 DISABLE_AUTO_TITLE="true"
 
 # nvm - disabled because it's slow and I don't use it anyway
