@@ -6,5 +6,9 @@
     "markdown.mdx",
     ""
   ],
-  "coc.preferences.formatOnSaveFiletypes": ["typescript"]
+  "coc.preferences.formatOnSaveFiletypes": ["typescript"],
+  "diagnostic.errorSign": "x",
+  "diagnostic.warningSign": "!",
+  "diagnostic.infoSign": "i",
+  "diagnostic.hintSign": "h"
 }
