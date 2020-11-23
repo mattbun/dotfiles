@@ -82,6 +82,7 @@ Plug 'https://github.com/terryma/vim-multiple-cursors.git'
 Plug 'https://github.com/moll/vim-node.git'
 Plug 'pangloss/vim-javascript'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'chriskempson/base16-vim'
 Plug 'https://github.com/keith/swift.vim.git'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/tpope/vim-commentary.git'
@@ -128,18 +129,21 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
-"Liking papercolor lately
-"disable background
-let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \     'default.dark': {
-  \       'transparent_background' : 1
-  \     }
-  \   }
-  \ }
-colorscheme PaperColor
+"Use base16 for theme
+"To change to another theme, use base16_* commands in shell
 set background=dark
-highlight SignColumn guibg=#00000000
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
+"Make gutter and signs column have no background
+"highlight SignColumn guibg=#00000000
+"highlight LineNr guibg=#00000000
+"highlight GitGutterAdd guibg=#00000000
+"highlight CocGitAddedSign guibg=#00000000
+"highlight CocGitChangedSign guibg=#00000000
+"highlight CocGitRemovedSign guibg=#00000000
 
 "Custom tab name: [working directory name] [filename][file modified flag]
 "let g:taboo_tab_format = " [%P] %f%m "
