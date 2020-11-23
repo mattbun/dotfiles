@@ -94,6 +94,7 @@ Plug 'gcmt/taboo.vim' "tab renaming and stuff
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'sheerun/vim-polyglot'
 Plug 'itchyny/lightline.vim'
+Plug 'mike-hearn/base16-vim-lightline'
 Plug 'jparise/vim-graphql'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-eunuch'
@@ -164,6 +165,9 @@ command! -bang -nargs=* Rg
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
 
+"Try to use the shell theme for lightline (lightline themes use underscores ugh)
+let $lightline_colorscheme = substitute(g:colors_name, "-", "_", "g")
+
 "Lightline config
 let g:lightline = {
 \    'component_function': {
@@ -176,7 +180,8 @@ let g:lightline = {
 \            [ 'filetype' ],
 \            [ 'gitstatus' ],
 \        ]
-\    }
+\    },
+\    'colorscheme': $lightline_colorscheme
 \}
 
 function! LightlineFilename()
