@@ -139,12 +139,12 @@ if filereadable(expand("~/.vimrc_background"))
 endif
 
 "Make gutter and signs column have no background
-"highlight SignColumn guibg=#00000000
-"highlight LineNr guibg=#00000000
-"highlight GitGutterAdd guibg=#00000000
-"highlight CocGitAddedSign guibg=#00000000
-"highlight CocGitChangedSign guibg=#00000000
-"highlight CocGitRemovedSign guibg=#00000000
+highlight SignColumn guibg=#00000000
+highlight LineNr guibg=#00000000
+highlight GitGutterAdd guibg=#00000000
+highlight CocGitAddedSign guibg=#00000000
+highlight CocGitChangedSign guibg=#00000000
+highlight CocGitRemovedSign guibg=#00000000
 
 "Custom tab name: [working directory name] [filename][file modified flag]
 "let g:taboo_tab_format = " [%P] %f%m "
