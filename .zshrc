@@ -75,7 +75,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 
 # And this is the base16 theme I'm using (only set it if one doesn't exist)
 [ ! -s "$HOME/.base16_theme" ] && \
-  base16_classic-dark
+  base16_helios
 
 DISABLE_AUTO_TITLE="true"
 
