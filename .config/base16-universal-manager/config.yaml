@@ -1,0 +1,33 @@
+Colorscheme: helios
+
+applications:
+  # bat and delta are already configured to use the base16 theme
+  # TODO iterm, crosh
+
+  shell:
+    enabled: true
+    files:
+      default:
+        path: ~/.colors/shell.sh
+        mode: rewrite
+
+  vim:
+    enabled: true
+    files:
+      default:
+        path: ~/.colors/vim.vim
+        mode: rewrite
+
+  kitty:
+    enabled: true
+    files:
+      default:
+        path: ~/.colors/kitty.conf
+        mode: rewrite
+
+  fzf:
+    enabled: true
+    files:
+      default:
+        path: ~/.colors/fzf.sh
+        mode: rewrite

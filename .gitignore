@@ -13,7 +13,8 @@
 !.config
 !.config/nvim
 !.config/nvim/*.vim
-!.config/base16-universal/config.yaml
+!.config/base16-universal-manager
+!.config/base16-universal-manager/config.yaml
 !.config/fish/
 !.config/fish/config.fish
 !.config/iterm/
