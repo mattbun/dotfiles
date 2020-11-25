@@ -130,13 +130,8 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
-"Use base16 for theme
-"To change to another theme, use base16_* commands in shell
-set background=dark
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
+" Use theme from base16-universal-generator
+source ~/.colors/vim.vim
 
 "Make gutter and signs column have no background
 highlight SignColumn guibg=#00000000
