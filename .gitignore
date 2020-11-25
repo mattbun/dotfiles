@@ -19,6 +19,8 @@
 !.config/fish/config.fish
 !.config/iterm/
 !.config/iterm/**
+!.config/kitty/
+!.config/kitty/kitty.conf
 !.ideavimrc
 !.ripgreprc
 
