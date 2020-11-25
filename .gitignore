@@ -7,13 +7,22 @@
 !.setup
 !.setup/**
 
+!.colors
+!.colors/*
+
 !.config
+!.config/bat
+!.config/bat/config
 !.config/nvim
 !.config/nvim/*.vim
+!.config/base16-universal-manager
+!.config/base16-universal-manager/config.yaml
 !.config/fish/
 !.config/fish/config.fish
 !.config/iterm/
 !.config/iterm/**
+!.config/kitty/
+!.config/kitty/kitty.conf
 !.ideavimrc
 !.ripgreprc
 

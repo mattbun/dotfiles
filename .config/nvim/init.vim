@@ -63,6 +63,9 @@ function! s:DiffWithSaved()
 endfunction
 com! DiffSaved call s:DiffWithSaved()
 
+" Use theme from base16-universal-generator
+source ~/.colors/vim.vim
+
 "Time for plugins
 "setup Plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -82,6 +85,7 @@ Plug 'https://github.com/terryma/vim-multiple-cursors.git'
 Plug 'https://github.com/moll/vim-node.git'
 Plug 'pangloss/vim-javascript'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'chriskempson/base16-vim'
 Plug 'https://github.com/keith/swift.vim.git'
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/tpope/vim-commentary.git'
@@ -92,10 +96,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'gcmt/taboo.vim' "tab renaming and stuff
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'sheerun/vim-polyglot'
-Plug 'itchyny/lightline.vim'
 Plug 'jparise/vim-graphql'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-eunuch'
+source ~/.config/nvim/lightline.vim
 
 "coc is cool, but not if node isn't installed
 if executable('node')
@@ -128,18 +132,15 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
-"Liking papercolor lately
-"disable background
-let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \     'default.dark': {
-  \       'transparent_background' : 1
-  \     }
-  \   }
-  \ }
-colorscheme PaperColor
-set background=dark
+"Make gutter and signs column have no background
 highlight SignColumn guibg=#00000000
+highlight LineNr guibg=#00000000
+highlight GitGutterAdd guibg=#00000000
+highlight CocGitAddedSign guibg=#00000000
+highlight CocGitChangedSign guibg=#00000000
+highlight CocGitRemovedSign guibg=#00000000
+highlight CocGitTopRemovedSign guibg=#00000000
+highlight CocGitChangeRemovedSign guibg=#00000000
 
 "Custom tab name: [working directory name] [filename][file modified flag]
 "let g:taboo_tab_format = " [%P] %f%m "
@@ -160,38 +161,9 @@ command! -bang -nargs=* Rg
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
 
-"Lightline config
-let g:lightline = {
-\    'component_function': {
-\        'filename': 'LightlineFilename',
-\        'gitstatus': 'LightlineGitStatus',
-\    },
-\    'active': {
-\        'right': [
-\            [ 'lineinfo', 'percent' ],
-\            [ 'filetype' ],
-\            [ 'gitstatus' ],
-\        ]
-\    }
-\}
-
-function! LightlineFilename()
-  let root = fnamemodify(get(b:, 'git_dir'), ':h')
-  let path = expand('%:p')
-  if path[:len(root)-1] ==# root
-    return path[len(root)+1:]
-  endif
-  return expand('%')
-endfunction
-
-"function! LightlineFilename()
-"  return expand('%f')
-"endfunction
-
-function! LightlineGitStatus() abort
-  let status = get(g:, 'coc_git_status', '')
-  return winwidth(0) > 120 ? status : ''
-endfunction
+"airline
+"let g:airline#extensions#tabline#enabled = 1 " Enable the list of buffers
+"let g:airline#extensions#tabline#tab_min_count = 1 " minimum of 2 tabs needed to display the tabline
 
 "Now for some shortcuts
 nnoremap <silent> <leader><leader> :Files<CR>

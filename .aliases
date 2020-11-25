@@ -28,3 +28,6 @@ alias gpsup='git push --set-upstream origin $(git_current_branch)'
 alias gdca='git diff --cached'
 
 alias ci=circleci
+
+alias vsplit="kitty @ launch --location=vsplit"
+alias hsplit="kitty @ launch --location=hsplit"

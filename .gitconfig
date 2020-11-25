@@ -1,17 +1,31 @@
 [user]
-	name = Matt Rathbun
-	email = 5514636+mattbun@users.noreply.github.com
+  name = Matt Rathbun
+  email = 5514636+mattbun@users.noreply.github.com
 [diff]
-	tool = vimdiff
+  tool = vimdiff
 [alias]
-	s = status
-	o = open
-	last = log -1 HEAD
+  s = status
+  o = open
+  last = log -1 HEAD
 [mergetool]
-	path = nvim
+  path = nvim
 [merge]
-	tool = vimdiff
+  tool = vimdiff
 [mergetool "vimdiff"]
-	path = nvim
+  path = nvim
+
 [core]
-	pager = (diff-so-fancy || cat) | less --tabs=4 -RFX
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  features = line-numbers decorations
+  whitespace-error-style = 22 reverse
+  syntax-theme = base16
+
+[delta "decorations"]
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
