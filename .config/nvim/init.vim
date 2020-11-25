@@ -20,7 +20,6 @@ call plug#begin('~/.config/nvim/plugged')
 "Plug 'https://github.com/benekastah/neomake.git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'  "github integration for fugitive
-Plug 'https://github.com/AndrewRadev/switch.vim.git'
 Plug 'https://github.com/AndrewRadev/linediff.vim.git'
 Plug 'https://github.com/terryma/vim-multiple-cursors.git'
 Plug 'https://github.com/moll/vim-node.git'
@@ -41,6 +40,7 @@ Plug 'jparise/vim-graphql'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-eunuch'
 source ~/.config/nvim/lightline.vim
+source ~/.config/nvim/switch.vim
 
 "coc is cool, but not if node isn't installed
 if executable('node')
@@ -50,18 +50,6 @@ else
 endif
 
 call plug#end()
-
-
-"setup switch.vim and some custom definitions
-let g:switch_mapping = "-"
-let g:switch_custom_definitions =
-      \ [
-      \   ['!=', '=='],
-      \   ['0', '1'],
-      \   ['ON', 'OFF'],
-      \   ['''', '"'],
-      \   ['GET', 'POST', 'PUT', 'DELETE', 'PATCH']
-      \ ]
 
 "Nerdtree stuff
 "Open nerdtree if I open a folder
