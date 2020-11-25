@@ -140,6 +140,8 @@ highlight GitGutterAdd guibg=#00000000
 highlight CocGitAddedSign guibg=#00000000
 highlight CocGitChangedSign guibg=#00000000
 highlight CocGitRemovedSign guibg=#00000000
+highlight CocGitTopRemovedSign guibg=#00000000
+highlight CocGitChangeRemovedSign guibg=#00000000
 
 "Custom tab name: [working directory name] [filename][file modified flag]
 "let g:taboo_tab_format = " [%P] %f%m "
