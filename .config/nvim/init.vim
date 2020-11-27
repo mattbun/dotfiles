@@ -21,28 +21,20 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-"Plug 'https://github.com/benekastah/neomake.git'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'  "github integration for fugitive
-Plug 'https://github.com/AndrewRadev/linediff.vim.git'
-Plug 'https://github.com/terryma/vim-multiple-cursors.git'
-Plug 'https://github.com/moll/vim-node.git'
-Plug 'pangloss/vim-javascript'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'chriskempson/base16-vim'
-Plug 'https://github.com/keith/swift.vim.git'
-Plug 'https://github.com/tpope/vim-surround.git'
-Plug 'https://github.com/tpope/vim-commentary.git'
-Plug 'https://github.com/tpope/vim-repeat.git'
-Plug 'wesQ3/vim-windowswap'
+Plug 'AndrewRadev/linediff.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'gcmt/taboo.vim' "tab renaming and stuff
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'gcmt/taboo.vim' "tab renaming and stuff
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'sheerun/vim-polyglot'
-Plug 'jparise/vim-graphql'
-Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rhubarb'  "github integration for fugitive
+Plug 'tpope/vim-surround'
+Plug 'wesQ3/vim-windowswap'
 source ~/.config/nvim/lightline.vim
 source ~/.config/nvim/switch.vim
 
@@ -74,11 +66,6 @@ highlight CocGitChangedSign guibg=#00000000
 highlight CocGitRemovedSign guibg=#00000000
 highlight CocGitTopRemovedSign guibg=#00000000
 highlight CocGitChangeRemovedSign guibg=#00000000
-
-"Custom tab name: [working directory name] [filename][file modified flag]
-"let g:taboo_tab_format = " [%P] %f%m "
-let g:taboo_tab_format = " %f%m "
-let g:taboo_tabline = 1
 
 if has("nvim")
   "Make escape work right in terminal? TODO is that right?
@@ -121,8 +108,6 @@ nnoremap <leader>] :bn<CR>
 "TODO which one of these makes more sense?
 nnoremap <leader>= :b#<CR>
 nnoremap <leader>p :b#<CR>
-
-nnoremap <leader>N :TabooRename 
 
 nnoremap <leader>q :q<CR>
 nnoremap <leader>p :pwd<CR>
