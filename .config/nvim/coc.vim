@@ -65,7 +65,7 @@ nmap <silent> gr <Plug>(coc-references)
 " show chunk diff at current position
 nmap gs <Plug>(coc-git-chunkinfo)
 " show commit contains current position
-nmap gc <Plug>(coc-git-commit)
+nmap gb <Plug>(coc-git-commit)
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
