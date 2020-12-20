@@ -43,6 +43,7 @@ if executable('node')
   source ~/.config/nvim/coc.vim
 else
   source ~/.config/nvim/ale.vim
+  Plug 'airblade/vim-gitgutter'
 endif
 
 call plug#end()
