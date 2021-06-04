@@ -42,8 +42,8 @@
       dir_writable
       vcs                       # git status
       status                    # exit code of the last command
-      command_execution_time    # previous command duration
       kubecontext               # kubernetes context
+      command_execution_time    # previous command duration
       prompt_char               # prompt symbol
   )
 
