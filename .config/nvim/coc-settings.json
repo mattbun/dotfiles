@@ -1,12 +1,8 @@
 {
   "git.branchCharacter": "",
-  "coc.source.emoji.filetypes": [
-    "gitcommit",
-    "markdown",
-    "markdown.mdx",
-    ""
-  ],
-  "coc.preferences.formatOnSaveFiletypes": ["typescript"],
+  "npm.binPath": "/usr/bin/npm",
+  "coc.source.emoji.filetypes": ["gitcommit", "markdown", "markdown.mdx", ""],
+  "coc.preferences.formatOnSaveFiletypes": ["typescript", "json", "yaml", "markdown"],
   "diagnostic.errorSign": "x",
   "diagnostic.warningSign": "!",
   "diagnostic.infoSign": "i",
