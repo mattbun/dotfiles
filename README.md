@@ -35,5 +35,5 @@ cd
 git init
 git remote add origin git@github.com:mattbun/dotfiles.git
 git fetch
-git checkout -t master or git reset origin/master
+git checkout -t main or git reset origin/main
 ```
