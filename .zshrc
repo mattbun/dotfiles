@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block, everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Generic shell configuration
 source ~/.shrc
 
@@ -56,7 +49,6 @@ zplug "plugins/git-auto-fetch", from:oh-my-zsh
 zplug "plugins/jira", from:oh-my-zsh
 zplug "plugins/osx", from:oh-my-zsh
 zplug "plugins/z", from:oh-my-zsh
-zplug "romkatv/powerlevel10k", as:theme, depth:1
 zplug "plugins/asdf", from:oh-my-zsh
 
 # Install plugins if there are plugins that have not been installed
@@ -76,5 +68,4 @@ DISABLE_AUTO_TITLE="true"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+eval "$(starship init zsh)"
