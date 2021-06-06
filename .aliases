@@ -39,3 +39,6 @@ alias hsplit="kitty @ launch --location=hsplit"
 if [ $TERM = "xterm-kitty" ]; then
   alias ssh="TERM='xterm-256color' ssh"
 fi
+
+# Automatically set the height of fzf based on how many contexts there are
+alias kubectx='FZF_DEFAULT_OPTS="--info=hidden --height=$(kubectl config get-contexts --no-headers | wc -l)" kubectx'
