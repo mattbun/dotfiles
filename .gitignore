@@ -36,6 +36,8 @@
 !.p10k.zsh
 !.p10k.zsh.colorful
 
+!.tool-versions
+
 # Created by https://www.gitignore.io/api/linux,macos
 # Edit at https://www.gitignore.io/?templates=linux,macos
 

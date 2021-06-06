@@ -58,6 +58,7 @@ zplug "plugins/osx", from:oh-my-zsh
 zplug "plugins/z", from:oh-my-zsh
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 zplug "plugins/asdf", from:oh-my-zsh
+zplug "ptavares/zsh-direnv"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -75,6 +76,13 @@ DISABLE_AUTO_TITLE="true"
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Speed up asdf-managed tools with direnv. See https://github.com/asdf-community/asdf-direnv
+# Hook direnv into your shell.
+eval "$(asdf exec direnv hook zsh)"
+
+# A shortcut for asdf managed direnv.
+direnv() { asdf exec direnv "$@"; }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
