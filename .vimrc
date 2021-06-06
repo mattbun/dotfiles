@@ -24,10 +24,6 @@ set nofixendofline
 "Use terminal true color
 set termguicolors
 
-"show bad indentation
-set list
-set listchars=tab:!-,trail:-
-
 "oo to insert a new line below where you are, OO to insert above
 nmap oo o<Esc>k
 nmap OO O<Esc>j
