@@ -74,6 +74,7 @@ DISABLE_AUTO_TITLE="true"
 
 # Speed up asdf-managed tools with direnv. See https://github.com/asdf-community/asdf-direnv
 # Hook direnv into your shell.
+export DIRENV_LOG_FORMAT=
 eval "$(asdf exec direnv hook zsh)"
 
 # A shortcut for asdf managed direnv.
