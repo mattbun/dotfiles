@@ -70,7 +70,6 @@ nmap gb <Plug>(coc-git-commit)
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 nnoremap <silent> h :call <SID>show_documentation()<CR>
-nnoremap <silent> <TAB> :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
