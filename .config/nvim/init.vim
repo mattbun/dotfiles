@@ -26,7 +26,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'gcmt/taboo.vim' "tab renaming and stuff
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
@@ -35,6 +34,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'  "github integration for fugitive
 Plug 'tpope/vim-surround'
 Plug 'wesQ3/vim-windowswap'
+source ~/.config/nvim/nerdtree.vim
 source ~/.config/nvim/lightline.vim
 source ~/.config/nvim/switch.vim
 
@@ -47,16 +47,6 @@ else
 endif
 
 call plug#end()
-
-"Nerdtree stuff
-"Open nerdtree if I open a folder
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-"Change color of files based on their file type
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
- exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
- exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
 
 "Make gutter and signs column have no background
 highlight SignColumn guibg=#00000000
