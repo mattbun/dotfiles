@@ -31,3 +31,19 @@ applications:
       default:
         path: ~/.colors/fzf.sh
         mode: rewrite
+
+  alacritty:
+    enabled: true
+    files:
+      default:
+        path: ~/.config/alacritty/alacritty.yml
+        mode: replace
+        start_marker: "# BASE16 THEME HERE"
+        end_marker: "# END BASE16 THEME"
+
+  tmux:
+    enabled: true
+    files:
+      default:
+        path: ~/.colors/tmux.conf
+        mode: rewrite
