@@ -24,6 +24,8 @@
 !.config/iterm/**
 !.config/kitty/
 !.config/kitty/kitty.conf
+!.config/alacritty
+!.config/alacritty/alacritty.yml
 !.ideavimrc
 !.ripgreprc
 

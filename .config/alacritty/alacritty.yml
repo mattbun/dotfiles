@@ -1,0 +1,10 @@
+font:
+  normal:
+    family: Hack
+  size: 13.0
+
+selection:
+  save_to_clipboard: true
+
+shell:
+  program: /usr/local/bin/tmux
