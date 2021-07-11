@@ -5,6 +5,7 @@ packages:
     executable: git
     mac: brew install git
     arch: sudo pacman -S --noconfirm git
+    nix: git
 
   - name: yay
     executable: yay
@@ -18,6 +19,7 @@ packages:
     executable: curl
     mac: brew install curl
     arch: sudo pacman -S --noconfirm curl
+    nix: curl
 
   - name: pip
     executable: pip3
@@ -28,11 +30,13 @@ packages:
     executable: zsh
     mac: brew install zsh
     arch: sudo pacman -S --noconfirm zsh
+    nix: zsh
 
   - name: neovim
     executable: nvim
     mac: brew install neovim
     arch: sudo pacman -S --noconfirm neovim
+    nix: neovim
 
   - name: neovim python support
     arch: pip3 install --user neovim
@@ -42,25 +46,30 @@ packages:
     executable: node
     mac: brew install node
     arch: sudo pacman -S --noconfirm nodejs
+    nix: nodejs
 
   - name: npm
     executable: npm
     arch: sudo pacman -S --noconfirm npm
+    nix: npm
 
   - name: jq
     executable: jq
     mac: brew install jq
     arch: sudo pacman -S --noconfirm jq
+    nix: jq
 
   - name: fzf
     executable: fzf
     mac: brew install fzf
     arch: sudo pacman -S --noconfirm fzf
+    nix: fzf
 
   - name: bat
     executable: bat
     mac: brew install bat
     arch: sudo pacman -S --noconfirm bat
+    nix: bat
 
   - name: rg
     executable: rg
