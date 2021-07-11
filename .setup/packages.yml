@@ -7,6 +7,10 @@ packages:
     arch: sudo pacman -S --noconfirm git
     nix: git
 
+  - name: gcc
+    executable: gcc
+    arch: sudo pacman -S --noconfirm gcc
+
   - name: yay
     executable: yay
     arch: go get github.com/Jguer/yay
