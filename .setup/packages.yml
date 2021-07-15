@@ -80,6 +80,11 @@ packages:
     mac: brew install ripgrep
     arch: sudo pacman -S --noconfirm ripgrep
 
+  - name: delta
+    executable: delta
+    mac: brew install git-delta
+    arch: sudo pacman -S --noconfirm git-delta
+
   - name: exa
     executable: exa
     mac: brew install exa
