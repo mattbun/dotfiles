@@ -8,9 +8,10 @@ map("n", "<leader>[", "<Cmd>bp<CR>") -- TODO
 map("n", "<leader>]", "<Cmd>bn<CR>") -- TODO
 map("n", "<leader>b", "<Cmd>Telescope buffers disable_devicons=true<CR>")
 map("n", "<leader>d", "<Cmd>Gitsigns preview_hunk<CR>")
-map("n", "<leader>fb", "<Cmd>Telescope buffers<CR>")
-map("n", "<leader>ff", "<Cmd>Telescope find_files<CR>")
-map("n", "<leader>fg", "<Cmd>Telescope live_grep<CR>")
+map("n", "<leader>fb", "<Cmd>Telescope buffers disable_devicons=true<CR>")
+map("n", "<leader>ff", "<Cmd>Telescope find_files disable_devicons=true<CR>")
+map("n", "<leader>fg", "<Cmd>Telescope live_grep disable_devicons=true<CR>")
+map("n", "<leader>g", "<Cmd>Telescope grep_string disable_devicons=true<CR>")
 map("n", "<leader>n", "<Cmd>NvimTreeToggle<CR>")
 map("n", "<leader>p", "<Cmd>lua vim.lsp.buf.formatting()<CR>")
 map(
