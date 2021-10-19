@@ -1,5 +1,5 @@
 local map = function(mode, hotkey, cmd)
-	return vim.api.nvim_set_keymap(mode, hotkey, cmd, { noremap = true, silent = true })
+  return vim.api.nvim_set_keymap(mode, hotkey, cmd, { noremap = true, silent = true })
 end
 
 map("n", "<leader><leader>", "<Cmd>Telescope find_files disable_devicons=true<cr>")
@@ -15,9 +15,9 @@ map("n", "<leader>g", "<Cmd>Telescope grep_string disable_devicons=true<CR>")
 map("n", "<leader>n", "<Cmd>NvimTreeToggle<CR>")
 map("n", "<leader>p", "<Cmd>lua vim.lsp.buf.formatting()<CR>")
 map(
-	"n",
-	"<leader>P",
-	"<Cmd>lua vim.g.autoformat = not vim.g.autoformat; if vim.g.autoformat then print 'autoformat enabled' else print 'autoformat disabled' end<CR>"
+  "n",
+  "<leader>P",
+  "<Cmd>lua vim.g.autoformat = not vim.g.autoformat; if vim.g.autoformat then print 'autoformat enabled' else print 'autoformat disabled' end<CR>"
 )
 map("n", "<leader>u", "<Cmd>Gitsigns reset_hunk<CR>")
 
