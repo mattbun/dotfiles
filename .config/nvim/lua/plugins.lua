@@ -33,46 +33,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	-- TODO more hotkeys
 	-- TODO only use prettier if there's a prettierrc
-
-	use({
-		"LionC/nest.nvim",
-		config = function()
-			local nest = require("nest")
-
-			nest.applyKeymaps({
-				{
-					"<leader>",
-					{
-						{ "<leader>", ":Telescope find_files disable_devicons=true<cr>" },
-						{ "B", ":Gitsigns toggle_current_line_blame<CR>" },
-						{ "[", ":bp<CR>" }, -- TODO
-						{ "]", ":bn<CR>" }, -- TODO
-						{ "b", ":Telescope buffers disable_devicons=true<CR>" },
-						{ "d", ":Gitsigns preview_hunk<CR>" },
-						{
-							"f",
-							{
-								{ "b", ":Telescope buffers<CR>" },
-								{ "f", ":Telescope find_files<CR>" },
-								{ "g", ":Telescope live_grep<CR>" },
-							},
-						},
-						{ "n", ":NvimTreeToggle<CR>" },
-						{ "p", ":lua vim.lsp.buf.formatting()<CR>" },
-						{ "u", ":Gitsigns reset_hunk<CR>" },
-					},
-				},
-				{
-					"g",
-					{
-						{ "r", ":Lspsaga rename<CR>" },
-					},
-				},
-			})
-		end,
-	})
 
 	use({
 		"williamboman/nvim-lsp-installer",

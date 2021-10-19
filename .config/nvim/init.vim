@@ -12,6 +12,7 @@ let g:python2_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 lua require('plugins')
+lua require('shortcuts')
 
 highlight SignColumn guibg=#00000000
 highlight LineNr guibg=#00000000
