@@ -13,6 +13,11 @@ map("n", "<leader>ff", "<Cmd>Telescope find_files<CR>")
 map("n", "<leader>fg", "<Cmd>Telescope live_grep<CR>")
 map("n", "<leader>n", "<Cmd>NvimTreeToggle<CR>")
 map("n", "<leader>p", "<Cmd>lua vim.lsp.buf.formatting()<CR>")
+map(
+	"n",
+	"<leader>P",
+	"<Cmd>lua vim.g.autoformat = not vim.g.autoformat; if vim.g.autoformat then print 'autoformat enabled' else print 'autoformat disabled' end<CR>"
+)
 map("n", "<leader>u", "<Cmd>Gitsigns reset_hunk<CR>")
 
 map("n", "ga", "<Cmd>Lspsaga code_action<CR>")

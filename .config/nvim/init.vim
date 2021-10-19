@@ -17,8 +17,10 @@ lua require('shortcuts')
 highlight SignColumn guibg=#00000000
 highlight LineNr guibg=#00000000
 
-autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync()
-autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync()
-autocmd BufWritePre *.yml lua vim.lsp.buf.formatting_sync()
-autocmd BufWritePre *.json lua vim.lsp.buf.formatting_sync()
-autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_sync()
+" Format on save by default but provide a variable to toggle it on and off
+lua vim.g.autoformat = true
+augroup AutoFormat
+  autocmd!
+  autocmd BufWritePre * lua if vim.g.autoformat then vim.lsp.buf.formatting_sync() end
+augroup END
+
