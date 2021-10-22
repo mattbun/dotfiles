@@ -192,6 +192,18 @@ return require("packer").startup(function(use)
   })
 
   use({
+    "ray-x/lsp_signature.nvim",
+    config = function()
+      local lspsignature = require("lsp_signature")
+      lspsignature.setup({
+        floating_window = false,
+        hint_prefix = "",
+        hint_enable = true,
+      })
+    end,
+  })
+
+  use({
     "nvim-telescope/telescope.nvim",
     requires = {
       "nvim-lua/plenary.nvim",
