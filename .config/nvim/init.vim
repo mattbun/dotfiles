@@ -3,12 +3,6 @@ source ~/.vimrc
 "show substitutions (neovim-only)
 set inccommand=nosplit
 
-" Make up and down work in wildmenu (like when tab completing a command like ':Coc')
-cnoremap <expr> <up>   pumvisible() ? "<C-p>" : "<up>"
-cnoremap <expr> <down> pumvisible() ? "<C-n>" : "<down>"
-cnoremap <expr> <right> pumvisible() ? "<C-y>" : "<right>"
-cnoremap <expr> <left> pumvisible() ? "<C-e>" : "<left>"
-
 "Set up python
 let g:python2_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
