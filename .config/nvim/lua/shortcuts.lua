@@ -6,8 +6,8 @@ end
 -- Leader-based shortcuts
 map("n", "<leader><leader>", "<Cmd>Telescope find_files disable_devicons=true<cr>")
 map("n", "<leader>B", "<Cmd>Gitsigns toggle_current_line_blame<CR>")
-map("n", "<leader>[", "<Cmd>bp<CR>") -- TODO
-map("n", "<leader>]", "<Cmd>bn<CR>") -- TODO
+map("n", "<leader>[", "<C-o>")
+map("n", "<leader>]", "<C-i>")
 map("n", "<leader>b", "<Cmd>Telescope buffers disable_devicons=true<CR>")
 map("n", "<leader>d", "<Cmd>Gitsigns preview_hunk<CR>")
 map("n", "<leader>fb", "<Cmd>Telescope buffers disable_devicons=true<CR>")
