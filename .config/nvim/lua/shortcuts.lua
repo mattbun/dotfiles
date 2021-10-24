@@ -29,7 +29,7 @@ map("n", "<leader>y", "<Cmd>let @*=expand('%f')<CR>")
 
 -- Shortcuts that start with `g` are generally for lsp-related things
 map("n", "ga", "<Cmd>Telescope lsp_code_actions<CR>")
-map("v", "ga", "<Cmd>Telescope lsp_range_code_actions<CR>") -- TODO this doesn't work
+map("v", "ga", "<Cmd>lua vim.lsp.buf.range_code_action()<CR>", {}) -- TODO switch to telescope
 map(
   "n",
   "gb",
