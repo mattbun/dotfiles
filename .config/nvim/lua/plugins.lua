@@ -25,7 +25,16 @@ return require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
 
   use("editorconfig/editorconfig-vim")
-  use("b3nj5m1n/kommentary")
+
+  use({
+    "b3nj5m1n/kommentary",
+    config = function()
+      require("kommentary.config").configure_language("lua", {
+        prefer_single_line_comments = true,
+      })
+    end,
+  })
+
   use({
     "jghauser/mkdir.nvim",
     config = function()
