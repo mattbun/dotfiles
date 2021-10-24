@@ -4,19 +4,19 @@ local map = function(mode, hotkey, cmd, opts)
 end
 
 -- Leader-based shortcuts
-map("n", "<leader>~", "<Cmd>Telescope find_files cwd=~ disable_devicons=true<CR>")
 map("n", "<leader><leader>", "<Cmd>Telescope find_files disable_devicons=true<cr>")
-map("n", "<leader>a", "<Cmd>Gitsigns stage_hunk<CR>")
-map("n", "<leader>B", "<Cmd>Gitsigns toggle_current_line_blame<CR>")
 map("n", "<leader>[", "<C-o>")
 map("n", "<leader>]", "<C-i>")
+map("n", "<leader>~", "<Cmd>Telescope find_files cwd=~ disable_devicons=true<CR>")
+map("n", "<leader>8", "<Cmd>Telescope grep_string disable_devicons=true<CR>")
+map("n", "<leader>a", "<Cmd>Gitsigns stage_hunk<CR>")
 map("n", "<leader>b", "<Cmd>Telescope buffers disable_devicons=true<CR>")
+map("n", "<leader>B", "<Cmd>Gitsigns toggle_current_line_blame<CR>")
 map("n", "<leader>d", "<Cmd>Gitsigns preview_hunk<CR>")
 map("n", "<leader>fb", "<Cmd>Telescope buffers disable_devicons=true<CR>")
 map("n", "<leader>ff", "<Cmd>Telescope find_files disable_devicons=true<CR>")
 map("n", "<leader>fg", "<Cmd>Telescope live_grep disable_devicons=true<CR>")
 map("n", "<leader>g", "<Cmd>Telescope grep_string disable_devicons=true<CR>")
-map("n", "<leader>8", "<Cmd>Telescope grep_string disable_devicons=true<CR>")
 map("n", "<leader>h", "<Cmd>Telescope oldfiles disable_devicons=true<CR>")
 map("n", "<leader>p", "<Cmd>lua vim.lsp.buf.formatting()<CR>")
 map(
