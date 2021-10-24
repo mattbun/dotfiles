@@ -3,10 +3,6 @@ source ~/.vimrc
 "show substitutions (neovim-only)
 set inccommand=nosplit
 
-"Set up python
-let g:python2_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
-
 lua require('lsp')
 lua require('plugins')
 lua require('shortcuts')
