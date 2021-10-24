@@ -146,52 +146,6 @@ return require("packer").startup(function(use)
   })
 
   use({
-    "glepnir/lspsaga.nvim",
-    requires = {
-      "neovim/nvim-lspconfig",
-    },
-    config = function()
-      local saga = require("lspsaga")
-
-      saga.init_lsp_saga({
-        use_saga_diagnostic_sign = true,
-        error_sign = "x",
-        warn_sign = "!",
-        hint_sign = "h",
-        infor_sign = "i",
-        finder_definition_icon = "",
-        finder_reference_icon = "",
-        code_action_icon = "$ ",
-        dianostic_header_icon = "! ",
-        definition_preview_icon = "",
-        code_action_prompt = {
-          enable = true,
-          sign = false,
-          sign_priority = 20,
-          virtual_text = false,
-        },
-        code_action_keys = {
-          quit = "<ESC>",
-          exec = "<CR>",
-        },
-        finder_action_keys = {
-          open = "<CR>",
-          vsplit = "v",
-          split = "h",
-          quit = "<ESC>",
-          scroll_down = "<C-f>",
-          scroll_up = "<C-b>",
-        },
-        rename_action_keys = {
-          quit = "<ESC>",
-          exec = "<CR>",
-        },
-        rename_prompt_prefix = "Rename:",
-      })
-    end,
-  })
-
-  use({
     "ray-x/lsp_signature.nvim",
     config = function()
       local lspsignature = require("lsp_signature")

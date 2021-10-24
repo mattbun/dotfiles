@@ -25,17 +25,15 @@ map("n", "<leader>t", "<Cmd>NvimTreeToggle<CR>")
 map("n", "<leader>u", "<Cmd>Gitsigns reset_hunk<CR>")
 
 -- Shortcuts that start with `g` are generally for lsp-related things
-map("n", "ga", "<Cmd>Lspsaga code_action<CR>")
-map("v", "ga", "<Cmd><C-U>Lspsaga range_code_action<CR>")
-map("n", "gd", "<Cmd>Lspsaga lsp_finder<CR>")
-map("n", "gh", "<Cmd>Lspsaga hover_doc<CR>")
-map("n", "gH", "<Cmd>Lspsaga preview_definition<CR>")
-map("n", "gr", "<Cmd>Lspsaga rename<CR>")
-map("n", "gs", "<Cmd>Lspsaga signature_help<CR>")
-
--- Make scrolling work as expected in lspsaga windows
-map("n", "<C-f>", "<Cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>")
-map("n", "<C-b>", "<Cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>")
+map("n", "ga", "<Cmd>Telescope lsp_code_actions<CR>")
+map("v", "ga", "<Cmd>Telescope lsp_range_code_actions<CR>") -- TODO this doesn't work
+map("n", "gd", "<Cmd>Telescope lsp_definitions<CR>")
+map("n", "gh", "<Cmd>lua vim.lsp.buf.hover()<CR>")
+map("n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>")
+map("n", "gn", "<Cmd>lua vim.lsp.buf.rename()<CR>")
+map("n", "gr", "<Cmd>Telescope lsp_references<CR>")
+map("n", "gs", "<Cmd>lua vim.lsp.buf.signature_help()<CR>")
+map("n", "gt", "<Cmd>lua vim.lsp.buf.type()<CR>")
 
 -- Make arrows move, select, and cancel in wildmenu (like when tab completing a command like ':e')
 map("c", "<up>", 'pumvisible() ? "<C-p>" : "<up>"', { noremap = true, expr = true })
