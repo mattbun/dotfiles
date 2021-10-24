@@ -23,6 +23,8 @@ map(
 )
 map("n", "<leader>t", "<Cmd>NvimTreeToggle<CR>")
 map("n", "<leader>u", "<Cmd>Gitsigns reset_hunk<CR>")
+map("n", "<leader>w", "<Cmd>Telescope lsp_document_diagnostics<CR>")
+map("n", "<leader>W", "<Cmd>Telescope lsp_workspace_diagnostics<CR>")
 
 -- Shortcuts that start with `g` are generally for lsp-related things
 map("n", "ga", "<Cmd>Telescope lsp_code_actions<CR>")
@@ -34,6 +36,7 @@ map("n", "gn", "<Cmd>lua vim.lsp.buf.rename()<CR>")
 map("n", "gr", "<Cmd>Telescope lsp_references<CR>")
 map("n", "gs", "<Cmd>lua vim.lsp.buf.signature_help()<CR>")
 map("n", "gt", "<Cmd>lua vim.lsp.buf.type()<CR>")
+map("n", "gw", "<Cmd>lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false,show_header=false})<CR>")
 
 -- Make arrows move, select, and cancel in wildmenu (like when tab completing a command like ':e')
 map("c", "<up>", 'pumvisible() ? "<C-p>" : "<up>"', { noremap = true, expr = true })
