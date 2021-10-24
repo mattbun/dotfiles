@@ -16,6 +16,7 @@ map("n", "<leader>ff", "<Cmd>Telescope find_files disable_devicons=true<CR>")
 map("n", "<leader>fg", "<Cmd>Telescope live_grep disable_devicons=true<CR>")
 map("n", "<leader>g", "<Cmd>Telescope grep_string disable_devicons=true<CR>")
 map("n", "<leader>8", "<Cmd>Telescope grep_string disable_devicons=true<CR>")
+map("n", "<leader>h", "<Cmd>Telescope oldfiles disable_devicons=true<CR>")
 map("n", "<leader>p", "<Cmd>lua vim.lsp.buf.formatting()<CR>")
 map(
   "n",
