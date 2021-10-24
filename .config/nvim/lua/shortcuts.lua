@@ -4,6 +4,7 @@ local map = function(mode, hotkey, cmd, opts)
 end
 
 -- Leader-based shortcuts
+map("n", "<leader>~", "<Cmd>Telescope find_files cwd=~ disable_devicons=true<CR>")
 map("n", "<leader><leader>", "<Cmd>Telescope find_files disable_devicons=true<cr>")
 map("n", "<leader>B", "<Cmd>Gitsigns toggle_current_line_blame<CR>")
 map("n", "<leader>[", "<C-o>")
