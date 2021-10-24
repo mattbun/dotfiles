@@ -28,3 +28,12 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 -- vim.cmd(
 --   [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false,show_header=false}) end]]
 -- )
+
+-- Format on save by default but provide a variable to toggle it on and off
+vim.g.autoformat = true
+vim.cmd([[
+  augroup AutoFormat
+    autocmd!
+    autocmd BufWritePre * lua if vim.g.autoformat then vim.lsp.buf.formatting_sync() end
+  augroup END
+]])
