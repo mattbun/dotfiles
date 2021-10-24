@@ -29,6 +29,22 @@ map("n", "<leader>W", "<Cmd>Telescope lsp_workspace_diagnostics<CR>")
 -- Shortcuts that start with `g` are generally for lsp-related things
 map("n", "ga", "<Cmd>Telescope lsp_code_actions<CR>")
 map("v", "ga", "<Cmd>Telescope lsp_range_code_actions<CR>") -- TODO this doesn't work
+map(
+  "n",
+  "gb",
+  '<Cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<CR>'
+)
+map(
+  "v",
+  "gb",
+  '<Cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
+  {}
+)
+map(
+  "n",
+  "gB",
+  '<Cmd>lua require"gitlinker".get_repo_url({action_callback = require"gitlinker.actions".open_in_browser})<CR>'
+)
 map("n", "gd", "<Cmd>Telescope lsp_definitions<CR>")
 map("n", "gh", "<Cmd>lua vim.lsp.buf.hover()<CR>")
 map("n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>")
@@ -37,6 +53,22 @@ map("n", "gr", "<Cmd>Telescope lsp_references<CR>")
 map("n", "gs", "<Cmd>lua vim.lsp.buf.signature_help()<CR>")
 map("n", "gt", "<Cmd>lua vim.lsp.buf.type()<CR>")
 map("n", "gw", "<Cmd>lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false,show_header=false})<CR>")
+map(
+  "n",
+  "gy",
+  '<Cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".copy_to_clipboard})<CR>'
+)
+map(
+  "v",
+  "gy",
+  '<Cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".copy_to_clipboard})<CR>',
+  {}
+)
+map(
+  "n",
+  "gY",
+  '<Cmd>lua require"gitlinker".get_repo_url({action_callback = require"gitlinker.actions".copy_to_clipboard})<CR>'
+)
 
 -- Make arrows move, select, and cancel in wildmenu (like when tab completing a command like ':e')
 map("c", "<up>", 'pumvisible() ? "<C-p>" : "<up>"', { noremap = true, expr = true })

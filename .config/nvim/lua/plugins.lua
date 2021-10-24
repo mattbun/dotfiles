@@ -283,6 +283,16 @@ return require("packer").startup(function(use)
   })
 
   use({
+    "ruifm/gitlinker.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("gitlinker").setup({
+        mappings = nil,
+      })
+    end,
+  })
+
+  use({
     "kyazdani42/nvim-tree.lua",
     config = function()
       vim.g.nvim_tree_show_icons = {
