@@ -25,6 +25,7 @@ map("n", "<leader>t", "<Cmd>NvimTreeToggle<CR>")
 map("n", "<leader>u", "<Cmd>Gitsigns reset_hunk<CR>")
 map("n", "<leader>w", "<Cmd>Telescope lsp_document_diagnostics<CR>")
 map("n", "<leader>W", "<Cmd>Telescope lsp_workspace_diagnostics<CR>")
+map("n", "<leader>y", "<Cmd>let @*=expand('%f')<CR>")
 
 -- Shortcuts that start with `g` are generally for lsp-related things
 map("n", "ga", "<Cmd>Telescope lsp_code_actions<CR>")
