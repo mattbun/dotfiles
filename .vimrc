@@ -7,6 +7,9 @@ set ic      "ignore case in searches
 set hls     "highlight search matches. disable temporarily with :noh
 set hidden  "Allow unsaved changes to be hidden in buffers
 
+"leader is space
+let mapleader=" "
+
 "terminal title is the filepath relative to working directory and then modified flags
 set titlestring=%f%m
 
