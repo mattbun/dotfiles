@@ -4,7 +4,7 @@ vim.cmd([[
 
 require("lsp")
 require("plugins")
-require("shortcuts")
+require("mappings")
 
 -- show substitutions
 vim.o.inccommand = "nosplit"
