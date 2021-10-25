@@ -25,6 +25,7 @@ return require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
 
   use("editorconfig/editorconfig-vim")
+  use("tpope/vim-eunuch")
 
   use({
     "b3nj5m1n/kommentary",
