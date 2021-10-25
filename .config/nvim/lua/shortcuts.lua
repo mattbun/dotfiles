@@ -11,9 +11,19 @@ map("n", "<leader>#", "<Cmd>Telescope grep_string disable_devicons=true<CR>")
 map("n", "<leader>*", "<Cmd>Telescope grep_string disable_devicons=true<CR>")
 map("n", "<leader>~", "<Cmd>Telescope find_files cwd=~ disable_devicons=true<CR>")
 map("n", "<leader>b", "<Cmd>Telescope buffers disable_devicons=true<CR>")
+-- (f)ind
+map("n", "<leader>fa", "<Cmd>Telescope lsp_code_actions<CR>")
+map("v", "<leader>fa", "<Cmd>lua vim.lsp.buf.range_code_action()<CR>", {}) -- TODO switch to telescope
 map("n", "<leader>fb", "<Cmd>Telescope buffers disable_devicons=true<CR>")
+map("n", "<leader>fd", "<Cmd>Telescope lsp_definitions<CR>")
 map("n", "<leader>ff", "<Cmd>Telescope find_files disable_devicons=true<CR>")
 map("n", "<leader>fg", "<Cmd>Telescope live_grep disable_devicons=true<CR>")
+map("n", "<leader>fh", "<Cmd>Telescope oldfiles disable_devicons=true<CR>")
+map("n", "<leader>fi", "<Cmd>Telescope lsp_implementations<CR>")
+map("n", "<leader>fr", "<Cmd>Telescope lsp_references<CR>")
+map("n", "<leader>ft", "<Cmd>Telescope lsp_type_definitions<CR>")
+map("n", "<leader>fT", "<Cmd>Telescope<CR>")
+-- (g)it
 map("n", "<leader>ga", "<Cmd>Gitsigns stage_hunk<CR>")
 map("n", "<leader>gb", "<Cmd>Gitsigns toggle_current_line_blame<CR>")
 map("n", "<leader>gd", "<Cmd>Gitsigns preview_hunk<CR>")
@@ -50,29 +60,19 @@ map(
   "<leader>gY",
   '<Cmd>lua require"gitlinker".get_repo_url({action_callback = require"gitlinker.actions".copy_to_clipboard})<CR>'
 )
-map("n", "<leader>h", "<Cmd>Telescope oldfiles disable_devicons=true<CR>")
+map("n", "<leader>h", "<Cmd>lua vim.lsp.buf.hover()<CR>")
+map("n", "<leader>n", "<Cmd>lua vim.lsp.buf.rename()<CR>")
 map("n", "<leader>p", "<Cmd>lua vim.lsp.buf.formatting()<CR>")
 map(
   "n",
   "<leader>P",
   "<Cmd>lua vim.g.autoformat = not vim.g.autoformat; if vim.g.autoformat then print 'autoformat enabled' else print 'autoformat disabled' end<CR>"
 )
+map("n", "<leader>s", "<Cmd>lua vim.lsp.buf.signature_help()<CR>")
 map("n", "<leader>t", "<Cmd>NvimTreeToggle<CR>")
-map("n", "<leader>w", "<Cmd>Telescope lsp_document_diagnostics<CR>")
+map("n", "<leader>w", "<Cmd>lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false,show_header=false})<CR>")
 map("n", "<leader>W", "<Cmd>Telescope lsp_workspace_diagnostics<CR>")
 map("n", "<leader>y", "<Cmd>let @*=expand('%f')<CR>")
-
--- Shortcuts that start with `g` are generally for lsp-related things
-map("n", "ga", "<Cmd>Telescope lsp_code_actions<CR>")
-map("v", "ga", "<Cmd>lua vim.lsp.buf.range_code_action()<CR>", {}) -- TODO switch to telescope
-map("n", "gd", "<Cmd>Telescope lsp_definitions<CR>")
-map("n", "gh", "<Cmd>lua vim.lsp.buf.hover()<CR>")
-map("n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>")
-map("n", "gn", "<Cmd>lua vim.lsp.buf.rename()<CR>")
-map("n", "gr", "<Cmd>Telescope lsp_references<CR>")
-map("n", "gs", "<Cmd>lua vim.lsp.buf.signature_help()<CR>")
-map("n", "gt", "<Cmd>lua vim.lsp.buf.type()<CR>")
-map("n", "gw", "<Cmd>lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false,show_header=false})<CR>")
 
 -- Make arrows move, select, and cancel in wildmenu (like when tab completing a command like ':e')
 map("c", "<up>", 'pumvisible() ? "<C-p>" : "<up>"', { noremap = true, expr = true })
