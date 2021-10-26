@@ -71,7 +71,11 @@ return require("packer").startup(function(use)
           local prettier = {
             -- Only format if there's a .prettierrc and use prettierd because it's faster
             formatCommand = '(test -f .prettierrc && prettierd "${INPUT}") || cat "${INPUT}"',
-            -- formatCommand = 'prettierd "${INPUT}"',
+            formatStdin = true,
+          }
+
+          local stylua = {
+            formatCommand = "stylua --search-parent-directories -",
             formatStdin = true,
           }
 
@@ -79,6 +83,7 @@ return require("packer").startup(function(use)
           opts.settings = {
             rootMarkers = { ".git/" },
             languages = {
+              lua = { stylua },
               typescript = { prettier },
               javascript = { prettier },
               json = { prettier },
@@ -91,25 +96,6 @@ return require("packer").startup(function(use)
         server:setup(opts)
         vim.cmd([[ do User LspAttachBuffers ]])
       end)
-    end,
-  })
-
-  use({
-    "jose-elias-alvarez/null-ls.nvim",
-    requires = {
-      "neovim/nvim-lspconfig",
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      require("null-ls").config({
-        sources = {
-          require("null-ls").builtins.formatting.stylua,
-          require("null-ls").builtins.formatting.prettierd,
-        },
-      })
-      require("lspconfig")["null-ls"].setup({
-        on_attach = my_custom_on_attach,
-      })
     end,
   })
 
