@@ -11,6 +11,7 @@ map("n", "<leader>#", "<Cmd>Telescope grep_string disable_devicons=true<CR>")
 map("n", "<leader>*", "<Cmd>Telescope grep_string disable_devicons=true<CR>")
 map("n", "<leader>~", "<Cmd>Telescope find_files cwd=~ disable_devicons=true<CR>")
 map("n", "<leader>b", "<Cmd>Telescope buffers disable_devicons=true<CR>")
+map("n", "<leader>d", "<Cmd>Gitsigns preview_hunk<CR>")
 -- (f)ind
 map("n", "<leader>fa", "<Cmd>Telescope lsp_code_actions<CR>")
 map("v", "<leader>fa", "<Cmd>lua vim.lsp.buf.range_code_action()<CR>", {}) -- TODO switch to telescope
@@ -70,9 +71,13 @@ map(
 )
 map("n", "<leader>s", "<Cmd>lua vim.lsp.buf.signature_help()<CR>")
 map("n", "<leader>t", "<Cmd>NvimTreeToggle<CR>")
+map("n", "<leader>u", "<Cmd>Gitsigns reset_hunk<CR>")
 map("n", "<leader>w", "<Cmd>lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false,show_header=false})<CR>")
 map("n", "<leader>W", "<Cmd>Telescope lsp_workspace_diagnostics<CR>")
 map("n", "<leader>y", "<Cmd>let @*=expand('%f')<CR>")
+
+-- `g`-based mappings are often already mapped, be careful adding new ones (use `:help gt`)
+map("n", "gd", "<Cmd>Telescope lsp_definitions<CR>")
 
 -- Make arrows move, select, and cancel in wildmenu (like when tab completing a command like ':e')
 map("c", "<up>", 'pumvisible() ? "<C-p>" : "<up>"', { noremap = true, expr = true })
