@@ -43,8 +43,6 @@ return require("packer").startup(function(use)
     end,
   })
 
-  -- TODO only use prettier if there's a prettierrc
-
   use({
     "williamboman/nvim-lsp-installer",
     requires = {
@@ -67,35 +65,35 @@ return require("packer").startup(function(use)
             client.resolved_capabilities.document_formatting = false
             client.resolved_capabilities.document_range_formatting = false
           end
-        elseif server.name == "efm" then
-          local prettier = {
-            -- Only format if there's a .prettierrc and use prettierd because it's faster
-            formatCommand = '(test -f .prettierrc && prettierd "${INPUT}") || cat "${INPUT}"',
-            formatStdin = true,
-          }
-
-          local stylua = {
-            formatCommand = "stylua --search-parent-directories -",
-            formatStdin = true,
-          }
-
-          opts.init_options = { documentFormatting = true }
-          opts.settings = {
-            rootMarkers = { ".git/" },
-            languages = {
-              lua = { stylua },
-              typescript = { prettier },
-              javascript = { prettier },
-              json = { prettier },
-              yaml = { prettier },
-            },
-          }
         end
 
         -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
         server:setup(opts)
         vim.cmd([[ do User LspAttachBuffers ]])
       end)
+    end,
+  })
+
+  -- TODO handle prettier in different places, like node_modules
+  -- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/116#issuecomment-899608031
+  use({
+    "jose-elias-alvarez/null-ls.nvim",
+    requires = {
+      "neovim/nvim-lspconfig",
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require("null-ls").config({
+        sources = {
+          require("null-ls").builtins.formatting.stylua,
+          require("null-ls.helpers").conditional(function(utils)
+            return utils.root_has_file(".prettierrc") and require("null-ls").builtins.formatting.prettierd
+          end),
+        },
+      })
+      require("lspconfig")["null-ls"].setup({
+        on_attach = my_custom_on_attach,
+      })
     end,
   })
 
