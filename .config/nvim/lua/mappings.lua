@@ -30,18 +30,18 @@ map("n", "<leader>gb", "<Cmd>Gitsigns toggle_current_line_blame<CR>")
 map("n", "<leader>gd", "<Cmd>Gitsigns preview_hunk<CR>")
 map(
   "n",
-  "go",
+  "<leader>go",
   '<Cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<CR>'
 )
 map(
   "v",
-  "go",
+  "<leader>go",
   '<Cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<CR>',
   {}
 )
 map(
   "n",
-  "gO",
+  "<leader>gO",
   '<Cmd>lua require"gitlinker".get_repo_url({action_callback = require"gitlinker.actions".open_in_browser})<CR>'
 )
 map("n", "<leader>gu", "<Cmd>Gitsigns reset_hunk<CR>")

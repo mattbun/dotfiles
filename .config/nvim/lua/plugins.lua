@@ -272,7 +272,8 @@ return require("packer").startup(function(use)
     requires = "nvim-lua/plenary.nvim",
     config = function()
       require("gitlinker").setup({
-        mappings = nil,
+        -- TODO setting this to nil like the documentation says doesn't disable it
+        mappings = "<leader>abcdef",
       })
     end,
   })
