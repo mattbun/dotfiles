@@ -2,9 +2,9 @@
 
 ## Starring configurations for...
 
-* zsh
-* neovim
-* tmux
+* [zsh](https://zsh.sourceforge.io/)
+* [neovim](https://neovim.io/)
+* [tmux](https://github.com/tmux/tmux)
 * ... and more!
 
 ## And that's not all!
