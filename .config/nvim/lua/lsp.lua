@@ -34,6 +34,6 @@ vim.g.autoformat = true
 vim.cmd([[
   augroup AutoFormat
     autocmd!
-    autocmd BufWritePre * lua if vim.g.autoformat then vim.lsp.buf.formatting_sync() end
+    autocmd BufWritePre * lua if vim.g.autoformat then vim.lsp.buf.formatting_seq_sync(nil, 5000) end
   augroup END
 ]])
