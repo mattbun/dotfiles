@@ -1,39 +1,26 @@
-# These are Matt's dotfiles
+# It's Matt's dotfiles!
 
-## Some personal highlights
+## Starring configurations for...
 
-### Packages
 * zsh
 * neovim
-* ripgrep
-* fzf
-* jq
-* bat
-* exa
+* tmux
+* ... and more!
 
-### ZSH
+## And that's not all!
 
-* syntax highlighting
-* autosuggestions
-* [`git open`](https://github.com/paulirish/git-open)
-* [`z`](https://github.com/agkozak/zsh-z)
+* A common color scheme provided by [base16-universal-manager](https://github.com/pinpox/base16-universal-manager)
+* Fallback configurations for bash and regular ol' vim
+* Over-engineered scripts to set up new computers
 
-### Neovim
+## Sign me up!
 
-* [`switch.vim`](https://github.com/AndrewRadev/switch.vim) press `-` on any character in  `true` to turn it to `false`, `'` to `"`, etc. and vice-versa.
-* [`fzf.vim`](https://github.com/junegunn/fzf.vim)
-* [`fugitive`](https://github.com/tpope/vim-fugitive)
-* [`coc`](https://github.com/neoclide/coc.nvim) but it falls back to [ALE](https://github.com/dense-analysis/ale) if node isn't installed
-* [`editorconfig`](https://editorconfig.org/)
+To set it up on a new computer,
 
-## Setup
-
-To set up on a new computer,
-
-```
+```shell
 cd
 git init
 git remote add origin git@github.com:mattbun/dotfiles.git
 git fetch
-git checkout -t main or git reset origin/main
+git checkout main
 ```
