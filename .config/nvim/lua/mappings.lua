@@ -10,6 +10,8 @@ map("n", "<leader>]", "<C-i>")
 map("n", "<leader>#", "<Cmd>Telescope grep_string disable_devicons=true<CR>")
 map("n", "<leader>*", "<Cmd>Telescope grep_string disable_devicons=true<CR>")
 map("n", "<leader>~", "<Cmd>Telescope find_files cwd=~ disable_devicons=true<CR>")
+map("n", "<leader>/", "<Cmd>Telescope live_grep disable_devicons=true<CR>")
+map("n", "<leader>\\", "<Cmd>Telescope resume<CR>")
 map("n", "<leader>b", "<Cmd>Telescope buffers disable_devicons=true<CR>")
 map("n", "<leader>d", "<Cmd>Gitsigns preview_hunk<CR>")
 -- (f)ind
@@ -69,6 +71,7 @@ map(
   "<leader>P",
   "<Cmd>lua vim.g.autoformat = not vim.g.autoformat; if vim.g.autoformat then print 'autoformat enabled' else print 'autoformat disabled' end<CR>"
 )
+map("n", "<leader>r", "<Cmd>Telescope resume<CR>")
 map("n", "<leader>s", "<Cmd>lua vim.lsp.buf.signature_help()<CR>")
 map("n", "<leader>t", "<Cmd>NvimTreeToggle<CR>")
 map("n", "<leader>u", "<Cmd>Gitsigns reset_hunk<CR>")
