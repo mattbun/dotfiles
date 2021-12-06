@@ -16,6 +16,11 @@
 !.vimrc
 !.config/nvim
 !.config/nvim/*.vim
+!.config/nvim/*.lua
+!.config/nvim/lua
+!.config/nvim/lua/*.lua
+!.config/stylua
+!.config/stylua/stylua.toml
 !.config/base16-universal-manager
 !.config/base16-universal-manager/config.yaml
 !.config/fish/

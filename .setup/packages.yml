@@ -25,11 +25,6 @@ packages:
     arch: sudo pacman -S --noconfirm curl
     nix: curl
 
-  - name: pip
-    executable: pip3
-    arch: sudo pacman -S --noconfirm python-pip
-    mac: brew install python3
-
   - name: zsh
     executable: zsh
     mac: brew install zsh
@@ -41,10 +36,6 @@ packages:
     mac: brew install neovim
     arch: sudo pacman -S --noconfirm neovim
     nix: neovim
-
-  - name: neovim python support
-    arch: pip3 install --user neovim
-    mac: pip3 install neovim --upgrade
 
   - name: node
     executable: node
