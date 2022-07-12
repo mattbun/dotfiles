@@ -31,6 +31,8 @@
 !.config/kitty/kitty.conf
 !.config/alacritty
 !.config/alacritty/alacritty.yml
+!.config/nixpkgs
+!.config/nixpkgs/*
 !.ideavimrc
 !.ripgreprc
 
