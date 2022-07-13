@@ -34,8 +34,60 @@
     zsh
   ];
 
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 
-  programs.zsh.enable = true;
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.zsh = {
+    enable = true;
+    autocd = true;
+    enableAutosuggestions = true;
+    enableCompletion = true;
+    enableSyntaxHighlighting = true;
+    dotDir = ".config/zsh";
+
+    # TODO can `.shrc` be converted to this file?
+    initExtra = ''
+      source ~/.shrc
+      [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+    '';
+
+    # TODO make this one only install on mac
+    # zplug "plugins/osx", from:oh-my-zsh
+
+    zplug = {
+      enable = true;
+      plugins = [
+        {
+          name = "plugins/asdf";
+          tags = [ "from:oh-my-zsh" ];
+        }
+        {
+          name = "plugins/git";
+          tags = [ "from:oh-my-zsh" ];
+        }
+        {
+          name = "plugins/git-auto-fetch";
+          tags = [ "from:oh-my-zsh" ];
+        }
+        {
+          name = "paulirish/git-open";
+          tags = [ "as:command" ];
+        }
+        {
+          name = "romkatv/powerlevel10k";
+          tags = [ "as:theme" "depth:1" ];
+        }
+        {
+          name = "agkozak/zsh-z";
+        }
+      ];
+    };
+  };
 }
