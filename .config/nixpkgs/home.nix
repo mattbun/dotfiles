@@ -24,10 +24,13 @@
     bat
     curl
     delta
+    fd
+    git
     jq
     neovim
     ripgrep
     stylua
+    tmux
     zsh
   ];
 
