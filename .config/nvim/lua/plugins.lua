@@ -39,9 +39,6 @@ return require("packer").startup(function(use)
 
   use({
     "jghauser/mkdir.nvim",
-    config = function()
-      require("mkdir")
-    end,
   })
 
   use({
@@ -282,26 +279,30 @@ return require("packer").startup(function(use)
   use({
     "kyazdani42/nvim-tree.lua",
     config = function()
-      vim.g.nvim_tree_show_icons = {
-        git = 0,
-        folders = 1,
-        files = 0,
-        folder_arrows = 0,
-      }
-
-      vim.g.nvim_tree_icons = {
-        folder = {
-          open = "▾",
-          close = "▸",
-          default = "▸",
-          empty = "▸",
-          empty_open = "▾",
-          symlink = "▸",
-          symlink_open = "▾",
+      require("nvim-tree").setup({
+        renderer = {
+          icons = {
+            show = {
+              git = false,
+              file = false,
+              folder = true,
+              folder_arrow = false,
+            },
+            glyphs = {
+              folder = {
+                arrow_open = "▾",
+                arrow_closed = "▸",
+                default = "▸",
+                empty = "▸",
+                empty_open = "▾",
+                open = "▾",
+                symlink = "▸",
+                symlink_open = "▾",
+              },
+            },
+          },
         },
-      }
-
-      require("nvim-tree").setup({})
+      })
     end,
   })
 
