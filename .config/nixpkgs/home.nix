@@ -26,6 +26,7 @@
     delta
     fd
     git
+    glow
     jq
     neovim
     ripgrep

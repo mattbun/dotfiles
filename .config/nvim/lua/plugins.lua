@@ -27,6 +27,7 @@ return require("packer").startup(function(use)
   use("editorconfig/editorconfig-vim")
   use("tpope/vim-eunuch")
   use("AndrewRadev/linediff.vim")
+  use("ellisonleao/glow.nvim")
 
   use({
     "b3nj5m1n/kommentary",
