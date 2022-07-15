@@ -81,16 +81,15 @@ return require("packer").startup(function(use)
       "nvim-lua/plenary.nvim",
     },
     config = function()
-      require("null-ls").config({
+      require("null-ls").setup({
         sources = {
           require("null-ls").builtins.formatting.stylua,
-          require("null-ls.helpers").conditional(function(utils)
-            return utils.root_has_file(".prettierrc") and require("null-ls").builtins.formatting.prettierd
-          end),
+          require("null-ls").builtins.formatting.prettierd.with({
+            condition = function(utils)
+              return utils.root_has_file(".prettierrc")
+            end,
+          }),
         },
-      })
-      require("lspconfig")["null-ls"].setup({
-        on_attach = my_custom_on_attach,
       })
     end,
   })
