@@ -42,6 +42,14 @@
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
+    enableBashIntegration = true;
+  };
+
+  programs.bash = {
+    enable = true;
+    initExtra = ''
+      source ~/.shrc
+    '';
   };
 
   programs.zsh = {
