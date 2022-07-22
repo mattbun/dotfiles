@@ -5,6 +5,7 @@ end
 
 -- Leader-based shortcuts
 map("n", "<leader><leader>", "<Cmd>Telescope find_files disable_devicons=true<cr>")
+map("n", "<leader><CR>", "<Cmd>wn<CR>")
 map("n", "<leader>[", "<C-o>")
 map("n", "<leader>]", "<C-i>")
 map("n", "<leader>#", "<Cmd>Telescope grep_string disable_devicons=true<CR>")
@@ -66,6 +67,7 @@ map(
 map("n", "<leader>h", "<Cmd>lua vim.lsp.buf.hover()<CR>")
 map("n", "<leader>m", "<Cmd>Glow<CR>")
 map("n", "<leader>n", "<Cmd>lua vim.lsp.buf.rename()<CR>")
+map("n", "<leader>o", ':!open "%"<CR>')
 map("n", "<leader>p", "<Cmd>lua vim.lsp.buf.formatting()<CR>")
 map(
   "n",

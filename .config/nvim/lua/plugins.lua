@@ -16,7 +16,7 @@ end
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   augroup end
 ]])
 
@@ -85,10 +85,8 @@ return require("packer").startup(function(use)
       require("null-ls").setup({
         sources = {
           require("null-ls").builtins.formatting.stylua,
-          require("null-ls").builtins.formatting.prettierd.with({
-            condition = function(utils)
-              return utils.root_has_file(".prettierrc")
-            end,
+          require("null-ls").builtins.formatting.prettier.with({
+            only_local = "node_modules/.bin",
           }),
         },
       })
@@ -161,6 +159,11 @@ return require("packer").startup(function(use)
       telescope.load_extension("fzf")
       telescope.setup({
         disable_devicons = true,
+        pickers = {
+          find_files = {
+            find_command = { "fd", "-H", "-t", "f", "--ignore" },
+          },
+        },
       })
     end,
   })
@@ -178,10 +181,10 @@ return require("packer").startup(function(use)
         },
         sections = {
           lualine_a = { "mode" },
-          lualine_b = { "branch" },
+          lualine_b = {},
           lualine_c = { { "filename", path = 1 } },
           lualine_x = { "filetype" },
-          lualine_y = { "progress" },
+          lualine_y = { "diff", "diagnostics" },
           lualine_z = { "location" },
         },
         inactive_sections = {
@@ -279,30 +282,26 @@ return require("packer").startup(function(use)
   use({
     "kyazdani42/nvim-tree.lua",
     config = function()
-      require("nvim-tree").setup({
-        renderer = {
-          icons = {
-            show = {
-              git = false,
-              file = false,
-              folder = true,
-              folder_arrow = false,
-            },
-            glyphs = {
-              folder = {
-                arrow_open = "▾",
-                arrow_closed = "▸",
-                default = "▸",
-                empty = "▸",
-                empty_open = "▾",
-                open = "▾",
-                symlink = "▸",
-                symlink_open = "▾",
-              },
-            },
-          },
+      vim.g.nvim_tree_show_icons = {
+        git = 0,
+        folders = 1,
+        files = 0,
+        folder_arrows = 0,
+      }
+
+      vim.g.nvim_tree_icons = {
+        folder = {
+          open = "▾",
+          close = "▸",
+          default = "▸",
+          empty = "▸",
+          empty_open = "▾",
+          symlink = "▸",
+          symlink_open = "▾",
         },
-      })
+      }
+
+      require("nvim-tree").setup({})
     end,
   })
 

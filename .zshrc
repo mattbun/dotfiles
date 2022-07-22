@@ -61,7 +61,7 @@ zplug "plugins/asdf", from:oh-my-zsh
 zplug "ptavares/zsh-direnv"
 
 # Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
+if ! zplug check; then
   zplug install
 fi
 
