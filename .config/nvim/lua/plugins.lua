@@ -28,6 +28,7 @@ return require("packer").startup(function(use)
   use("tpope/vim-eunuch")
   use("AndrewRadev/linediff.vim")
   use("ellisonleao/glow.nvim")
+  use("hashivim/vim-terraform")
 
   use({
     "b3nj5m1n/kommentary",
