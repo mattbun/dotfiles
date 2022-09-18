@@ -7,7 +7,7 @@ selection:
   save_to_clipboard: true
 
 shell:
-  program: /usr/local/bin/tmux
+  program: /run/current-system/sw/bin/tmux
 
 # BASE16 THEME HERE
 # Base16 Helios - alacritty color config
