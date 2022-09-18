@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+# kubectx but it adjusts its height to the number of contexts
+ktx() {
+  # xargs is trimming whitespace here
+  numContexts=`kubectl config get-contexts --no-headers | wc -l | xargs`
+  height=$((numContexts + 1))
+  FZF_DEFAULT_OPTS="--info=hidden --height=$height" kubectx $@
+}
+
 # cd to the path of the front Finder window
 cdf() {
   target=`osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)'`
