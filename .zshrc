@@ -50,7 +50,6 @@ zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "paulirish/git-open", as:command
-zplug "zdharma/zsh-diff-so-fancy"
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/git-auto-fetch", from:oh-my-zsh
 zplug "plugins/jira", from:oh-my-zsh
