@@ -29,32 +29,35 @@ in
     ];
   };
 
-  system.defaults = {
-    # Dark mode always
-    NSGlobalDomain.AppleInterfaceStyle = "Dark";
+  system = {
+    defaults = {
+      # Dark mode always
+      NSGlobalDomain.AppleInterfaceStyle = "Dark";
 
-    # Don't show icons on the Desktop
-    finder.CreateDesktop = false;
+      # Don't show icons on the Desktop
+      finder.CreateDesktop = false;
 
-    # Save screenshots to another location, you may need to do a `mkdir -p ~/Pictures/Screenshots`
-    screencapture.location = "~/Pictures/Screenshots";
+      # Save screenshots to another location, you may need to do a `mkdir -p ~/Pictures/Screenshots`
+      screencapture.location = "~/Pictures/Screenshots";
 
-    dock = {
-      # Don't show recent apps in Dock
-      show-recents = false;
+      dock = {
+        # Don't show recent apps in Dock
+        show-recents = false;
 
-      # Don't rearrange spaces based on most recent use
-      mru-spaces = false;
+        # Don't rearrange spaces based on most recent use
+        mru-spaces = false;
+      };
+    };
+
+    # WHO NEEDS CAPSLOCK?
+    keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToEscape = true;
     };
   };
 
-  # Add ability to used TouchID for sudo authentication
+  # TODO Add ability to used TouchID for sudo authentication
   # security.pam.enableSudoTouchIdAuth = true;
-
-  system.keyboard = {
-    enableKeyMapping = true;
-    remapCapsLockToEscape = true;
-  };
 
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
