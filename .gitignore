@@ -41,7 +41,6 @@
 !.nixpkgs/darwin-configuration.nix
 
 !.zshrc
-!.bashrc
 !.shrc
 !.aliases
 !.exports
