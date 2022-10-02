@@ -87,7 +87,7 @@
         }
         {
           name = "paulirish/git-open";
-          tags = [ "as:command" ];
+          tags = [ "as:plugin" ];
         }
         {
           name = "romkatv/powerlevel10k";
