@@ -1,6 +1,5 @@
 { pkgs
-, kubernetes ? false
-, docker ? false
+, packageSets ? [ ]
 , additionalPackages ? [ ]
 }:
 
@@ -21,7 +20,7 @@ with pkgs; [
   tmux
   zsh
 ]
-++ (if kubernetes then [
+++ (if builtins.elem "kubernetes" packageSets then [
   # kubernetes
   k9s
   kubectl
@@ -29,7 +28,7 @@ with pkgs; [
   kubernetes-helm
   stern
 ] else [ ])
-++ (if docker then with pkgs; [
+++ (if builtins.elem "docker" packageSets then [
   # docker
   docker
   docker-compose

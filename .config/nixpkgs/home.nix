@@ -8,8 +8,10 @@
 
   home.packages = import ./packages.nix {
     pkgs = pkgs;
-    kubernetes = false;
-    docker = false;
+    packageSets = [
+      # "docker"
+      # "kubernetes"
+    ];
     additionalPackages = with pkgs; [ ];
   };
 
