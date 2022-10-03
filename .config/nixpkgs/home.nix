@@ -6,6 +6,13 @@
   # home.username = "matt";
   # home.homeDirectory = "/home/matt";
 
+  home.packages = import ./packages.nix {
+    pkgs = pkgs;
+    kubernetes = false;
+    docker = false;
+    additionalPackages = with pkgs; [ ];
+  };
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
@@ -18,22 +25,6 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  home.packages = with pkgs; [
-    asdf-vm
-    bat
-    curl
-    delta
-    fd
-    git
-    glow
-    jq
-    neovim
-    ripgrep
-    stylua
-    tmux
-    zsh
-  ];
 
   programs.direnv = {
     enable = true;
