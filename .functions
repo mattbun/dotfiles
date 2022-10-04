@@ -35,3 +35,9 @@ flakify() {
   fi
   ${EDITOR:-vim} flake.nix
 }
+
+# Creates a nix-shell with the first argument as package and command to run.
+# Example: `nxx htop`
+nxx() {
+  nix-shell -p $1 --command "$1 ${@:2}"
+}
