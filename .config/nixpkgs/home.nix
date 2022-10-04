@@ -28,6 +28,14 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  nix = {
+    enable = true;
+    package = pkgs.nix;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
+
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
