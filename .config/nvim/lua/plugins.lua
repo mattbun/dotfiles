@@ -125,6 +125,8 @@ return require("packer").startup(function(use)
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.close(),
           ["<CR>"] = cmp.mapping.confirm({ select = false }),
+          ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
+          ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
         },
         sources = {
           { name = "nvim_lsp" },
