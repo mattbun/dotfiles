@@ -54,6 +54,21 @@ in
     enable = true;
     enableZshIntegration = true;
     enableBashIntegration = true;
+
+    defaultOptions = [
+      "--color=bg+:#${config.colorScheme.colors.base01}"
+      "--color=bg:#${config.colorScheme.colors.base00}"
+      "--color=spinner:#${config.colorScheme.colors.base0C}"
+      "--color=hl:#${config.colorScheme.colors.base0D}"
+      "--color=fg:#${config.colorScheme.colors.base04}"
+      "--color=header:#${config.colorScheme.colors.base0D}"
+      "--color=info:#${config.colorScheme.colors.base0A}"
+      "--color=pointer:#${config.colorScheme.colors.base0C}"
+      "--color=marker:#${config.colorScheme.colors.base0C}"
+      "--color=fg+:#${config.colorScheme.colors.base06}"
+      "--color=prompt:#${config.colorScheme.colors.base0A}"
+      "--color=hl+:#${config.colorScheme.colors.base0D}"
+    ];
   };
 
   xdg.configFile."nvim/init.lua".text = ''
