@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
-
+let
+  nix-colors = import <nix-colors> { };
+  nix-colors-lib = nix-colors.lib-contrib { inherit pkgs; };
+in
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -28,6 +31,12 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  imports = [
+    nix-colors.homeManagerModule
+  ];
+
+  colorScheme = nix-colors.colorSchemes.helios;
+
   nix = {
     enable = true;
     package = pkgs.nix;
@@ -45,6 +54,34 @@
     enable = true;
     enableZshIntegration = true;
     enableBashIntegration = true;
+  };
+
+  xdg.configFile."nvim/init.lua".text = ''
+    vim.cmd([[
+      source ~/.vimrc
+    ]])
+
+    require("lsp")
+    require("plugins")
+    require("mappings")
+
+    -- show substitutions
+    vim.o.inccommand = "nosplit"
+
+    vim.cmd([[
+      highlight SignColumn guibg=#00000000
+      highlight LineNr guibg=#00000000
+    ]])
+  '';
+
+  programs.neovim = {
+    enable = true;
+    plugins = [
+      {
+        plugin = nix-colors-lib.vimThemeFromScheme { scheme = config.colorScheme; };
+        config = "colorscheme nix-${config.colorScheme.slug}";
+      }
+    ];
   };
 
   programs.bash = {
