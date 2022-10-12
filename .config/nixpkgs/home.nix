@@ -99,6 +99,53 @@ in
     ];
   };
 
+  programs.tmux = {
+    enable = true;
+    escapeTime = 0;
+
+    extraConfig = ''
+      # No status bar!
+      set -g status off
+
+      # Mouse mode!
+      set -g mouse on
+
+      # True Color!
+      set -g default-terminal "screen-256color"
+      set -ga terminal-overrides ",xterm-256color*:Tc"
+
+      # Colors!
+      # default statusbar colors
+      set-option -g status-style "fg=#${config.colorScheme.colors.base04},bg=#${config.colorScheme.colors.base01}"
+      
+      # default window title colors
+      set-window-option -g window-status-style "fg=#${config.colorScheme.colors.base04},bg=default"
+      
+      # active window title colors
+      set-window-option -g window-status-current-style "fg=#${config.colorScheme.colors.base0A},bg=default"
+      
+      # pane border
+      set-option -g pane-border-style "fg=#${config.colorScheme.colors.base01}"
+      set-option -g pane-active-border-style "fg=#${config.colorScheme.colors.base02}"
+      
+      # message text
+      set-option -g message-style "fg=#${config.colorScheme.colors.base05},bg=#${config.colorScheme.colors.base01}"
+      
+      # pane number display
+      set-option -g display-panes-active-colour "#${config.colorScheme.colors.base0B}"
+      set-option -g display-panes-colour "#${config.colorScheme.colors.base0A}"
+      
+      # clock
+      set-window-option -g clock-mode-colour "#${config.colorScheme.colors.base0B}"
+      
+      # copy mode highligh
+      set-window-option -g mode-style "fg=#${config.colorScheme.colors.base04},bg=#${config.colorScheme.colors.base02}"
+      
+      # bell
+      set-window-option -g window-status-bell-style "fg=#${config.colorScheme.colors.base01},bg=#${config.colorScheme.colors.base08}"
+    '';
+  };
+
   programs.bash = {
     enable = true;
     initExtra = ''
