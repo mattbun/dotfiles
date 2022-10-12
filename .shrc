@@ -2,7 +2,3 @@
 source ~/.aliases
 source ~/.functions
 source ~/.exports
-
-# Color schemes
-source ~/.colors/shell.sh
-source ~/.colors/fzf.sh

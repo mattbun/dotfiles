@@ -88,6 +88,9 @@ in
     enable = true;
     initExtra = ''
       source ~/.shrc
+
+      # Set up shell color scheme
+      sh ${nix-colors-lib.shellThemeFromScheme { scheme = config.colorScheme; }}
     '';
   };
 
@@ -101,7 +104,13 @@ in
 
     # TODO can `.shrc` be converted to this file?
     initExtra = ''
+      # Common shell settings to share with bash
       source ~/.shrc
+
+      # Set up shell color scheme
+      sh ${nix-colors-lib.shellThemeFromScheme { scheme = config.colorScheme; }}
+
+      # Set up powerlevel10k, this should always come last
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
     '';
 
