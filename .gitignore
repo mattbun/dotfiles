@@ -31,8 +31,6 @@
 !.config/iterm/**
 !.config/k9s/
 !.config/k9s/*skin.yml
-!.config/kitty/
-!.config/kitty/kitty.conf
 !.config/nixpkgs
 !.config/nixpkgs/*
 !.ideavimrc
