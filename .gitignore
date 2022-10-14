@@ -9,9 +9,6 @@
 !.setup
 !.setup/**
 
-!.colors
-!.colors/*
-
 !.config
 !.config/bat
 !.config/bat/config
