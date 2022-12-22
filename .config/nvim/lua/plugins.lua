@@ -29,6 +29,7 @@ return require("packer").startup(function(use)
   use("AndrewRadev/linediff.vim")
   use("ellisonleao/glow.nvim")
   use("hashivim/vim-terraform")
+  use("jparise/vim-graphql")
 
   use({
     "lukas-reineke/indent-blankline.nvim",
