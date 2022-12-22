@@ -14,7 +14,6 @@ with pkgs; [
   git
   glow
   jq
-  neovim
   ripgrep
   stylua
   tmux
