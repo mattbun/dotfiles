@@ -176,9 +176,6 @@ in
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
     '';
 
-    # TODO make this one only install on mac
-    # zplug "plugins/osx", from:oh-my-zsh
-
     zplug = {
       enable = true;
       plugins = [
