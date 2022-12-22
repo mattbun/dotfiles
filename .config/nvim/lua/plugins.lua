@@ -210,6 +210,7 @@ return require("packer").startup(function(use)
         { "0", "1" },
         { "ON", "OFF" },
         { "'", '"' },
+        { "-", "_" },
         { "GET", "POST", "PUT", "DELETE", "PATCH" },
       }
     end,
