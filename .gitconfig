@@ -7,6 +7,8 @@
   s = status
   o = open
   last = log -1 HEAD
+  main-branch = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
+  com = "!f(){ git checkout $(git main-branch) $@;}; f"
 [mergetool]
   path = nvim
 [merge]
