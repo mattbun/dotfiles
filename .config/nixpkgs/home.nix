@@ -1,6 +1,5 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nix-colors, ... }:
 let
-  nix-colors = import <nix-colors> { };
   nix-colors-lib = nix-colors.lib-contrib { inherit pkgs; };
 in
 {
