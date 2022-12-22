@@ -31,6 +31,15 @@ return require("packer").startup(function(use)
   use("hashivim/vim-terraform")
 
   use({
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("indent_blankline").setup({
+        enabled = false, -- disable by default
+      })
+    end,
+  })
+
+  use({
     "b3nj5m1n/kommentary",
     config = function()
       require("kommentary.config").configure_language("default", {
