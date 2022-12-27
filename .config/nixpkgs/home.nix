@@ -1,20 +1,25 @@
 { config, pkgs, nix-colors, ... }:
 let
+  username = "matt";
+  homeDirectory = "/home/matt";
+  packageSets = [
+    # "docker"
+    # "kubernetes"
+  ];
+  additionalPackages = with pkgs; [ ];
+
   nix-colors-lib = nix-colors.lib-contrib { inherit pkgs; };
 in
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  # home.username = "matt";
-  # home.homeDirectory = "/home/matt";
+  home.username = username;
+  home.homeDirectory = homeDirectory;
 
   home.packages = import ./packages.nix {
     pkgs = pkgs;
-    packageSets = [
-      # "docker"
-      # "kubernetes"
-    ];
-    additionalPackages = with pkgs; [ ];
+    packageSets = packageSets;
+    additionalPackages = additionalPackages;
   };
 
   # This value determines the Home Manager release that your
