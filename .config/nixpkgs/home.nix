@@ -1,14 +1,13 @@
-{ config, pkgs, nix-colors, ... }:
+{ config
+, pkgs
+, nix-colors
+, username
+, homeDirectory
+, packageSets
+, additionalPackages
+, ...
+}:
 let
-  username = "matt";
-  homeDirectory = "/home/matt";
-  packageSets = [
-    # "docker"
-    # "graphical"
-    # "kubernetes"
-  ];
-  additionalPackages = with pkgs; [ ];
-
   nix-colors-lib = nix-colors.lib-contrib { inherit pkgs; };
 in
 {

@@ -28,7 +28,18 @@
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
-        extraSpecialArgs = { inherit nix-colors; };
+        extraSpecialArgs = {
+          inherit nix-colors;
+
+          username = (builtins.getEnv "USER");
+          homeDirectory = /. + builtins.getEnv "HOME";
+          packageSets = [
+            # "docker"
+            # "graphical"
+            # "kubernetes"
+          ];
+          additionalPackages = with pkgs; [ ];
+        };
       };
     };
 }
