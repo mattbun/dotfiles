@@ -4,6 +4,7 @@ let
   homeDirectory = "/home/matt";
   packageSets = [
     # "docker"
+    # "graphical"
     # "kubernetes"
   ];
   additionalPackages = with pkgs; [ ];
@@ -233,7 +234,7 @@ in
   };
 
   programs.alacritty = {
-    enable = true;
+    enable = builtins.elem "graphical" packageSets;
     settings = {
       font = {
         normal = {

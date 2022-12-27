@@ -32,4 +32,9 @@ with pkgs; [
   docker
   docker-compose
 ] else [ ])
+++ (if builtins.elem "graphical" packageSets then [
+  # graphical
+  alacritty
+  hack-font
+] else [ ])
 ++ additionalPackages
