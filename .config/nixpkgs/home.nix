@@ -6,8 +6,8 @@
 let
   packageSets = [
     # "docker"
-    "graphical"
-    "kubernetes"
+    # "graphical"
+    # "kubernetes"
   ];
   additionalPackages = [ ];
 
