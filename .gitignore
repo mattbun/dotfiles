@@ -29,8 +29,6 @@
 !.config/fish/config.fish
 !.config/iterm/
 !.config/iterm/**
-!.config/k9s/
-!.config/k9s/*skin.yml
 !.config/nixpkgs
 !.config/nixpkgs/*
 !.ideavimrc
