@@ -4,14 +4,18 @@ os=$(ID)
 
 switch: switch-$(os)
 
-switch-arch:
-	@echo "Looks like this is Arch! Using home-manager..."
+switch-arch: switch-home-manager
+switch-nixos: switch-home-manager
+
+switch-home-manager:
 	home-manager switch --flake ~/.config/nixpkgs#matt
 
 build: build-$(os)
 
-build-arch:
-	@echo "Looks like this is Arch! Using home-manager..."
+build-arch: build-home-manager
+build-nixos: build-home-manager
+
+build-home-manager:
 	home-manager build --flake ~/.config/nixpkgs#matt
 
 install:
