@@ -288,7 +288,7 @@ in
   };
 
   programs.k9s = {
-    enable = true;
+    enable = builtins.elem "kubernetes" packageSets;
     skin = {
       k9s =
         let
