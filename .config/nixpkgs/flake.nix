@@ -11,9 +11,9 @@
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-colors }:
+  outputs = { nixpkgs, home-manager, nix-colors, ... }:
     let
-      system = "x86_64-linux"; # TODO
+      system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
@@ -30,15 +30,6 @@
         # to pass through arguments to home.nix
         extraSpecialArgs = {
           inherit nix-colors;
-
-          username = (builtins.getEnv "USER");
-          homeDirectory = /. + builtins.getEnv "HOME";
-          packageSets = [
-            # "docker"
-            # "graphical"
-            # "kubernetes"
-          ];
-          additionalPackages = with pkgs; [ ];
         };
       };
     };

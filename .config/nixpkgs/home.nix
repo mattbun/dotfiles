@@ -1,20 +1,23 @@
 { config
 , pkgs
 , nix-colors
-, username
-, homeDirectory
-, packageSets
-, additionalPackages
 , ...
 }:
 let
+  packageSets = [
+    # "docker"
+    "graphical"
+    "kubernetes"
+  ];
+  additionalPackages = [ ];
+
   nix-colors-lib = nix-colors.lib-contrib { inherit pkgs; };
 in
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = username;
-  home.homeDirectory = homeDirectory;
+  home.username = "matt";
+  home.homeDirectory = "/home/matt";
 
   home.packages = import ./packages.nix {
     pkgs = pkgs;
