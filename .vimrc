@@ -45,9 +45,6 @@ filetype plugin indent on
 "use system clipboard by default
 set clipboard=unnamedplus
 
-" Use theme from base16-universal-generator
-source ~/.colors/vim.vim
-
 "Compare what's in the buffer with what's saved to disk
 function! s:DiffWithSaved()
   let filetype=&ft

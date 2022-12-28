@@ -1,6 +1,9 @@
 *
 
 !README.md
+!Makefile
+!shell.nix
+!.envrc
 
 !.gitignore
 !.gitconfig
@@ -8,9 +11,6 @@
 
 !.setup
 !.setup/**
-
-!.colors
-!.colors/*
 
 !.config
 !.config/bat
@@ -29,12 +29,6 @@
 !.config/fish/config.fish
 !.config/iterm/
 !.config/iterm/**
-!.config/k9s/
-!.config/k9s/*skin.yml
-!.config/kitty/
-!.config/kitty/kitty.conf
-!.config/alacritty
-!.config/alacritty/alacritty.yml
 !.config/nixpkgs
 !.config/nixpkgs/*
 !.ideavimrc

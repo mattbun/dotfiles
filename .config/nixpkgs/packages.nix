@@ -14,7 +14,6 @@ with pkgs; [
   git
   glow
   jq
-  neovim
   ripgrep
   stylua
   tmux
@@ -32,5 +31,10 @@ with pkgs; [
   # docker
   docker
   docker-compose
+] else [ ])
+++ (if builtins.elem "graphical" packageSets then [
+  # graphical
+  alacritty
+  hack-font
 ] else [ ])
 ++ additionalPackages
