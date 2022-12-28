@@ -21,8 +21,6 @@
 !.config/nvim/lua/*.lua
 !.config/stylua
 !.config/stylua/stylua.toml
-!.config/base16-universal-manager
-!.config/base16-universal-manager/config.yaml
 !.config/fish/
 !.config/fish/config.fish
 !.config/iterm/
