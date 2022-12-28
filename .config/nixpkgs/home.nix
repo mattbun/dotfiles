@@ -4,6 +4,9 @@
 , ...
 }:
 let
+  gitName = "Matt Rathbun";
+  gitEmail = "5514636+mattbun@users.noreply.github.com";
+
   packageSets = [
     # "docker"
     # "graphical"
@@ -105,6 +108,28 @@ in
       "--color=prompt:#${config.colorScheme.colors.base0A}"
       "--color=hl+:#${config.colorScheme.colors.base0D}"
     ];
+  };
+
+  programs.git = {
+    enable = true;
+
+    userName = gitName;
+    userEmail = gitEmail;
+
+    aliases = {
+      s = "status";
+      o = "open";
+      last = "log -1 HEAD";
+      main-branch = "!git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4";
+      com = "!f(){ git checkout $(git main-branch) $@;}; f";
+    };
+
+    delta = {
+      enable = true;
+      options = {
+        features = "line-numbers decorations";
+      };
+    };
   };
 
   xdg.configFile."nvim/init.lua".text = ''
