@@ -30,6 +30,26 @@ git checkout main
 
 The configuration in this repo relies on [Nix](https://nixos.org/) and [Home Manager](https://github.com/nix-community/home-manager). That doesn't mean it only works on NixOS! I also use it in macOS (with [nix-darwin](https://github.com/LnL7/nix-darwin)) and in Arch Linux.
 
+#### Installation (NixOS)
+
+It's possible to use Home Manager's NixOS module to hook this into the system config, but I like to keep them separate for simplicity's sake.
+
+1. Install and set up home-manager
+
+    ```shell
+    # If make is already installed
+    make install
+
+    # Or you can use the configuration in shell.nix to create an ephemeral shell with 'make' in it
+    nix-shell --command "make install"
+    ```
+
+2. From here on, to apply configuration changes run
+
+    ```shell
+    make
+    ```
+
 #### Installation (Arch Linux)
 
 1. Install nix
