@@ -74,6 +74,13 @@ in
     '';
   };
 
+  programs.bat = {
+    enable = true;
+    config = {
+      theme = "base16";
+    };
+  };
+
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
