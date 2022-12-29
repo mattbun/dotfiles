@@ -130,6 +130,20 @@ in
         features = "line-numbers decorations";
       };
     };
+
+    extraConfig = {
+      diff = {
+        tool = "nvimdiff";
+      };
+      merge = {
+        tool = "nvimdiff";
+      };
+      mergetool = {
+        "vimdiff" = {
+          path = "${pkgs.neovim}/bin/nvim";
+        };
+      };
+    };
   };
 
   xdg.configFile."nvim/init.lua".text = ''
