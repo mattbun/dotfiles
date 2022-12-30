@@ -132,6 +132,9 @@ in
     };
 
     extraConfig = {
+      init = {
+        defaultBranch = "main";
+      };
       diff = {
         tool = "nvimdiff";
       };
