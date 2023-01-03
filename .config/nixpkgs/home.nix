@@ -177,6 +177,15 @@ in
     ];
   };
 
+  programs.tealdeer = {
+    enable = true;
+    settings = {
+      updates = {
+        auto_update = true;
+      };
+    };
+  };
+
   programs.tmux = {
     enable = true;
     escapeTime = 0;
