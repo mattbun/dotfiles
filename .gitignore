@@ -6,7 +6,6 @@
 !.envrc
 
 !.gitignore
-!.gitconfig
 !.hushlogin
 
 !.setup
@@ -34,7 +33,6 @@
 !.functions
 !.p10k.zsh
 !.p10k.zsh.colorful
-!.tmux.conf
 
 !.tool-versions
 
