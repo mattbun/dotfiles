@@ -1,6 +1,8 @@
 { config
 , pkgs
 , nix-colors
+, username
+, homeDirectory
 , ...
 }:
 let
@@ -19,8 +21,8 @@ in
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "matt";
-  home.homeDirectory = "/home/matt";
+  home.username = username;
+  home.homeDirectory = homeDirectory;
 
   home.packages = import ./packages.nix {
     pkgs = pkgs;

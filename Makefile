@@ -16,7 +16,7 @@ switch-home-manager:
 	home-manager switch --flake ~/.config/nixpkgs#matt
 
 switch-darwin:
-	darwin-rebuild switch --flake ~/.nixpkgs#rathbook --impure
+	darwin-rebuild switch --flake ~/.config/nixpkgs#rathbook --impure
 
 build: build-$(os)
 
@@ -28,7 +28,7 @@ build-home-manager:
 	home-manager build --flake ~/.config/nixpkgs#matt
 
 build-darwin:
-	darwin-rebuild build --flake ~/.nixpkgs#rathbook --impure
+	darwin-rebuild build --flake ~/.config/nixpkgs#rathbook --impure
 
 install: install-$(os)
 
@@ -41,8 +41,8 @@ install-home-manager:
 	$(shell nix path-info ~/.config/nixpkgs#homeConfigurations.matt.activationPackage)/activate
 
 install-darwin:
-	nix build ~/.nixpkgs#darwinConfigurations.rathbook.system --impure
-	./result/sw/bin/darwin-rebuild switch --flake ~/.nixpkgs#rathbook --impure
+	nix build ~/.config/nixpkgs#darwinConfigurations.rathbook.system --impure
+	./result/sw/bin/darwin-rebuild switch --flake ~/.config/nixpkgs#rathbook --impure
 
 echo-os:
 	@echo $(os)
