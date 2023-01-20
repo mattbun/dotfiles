@@ -29,8 +29,6 @@
 !.config/nixpkgs/*
 !.ideavimrc
 !.ripgreprc
-!.nixpkgs
-!.nixpkgs/darwin-configuration.nix
 
 !.zshrc
 !.shrc
