@@ -87,3 +87,27 @@ It's possible to use Home Manager's NixOS module to hook this into the system co
     ```shell
     make
     ```
+
+## Installation (Mac)
+
+1. [Install homebrew](https://brew.sh/)
+
+2. [Install nix](https://nix.dev/tutorials/install-nix)
+
+3. Install dependencies and get everything set up
+
+    ```
+    # If make is installed
+    make install
+
+    # Or you can use the configuration in shell.nix to create an ephemeral shell with 'make' in it
+    nix-shell --command "make install"
+    ```
+
+4. From here on, to apply configuration changes run
+
+    ```shell
+    make
+    ```
+
+Note: some of the `system.defaults` options in `darwin.nix` require a Finder or Dock restart to take effect.
