@@ -15,8 +15,6 @@
 !.config
 !.vimrc
 !.config/nvim
-!.config/nvim/*.vim
-!.config/nvim/*.lua
 !.config/nvim/lua
 !.config/nvim/lua/*.lua
 !.config/stylua
