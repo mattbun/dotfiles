@@ -307,7 +307,9 @@ in
       selection = {
         save_to_clipboard = true;
       };
-      program = "${pkgs.tmux}/bin/tmux";
+      shell = {
+        program = "${pkgs.tmux}/bin/tmux";
+      };
       colors = {
         # Default color;
         primary = {
