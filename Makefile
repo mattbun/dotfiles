@@ -7,10 +7,22 @@ else
 endif
 
 switch: switch-$(os)
-
 switch-arch: switch-home-manager
 switch-nixos: switch-home-manager
 switch-mac: switch-darwin
+
+build: build-$(os)
+build-arch: build-home-manager
+build-nixos: build-home-manager
+build-mac: build-darwin
+
+install: install-$(os)
+install-arch: install-home-manager
+install-nixos: install-home-manager
+install-mac: install-darwin
+
+echo-os:
+	@echo $(os)
 
 switch-home-manager:
 	home-manager switch --flake ~/.config/nixpkgs#matt --impure
@@ -18,23 +30,11 @@ switch-home-manager:
 switch-darwin:
 	darwin-rebuild switch --flake ~/.config/nixpkgs#rathbook --impure
 
-build: build-$(os)
-
-build-arch: build-home-manager
-build-nixos: build-home-manager
-build-mac: build-darwin
-
 build-home-manager:
 	home-manager build --flake ~/.config/nixpkgs#matt --impure
 
 build-darwin:
 	darwin-rebuild build --flake ~/.config/nixpkgs#rathbook --impure
-
-install: install-$(os)
-
-install-arch: install-home-manager
-install-nixos: install-home-manager
-install-mac: install-darwin
 
 install-home-manager:
 	nix build --impure --no-link ~/.config/nixpkgs#homeConfigurations.matt.activationPackage
@@ -43,6 +43,3 @@ install-home-manager:
 install-darwin:
 	nix build ~/.config/nixpkgs#darwinConfigurations.rathbook.system --impure
 	./result/sw/bin/darwin-rebuild switch --flake ~/.config/nixpkgs#rathbook --impure
-
-echo-os:
-	@echo $(os)
