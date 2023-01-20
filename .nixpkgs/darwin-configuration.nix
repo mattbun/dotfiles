@@ -1,19 +1,14 @@
 { config, pkgs, ... }:
 
 let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
   username = builtins.getEnv "USER";
   homeDirectory = builtins.getEnv "HOME";
 in
 {
-  # Need to add channel manually, see https://rycee.gitlab.io/home-manager/index.html#sec-install-nix-darwin-module
-  imports = [ <home-manager/nix-darwin> ];
-
   users.users."${username}" = {
     name = username;
     home = homeDirectory;
   };
-  home-manager.users."${username}" = import "${homeDirectory}/.config/nixpkgs/home.nix";
 
   homebrew = {
     enable = true;
