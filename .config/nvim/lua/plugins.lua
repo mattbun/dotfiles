@@ -215,11 +215,17 @@ return require("packer").startup(function(use)
       vim.g.switch_mapping = "-"
       vim.g.switch_custom_definitions = {
         { "!=", "==" },
-        { "0", "1" },
-        { "ON", "OFF" },
         { "'", '"' },
         { "-", "_" },
-        { "GET", "POST", "PUT", "DELETE", "PATCH" },
+        { "0", "1" },
+        {
+          _type = "normalized_case_words",
+          _definition = { "on", "off" },
+        },
+        {
+          _type = "normalized_case_words",
+          _definition = { "yes", "no" },
+        },
       }
     end,
   })
