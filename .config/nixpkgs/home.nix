@@ -203,6 +203,9 @@ in
       set -g default-terminal "screen-256color"
       set -ga terminal-overrides ",xterm-256color*:Tc"
 
+      # Use zsh!
+      set -g default-command "${pkgs.zsh}/bin/zsh"
+
       # Colors!
       # default statusbar colors
       set-option -g status-style "fg=#${config.colorScheme.colors.base04},bg=#${config.colorScheme.colors.base01}"
