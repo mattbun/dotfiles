@@ -206,6 +206,11 @@ in
       # Use zsh!
       set -g default-command "${pkgs.zsh}/bin/zsh"
 
+      # Name windows after the current directory!
+      set-option -g status-interval 5
+      set-option -g automatic-rename on
+      set-option -g automatic-rename-format '#{b:pane_current_path}'
+
       # Colors!
       # default statusbar colors
       set-option -g status-style "fg=#${config.colorScheme.colors.base04},bg=#${config.colorScheme.colors.base01}"
