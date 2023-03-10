@@ -148,20 +148,19 @@ in
           path = "${pkgs.neovim}/bin/nvim";
         };
       };
+      fetch = {
+        prune = true;
+      };
     };
   };
 
   xdg.configFile."nvim/init.lua".text = ''
-    vim.cmd([[
-      source ~/.vimrc
-    ]])
+    vim.cmd('source ~/.vimrc')
+    vim.cmd('runtime colorscheme.vim')
 
     require("lsp")
     require("plugins")
     require("mappings")
-    vim.cmd([[
-      source ~/.config/nvim/colorscheme.vim
-    ]])
 
     -- show substitutions
     vim.o.inccommand = "nosplit"
