@@ -23,7 +23,7 @@
 !.config/iterm/
 !.config/iterm/**
 !.config/nixpkgs
-!.config/nixpkgs/*
+!.config/nixpkgs/**
 !.ideavimrc
 !.ripgreprc
 
