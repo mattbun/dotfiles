@@ -14,7 +14,14 @@ let
     # "graphical"
     # "kubernetes"
   ];
-  additionalPackages = [ ];
+
+  additionalPackages = with pkgs; [
+    # mosh
+  ];
+
+  additionalAliases = {
+    # wow = "echo neat";
+  };
 
   nix-colors-lib = nix-colors.lib-contrib { inherit pkgs; };
 in
@@ -209,34 +216,52 @@ in
       # Colors!
       # default statusbar colors
       set-option -g status-style "fg=#${config.colorScheme.colors.base04},bg=#${config.colorScheme.colors.base01}"
-      
+
       # default window title colors
       set-window-option -g window-status-style "fg=#${config.colorScheme.colors.base04},bg=default"
-      
+
       # active window title colors
       set-window-option -g window-status-current-style "fg=#${config.colorScheme.colors.base0A},bg=default"
-      
+
       # pane border
       set-option -g pane-border-style "fg=#${config.colorScheme.colors.base01}"
       set-option -g pane-active-border-style "fg=#${config.colorScheme.colors.base02}"
-      
+
       # message text
       set-option -g message-style "fg=#${config.colorScheme.colors.base05},bg=#${config.colorScheme.colors.base01}"
-      
+
       # pane number display
       set-option -g display-panes-active-colour "#${config.colorScheme.colors.base0B}"
       set-option -g display-panes-colour "#${config.colorScheme.colors.base0A}"
-      
+
       # clock
       set-window-option -g clock-mode-colour "#${config.colorScheme.colors.base0B}"
-      
+
       # copy mode highligh
       set-window-option -g mode-style "fg=#${config.colorScheme.colors.base04},bg=#${config.colorScheme.colors.base02}"
-      
+
       # bell
       set-window-option -g window-status-bell-style "fg=#${config.colorScheme.colors.base01},bg=#${config.colorScheme.colors.base08}"
     '';
   };
+
+  home.shellAliases = {
+    # Make aliases work with sudo
+    sudo = "sudo ";
+
+    # neovim > vim
+    vim = "nvim";
+    vimdiff = "nvim -d";
+
+    # misspellings
+    gti = "git";
+    tit = "echo 😱 && git";
+
+    # git aliases, some of these are in oh-my-zsh/git but good to get them in bash too
+    gcm = "git checkout $(git main-branch)";
+    gdca = "git diff --cached";
+    gpsup = "git push --set-upstream origin $(git_current_branch)";
+  } // additionalAliases;
 
   programs.bash = {
     enable = true;

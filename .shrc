@@ -1,4 +1,3 @@
 # Generic shell configuration
-source ~/.aliases
 source ~/.functions
 source ~/.exports
