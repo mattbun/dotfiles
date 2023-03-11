@@ -1,3 +1,2 @@
 # Generic shell configuration
 source ~/.functions
-source ~/.exports

@@ -23,6 +23,15 @@ let
     # wow = "echo neat";
   };
 
+  additionalEnvVars = {
+    # COOL = "stuff";
+  };
+
+  # These will be added to the PATH environment variable
+  additionalPaths = [
+    # "${homeDirectory}/.bin"
+  ];
+
   nix-colors-lib = nix-colors.lib-contrib { inherit pkgs; };
 in
 {
@@ -262,6 +271,21 @@ in
     gdca = "git diff --cached";
     gpsup = "git push --set-upstream origin $(git_current_branch)";
   } // additionalAliases;
+
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    DIRENV_LOG_FORMAT = ""; # shh direnv
+    FZF_DEFAULT_COMMAND = "rg --files --hidden --smart-case";
+    RIPGREP_CONFIG_PATH = "~/.ripgreprc";
+
+    # Generally you don't want to reference env vars like this in home-manager
+    PATH = "$PATH" + (if ((builtins.length additionalPaths) > 0) then ":" + (builtins.concatStringsSep ":" additionalPaths) else "");
+  } // additionalEnvVars;
+
+  # This works around some logic that tries to prevent reloading env vars
+  home.sessionVariablesExtra = ''
+    unset __HM_SESS_VARS_SOURCED
+  '';
 
   programs.bash = {
     enable = true;
