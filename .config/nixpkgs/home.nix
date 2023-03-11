@@ -290,7 +290,7 @@ in
   programs.bash = {
     enable = true;
     initExtra = ''
-      source ~/.shrc
+      source ~/.functions
 
       # Set up shell color scheme
       sh ${nix-colors-lib.shellThemeFromScheme { scheme = config.colorScheme; }}
@@ -305,10 +305,8 @@ in
     enableSyntaxHighlighting = true;
     dotDir = ".config/zsh";
 
-    # TODO can `.shrc` be converted to this file?
     initExtra = ''
-      # Common shell settings to share with bash
-      source ~/.shrc
+      source ~/.functions
 
       # Set up shell color scheme
       sh ${nix-colors-lib.shellThemeFromScheme { scheme = config.colorScheme; }}
