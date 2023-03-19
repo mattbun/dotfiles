@@ -28,7 +28,10 @@ let
   };
 
   # These will be added to the PATH environment variable
-  additionalPaths = [
+  prependedPaths = [
+    "${homeDirectory}/.asdf/shims"
+  ];
+  appendedPaths = [
     # "${homeDirectory}/.bin"
   ];
 
@@ -279,7 +282,7 @@ in
     RIPGREP_CONFIG_PATH = "~/.ripgreprc";
 
     # Generally you don't want to reference env vars like this in home-manager
-    PATH = "$PATH" + (if ((builtins.length additionalPaths) > 0) then ":" + (builtins.concatStringsSep ":" additionalPaths) else "");
+    PATH = builtins.concatStringsSep ":" (prependedPaths ++ [ "$PATH" ] ++ appendedPaths);
   } // additionalEnvVars;
 
   # This works around some logic that tries to prevent reloading env vars
