@@ -260,6 +260,11 @@ in
   programs.tmux = {
     enable = true;
     escapeTime = 0;
+    historyLimit = 50000;
+
+    plugins = with pkgs; [
+      tmuxPlugins.logging
+    ];
 
     extraConfig = ''
       # No status bar!
