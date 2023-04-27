@@ -20,6 +20,7 @@ install: install-$(os)
 install-arch: install-home-manager
 install-nixos: install-home-manager
 install-mac: install-darwin
+install-ubuntu: install-home-manager
 
 update: update-flake switch
 
