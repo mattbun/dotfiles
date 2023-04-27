@@ -81,18 +81,24 @@ in
             ];
           }
           EOF
-            ${EDITOR:-vim} shell.nix
+            ''${EDITOR:-vim} shell.nix
           fi
         '';
 
         flakify = ''
+          if [ ! -d .git ]; then
+            git init
+          fi
+
           if [ ! -e flake.nix ]; then
             nix flake new -t github:nix-community/nix-direnv .
+            direnv allow
           elif [ ! -e .envrc ]; then
             echo "use flake" > .envrc
             direnv allow
           fi
-          ${EDITOR:-vim} flake.nix
+
+          ''${EDITOR:-vim} flake.nix
         '';
 
       };
