@@ -1,4 +1,3 @@
-set title   "set the terminal title
 set number  "show line numbers on the side
 set mouse=a "enable mouse in all modes
 set ai      "auto indent
