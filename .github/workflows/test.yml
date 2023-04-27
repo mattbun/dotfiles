@@ -17,7 +17,7 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
 
       - name: Create a profiles directory
-        run: mkdir -p ~/.local/state/home-manager/profiles
+        run: mkdir -p /home/runner/.local/state/home-manager/profiles
 
       - name: make install
         run: make install
