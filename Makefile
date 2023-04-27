@@ -21,6 +21,11 @@ install-arch: install-home-manager
 install-nixos: install-home-manager
 install-mac: install-darwin
 
+update: update-flake switch
+
+update-flake:
+	cd ~/.config/nixpkgs && nix flake update
+
 echo-os:
 	@echo $(os)
 
