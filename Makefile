@@ -43,7 +43,8 @@ build-darwin:
 	darwin-rebuild build --flake ~/.config/nixpkgs#rathbook --impure
 
 install-home-manager:
-	nix run home-manager/master -- init --switch ~/.config/nixpkgs
+	nix run .config/nixpkgs#homeConfigurations.matt.activationPackage --impure
+	home-manager switch --flake ~/.config/nixpkgs#matt --impure
 
 install-darwin:
 	nix build ~/.config/nixpkgs#darwinConfigurations.rathbook.system --impure
