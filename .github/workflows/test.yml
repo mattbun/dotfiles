@@ -4,7 +4,7 @@ on: push
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -15,9 +15,6 @@ jobs:
         uses: cachix/install-nix-action@v20
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-
-      - name: Create a profiles directory
-        run: mkdir -p /home/runner/.local/state/home-manager/profiles
 
       - name: make install
         run: make install
