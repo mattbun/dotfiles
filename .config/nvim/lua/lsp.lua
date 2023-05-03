@@ -28,8 +28,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- disable semantic tokens, they look weird. TODO someday I'll hopefully fix this
     client.server_capabilities.semanticTokensProvider = nil
 
-    -- disable tsserver's formatting in favor of prettier
-    if client.name == "tsserver" then
+    -- disable language server formatting when we have better alternatives
+    if client.name == "tsserver" or client.name == "lua_ls" then
       client.server_capabilities.documentFormattingProvider = nil
       client.server_capabilities.documentRangeFormattingProvider = nil
     end

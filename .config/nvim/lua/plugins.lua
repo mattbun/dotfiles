@@ -78,11 +78,10 @@ return require("packer").startup(function(use)
         function(server_name)
           require("lspconfig")[server_name].setup({})
         end,
+
         -- These are configured manually below
-        ["lua_ls"] = function()
-        end,
-        ["rnix"] = function()
-        end,
+        ["lua_ls"] = function() end,
+        ["rnix"] = function() end,
       })
 
       -- These language servers are installed via nix so mason doesn't need to manage them
