@@ -50,68 +50,69 @@ in
   home.packages = import ./packages.nix {
     pkgs = pkgs;
     packageSets = packageSets;
-    additionalPackages = let
-      scripts = {
-        ktx = ''
-          # kubectx but it adjusts its height to the number of contexts
-          # xargs is trimming whitespace here
-          numContexts=`kubectl config get-contexts --no-headers | wc -l | xargs`
-          height=$((numContexts + 1))
-          FZF_DEFAULT_OPTS="--info=hidden --height=$height" kubectx $@
-        '';
+    additionalPackages =
+      let
+        scripts = {
+          ktx = ''
+            # kubectx but it adjusts its height to the number of contexts
+            # xargs is trimming whitespace here
+            numContexts=`kubectl config get-contexts --no-headers | wc -l | xargs`
+            height=$((numContexts + 1))
+            FZF_DEFAULT_OPTS="--info=hidden --height=$height" kubectx $@
+          '';
 
-        nxx = ''
-          # Creates a nix-shell with the first argument as package and command to run.
-          # Example: `nxx htop`
-          nix-shell -p $1 --command "$1 ''${@:2}"
-        '';
+          nxx = ''
+            # Creates a nix-shell with the first argument as package and command to run.
+            # Example: `nxx htop`
+            nix-shell -p $1 --command "$1 ''${@:2}"
+          '';
 
-        nfx = ''
-          # Creates a nix shell with the first argument as package and command to run.
-          # Example: `nfx htop`
-          nix shell nixpkgs#$1 --command $1 ''${@:2}
-        '';
+          nfx = ''
+            # Creates a nix shell with the first argument as package and command to run.
+            # Example: `nfx htop`
+            nix shell nixpkgs#$1 --command $1 ''${@:2}
+          '';
 
-        nixify = ''
-          if [ ! -e ./.envrc ]; then
-            echo "use nix" > .envrc
-            direnv allow
-          fi
+          nixify = ''
+            if [ ! -e ./.envrc ]; then
+              echo "use nix" > .envrc
+              direnv allow
+            fi
 
-          if [[ ! -e shell.nix ]] && [[ ! -e default.nix ]]; then
-            cat > shell.nix <<'EOF'
-          with import <nixpkgs> {};
-          mkShell {
-            nativeBuildInputs = [
-              bashInteractive
-            ];
-          }
-          EOF
-            ''${EDITOR:-vim} shell.nix
-          fi
-        '';
+            if [[ ! -e shell.nix ]] && [[ ! -e default.nix ]]; then
+              cat > shell.nix <<'EOF'
+            with import <nixpkgs> {};
+            mkShell {
+              nativeBuildInputs = [
+                bashInteractive
+              ];
+            }
+            EOF
+              ''${EDITOR:-vim} shell.nix
+            fi
+          '';
 
-        flakify = ''
-          if [ ! -d .git ]; then
-            git init
-          fi
+          flakify = ''
+            if [ ! -d .git ]; then
+              git init
+            fi
 
-          if [ ! -e flake.nix ]; then
-            nix flake new -t github:nix-community/nix-direnv .
-            direnv allow
-          elif [ ! -e .envrc ]; then
-            echo "use flake" > .envrc
-            direnv allow
-          fi
+            if [ ! -e flake.nix ]; then
+              nix flake new -t github:nix-community/nix-direnv .
+              direnv allow
+            elif [ ! -e .envrc ]; then
+              echo "use flake" > .envrc
+              direnv allow
+            fi
 
-          ''${EDITOR:-vim} flake.nix
-        '';
+            ''${EDITOR:-vim} flake.nix
+          '';
+        };
 
-      };
+        convertScriptsToPackages = scriptsAttrList: (map (key: (pkgs.writeShellScriptBin key scriptsAttrList."${key}")) (builtins.attrNames scriptsAttrList));
 
-      convertScriptsToPackages = scriptsAttrList: (map (key: (pkgs.writeShellScriptBin key scriptsAttrList."${key}")) (builtins.attrNames scriptsAttrList));
-
-    in additionalPackages 
+      in
+      additionalPackages
       ++ (convertScriptsToPackages scripts)
       ++ (convertScriptsToPackages additionalScripts);
   };
