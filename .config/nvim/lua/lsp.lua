@@ -20,6 +20,22 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   severity_sort = true,
 })
 
+-- Change some language server options when we attach them
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+    -- disable semantic tokens, they look weird. TODO someday I'll hopefully fix this
+    client.server_capabilities.semanticTokensProvider = nil
+
+    -- disable tsserver's formatting in favor of prettier
+    if client.name == "tsserver" then
+      client.server_capabilities.documentFormattingProvider = nil
+      client.server_capabilities.documentRangeFormattingProvider = nil
+    end
+  end,
+})
+
 -- Show diagnostics on hover
 -- TODO this doesn't work so well if you're trying to show a definition (`gh`) on a line with a diagnostic
 -- You will likely want to reduce updatetime which affects CursorHold
@@ -31,9 +47,14 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 
 -- Format on save by default but provide a variable to toggle it on and off
 vim.g.autoformat = true
-vim.cmd([[
-  augroup AutoFormat
-    autocmd!
-    autocmd BufWritePre * lua if vim.g.autoformat then vim.lsp.buf.formatting_seq_sync(nil, 5000) end
-  augroup END
-]])
+
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = augroup,
+  pattern = "*",
+  callback = function()
+    if vim.g.autoformat then
+      vim.lsp.buf.format()
+    end
+  end,
+})

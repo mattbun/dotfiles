@@ -54,38 +54,66 @@ return require("packer").startup(function(use)
   })
 
   use({
-    "williamboman/nvim-lsp-installer",
+    "williamboman/mason.nvim",
     requires = {
       "neovim/nvim-lspconfig",
+      "williamboman/mason-lspconfig.nvim",
     },
     after = "nvim-cmp",
+    run = function()
+      require("mason.api.command").MasonUpdate()
+    end,
     config = function()
-      local lsp_installer = require("nvim-lsp-installer")
+      require("mason").setup({
+        PATH = "append", -- prefer packages installed via nix to work around nixos linking issues
+      })
 
-      lsp_installer.on_server_ready(function(server)
-        -- All lsps get this option
-        local opts = {
-          capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-        }
+      require("mason-lspconfig").setup({
+        ensure_installed = {},
+      })
 
-        -- Settings specific to certain lsps
-        if server.name == "tsserver" then
-          -- disable tsserver's formatting in favor of prettier
-          opts.on_attach = function(client)
-            client.server_capabilities.documentFormattingProvider = false
-            client.server_capabilities.documentRangeFormattingProvider = false
-          end
-        end
+      -- This automatically sets up any new language servers that are installed
+      require("mason-lspconfig").setup_handlers({
+        -- default handler
+        function(server_name)
+          require("lspconfig")[server_name].setup({})
+        end,
+        -- These are configured manually below
+        ["lua_ls"] = function()
+        end,
+        ["rnix"] = function()
+        end,
+      })
 
-        -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
-        server:setup(opts)
-        vim.cmd([[ do User LspAttachBuffers ]])
-      end)
+      -- These language servers are installed via nix so mason doesn't need to manage them
+      local lspconfig = require("lspconfig")
+      lspconfig.rnix.setup({})
+      lspconfig.lua_ls.setup({
+        settings = {
+          Lua = {
+            runtime = {
+              -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+              version = "LuaJIT",
+            },
+            diagnostics = {
+              -- Get the language server to recognize the `vim` global
+              globals = { "vim" },
+            },
+            workspace = {
+              -- Make the server aware of Neovim runtime files
+              library = vim.api.nvim_get_runtime_file("", true),
+              checkThirdParty = false,
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+              enable = false,
+            },
+          },
+        },
+      })
     end,
   })
 
-  -- TODO handle prettier in different places, like node_modules
-  -- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/116#issuecomment-899608031
   use({
     "jose-elias-alvarez/null-ls.nvim",
     requires = {

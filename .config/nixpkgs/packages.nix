@@ -7,16 +7,20 @@ with pkgs; [
   # base
   asdf-vm
   bat
-  cargo # required for rnix lsp
   curl
   delta
   fd
   git
   glow
+  gnutar
+  gzip
   jq
   ripgrep
+  rnix-lsp
   stylua
+  sumneko-lua-language-server
   tmux
+  unzip
   zsh
 ]
 ++ (if builtins.elem "kubernetes" packageSets then [

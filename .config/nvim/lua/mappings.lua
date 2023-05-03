@@ -67,7 +67,7 @@ map("n", "<leader>h", "<Cmd>lua vim.lsp.buf.hover()<CR>")
 map("n", "<leader>i", "<Cmd>IndentBlanklineToggle<CR>")
 map("n", "<leader>m", "<Cmd>Glow<CR>")
 map("n", "<leader>n", "<Cmd>lua vim.lsp.buf.rename()<CR>")
-map("n", "<leader>p", "<Cmd>lua vim.lsp.buf.formatting()<CR>")
+map("n", "<leader>p", "<Cmd>lua vim.lsp.buf.format()<CR>")
 map(
   "n",
   "<leader>P",
