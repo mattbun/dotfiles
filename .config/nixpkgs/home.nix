@@ -47,79 +47,9 @@ in
   home.username = username;
   home.homeDirectory = homeDirectory;
 
-  home.packages = import ./packages.nix {
-    pkgs = pkgs;
-    packageSets = packageSets;
-    additionalPackages =
-      let
-        scripts = {
-          ktx = ''
-            # kubectx but it adjusts its height to the number of contexts
-            # xargs is trimming whitespace here
-            numContexts=`kubectl config get-contexts --no-headers | wc -l | xargs`
-            height=$((numContexts + 1))
-            FZF_DEFAULT_OPTS="--info=hidden --height=$height" kubectx $@
-          '';
-
-          nxx = ''
-            # Creates a nix-shell with the first argument as package and command to run.
-            # Example: `nxx htop`
-            nix-shell -p $1 --command "$1 ''${@:2}"
-          '';
-
-          nfx = ''
-            # Creates a nix shell with the first argument as package and command to run.
-            # Example: `nfx htop`
-            nix shell nixpkgs#$1 --command $1 ''${@:2}
-          '';
-
-          nixify = ''
-            if [ ! -e ./.envrc ]; then
-              echo "use nix" > .envrc
-              direnv allow
-            fi
-
-            if [[ ! -e shell.nix ]] && [[ ! -e default.nix ]]; then
-              cat > shell.nix <<'EOF'
-            with import <nixpkgs> {};
-            mkShell {
-              nativeBuildInputs = [
-                bashInteractive
-              ];
-            }
-            EOF
-              ''${EDITOR:-vim} shell.nix
-            fi
-          '';
-
-          flakify = ''
-            if [ ! -d .git ]; then
-              git init
-            fi
-
-            if [ ! -e flake.nix ]; then
-              nix flake new -t github:nix-community/nix-direnv .
-              direnv allow
-            elif [ ! -e .envrc ]; then
-              echo "use flake" > .envrc
-              direnv allow
-            fi
-
-            ''${EDITOR:-vim} flake.nix
-          '';
-
-          git-pr = ''
-            ${if pkgs.stdenv.isDarwin then "open" else "xdg-open"} "$(git-open --print | sed -e 's|/tree/|/pull/new/|')"
-          '';
-        };
-
-        convertScriptsToPackages = scriptsAttrList: (map (key: (pkgs.writeShellScriptBin key scriptsAttrList."${key}")) (builtins.attrNames scriptsAttrList));
-
-      in
-      additionalPackages
-      ++ (convertScriptsToPackages scripts)
-      ++ (convertScriptsToPackages additionalScripts);
-  };
+  packageSets = packageSets;
+  additionalPackages = additionalPackages;
+  additionalScripts = additionalScripts;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -136,6 +66,8 @@ in
 
   imports = [
     nix-colors.homeManagerModule
+    ./packages.nix
+    ./scripts.nix
   ];
 
   colorScheme = nix-colors.colorSchemes.helios;
