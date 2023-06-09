@@ -107,6 +107,10 @@ in
 
             ''${EDITOR:-vim} flake.nix
           '';
+
+          git-pr = ''
+            ${if pkgs.stdenv.isDarwin then "open" else "xdg-open"} "$(git-open --print | sed -e 's|/tree/|/pull/new/|')"
+          '';
         };
 
         convertScriptsToPackages = scriptsAttrList: (map (key: (pkgs.writeShellScriptBin key scriptsAttrList."${key}")) (builtins.attrNames scriptsAttrList));
