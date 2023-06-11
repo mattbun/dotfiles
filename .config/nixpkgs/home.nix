@@ -181,10 +181,6 @@ in
       vim.o.inccommand = "nosplit"
     '';
 
-    xdg.configFile."nvim/colorscheme.vim".text = import ./colors/vim.nix {
-      colorScheme = config.colorScheme;
-    };
-
     programs.neovim = {
       enable = true;
     };
@@ -225,7 +221,7 @@ in
         set-option -g status-interval 5
         set-option -g automatic-rename on
         set-option -g automatic-rename-format '#{b:pane_current_path}'
-      '' + "\n" + import ./colors/tmux.nix { colorScheme = config.colorScheme; };
+      '';
     };
 
     home.shellAliases = {

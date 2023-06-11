@@ -35,6 +35,8 @@
             ./home.nix
             ./packages.nix
             ./scripts.nix
+            ./colors/vim.nix
+            ./colors/tmux.nix
           ];
 
           # Optionally use extraSpecialArgs
