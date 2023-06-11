@@ -37,6 +37,7 @@
             ./scripts.nix
             ./colors/vim.nix
             ./colors/tmux.nix
+            ./colors/k9s.nix
           ];
 
           # Optionally use extraSpecialArgs
