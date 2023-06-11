@@ -35,9 +35,10 @@
             ./home.nix
             ./packages.nix
             ./scripts.nix
-            ./colors/vim.nix
-            ./colors/tmux.nix
+            ./colors/alacritty.nix
             ./colors/k9s.nix
+            ./colors/tmux.nix
+            ./colors/vim.nix
           ];
 
           # Optionally use extraSpecialArgs
