@@ -31,7 +31,6 @@
           # Specify your home configuration modules here, for example,
           # the path to your home.nix.
           modules = [
-            ./system.nix
             ./home.nix
           ];
 
@@ -46,7 +45,6 @@
         system = system;
         modules = [
           ./darwin.nix
-          ./system.nix
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
