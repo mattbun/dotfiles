@@ -1,8 +1,12 @@
 # System-specific configuration. Configs that should be applied to all systems should go in home.nix
 { pkgs
-, homeDirectory
+, config
 , ...
-}: {
+}:
+let
+  homeDirectory = config.home.homeDirectory;
+in
+{
   packageSets = {
     docker = false;
     graphical = false;
