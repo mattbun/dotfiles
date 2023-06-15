@@ -33,12 +33,14 @@
           modules = [
             ./system.nix
             ./home.nix
-            ./packages.nix
             ./scripts.nix
             ./colors/alacritty.nix
             ./colors/k9s.nix
             ./colors/tmux.nix
             ./colors/vim.nix
+            ./packages/kubernetes.nix
+            ./packages/docker.nix
+            ./packages/graphical.nix
           ];
 
           # Optionally use extraSpecialArgs

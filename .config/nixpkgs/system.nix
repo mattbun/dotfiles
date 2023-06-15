@@ -3,11 +3,11 @@
 , homeDirectory
 , ...
 }: {
-  packageSets = [
-    # "docker"
-    # "graphical"
-    # "kubernetes"
-  ];
+  packageSets = {
+    docker = false;
+    graphical = false;
+    kubernetes = false;
+  };
 
   additionalPackages = with pkgs; [
     # mosh

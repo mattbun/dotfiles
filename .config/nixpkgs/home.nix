@@ -30,6 +30,12 @@ in
       default = [ ];
     };
 
+    additionalPackages = mkOption {
+      type = with types; listOf package;
+      description = "List of additional packages to install";
+      default = [ ];
+    };
+
     prependedPaths = mkOption {
       type = with types; listOf string;
       description = "Paths to prepend to the PATH environment variable";
@@ -61,6 +67,27 @@ in
 
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
+
+    home.packages = with pkgs; [
+      # base
+      asdf-vm
+      bat
+      curl
+      delta
+      fd
+      git
+      glow
+      gnutar
+      gzip
+      jq
+      ripgrep
+      rnix-lsp
+      stylua
+      sumneko-lua-language-server
+      tmux
+      unzip
+      zsh
+    ] ++ config.additionalPackages;
 
     colorScheme = nix-colors.colorSchemes.helios;
     # colorScheme = {
@@ -309,28 +336,6 @@ in
           }
         ];
       };
-    };
-
-    programs.alacritty = {
-      enable = builtins.elem "graphical" config.packageSets;
-      settings = {
-        font = {
-          normal = {
-            family = "Hack";
-          };
-          size = 13.0;
-        };
-        selection = {
-          save_to_clipboard = true;
-        };
-        shell = {
-          program = "${pkgs.tmux}/bin/tmux";
-        };
-      };
-    };
-
-    programs.k9s = {
-      enable = builtins.elem "kubernetes" config.packageSets;
     };
   };
 }
