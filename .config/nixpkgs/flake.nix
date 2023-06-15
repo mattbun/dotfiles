@@ -33,14 +33,6 @@
           modules = [
             ./system.nix
             ./home.nix
-            ./scripts.nix
-            ./colors/alacritty.nix
-            ./colors/k9s.nix
-            ./colors/tmux.nix
-            ./colors/vim.nix
-            ./packages/kubernetes.nix
-            ./packages/docker.nix
-            ./packages/graphical.nix
           ];
 
           # Optionally use extraSpecialArgs
@@ -54,6 +46,7 @@
         system = system;
         modules = [
           ./darwin.nix
+          ./system.nix
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

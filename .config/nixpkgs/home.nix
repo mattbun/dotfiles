@@ -15,6 +15,14 @@ in
 {
   imports = [
     nix-colors.homeManagerModule
+    ./colors/alacritty.nix
+    ./colors/k9s.nix
+    ./colors/tmux.nix
+    ./colors/vim.nix
+    ./lib/scripts.nix
+    ./packages/docker.nix
+    ./packages/graphical.nix
+    ./packages/kubernetes.nix
   ];
 
   options = with lib; {
@@ -275,7 +283,7 @@ in
       gpsup = "git push --set-upstream origin $(git_current_branch)";
     } // config.additionalAliases;
 
-    # Not part of home-manager, see packages.nix
+    # This option is not from home-manager, see ./lib/scripts.nix
     home.shellScripts = {
       nxx = ''
         # Creates a nix-shell with the first argument as package and command to run.
