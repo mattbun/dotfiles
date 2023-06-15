@@ -36,6 +36,12 @@ in
       default = [ ];
     };
 
+    additionalScripts = mkOption {
+      type = with types; attrsOf string;
+      description = "Additional scripts to add to the PATH";
+      default = [ ];
+    };
+
     prependedPaths = mkOption {
       type = with types; listOf string;
       description = "Paths to prepend to the PATH environment variable";
@@ -268,6 +274,60 @@ in
       gdca = "git diff --cached";
       gpsup = "git push --set-upstream origin $(git_current_branch)";
     } // config.additionalAliases;
+
+    # Not part of home-manager, see packages.nix
+    home.shellScripts = {
+      nxx = ''
+        # Creates a nix-shell with the first argument as package and command to run.
+        # Example: `nxx htop`
+        nix-shell -p $1 --command "$1 ''${@:2}"
+      '';
+
+      nfx = ''
+        # Creates a nix shell with the first argument as package and command to run.
+        # Example: `nfx htop`
+        nix shell nixpkgs#$1 --command $1 ''${@:2}
+      '';
+
+      nixify = ''
+        if [ ! -e ./.envrc ]; then
+          echo "use nix" > .envrc
+          direnv allow
+        fi
+
+        if [[ ! -e shell.nix ]] && [[ ! -e default.nix ]]; then
+          cat > shell.nix <<'EOF'
+        with import <nixpkgs> {};
+        mkShell {
+          nativeBuildInputs = [
+            bashInteractive
+          ];
+        }
+        EOF
+          ''${EDITOR:-vim} shell.nix
+        fi
+      '';
+
+      flakify = ''
+        if [ ! -d .git ]; then
+          git init
+        fi
+
+        if [ ! -e flake.nix ]; then
+          nix flake new -t github:nix-community/nix-direnv .
+          direnv allow
+        elif [ ! -e .envrc ]; then
+          echo "use flake" > .envrc
+          direnv allow
+        fi
+
+        ''${EDITOR:-vim} flake.nix
+      '';
+
+      git-pr = ''
+        ${if pkgs.stdenv.isDarwin then "open" else "xdg-open"} "$(git-open --print | sed -e 's|/tree/|/pull/new/|')"
+      '';
+    } // config.additionalScripts;
 
     home.sessionVariables = {
       EDITOR = "nvim";
