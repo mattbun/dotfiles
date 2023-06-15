@@ -20,7 +20,7 @@
       stern
     ];
 
-    additionalScripts = {
+    home.shellScripts = {
       ktx = ''
         # kubectx but it adjusts its height to the number of contexts
         # xargs is trimming whitespace here

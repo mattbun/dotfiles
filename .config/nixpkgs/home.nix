@@ -26,30 +26,6 @@ in
   ];
 
   options = with lib; {
-    additionalAliases = mkOption {
-      type = with types; attrsOf string;
-      description = "List of additional scripts";
-      default = [ ];
-    };
-
-    additionalEnvVars = mkOption {
-      type = with types; attrsOf string;
-      description = "Additional environment variables to set";
-      default = [ ];
-    };
-
-    additionalPackages = mkOption {
-      type = with types; listOf package;
-      description = "List of additional packages to install";
-      default = [ ];
-    };
-
-    additionalScripts = mkOption {
-      type = with types; attrsOf string;
-      description = "Additional scripts to add to the PATH";
-      default = [ ];
-    };
-
     prependedPaths = mkOption {
       type = with types; listOf string;
       description = "Paths to prepend to the PATH environment variable";
@@ -101,7 +77,7 @@ in
       tmux
       unzip
       zsh
-    ] ++ config.additionalPackages;
+    ];
 
     colorScheme = nix-colors.colorSchemes.helios;
     # colorScheme = {
@@ -281,7 +257,7 @@ in
       gcm = "git checkout $(git main-branch)";
       gdca = "git diff --cached";
       gpsup = "git push --set-upstream origin $(git_current_branch)";
-    } // config.additionalAliases;
+    };
 
     # This option is not from home-manager, see ./lib/scripts.nix
     home.shellScripts = {
@@ -335,7 +311,7 @@ in
       git-pr = ''
         ${if pkgs.stdenv.isDarwin then "open" else "xdg-open"} "$(git-open --print | sed -e 's|/tree/|/pull/new/|')"
       '';
-    } // config.additionalScripts;
+    };
 
     home.sessionVariables = {
       EDITOR = "nvim";
@@ -345,7 +321,7 @@ in
 
       # Generally you don't want to reference env vars like this in home-manager
       PATH = builtins.concatStringsSep ":" (config.prependedPaths ++ [ "$PATH" ] ++ config.appendedPaths);
-    } // config.additionalEnvVars;
+    };
 
     # This works around some logic that tries to prevent reloading env vars
     home.sessionVariablesExtra = ''

@@ -9,19 +9,19 @@
     kubernetes = false;
   };
 
-  additionalPackages = with pkgs; [
+  home.packages = with pkgs; [
     # mosh
   ];
 
-  additionalScripts = {
+  home.shellScripts = {
     # beep = "echo 'boop'";
   };
 
-  additionalAliases = {
+  home.shellAliases = {
     # wow = "echo neat";
   };
 
-  additionalEnvVars = {
+  home.sessionVariables = {
     # COOL = "stuff";
   };
 
