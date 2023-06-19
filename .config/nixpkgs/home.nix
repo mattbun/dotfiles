@@ -67,6 +67,7 @@ in
       delta
       fd
       git
+      git-open
       glow
       gnutar
       gzip
@@ -367,10 +368,6 @@ in
           {
             name = "plugins/git-auto-fetch";
             tags = [ "from:oh-my-zsh" ];
-          }
-          {
-            name = "paulirish/git-open";
-            tags = [ "as:plugin" ];
           }
           {
             name = "romkatv/powerlevel10k";
