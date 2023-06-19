@@ -127,8 +127,6 @@ in
 
     programs.fzf = {
       enable = true;
-      enableZshIntegration = true;
-      enableBashIntegration = true;
 
       defaultOptions = [
         "--color=bg+:#${config.colorScheme.colors.base01}"
