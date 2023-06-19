@@ -128,20 +128,21 @@ in
     programs.fzf = {
       enable = true;
 
-      defaultOptions = [
-        "--color=bg+:#${config.colorScheme.colors.base01}"
-        "--color=bg:#${config.colorScheme.colors.base00}"
-        "--color=spinner:#${config.colorScheme.colors.base0C}"
-        "--color=hl:#${config.colorScheme.colors.base0D}"
-        "--color=fg:#${config.colorScheme.colors.base04}"
-        "--color=header:#${config.colorScheme.colors.base0D}"
-        "--color=info:#${config.colorScheme.colors.base0A}"
-        "--color=pointer:#${config.colorScheme.colors.base0C}"
-        "--color=marker:#${config.colorScheme.colors.base0C}"
-        "--color=fg+:#${config.colorScheme.colors.base06}"
-        "--color=prompt:#${config.colorScheme.colors.base0A}"
-        "--color=hl+:#${config.colorScheme.colors.base0D}"
-      ];
+      defaultCommand = "fd --type f --hidden";
+      colors = {
+        "bg+" = "#${config.colorScheme.colors.base01}";
+        "bg" = "#${config.colorScheme.colors.base00}";
+        "spinner" = "#${config.colorScheme.colors.base0C}";
+        "hl" = "#${config.colorScheme.colors.base0D}";
+        "fg" = "#${config.colorScheme.colors.base04}";
+        "header" = "#${config.colorScheme.colors.base0D}";
+        "info" = "#${config.colorScheme.colors.base0A}";
+        "pointer" = "#${config.colorScheme.colors.base0C}";
+        "marker" = "#${config.colorScheme.colors.base0C}";
+        "fg+" = "#${config.colorScheme.colors.base06}";
+        "prompt" = "#${config.colorScheme.colors.base0A}";
+        "hl+" = "#${config.colorScheme.colors.base0D}";
+      };
     };
 
     programs.git = {
@@ -316,8 +317,6 @@ in
     home.sessionVariables = {
       EDITOR = "nvim";
       DIRENV_LOG_FORMAT = ""; # shh direnv
-      FZF_DEFAULT_COMMAND = "rg --files --hidden --smart-case";
-      RIPGREP_CONFIG_PATH = "~/.ripgreprc";
 
       # Generally you don't want to reference env vars like this in home-manager
       PATH = builtins.concatStringsSep ":" (config.prependedPaths ++ [ "$PATH" ] ++ config.appendedPaths);
@@ -327,6 +326,21 @@ in
     home.sessionVariablesExtra = ''
       unset __HM_SESS_VARS_SOURCED
     '';
+
+    programs.ripgrep = {
+      enable = true;
+      arguments = [
+        # Allow hidden files to be searched
+        "--hidden"
+
+        # "Searches case insensitively if the pattern is all lowercase. Search case sensitively otherwise."
+        "--smart-case"
+
+        # Ignore some folders
+        "--glob=!**/.git/*"
+        "--glob=!**/node_modules/*"
+      ];
+    };
 
     # z
     programs.z-lua = {
