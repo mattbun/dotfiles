@@ -330,6 +330,11 @@ in
       unset __HM_SESS_VARS_SOURCED
     '';
 
+    # z
+    programs.z-lua = {
+      enable = true;
+    };
+
     programs.bash = {
       enable = true;
       initExtra = ''
@@ -372,9 +377,6 @@ in
           {
             name = "romkatv/powerlevel10k";
             tags = [ "as:theme" "depth:1" ];
-          }
-          {
-            name = "agkozak/zsh-z";
           }
         ];
       };
