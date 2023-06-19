@@ -18,8 +18,6 @@
 !.config/nvim/lua/*.lua
 !.config/stylua
 !.config/stylua/stylua.toml
-!.config/fish/
-!.config/fish/config.fish
 !.config/iterm/
 !.config/iterm/**
 !.config/nixpkgs

@@ -382,5 +382,85 @@ in
         ];
       };
     };
+
+    programs.fish = {
+      enable = true;
+      shellAbbrs = { };
+
+      interactiveShellInit = ''
+        sh ${nix-colors-lib.shellThemeFromScheme { scheme = config.colorScheme; }}
+      '';
+
+      functions = {
+        fish_greeting = "";
+      };
+
+      plugins = [ ];
+    };
+
+    programs.starship = {
+      enable = true;
+      enableBashIntegration = false;
+      enableZshIntegration = false;
+      settings = {
+        add_newline = false;
+        format = lib.concatStrings [
+          "$username"
+          "$hostname"
+          "$directory"
+          "$git_branch"
+          "$git_state"
+          "$git_status"
+          "$cmd_duration"
+          "$status"
+          "$character"
+        ];
+        username = {
+          format = "[$user]($style)";
+          style_user = "bright-black";
+          style_root = "red";
+        };
+        hostname = {
+          format = "[@$hostname]($style) ";
+          style = "bright-black";
+        };
+        directory = {
+          style = "blue";
+          read_only = " [RO]";
+        };
+        git_branch = {
+          format = "[$branch]($style) ";
+          style = "bright-black";
+        };
+        git_status = {
+          format = "[$staged$deleted$renamed](green)[$conflicted](yellow)[$modified$untracked](bright-black)[$ahead_behind](cyan)";
+
+          staged = "+$count ";
+          deleted = "×$count ";
+          renamed = "~$count ";
+
+          conflicted = "=$count ";
+          modified = "!$count ";
+          untracked = "?$count ";
+
+          ahead = "⇡$count ";
+          behind = "⇣$count ";
+          diverged = "$ahead_count⇕$behind_count ";
+        };
+        cmd_duration = {
+          format = "[$duration]($style) ";
+          style = "yellow";
+        };
+        status = {
+          format = "[$common_meaning$signal_name\\($status\\)]($style) ";
+          pipestatus_format = "$pipestatus|$common_meaning$signal_name\\($status\\)]($style) ";
+          disabled = false;
+        };
+        character = {
+          success_symbol = "\\$";
+          error_symbol = "[\\$](red)";
+        };
+      };
+    };
   };
 }
