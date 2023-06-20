@@ -63,7 +63,6 @@ in
 
     home.packages = with pkgs; [
       # base
-      asdf-vm
       bat
       curl
       delta
@@ -335,6 +334,11 @@ in
       enable = true;
     };
 
+    # asdf clone
+    programs.rtx = {
+      enable = true;
+    };
+
     programs.bash = {
       enable = true;
       initExtra = ''
@@ -362,10 +366,6 @@ in
       zplug = {
         enable = true;
         plugins = [
-          {
-            name = "plugins/asdf";
-            tags = [ "from:oh-my-zsh" ];
-          }
           {
             name = "plugins/git";
             tags = [ "from:oh-my-zsh" ];
