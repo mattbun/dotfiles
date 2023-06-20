@@ -17,10 +17,12 @@ in
     nix-colors.homeManagerModule
     ./system.nix
     ./colors/alacritty.nix
+    ./colors/fzf.nix
     ./colors/k9s.nix
     ./colors/tmux.nix
     ./colors/vim.nix
     ./lib/scripts.nix
+    ./lib/search.nix
     ./packages/docker.nix
     ./packages/graphical.nix
     ./packages/kubernetes.nix
@@ -125,24 +127,20 @@ in
       nix-direnv.enable = true;
     };
 
-    programs.fzf = {
-      enable = true;
+    # These options apply to ripgrep and fd (which are used in fzf and neovim)
+    bun.search = {
+      includeHidden = true;
+      includeGitignored = false;
+    };
 
-      defaultCommand = "fd --type f --hidden";
-      colors = {
-        "bg+" = "#${config.colorScheme.colors.base01}";
-        "bg" = "#${config.colorScheme.colors.base00}";
-        "spinner" = "#${config.colorScheme.colors.base0C}";
-        "hl" = "#${config.colorScheme.colors.base0D}";
-        "fg" = "#${config.colorScheme.colors.base04}";
-        "header" = "#${config.colorScheme.colors.base0D}";
-        "info" = "#${config.colorScheme.colors.base0A}";
-        "pointer" = "#${config.colorScheme.colors.base0C}";
-        "marker" = "#${config.colorScheme.colors.base0C}";
-        "fg+" = "#${config.colorScheme.colors.base06}";
-        "prompt" = "#${config.colorScheme.colors.base0A}";
-        "hl+" = "#${config.colorScheme.colors.base0D}";
-      };
+    programs.fzf.enable = true;
+
+    programs.ripgrep = {
+      enable = true;
+      arguments = [
+        # "Searches case insensitively if the pattern is all lowercase. Search case sensitively otherwise."
+        "--smart-case"
+      ];
     };
 
     programs.git = {
@@ -326,21 +324,6 @@ in
     home.sessionVariablesExtra = ''
       unset __HM_SESS_VARS_SOURCED
     '';
-
-    programs.ripgrep = {
-      enable = true;
-      arguments = [
-        # Allow hidden files to be searched
-        "--hidden"
-
-        # "Searches case insensitively if the pattern is all lowercase. Search case sensitively otherwise."
-        "--smart-case"
-
-        # Ignore some folders
-        "--glob=!**/.git/*"
-        "--glob=!**/node_modules/*"
-      ];
-    };
 
     # z
     programs.z-lua = {
