@@ -257,6 +257,10 @@ in
       gcm = "git checkout $(git main-branch)";
       gdca = "git diff --cached";
       gpsup = "git push --set-upstream origin $(git_current_branch)";
+
+      # easier to remember commands that search everything
+      fda = "fd --no-ignore --hidden";
+      rga = "rg --no-ignore --hidden";
     };
 
     # Implemented in ./lib/scripts.nix
