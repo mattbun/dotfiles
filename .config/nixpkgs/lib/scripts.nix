@@ -5,7 +5,7 @@ let
 in
 {
   options = with lib; {
-    home.shellScripts = mkOption {
+    bun.shellScripts = mkOption {
       type = with types; attrsOf string;
       description = "Scripts to add to the PATH";
       default = [ ];
@@ -13,6 +13,6 @@ in
   };
 
   config = {
-    home.packages = convertScriptsToPackages config.home.shellScripts;
+    home.packages = convertScriptsToPackages config.bun.shellScripts;
   };
 }

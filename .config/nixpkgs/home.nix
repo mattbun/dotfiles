@@ -128,6 +128,7 @@ in
     };
 
     # These options apply to ripgrep and fd (which are used in fzf and neovim)
+    # Implemented in ./lib/search.nix
     bun.search = {
       includeHidden = true;
       includeGitignored = false;
@@ -258,8 +259,8 @@ in
       gpsup = "git push --set-upstream origin $(git_current_branch)";
     };
 
-    # This option is not from home-manager, see ./lib/scripts.nix
-    home.shellScripts = {
+    # Implemented in ./lib/scripts.nix
+    bun.shellScripts = {
       nxx = ''
         # Creates a nix-shell with the first argument as package and command to run.
         # Example: `nxx htop`

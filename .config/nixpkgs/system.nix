@@ -17,7 +17,7 @@ in
     # mosh
   ];
 
-  home.shellScripts = {
+  bun.shellScripts = {
     # beep = "echo 'boop'";
   };
 
