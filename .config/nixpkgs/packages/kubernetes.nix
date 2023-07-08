@@ -30,6 +30,11 @@
       '';
     };
 
+    home.sessionVariables = {
+      # On mac, k9s tries to read configuration from ~/Library/Application Support/k9s 🤢
+      K9SCONFIG = lib.mkIf pkgs.stdenv.isDarwin "${config.home.homeDirectory}/.config/k9s";
+    };
+
     programs.k9s = {
       enable = true;
     };
