@@ -186,6 +186,9 @@ in
         fetch = {
           prune = true;
         };
+        push = {
+          autoSetupRemote = true;
+        };
       };
     };
 
