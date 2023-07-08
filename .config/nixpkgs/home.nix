@@ -262,7 +262,7 @@ in
       # git aliases, some of these are in oh-my-zsh/git but good to get them in bash too
       gcm = "git checkout $(git main-branch)";
       gdca = "git diff --cached";
-      gpsup = "git push --set-upstream origin $(git_current_branch)";
+      gpsup = "git push --set-upstream origin $(git branch --show-current)";
 
       # easier to remember commands that search everything
       fda = "fd --no-ignore --hidden";
