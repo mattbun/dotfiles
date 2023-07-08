@@ -70,6 +70,7 @@ in
       git
       git-open
       glow
+      gnused
       gnutar
       gzip
       jq
