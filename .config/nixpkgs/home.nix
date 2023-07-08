@@ -348,10 +348,6 @@ in
 
     programs.bash = {
       enable = true;
-      initExtra = ''
-        # Set up shell color scheme
-        sh ${nix-colors-lib.shellThemeFromScheme { scheme = config.colorScheme; }}
-      '';
     };
 
     programs.zsh = {
