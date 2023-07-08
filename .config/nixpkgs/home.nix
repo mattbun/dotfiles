@@ -237,8 +237,8 @@ in
         set -g default-terminal "screen-256color"
         set -ga terminal-overrides ",xterm-256color*:Tc"
 
-        # Use zsh!
-        set -g default-command "${pkgs.zsh}/bin/zsh"
+        # Use fish!
+        set -g default-command "${pkgs.fish}/bin/fish"
 
         # Name windows after the current directory!
         set-option -g status-interval 5
