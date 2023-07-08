@@ -135,6 +135,9 @@ in
       ignoredPaths = [
         ".git"
       ];
+      includedPaths = [
+        ".env"
+      ];
     };
 
     programs.fzf.enable = true;

@@ -19,13 +19,24 @@ in
 
     bun.search.ignoredPaths = mkOption {
       type = with types; listOf string;
-      description = "Paths to add to ~/.ignore";
+      description = "Paths to ignore when searching";
+      default = [ ];
+    };
+
+    bun.search.includedPaths = mkOption {
+      type = with types; listOf string;
+      description = "Paths to include when searching";
       default = [ ];
     };
   };
 
   config = {
-    home.file.".ignore".text = lib.concatStringsSep "\n" config.bun.search.ignoredPaths;
+    home.file.".ignore".text = lib.concatStringsSep "\n" (
+      lib.concatLists [
+        config.bun.search.ignoredPaths
+        (map (x: "!" + x) config.bun.search.includedPaths)
+      ]
+    );
 
     programs.ripgrep.arguments =
       lib.optionals config.bun.search.includeHidden [ "--hidden" ]
