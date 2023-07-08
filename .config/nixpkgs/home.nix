@@ -132,6 +132,9 @@ in
     bun.search = {
       includeHidden = true;
       includeGitignored = false;
+      ignoredPaths = [
+        ".git"
+      ];
     };
 
     programs.fzf.enable = true;
