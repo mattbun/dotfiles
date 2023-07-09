@@ -31,7 +31,7 @@ in
 
   # These will be added to the PATH environment variable
   prependedPaths = [
-    "${homeDirectory}/.asdf/shims"
+    # "${homeDirectory}/.bin"
   ];
   appendedPaths = [
     # "${homeDirectory}/.bin"
