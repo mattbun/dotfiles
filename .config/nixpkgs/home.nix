@@ -329,6 +329,7 @@ in
     home.sessionVariables = {
       EDITOR = "nvim";
       DIRENV_LOG_FORMAT = ""; # shh direnv
+      _ZL_HYPHEN = 1; # Tell z.lua to treat hyphens like normal characters and not part of a regex
 
       # Generally you don't want to reference env vars like this in home-manager
       PATH = builtins.concatStringsSep ":" (config.prependedPaths ++ [ "$PATH" ] ++ config.appendedPaths);
