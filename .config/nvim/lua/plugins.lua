@@ -208,27 +208,6 @@ return require("packer").startup(function(use)
   })
 
   use({
-    "AndrewRadev/switch.vim",
-    setup = function()
-      vim.g.switch_mapping = "-"
-      vim.g.switch_custom_definitions = {
-        { "!=", "==" },
-        { "'", '"' },
-        { "-", "_" },
-        { "0", "1" },
-        {
-          _type = "normalized_case_words",
-          _definition = { "on", "off" },
-        },
-        {
-          _type = "normalized_case_words",
-          _definition = { "yes", "no" },
-        },
-      }
-    end,
-  })
-
-  use({
     "lewis6991/gitsigns.nvim",
     requires = {
       "nvim-lua/plenary.nvim",

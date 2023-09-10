@@ -237,6 +237,11 @@ in
           type = "lua";
           config = builtins.readFile ./nvim/nvim-tree.lua;
         }
+        {
+          plugin = switch-vim;
+          type = "lua";
+          config = builtins.readFile ./nvim/switch.lua;
+        }
       ];
     };
 
