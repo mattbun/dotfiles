@@ -222,6 +222,16 @@ in
           type = "lua";
           config = builtins.readFile ./nvim/gitlinker.lua;
         }
+        {
+          plugin = indent-blankline-nvim;
+          type = "lua";
+          config = builtins.readFile ./nvim/indent-blankline.lua;
+        }
+        {
+          plugin = kommentary;
+          type = "lua";
+          config = builtins.readFile ./nvim/kommentary.lua;
+        }
       ];
     };
 

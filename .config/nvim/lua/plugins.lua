@@ -25,24 +25,6 @@ return require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
 
   use({
-    "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require("indent_blankline").setup({
-        enabled = false, -- disable by default
-      })
-    end,
-  })
-
-  use({
-    "b3nj5m1n/kommentary",
-    config = function()
-      require("kommentary.config").configure_language("default", {
-        prefer_single_line_comments = true,
-      })
-    end,
-  })
-
-  use({
     "williamboman/mason.nvim",
     requires = {
       "neovim/nvim-lspconfig",
