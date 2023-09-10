@@ -50,10 +50,6 @@ return require("packer").startup(function(use)
   })
 
   use({
-    "jghauser/mkdir.nvim",
-  })
-
-  use({
     "williamboman/mason.nvim",
     requires = {
       "neovim/nvim-lspconfig",
@@ -306,17 +302,6 @@ return require("packer").startup(function(use)
         current_line_blame_opts = {
           delay = 0,
         },
-      })
-    end,
-  })
-
-  use({
-    "ruifm/gitlinker.nvim",
-    requires = "nvim-lua/plenary.nvim",
-    config = function()
-      require("gitlinker").setup({
-        -- TODO setting this to nil like the documentation says doesn't disable it
-        mappings = "<leader>abcdef",
       })
     end,
   })

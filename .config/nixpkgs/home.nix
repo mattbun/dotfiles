@@ -209,6 +209,15 @@ in
 
     programs.neovim = {
       enable = true;
+      plugins = with pkgs.vimPlugins; [
+        mkdir-nvim
+
+        {
+          plugin = gitlinker-nvim;
+          type = "lua";
+          config = builtins.readFile ./nvim/gitlinker.lua;
+        }
+      ];
     };
 
     programs.tealdeer = {
