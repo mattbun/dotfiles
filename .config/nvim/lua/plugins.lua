@@ -85,24 +85,6 @@ return require("packer").startup(function(use)
   })
 
   use({
-    "jose-elias-alvarez/null-ls.nvim",
-    requires = {
-      "neovim/nvim-lspconfig",
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      require("null-ls").setup({
-        sources = {
-          require("null-ls").builtins.formatting.stylua,
-          require("null-ls").builtins.formatting.prettier.with({
-            only_local = "node_modules/.bin",
-          }),
-        },
-      })
-    end,
-  })
-
-  use({
     "hrsh7th/nvim-cmp",
     requires = {
       "neovim/nvim-lspconfig",

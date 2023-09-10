@@ -217,6 +217,7 @@ in
       plugins = with pkgs.vimPlugins; [
         glow-nvim
         mkdir-nvim
+        nvim-lspconfig
         plenary-nvim
         telescope-fzf-native-nvim
         vim-eunuch
@@ -248,6 +249,11 @@ in
           plugin = lualine-nvim;
           type = "lua";
           config = builtins.readFile ./nvim/lualine.lua;
+        }
+        {
+          plugin = null-ls-nvim;
+          type = "lua";
+          config = builtins.readFile ./nvim/null-ls.lua;
         }
         {
           plugin = nvim-tree-lua;
