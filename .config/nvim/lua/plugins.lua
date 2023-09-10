@@ -174,39 +174,6 @@ return require("packer").startup(function(use)
     end,
   })
 
-  use({
-    "nvim-lualine/lualine.nvim",
-    config = function()
-      require("lualine").setup({
-        options = {
-          icons_enabled = false,
-          theme = "auto",
-          component_separators = { "", "" },
-          section_separators = { "", "" },
-          disabled_filetypes = {},
-        },
-        sections = {
-          lualine_a = { "mode" },
-          lualine_b = { "branch" },
-          lualine_c = { { "filename", path = 1 } },
-          lualine_x = { "filetype" },
-          lualine_y = { "progress" },
-          lualine_z = { "location" },
-        },
-        inactive_sections = {
-          lualine_a = {},
-          lualine_b = {},
-          lualine_c = { { "filename", path = 1 } },
-          lualine_x = { "location" },
-          lualine_y = {},
-          lualine_z = {},
-        },
-        tabline = {},
-        extensions = {},
-      })
-    end,
-  })
-
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

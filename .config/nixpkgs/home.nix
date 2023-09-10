@@ -197,7 +197,6 @@ in
 
     xdg.configFile."nvim/init.lua".text = ''
       vim.cmd('source ~/.vimrc')
-      vim.cmd('runtime colorscheme.vim')
 
       require("lsp")
       require("plugins")
@@ -209,6 +208,12 @@ in
 
     programs.neovim = {
       enable = true;
+
+      # The colorscheme needs to be loaded before lualine is started
+      extraLuaConfig = ''
+        vim.cmd('runtime colorscheme.vim')
+      '';
+
       plugins = with pkgs.vimPlugins; [
         glow-nvim
         mkdir-nvim
@@ -237,6 +242,11 @@ in
           plugin = kommentary;
           type = "lua";
           config = builtins.readFile ./nvim/kommentary.lua;
+        }
+        {
+          plugin = lualine-nvim;
+          type = "lua";
+          config = builtins.readFile ./nvim/lualine.lua;
         }
         {
           plugin = nvim-tree-lua;
