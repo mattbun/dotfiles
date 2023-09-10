@@ -223,6 +223,11 @@ in
           config = builtins.readFile ./nvim/gitlinker.lua;
         }
         {
+          plugin = gitsigns-nvim;
+          type = "lua";
+          config = builtins.readFile ./nvim/gitsigns.lua;
+        }
+        {
           plugin = indent-blankline-nvim;
           type = "lua";
           config = builtins.readFile ./nvim/indent-blankline.lua;
