@@ -212,6 +212,7 @@ in
       plugins = with pkgs.vimPlugins; [
         glow-nvim
         mkdir-nvim
+        plenary-nvim
         vim-eunuch
         vim-graphql
         vim-nix
