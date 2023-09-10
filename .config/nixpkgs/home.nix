@@ -210,7 +210,12 @@ in
     programs.neovim = {
       enable = true;
       plugins = with pkgs.vimPlugins; [
+        glow-nvim
         mkdir-nvim
+        vim-eunuch
+        vim-graphql
+        vim-nix
+        vim-terraform
 
         {
           plugin = gitlinker-nvim;

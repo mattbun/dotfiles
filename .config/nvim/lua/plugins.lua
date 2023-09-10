@@ -24,13 +24,6 @@ return require("packer").startup(function(use)
   -- Let packer update itself
   use("wbthomason/packer.nvim")
 
-  use("editorconfig/editorconfig-vim")
-  use("tpope/vim-eunuch")
-  use("AndrewRadev/linediff.vim")
-  use("ellisonleao/glow.nvim")
-  use("hashivim/vim-terraform")
-  use("jparise/vim-graphql")
-
   use({
     "lukas-reineke/indent-blankline.nvim",
     config = function()
@@ -335,8 +328,6 @@ return require("packer").startup(function(use)
       })
     end,
   })
-
-  use("LnL7/vim-nix")
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
