@@ -281,36 +281,6 @@ return require("packer").startup(function(use)
     end,
   })
 
-  use({
-    "kyazdani42/nvim-tree.lua",
-    config = function()
-      require("nvim-tree").setup({
-        renderer = {
-          icons = {
-            show = {
-              git = false,
-              file = false,
-              folder = true,
-              folder_arrow = false,
-            },
-            glyphs = {
-              folder = {
-                arrow_open = "▾",
-                arrow_closed = "▸",
-                default = "▸",
-                empty = "▸",
-                empty_open = "▾",
-                open = "▾",
-                symlink = "▸",
-                symlink_open = "▾",
-              },
-            },
-          },
-        },
-      })
-    end,
-  })
-
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

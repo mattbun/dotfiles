@@ -232,6 +232,11 @@ in
           type = "lua";
           config = builtins.readFile ./nvim/kommentary.lua;
         }
+        {
+          plugin = nvim-tree-lua;
+          type = "lua";
+          config = builtins.readFile ./nvim/nvim-tree.lua;
+        }
       ];
     };
 
