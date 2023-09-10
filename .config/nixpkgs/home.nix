@@ -215,6 +215,13 @@ in
       '';
 
       plugins = with pkgs.vimPlugins; [
+        cmp-buffer
+        cmp-calc
+        cmp-emoji
+        cmp-nvim-lsp
+        cmp-path
+        cmp-vsnip
+        friendly-snippets
         glow-nvim
         mkdir-nvim
         nvim-lspconfig
@@ -224,6 +231,8 @@ in
         vim-graphql
         vim-nix
         vim-terraform
+        vim-vsnip
+        vim-vsnip-integ
 
         {
           plugin = gitlinker-nvim;
@@ -254,6 +263,11 @@ in
           plugin = null-ls-nvim;
           type = "lua";
           config = builtins.readFile ./nvim/null-ls.lua;
+        }
+        {
+          plugin = nvim-cmp;
+          type = "lua";
+          config = builtins.readFile ./nvim/cmp.lua;
         }
         {
           plugin = nvim-tree-lua;

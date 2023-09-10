@@ -85,50 +85,6 @@ return require("packer").startup(function(use)
   })
 
   use({
-    "hrsh7th/nvim-cmp",
-    requires = {
-      "neovim/nvim-lspconfig",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-calc",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-emoji",
-      "hrsh7th/cmp-vsnip",
-      "hrsh7th/vim-vsnip",
-      "hrsh7th/vim-vsnip-integ",
-      "rafamadriz/friendly-snippets",
-    },
-    config = function()
-      local cmp = require("cmp")
-
-      cmp.setup({
-        snippet = {
-          expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
-          end,
-        },
-        mapping = {
-          ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-e>"] = cmp.mapping.close(),
-          ["<CR>"] = cmp.mapping.confirm({ select = false }),
-          ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
-          ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
-        },
-        sources = {
-          { name = "nvim_lsp" },
-          { name = "vsnip" },
-          { name = "buffer" },
-          { name = "emoji", insert = true },
-          { name = "calc" },
-          { name = "path" },
-        },
-      })
-    end,
-  })
-
-  use({
     "ray-x/lsp_signature.nvim",
     config = function()
       local lspsignature = require("lsp_signature")
