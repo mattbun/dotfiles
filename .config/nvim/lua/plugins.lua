@@ -158,22 +158,6 @@ return require("packer").startup(function(use)
     end,
   })
 
-  use({
-    "nvim-telescope/telescope.nvim",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-    },
-    config = function()
-      local telescope = require("telescope")
-
-      telescope.load_extension("fzf")
-      telescope.setup({
-        disable_devicons = true,
-      })
-    end,
-  })
-
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

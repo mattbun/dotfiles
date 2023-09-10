@@ -218,6 +218,7 @@ in
         glow-nvim
         mkdir-nvim
         plenary-nvim
+        telescope-fzf-native-nvim
         vim-eunuch
         vim-graphql
         vim-nix
@@ -257,6 +258,11 @@ in
           plugin = switch-vim;
           type = "lua";
           config = builtins.readFile ./nvim/switch.lua;
+        }
+        {
+          plugin = telescope-nvim;
+          type = "lua";
+          config = builtins.readFile ./nvim/telescope.lua;
         }
       ];
     };
