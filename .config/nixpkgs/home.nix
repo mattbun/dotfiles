@@ -195,22 +195,19 @@ in
       };
     };
 
-    xdg.configFile."nvim/init.lua".text = ''
-      vim.cmd('source ~/.vimrc')
-
-      require("lsp")
-      require("mappings")
-
-      -- show substitutions
-      vim.o.inccommand = "nosplit"
-    '';
-
     programs.neovim = {
       enable = true;
 
       # The colorscheme needs to be loaded before lualine is started
       extraLuaConfig = ''
         vim.cmd('runtime colorscheme.vim')
+        vim.cmd('source ~/.vimrc')
+
+        require("lsp")
+        require("mappings")
+
+        -- show substitutions
+        vim.o.inccommand = "nosplit"
       '';
 
       plugins = with pkgs.vimPlugins; [
