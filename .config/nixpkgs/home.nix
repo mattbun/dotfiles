@@ -223,6 +223,7 @@ in
         cmp-vsnip
         friendly-snippets
         glow-nvim
+        mason-lspconfig-nvim
         mkdir-nvim
         nvim-lspconfig
         plenary-nvim
@@ -258,6 +259,11 @@ in
           plugin = lualine-nvim;
           type = "lua";
           config = builtins.readFile ./nvim/lualine.lua;
+        }
+        {
+          plugin = mason-nvim;
+          type = "lua";
+          config = builtins.readFile ./nvim/mason.lua;
         }
         {
           plugin = null-ls-nvim;
