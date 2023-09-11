@@ -199,7 +199,6 @@ in
       vim.cmd('source ~/.vimrc')
 
       require("lsp")
-      require("plugins")
       require("mappings")
 
       -- show substitutions
