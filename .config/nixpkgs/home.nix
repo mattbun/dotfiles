@@ -232,6 +232,11 @@ in
         vim-vsnip-integ
 
         {
+          plugin = formatter-nvim;
+          type = "lua";
+          config = builtins.readFile ./nvim/formatter.lua;
+        }
+        {
           plugin = gitlinker-nvim;
           type = "lua";
           config = builtins.readFile ./nvim/gitlinker.lua;
@@ -260,11 +265,6 @@ in
           plugin = mason-nvim;
           type = "lua";
           config = builtins.readFile ./nvim/mason.lua;
-        }
-        {
-          plugin = null-ls-nvim;
-          type = "lua";
-          config = builtins.readFile ./nvim/null-ls.lua;
         }
         {
           plugin = nvim-cmp;
