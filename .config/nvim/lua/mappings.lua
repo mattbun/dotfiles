@@ -3,6 +3,9 @@ local map = function(mode, hotkey, cmd, opts)
   return vim.api.nvim_set_keymap(mode, hotkey, cmd, opts)
 end
 
+-- Unmap space so it can be used as leader
+vim.keymap.set("", "<Space>", "", { noremap = true, silent = true })
+
 -- Leader-based shortcuts
 map("n", "<leader><leader>", "<Cmd>Telescope find_files disable_devicons=true<cr>")
 map("n", "<leader>[", "<C-o>")
@@ -67,7 +70,7 @@ map("n", "<leader>h", "<Cmd>lua vim.lsp.buf.hover()<CR>")
 map("n", "<leader>i", "<Cmd>IndentBlanklineToggle<CR>")
 map("n", "<leader>m", "<Cmd>Glow<CR>")
 map("n", "<leader>n", "<Cmd>lua vim.lsp.buf.rename()<CR>")
-map("n", "<leader>p", "<Cmd>lua vim.lsp.buf.format()<CR>")
+vim.keymap.set({ "n", "v" }, "<leader>p", vim.lsp.buf.format)
 map(
   "n",
   "<leader>P",
