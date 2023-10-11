@@ -77,7 +77,13 @@ local mappings = {
     ["<leader>ls"] = require("telescope.builtin").lsp_document_symbols,
     ["<leader>lS"] = require("telescope.builtin").lsp_workspace_symbols,
     ["<leader>lt"] = require("telescope.builtin").lsp_type_definitions,
-    ["<leader>m"] = "<Cmd>Glow<CR>", -- TODO
+    ["<leader>m"] = function()
+      require("glow").execute({
+        fargs = {
+          vim.fn.expand("%"),
+        },
+      })
+    end,
     ["<leader>n"] = vim.lsp.buf.rename,
     ["<leader>q"] = vim.lsp.buf.hover,
     ["<leader>s"] = vim.lsp.buf.signature_help,

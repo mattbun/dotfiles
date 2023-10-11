@@ -218,7 +218,6 @@ in
         cmp-path
         cmp-vsnip
         friendly-snippets
-        glow-nvim
         mason-lspconfig-nvim
         mkdir-nvim
         nvim-lspconfig
@@ -235,6 +234,11 @@ in
           plugin = gitlinker-nvim;
           type = "lua";
           config = builtins.readFile ./nvim/gitlinker.lua;
+        }
+        {
+          plugin = glow-nvim;
+          type = "lua";
+          config = "require('glow').setup()";
         }
         {
           plugin = gitsigns-nvim;
