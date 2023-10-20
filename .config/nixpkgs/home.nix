@@ -26,6 +26,7 @@ in
     ./packages/docker.nix
     ./packages/graphical.nix
     ./packages/kubernetes.nix
+    ./packages/sway.nix
   ];
 
   options = with lib; {
