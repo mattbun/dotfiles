@@ -173,7 +173,7 @@ let
           "custom/userhostname" = {
             interval = "once";
             exec = pkgs.writeShellScript "userhostname" ''
-              echo " $(whoami)@$(hostname) "
+              echo -e "$(whoami)@$(hostname)\n$(uname -smrn)"
             '';
             on-click = pkgs.writeShellScript "power-menu" ''
               swaynag \

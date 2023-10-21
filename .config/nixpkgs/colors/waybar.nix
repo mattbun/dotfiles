@@ -41,7 +41,7 @@ in
         background: ${config.packageSets.sway.accentColor};
     }
 
-    #mode, #clock, #battery, #tray, #cpu, #memory, #disk, #pulseaudio {
+    #mode, #clock, #battery, #tray, #cpu, #memory, #disk, #pulseaudio, #custom-userhostname {
         padding: 0 10px;
     }
 
