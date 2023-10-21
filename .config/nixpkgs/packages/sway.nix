@@ -141,6 +141,17 @@ let
           "clock#date" = {
             interval = 1;
             format = "{:%Y-%m-%d}";
+            tooltip-format = "<tt><small>{calendar}</small></tt>";
+            calendar = {
+              mode = "month";
+              mode-mon-col = 3;
+              format = {
+                today = "<span color='${config.packageSets.sway.accentColor}'><b>{}</b></span>";
+              };
+            };
+            actions = {
+              on-click-right = "mode";
+            };
             on-click = pkgs.writeShellScript "copy-datestamp" ''
               datestamp="$(date -I)"
               echo $datestamp | ${pkgs.wl-clipboard}/bin/wl-copy
