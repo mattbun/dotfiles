@@ -162,6 +162,7 @@ let
           "clock#time" = {
             interval = 1;
             format = "{:%H:%M:%S}";
+            tooltip-format = "{:%Y-%m-%dT%H:%M:%S%Ez}";
             on-click = pkgs.writeShellScript "copy-timestamp" ''
               timestamp="$(date -Iseconds)"
               echo $timestamp | ${pkgs.wl-clipboard}/bin/wl-copy
