@@ -93,6 +93,7 @@ let
       enable = true;
       settings = {
         mainBar = {
+          height = 24;
           layer = "top";
           position = "top";
           modules-left = [ "sway/workspaces" "sway/mode" "wlr/taskbar" ];
