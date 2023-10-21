@@ -11,7 +11,7 @@ in
     docker = false;
     graphical = false;
     kubernetes = false;
-    sway = false;
+    sway.enable = false;
   };
 
   home.packages = with pkgs; [
