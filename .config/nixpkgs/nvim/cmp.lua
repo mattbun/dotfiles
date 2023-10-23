@@ -1,5 +1,57 @@
 local cmp = require("cmp")
 
+local Job = require("plenary.job")
+local git_commits_source = {
+  cached = false,
+  cached_commits = {},
+}
+
+function git_commits_source:is_available()
+  return true
+end
+
+function git_commits_source:complete(_, callback)
+  if self.cached then
+    callback(self.cached_commits)
+  else
+    Job:new({
+      command = "git",
+      args = {
+        "log",
+        "--author",
+        "Matt Rathbun",
+        "-n",
+        "100",
+        "--since",
+        "2 weeks",
+        "--pretty=format:%s",
+      },
+      on_exit = vim.schedule_wrap(function(job, code)
+        if code ~= 0 then
+          callback({})
+          return
+        end
+
+        -- local commits = {}
+        for _, commit in ipairs(job:result()) do
+          table.insert(self.cached_commits, {
+            label = commit,
+          })
+        end
+
+        self.cached = true
+        callback(self.cached_commits)
+      end),
+    }):start()
+  end
+end
+
+function git_commits_source:execute(completion_item, callback)
+  callback(completion_item)
+end
+
+cmp.register_source("git_commits", git_commits_source)
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -23,4 +75,10 @@ cmp.setup({
     { name = "calc" },
     { name = "path" },
   },
+})
+
+cmp.setup.filetype("gitcommit", {
+  sources = cmp.config.sources({
+    { name = "git_commits" },
+  }),
 })
