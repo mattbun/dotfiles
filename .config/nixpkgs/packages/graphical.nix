@@ -12,9 +12,10 @@
   };
 
   config = lib.mkIf config.packageSets.graphical {
+    packageSets.fonts.enable = true;
+
     home.packages = with pkgs; [
       alacritty
-      hack-font
     ];
 
     programs.alacritty = {
@@ -22,7 +23,7 @@
       settings = {
         font = {
           normal = {
-            family = "Hack";
+            family = config.packageSets.fonts.default;
           };
           size = 13.0;
         };

@@ -45,7 +45,7 @@ let
         --button-text "${colorScheme.colors.base07}" \
         --button-background "${colorScheme.colors.base00}" \
         --button-border-size "1" \
-        --font "Hack Nerd Font 12" \
+        --font "${config.packageSets.fonts.default} 12" \
         -y top \
         -t warning \
         -m "> > > > >" \
@@ -55,10 +55,9 @@ let
         --dismiss-button "  cancel "
     ''; in
     {
-      fonts.fontconfig.enable = true;
+      packageSets.fonts.enable = true;
 
       home.packages = with pkgs; [
-        (nerdfonts.override { fonts = [ "Hack" ]; })
         grim
         libnotify
         mc
@@ -257,7 +256,7 @@ let
 
       services.mako = {
         enable = true;
-        font = "monospace 12";
+        font = "${config.packageSets.fonts.default} 12";
         backgroundColor = "#${colorScheme.colors.base00}FF";
         borderColor = "${config.packageSets.sway.accentColor}FF";
         progressColor = "#${colorScheme.colors.base07}FF"; # TODO not sure how to test this
@@ -267,7 +266,7 @@ let
         enable = true;
         package = pkgs.rofi-wayland;
         terminal = "${pkgs.alacritty}/bin/alacritty";
-        font = "Hack 12";
+        font = "${config.packageSets.fonts.default} 12";
         plugins = with pkgs; [
           rofi-calc # TODO doesn't work with keybinding
         ];

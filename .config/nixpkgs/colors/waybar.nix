@@ -10,7 +10,7 @@ in
     * {
         border: none;
         border-radius: 0;
-        font-family: Hack Nerd Font Mono, Roboto, Helvetica, Arial, sans-serif;
+        font-family: ${config.packageSets.fonts.default}, Roboto, Helvetica, Arial, sans-serif;
         font-size: 16px;
         min-height: 0;
         color: #${colorScheme.colors.base07};

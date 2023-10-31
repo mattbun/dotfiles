@@ -15,17 +15,13 @@ let
   };
 
   config = lib.mkIf config.packageSets.foot.enable {
-    fonts.fontconfig.enable = true; # see fonts with `fc-list`
-
-    home.packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "Hack" ]; })
-    ];
+    packageSets.fonts.enable = true;
 
     programs.foot = {
       enable = true;
       settings = {
         main = {
-          font = "Hack Nerd Font:size=9";
+          font = "${config.packageSets.fonts.default}:size=9";
           shell = "${pkgs.tmux}/bin/tmux";
         };
         colors = {
