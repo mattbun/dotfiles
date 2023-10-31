@@ -11,6 +11,7 @@ in
     docker = false;
     graphical = false;
     kubernetes = false;
+    foot.enable = false;
     sway.enable = false;
   };
 

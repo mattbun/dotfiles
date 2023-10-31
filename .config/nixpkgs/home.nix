@@ -26,6 +26,7 @@ in
     ./lib/scripts.nix
     ./lib/search.nix
     ./packages/docker.nix
+    ./packages/foot.nix
     ./packages/graphical.nix
     ./packages/kubernetes.nix
     ./packages/sway.nix
