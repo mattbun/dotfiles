@@ -21,7 +21,7 @@ let
       enable = true;
       settings = {
         main = {
-          font = "${config.packageSets.fonts.default}:size=9";
+          font = "${config.packageSets.fonts.default}:size=7";
           shell = "${pkgs.tmux}/bin/tmux";
         };
         colors = {
