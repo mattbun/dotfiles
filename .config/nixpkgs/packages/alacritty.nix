@@ -4,14 +4,14 @@
 , ...
 }: {
   options = with lib; {
-    packageSets.graphical = mkOption {
+    packageSets.alacritty.enable = mkOption {
       type = types.bool;
-      description = "Whether or not to install graphical packages";
+      description = "Whether or not to install and configure alacritty";
       default = false;
     };
   };
 
-  config = lib.mkIf config.packageSets.graphical {
+  config = lib.mkIf config.packageSets.alacritty.enable {
     packageSets.fonts.enable = true;
 
     home.packages = with pkgs; [
@@ -35,6 +35,5 @@
         };
       };
     };
-
   };
 }

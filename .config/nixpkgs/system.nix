@@ -8,10 +8,15 @@ let
 in
 {
   packageSets = {
+    # Development
     docker = false;
-    graphical = false;
     kubernetes = false;
+
+    # Terminals
+    alacritty.enable = false;
     foot.enable = false;
+
+    # Desktops
     sway.enable = false;
   };
 

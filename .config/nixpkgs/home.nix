@@ -28,7 +28,7 @@ in
     ./packages/docker.nix
     ./packages/fonts.nix
     ./packages/foot.nix
-    ./packages/graphical.nix
+    ./packages/alacritty.nix
     ./packages/kubernetes.nix
     ./packages/sway.nix
   ];
