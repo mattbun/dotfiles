@@ -14,6 +14,13 @@ let
         default = false;
       };
 
+      terminal = mkOption {
+        # type = types.pathInStore;
+        type = types.path;
+        description = "Terminal to use in hotkeys and other shortcuts";
+        default = "${pkgs.alacritty}/bin/alacritty";
+      };
+
       accentColor = mkOption {
         type = types.str;
         description = "Accent color to use in notifications and menus in '#RRGGBB' format";
@@ -71,7 +78,7 @@ let
         enable = true;
         config = rec {
           modifier = "Mod4";
-          terminal = "alacritty";
+          terminal = config.packageSets.sway.terminal;
           startup = [ ];
           input = {
             "*" = {
@@ -111,7 +118,7 @@ let
               "${modifier}+9" = "workspace number 9";
               "${modifier}+Down" = "focus down";
               "${modifier}+Left" = "focus left";
-              "${modifier}+Return" = "exec alacritty";
+              "${modifier}+Return" = "exec ${config.packageSets.sway.terminal}";
               "${modifier}+Right" = "focus right";
               "${modifier}+Shift+1" = "move container to workspace number 1";
               "${modifier}+Shift+2" = "move container to workspace number 2";
@@ -190,7 +197,7 @@ let
                 speaker = "󰓃";
                 default = [ "󰖀" "󰕾" ];
               };
-              on-click = "${pkgs.alacritty}/bin/alacritty -e alsamixer";
+              on-click = "${config.packageSets.sway.terminal} -e alsamixer";
             };
 
             disk = {
@@ -202,13 +209,13 @@ let
             cpu = {
               interval = 10;
               format = "cpu: {usage}%";
-              on-click = "alacritty -e htop";
+              on-click = "${config.packageSets.sway.terminal} -e htop";
             };
 
             memory = {
               interval = 10;
               format = "mem: {percentage}%";
-              on-click = "alacritty -e htop";
+              on-click = "${config.packageSets.sway.terminal} -e htop";
             };
 
             "clock#date" = {
@@ -265,7 +272,7 @@ let
       programs.rofi = {
         enable = true;
         package = pkgs.rofi-wayland;
-        terminal = "${pkgs.alacritty}/bin/alacritty";
+        terminal = "${config.packageSets.sway.terminal}";
         font = "${config.packageSets.fonts.default} 12";
         plugins = with pkgs; [
           rofi-calc # TODO doesn't work with keybinding
