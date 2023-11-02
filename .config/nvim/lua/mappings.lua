@@ -67,7 +67,7 @@ local mappings = {
       require("gitlinker").get_repo_url({ action_callback = require("gitlinker.actions").copy_to_clipboard })
     end,
     ["<leader>h"] = require("telescope.builtin").oldfiles,
-    ["<leader>i"] = require("indent_blankline.commands").toggle,
+    ["<leader>i"] = vim.cmd.IBLToggle,
     ["<leader>la"] = require("telescope.builtin").lsp_code_actions,
     ["<leader>ld"] = require("telescope.builtin").lsp_definitions,
     ["<leader>lf"] = vim.lsp.buf.format,

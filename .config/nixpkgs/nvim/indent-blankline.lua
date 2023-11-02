@@ -1,3 +1,3 @@
-require("indent_blankline").setup({
+require("ibl").setup({
   enabled = false, -- disable by default
 })
