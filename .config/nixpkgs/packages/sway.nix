@@ -105,6 +105,8 @@ let
           keybindings =
             let
               modifier = config.wayland.windowManager.sway.config.modifier;
+              alt = "Mod1";
+              super = "Mod4";
             in
             lib.mkOptionDefault {
               "${modifier}+1" = "workspace number 1";
@@ -147,7 +149,7 @@ let
               "${modifier}+Up" = "focus up";
               "${modifier}+a" = "focus parent";
               "${modifier}+b" = "splith";
-              "${modifier}+d" = "exec /nix/store/6jp4lncxh5c9cwkrdr0vy049fzp885gm-rofi-1.7.5+wayland1/bin/rofi -show combi -show-icons -combi-modes 'drun,run,ssh'";
+              "${modifier}+d" = "exec ${pkgs.rofi-wayland}/bin/rofi -show combi -show-icons -combi-modes 'drun,run,ssh'";
               "${modifier}+e" = "layout toggle split";
               "${modifier}+f" = "fullscreen toggle";
               "${modifier}+h" = "focus left";
@@ -160,7 +162,7 @@ let
               "${modifier}+space" = "focus mode_toggle";
               "${modifier}+v" = "splitv";
               "${modifier}+w" = "layout tabbed";
-              "Alt+F2" = "${pkgs.rofi-wayland}/bin/rofi -show run"; # TODO doesn't work
+              "${alt}+F2" = "exec ${pkgs.rofi-wayland}/bin/rofi -show run"; # TODO doesn't work
               "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
               "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
               "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
