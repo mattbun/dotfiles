@@ -18,13 +18,13 @@ in
     };
 
     bun.search.ignoredPaths = mkOption {
-      type = with types; listOf string;
+      type = with types; listOf str;
       description = "Paths to ignore when searching";
       default = [ ];
     };
 
     bun.search.includedPaths = mkOption {
-      type = with types; listOf string;
+      type = with types; listOf str;
       description = "Paths to include when searching";
       default = [ ];
     };

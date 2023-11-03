@@ -35,13 +35,13 @@ in
 
   options = with lib; {
     prependedPaths = mkOption {
-      type = with types; listOf string;
+      type = with types; listOf str;
       description = "Paths to prepend to the PATH environment variable";
       default = [ ];
     };
 
     appendedPaths = mkOption {
-      type = with types; listOf string;
+      type = with types; listOf str;
       description = "Paths to append to the PATH environment variable";
       default = [ ];
     };

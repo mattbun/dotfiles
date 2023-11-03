@@ -6,7 +6,7 @@ in
 {
   options = with lib; {
     bun.shellScripts = mkOption {
-      type = with types; attrsOf string;
+      type = with types; attrsOf str;
       description = "Scripts to add to the PATH";
       default = [ ];
     };
