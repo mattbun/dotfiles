@@ -6,7 +6,7 @@
 let
   colorScheme = config.colorScheme;
   colors = config.colorScheme.colors;
-  accentColor = config.packageSets.sway.accentColor;
+  accentColor = config.bun.accentColor;
 in
 {
   options = with lib; {
@@ -22,12 +22,6 @@ in
         type = types.path;
         description = "Terminal to use in hotkeys and other shortcuts";
         default = "${pkgs.alacritty}/bin/alacritty";
-      };
-
-      accentColor = mkOption {
-        type = types.str;
-        description = "Accent color to use in notifications and menus in '#RRGGBB' format";
-        default = "#${colorScheme.colors.base0E}"; # some good options: 0E -> purple, 0C -> cyan, 09 -> orange
       };
 
       background = mkOption {
@@ -48,9 +42,9 @@ in
     let powerMenu = pkgs.writeShellScript "power-menu" ''
       swaynag \
         --background "${colorScheme.colors.base00}" \
-        --border-bottom "${config.packageSets.sway.accentColor}" \
+        --border-bottom "#${accentColor}" \
         --border-bottom-size "0" \
-        --border "${config.packageSets.sway.accentColor}" \
+        --border "#${accentColor}" \
         --text "${colorScheme.colors.base07}" \
         --button-text "${colorScheme.colors.base07}" \
         --button-background "${colorScheme.colors.base00}" \
@@ -174,7 +168,7 @@ in
 
         extraConfig = ''
           # Property Name         Border  BG      Text    Indicator Child Border
-          client.focused          #${colors.base05} ${accentColor} #${colors.base05} ${accentColor} ${accentColor}
+          client.focused          #${colors.base05} #${accentColor} #${colors.base05} #${accentColor} #${accentColor}
           client.focused_inactive #${colors.base01} #${colors.base01} #${colors.base05} #${colors.base03} #${colors.base01}
           client.unfocused        #${colors.base01} #${colors.base00} #${colors.base05} #${colors.base01} #${colors.base01}
           client.urgent           #${colors.base08} #${colors.base08} #${colors.base00} #${colors.base08} #${colors.base08}
@@ -241,7 +235,7 @@ in
                 mode = "month";
                 mode-mon-col = 3;
                 format = {
-                  today = "<span color='${config.packageSets.sway.accentColor}'><b>{}</b></span>";
+                  today = "<span color='#${accentColor}'><b>{}</b></span>";
                 };
               };
               actions = {
@@ -280,7 +274,7 @@ in
         enable = true;
         font = "${config.packageSets.fonts.default} 12";
         backgroundColor = "#${colorScheme.colors.base00}FF";
-        borderColor = "${config.packageSets.sway.accentColor}FF";
+        borderColor = "#${accentColor}FF";
         progressColor = "#${colorScheme.colors.base07}FF"; # TODO not sure how to test this
       };
 

@@ -19,7 +19,7 @@ in
     "*" = {
       bg0 = mkLiteral "#${colorScheme.colors.base00}";
       fg0 = mkLiteral "#${colorScheme.colors.base06}";
-      accent-color = mkLiteral "${config.packageSets.sway.accentColor}";
+      accent-color = mkLiteral "#${config.bun.accentColor}";
       urgent-color = mkLiteral "#${colorScheme.colors.base08}";
 
       background-color = mkLiteral "transparent";
