@@ -45,6 +45,12 @@ in
       description = "Paths to append to the PATH environment variable";
       default = [ ];
     };
+
+    bun.accentColor = mkOption {
+      type = types.str;
+      description = "Accent color to use in a few places";
+      default = config.colorScheme.colors.base0E;
+    };
   };
 
   config = {
