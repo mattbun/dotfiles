@@ -324,8 +324,9 @@ in
         set -g mouse on
 
         # True Color!
+        # https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6
         set -g default-terminal "screen-256color"
-        set -ga terminal-overrides ",xterm-256color*:Tc"
+        set -ag terminal-overrides ",$TERM:RGB"
 
         # Use fish!
         set -g default-command "${pkgs.fish}/bin/fish"
