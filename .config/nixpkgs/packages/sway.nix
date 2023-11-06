@@ -6,7 +6,7 @@
 let
   colorScheme = config.colorScheme;
   colors = config.colorScheme.colors;
-  accentColor = config.bun.accentColor;
+  accentColor = config.colorScheme.accentColor;
 in
 {
   options = with lib; {

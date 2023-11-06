@@ -24,7 +24,7 @@ in
 
     tooltip {
       background: #${colorScheme.colors.base00};
-      border: 1px solid #${config.bun.accentColor};
+      border: 1px solid #${colorScheme.accentColor};
     }
 
     tooltip label {
@@ -38,7 +38,7 @@ in
     }
 
     #workspaces button.focused {
-        background: #${config.bun.accentColor};
+        background: #${colorScheme.accentColor};
     }
 
     #mode, #clock, #battery, #tray, #cpu, #memory, #disk, #pulseaudio, #custom-userhostname {
