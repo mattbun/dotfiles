@@ -53,9 +53,9 @@ require("lualine").setup({
     disabled_filetypes = {},
   },
   sections = {
-    lualine_a = { "mode" },
-    lualine_b = { "branch" },
-    lualine_c = { { "filename", path = 1 } },
+    lualine_a = { "branch" },
+    lualine_b = { { "filename", path = 1 } },
+    lualine_c = { "diff", "diagnostics" },
     lualine_x = { "filetype" },
     lualine_y = { "progress" },
     lualine_z = { "location" },
@@ -64,10 +64,26 @@ require("lualine").setup({
     lualine_a = {},
     lualine_b = {},
     lualine_c = { { "filename", path = 1 } },
-    lualine_x = { "location" },
+    lualine_x = { "progress" },
     lualine_y = {},
     lualine_z = {},
   },
-  tabline = {},
+  tabline = {
+    lualine_a = {},
+    lualine_b = {
+      {
+        "tabs",
+        mode = 1, -- Show tab name but not number
+        max_length = vim.o.columns,
+      },
+    },
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {},
+  },
   extensions = {},
 })
+
+-- Only show tabline if there's more than one tab
+vim.cmd("set showtabline=1")
