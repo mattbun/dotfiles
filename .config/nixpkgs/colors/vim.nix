@@ -40,6 +40,8 @@ let
     let s:gui0F        = "${colorScheme.colors.base0F}"
     let g:base16_gui0F = "${colorScheme.colors.base0F}"
 
+    let g:base16_accent = "${colorScheme.accentColor}"
+
     " Terminal color definitions
     let s:cterm00        = "00"
     let g:base16_cterm00 = "00"
