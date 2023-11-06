@@ -17,7 +17,7 @@ let
 
     # pane border
     set-option -g pane-border-style "fg=#${colorScheme.colors.base01}"
-    set-option -g pane-active-border-style "fg=#${colorScheme.colors.base02}"
+    set-option -g pane-active-border-style "fg=#${colorScheme.accentColor}"
 
     # message text
     set-option -g message-style "fg=#${colorScheme.colors.base05},bg=#${colorScheme.colors.base01}"
