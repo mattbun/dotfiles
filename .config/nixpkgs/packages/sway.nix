@@ -35,6 +35,12 @@ in
         description = "Scaling mode for the background if using an image, either 'stretch', 'fill', 'fit', 'center', or 'tile'";
         default = "fill";
       };
+
+      idleTimeoutSeconds = mkOption {
+        type = types.ints.positive;
+        description = "How long to wait before turning off displays if there's no activity";
+        default = 15 * 60;
+      };
     };
   };
 
@@ -175,6 +181,17 @@ in
           client.placeholder      #${colors.base00} #${colors.base00} #${colors.base05} #${colors.base00} #${colors.base00}
           client.background       #${colors.base07}
         '';
+      };
+
+      services.swayidle = {
+        enable = true;
+        timeouts = [
+          {
+            timeout = config.packageSets.sway.idleTimeoutSeconds;
+            command = "${pkgs.sway}/bin/swaymsg 'output * power off'";
+            resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * power on'";
+          }
+        ];
       };
 
       programs.waybar = {
