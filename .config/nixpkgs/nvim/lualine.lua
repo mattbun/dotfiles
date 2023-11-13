@@ -54,7 +54,15 @@ require("lualine").setup({
   },
   sections = {
     lualine_a = { "branch" },
-    lualine_b = { { "filename", path = 1 } },
+    lualine_b = {
+      {
+        "filename",
+        path = 1,
+        symbols = {
+          readonly = "[RO]",
+        },
+      },
+    },
     lualine_c = { "diff", "diagnostics" },
     lualine_x = { "filetype" },
     lualine_y = { "progress" },
