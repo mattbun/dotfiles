@@ -21,7 +21,7 @@ in
         # type = types.pathInStore;
         type = types.path;
         description = "Terminal to use in hotkeys and other shortcuts";
-        default = "${pkgs.alacritty}/bin/alacritty";
+        default = "${pkgs.foot}/bin/foot";
       };
 
       background = mkOption {
