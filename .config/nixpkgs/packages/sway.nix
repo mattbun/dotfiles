@@ -230,6 +230,7 @@ in
             "wlr/taskbar" = {
               on-click = "activate";
               on-click-middle = "close";
+              on-click-right = "close";
             };
 
             tray = {
