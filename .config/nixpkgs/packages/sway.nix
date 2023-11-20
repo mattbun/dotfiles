@@ -225,7 +225,7 @@ in
             layer = "top";
             position = "top";
             modules-left = [ "sway/workspaces" "sway/mode" "wlr/taskbar" ];
-            modules-right = [ "tray" "pulseaudio" "memory" "cpu" "clock#date" "clock#time" "custom/userhostname" ];
+            modules-right = [ "tray" "bluetooth" "network" "pulseaudio" "memory" "cpu" "clock#date" "clock#time" "custom/userhostname" ];
 
             "wlr/taskbar" = {
               on-click = "activate";
@@ -238,6 +238,14 @@ in
               spacing = 10;
             };
 
+            idle_inhibitor = {
+              format = "{icon}";
+              format-icons = {
+                activated = "󰅶";
+                deactivated = "󰾪";
+              };
+            };
+
             pulseaudio = {
               format-muted = "󰸈";
               format = "{icon} {volume:2}%";
@@ -248,6 +256,23 @@ in
                 default = [ "󰖀" "󰕾" ];
               };
               on-click = "${config.packageSets.sway.terminal} -e alsamixer";
+            };
+
+            network = {
+              format-ethernet = "󰈀 {ipaddr}";
+              format-wifi = "󰖩 {ipaddr}";
+              format-linked = "󰈀";
+              format-disconnected = "󰌙";
+              tooltip-format = "{ifname} - {ipaddr}\nGateway: {gwaddr}\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}";
+              on-click = "${config.packageSets.sway.terminal} -e nmtui";
+            };
+
+            bluetooth = {
+              format-disabled = "";
+              format-off = "󰂲";
+              format-on = "󰂯";
+              format-connected = "󰂱";
+              on-click = "${config.packageSets.sway.terminal} -e bluetoothctl";
             };
 
             disk = {

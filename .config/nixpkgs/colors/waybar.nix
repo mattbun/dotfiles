@@ -41,12 +41,16 @@ in
         background: #${colorScheme.accentColor};
     }
 
-    #mode, #clock, #battery, #tray, #cpu, #memory, #disk, #pulseaudio, #custom-userhostname {
+    #mode, #clock, #battery, #tray, #cpu, #memory, #disk, #pulseaudio, #custom-userhostname, #network, #bluetooth, #idle_inhibitor {
         padding: 0 10px;
     }
 
     #mode {
         background: #${colorScheme.colors.base01};
+    }
+
+    #idle_inhibitor {
+        background-color: #${colorScheme.colors.base0F};
     }
 
     #pulseaudio {
@@ -55,6 +59,14 @@ in
 
     #disk {
         background-color: #${colorScheme.colors.base0B};
+    }
+
+    #network {
+        background-color: #${colorScheme.colors.base0E};
+    }
+
+    #bluetooth {
+        background-color: #${colorScheme.colors.base0C};
     }
 
     #memory {
