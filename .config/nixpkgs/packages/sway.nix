@@ -45,25 +45,37 @@ in
   };
 
   config = lib.mkIf config.packageSets.sway.enable (
-    let powerMenu = pkgs.writeShellScript "power-menu" ''
-      swaynag \
-        --background "${colorScheme.colors.base00}" \
-        --border-bottom "#${accentColor}" \
-        --border-bottom-size "0" \
-        --border "#${accentColor}" \
-        --text "${colorScheme.colors.base07}" \
-        --button-text "${colorScheme.colors.base07}" \
-        --button-background "${colorScheme.colors.base00}" \
-        --button-border-size "1" \
-        --font "${config.packageSets.fonts.default} 12" \
-        -y top \
-        -t warning \
-        -m "> > > > >" \
-        -b " 󰗼 exit " "swaymsg exit" \
-        -b " 󰜉 restart " "reboot" \
-        -b " 󰐥 shutdown " "shutdown now" \
-        --dismiss-button "  cancel "
-    ''; in
+    let
+      lockScreen = pkgs.writeShellScript "lock-screen" ''
+        # Wait a second for input to finish
+        sleep 1
+
+        # swayidle immediately enters idle state when sent a USR1 signal
+        pkill --signal USR1 swayidle
+      '';
+
+      powerMenu = pkgs.writeShellScript "power-menu" ''
+        swaynag \
+          --background "${colorScheme.colors.base00}" \
+          --border-bottom "#${accentColor}" \
+          --border-bottom-size "0" \
+          --border "#${accentColor}" \
+          --text "${colorScheme.colors.base07}" \
+          --button-text "${colorScheme.colors.base07}" \
+          --button-background "${colorScheme.colors.base00}" \
+          --button-border-size "1" \
+          --font "${config.packageSets.fonts.default} 12" \
+          -y top \
+          -t warning \
+          -m "> > > > >" \
+          -b " 󰗼 exit " "swaymsg exit" \
+          -b " 󰌾 lock " "${lockScreen}" \
+          -b " 󰤄 sleep " "systemctl suspend" \
+          -b " 󰜉 restart " "reboot" \
+          -b " 󰐥 shutdown " "shutdown now" \
+          --dismiss-button " 󱎘 cancel "
+      '';
+    in
     {
       packageSets.fonts.enable = true;
 
