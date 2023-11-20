@@ -257,14 +257,14 @@ in
 
             cpu = {
               interval = 10;
-              format = "cpu: {usage}%";
-              on-click = "${config.packageSets.sway.terminal} -e htop";
+              format = " {usage:2}%";
+              on-click = "${config.packageSets.sway.terminal} -e btm-cpu";
             };
 
             memory = {
               interval = 10;
-              format = "mem: {percentage}%";
-              on-click = "${config.packageSets.sway.terminal} -e htop";
+              format = " {percentage:2}%"; # some other icon ideas: 󱊖 󰠷
+              on-click = "${config.packageSets.sway.terminal} -e btm-mem";
             };
 
             "clock#date" = {
@@ -330,6 +330,49 @@ in
           modi = "drun,run,ssh,combi";
         };
       };
+
+      programs.bottom.enable = true;
+      bun.shellScripts = {
+        # Custom bottom layouts
+        btm-cpu = ''
+          btm -C ${pkgs.writeText "cpu.toml" ''
+            [[row]]
+              [[row.child]]
+                type = "cpu"
+            [[row]]
+              [[row.child]]
+                type = "mem"
+              [[row.child]]
+                type = "net"
+              [[row.child]]
+                type = "temperature"
+            [[row]]
+              ratio = 2
+              [[row.child]]
+                type = "process"
+          ''}
+        '';
+
+        btm-mem = ''
+          btm -C ${pkgs.writeText "mem.toml" ''
+            [[row]]
+              [[row.child]]
+                type = "mem"
+            [[row]]
+              [[row.child]]
+                type = "cpu"
+              [[row.child]]
+                type = "net"
+              [[row.child]]
+                type = "temperature"
+            [[row]]
+              ratio = 2
+              [[row.child]]
+                type = "process"
+          ''}
+        '';
+      };
+
     }
   );
 }
