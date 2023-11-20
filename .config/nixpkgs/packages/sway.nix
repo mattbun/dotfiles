@@ -24,6 +24,12 @@ in
         default = "${pkgs.foot}/bin/foot";
       };
 
+      browser = mkOption {
+        type = types.path;
+        description = "Default web browser";
+        default = "${pkgs.firefox}/bin/firefox";
+      };
+
       background = mkOption {
         type = types.str;
         description = "A path to a file to an image to use as background or a color in '#RRGGBB' format";
@@ -178,6 +184,7 @@ in
               "${modifier}+space" = "focus mode_toggle";
               "${modifier}+v" = "splitv";
               "${modifier}+w" = "layout tabbed";
+              "${modifier}+escape" = "exec ${config.packageSets.sway.browser}";
               "${alt}+F2" = "exec ${pkgs.rofi-wayland}/bin/rofi -show run"; # TODO doesn't work
               "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
               "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
