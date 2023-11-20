@@ -232,7 +232,7 @@ in
 
             pulseaudio = {
               format-muted = "󰸈";
-              format = "{icon} {volume}%";
+              format = "{icon} {volume:2}%";
               format-icons = {
                 headphone = "󰋋";
                 hdmi = "󰍹";
