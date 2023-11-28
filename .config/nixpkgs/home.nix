@@ -23,6 +23,7 @@ in
     ./colors/tmux.nix
     ./colors/vim.nix
     ./colors/waybar.nix
+    ./lib/path.nix
     ./lib/scripts.nix
     ./lib/search.nix
     ./packages/docker.nix
@@ -34,18 +35,6 @@ in
   ];
 
   options = with lib; {
-    prependedPaths = mkOption {
-      type = with types; listOf str;
-      description = "Paths to prepend to the PATH environment variable";
-      default = [ ];
-    };
-
-    appendedPaths = mkOption {
-      type = with types; listOf str;
-      description = "Paths to append to the PATH environment variable";
-      default = [ ];
-    };
-
     colorScheme.accentColor = mkOption {
       type = types.str;
       description = "Accent color to use in a few places";
@@ -424,9 +413,6 @@ in
       EDITOR = "nvim";
       DIRENV_LOG_FORMAT = ""; # shh direnv
       _ZL_HYPHEN = 1; # Tell z.lua to treat hyphens like normal characters and not part of a regex
-
-      # Generally you don't want to reference env vars like this in home-manager
-      PATH = builtins.concatStringsSep ":" (config.prependedPaths ++ [ "$PATH" ] ++ config.appendedPaths);
     };
 
     # This works around some logic that tries to prevent reloading env vars

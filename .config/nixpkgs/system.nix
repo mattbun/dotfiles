@@ -40,10 +40,12 @@ in
   };
 
   # These will be added to the PATH environment variable
-  prependedPaths = [
-    # "${homeDirectory}/.bin"
-  ];
-  appendedPaths = [
-    # "${homeDirectory}/.bin"
-  ];
+  path = {
+    prepend = [
+      # "${homeDirectory}/.bin"
+    ];
+    append = [
+      # "${homeDirectory}/.bin"
+    ];
+  };
 }
