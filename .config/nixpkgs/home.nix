@@ -39,7 +39,7 @@ in
     colorScheme.accentColor = mkOption {
       type = types.str;
       description = "Accent color to use in a few places";
-      default = config.colorScheme.colors.base0E;
+      default = config.colorScheme.palette.base0E;
     };
   };
 

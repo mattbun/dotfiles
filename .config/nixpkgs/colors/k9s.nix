@@ -1,33 +1,31 @@
 { config
 , ...
-}:
-let
-  colorScheme = config.colorScheme; in
-{
-  programs.k9s.skin = {
+}: {
+  programs.k9s.skins.skin = {
     k9s =
       let
         default = "default";
-        foreground = "#${config.colorScheme.colors.base05}";
-        background = "#${config.colorScheme.colors.base00}";
-        comment = "#${config.colorScheme.colors.base03}";
-        current_line = "#${config.colorScheme.colors.base01}";
-        selection = "#${config.colorScheme.colors.base02}";
+        foreground = "#${config.colorScheme.palette.base05}";
+        background = "#${config.colorScheme.palette.base00}";
+        comment = "#${config.colorScheme.palette.base03}";
+        current_line = "#${config.colorScheme.palette.base01}";
+        selection = "#${config.colorScheme.palette.base02}";
 
-        red = "#${config.colorScheme.colors.base08}";
-        orange = "#${config.colorScheme.colors.base09}";
-        yellow = "#${config.colorScheme.colors.base0A}";
-        green = "#${config.colorScheme.colors.base0B}";
-        cyan = "#${config.colorScheme.colors.base0C}";
-        blue = "#${config.colorScheme.colors.base0D}";
-        magenta = "#${config.colorScheme.colors.base0E}";
+        accent = "#${config.colorScheme.accentColor}";
+        red = "#${config.colorScheme.palette.base08}";
+        orange = "#${config.colorScheme.palette.base09}";
+        yellow = "#${config.colorScheme.palette.base0A}";
+        green = "#${config.colorScheme.palette.base0B}";
+        cyan = "#${config.colorScheme.palette.base0C}";
+        blue = "#${config.colorScheme.palette.base0D}";
+        magenta = "#${config.colorScheme.palette.base0E}";
       in
       {
         # General K9s styles
         body = {
           fgColor = foreground;
           bgColor = default;
-          logoColor = magenta;
+          logoColor = accent;
         };
         # Command prompt styles
         prompt = {

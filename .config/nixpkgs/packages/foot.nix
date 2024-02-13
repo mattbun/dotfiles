@@ -4,7 +4,8 @@
 , ...
 }:
 let
-  colors = config.colorScheme.colors; in
+  colors = config.colorScheme.palette;
+in
 {
   options = with lib; {
     packageSets.foot.enable = mkOption {

@@ -5,7 +5,7 @@
 }:
 let
   colorScheme = config.colorScheme;
-  colors = config.colorScheme.colors;
+  colors = config.colorScheme.palette;
   accentColor = config.colorScheme.accentColor;
 in
 {
@@ -62,13 +62,13 @@ in
 
       powerMenu = pkgs.writeShellScript "power-menu" ''
         swaynag \
-          --background "${colorScheme.colors.base00}" \
+          --background "${colorScheme.palette.base00}" \
           --border-bottom "#${accentColor}" \
           --border-bottom-size "0" \
           --border "#${accentColor}" \
-          --text "${colorScheme.colors.base07}" \
-          --button-text "${colorScheme.colors.base07}" \
-          --button-background "${colorScheme.colors.base00}" \
+          --text "${colorScheme.palette.base07}" \
+          --button-text "${colorScheme.palette.base07}" \
+          --button-background "${colorScheme.palette.base00}" \
           --button-border-size "1" \
           --font "${config.packageSets.fonts.default} 12" \
           -y top \
@@ -340,9 +340,9 @@ in
       services.mako = {
         enable = true;
         font = "${config.packageSets.fonts.default} 12";
-        backgroundColor = "#${colorScheme.colors.base00}FF";
+        backgroundColor = "#${colorScheme.palette.base00}FF";
         borderColor = "#${accentColor}FF";
-        progressColor = "#${colorScheme.colors.base07}FF"; # TODO not sure how to test this
+        progressColor = "#${colorScheme.palette.base07}FF"; # TODO not sure how to test this
       };
 
       programs.rofi = {

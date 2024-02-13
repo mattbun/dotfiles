@@ -17,10 +17,10 @@ in
   # based on https://github.com/newmanls/rofi-themes-collection/blob/master/themes/squared-material-red.rasi
   programs.rofi.theme = lib.mkIf config.packageSets.sway.enable {
     "*" = {
-      bg0 = mkLiteral "#${colorScheme.colors.base00}";
-      fg0 = mkLiteral "#${colorScheme.colors.base06}";
+      bg0 = mkLiteral "#${colorScheme.palette.base00}";
+      fg0 = mkLiteral "#${colorScheme.palette.base06}";
       accent-color = mkLiteral "#${colorScheme.accentColor}";
-      urgent-color = mkLiteral "#${colorScheme.colors.base08}";
+      urgent-color = mkLiteral "#${colorScheme.palette.base08}";
 
       background-color = mkLiteral "transparent";
       text-color = mkLiteral "@fg0";

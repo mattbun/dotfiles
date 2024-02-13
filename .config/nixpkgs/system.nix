@@ -8,7 +8,7 @@ let
 in
 {
   # 04-white, 08-red, 09-orange, 0A-yellow, 0B-green, 0C-cyan, 0D-blue, 0E-magenta
-  colorScheme.accentColor = config.colorScheme.colors.base04;
+  colorScheme.accentColor = config.colorScheme.palette.base04;
 
   packageSets = {
     # Development

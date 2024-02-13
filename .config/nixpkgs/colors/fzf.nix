@@ -2,23 +2,24 @@
 , ...
 }:
 let
-  colorScheme = config.colorScheme; in
+  colorScheme = config.colorScheme;
+in
 {
   programs.fzf = {
     enable = true;
     colors = {
-      "bg+" = "#${colorScheme.colors.base01}";
-      "bg" = "#${colorScheme.colors.base00}";
-      "spinner" = "#${colorScheme.colors.base0C}";
-      "hl" = "#${colorScheme.colors.base0D}";
-      "fg" = "#${colorScheme.colors.base04}";
-      "header" = "#${colorScheme.colors.base0D}";
-      "info" = "#${colorScheme.colors.base0A}";
-      "pointer" = "#${colorScheme.colors.base0C}";
-      "marker" = "#${colorScheme.colors.base0C}";
-      "fg+" = "#${colorScheme.colors.base06}";
-      "prompt" = "#${colorScheme.colors.base0A}";
-      "hl+" = "#${colorScheme.colors.base0D}";
+      "bg+" = "#${colorScheme.palette.base01}";
+      "bg" = "#${colorScheme.palette.base00}";
+      "spinner" = "#${colorScheme.palette.base0C}";
+      "hl" = "#${colorScheme.palette.base0D}";
+      "fg" = "#${colorScheme.palette.base04}";
+      "header" = "#${colorScheme.palette.base0D}";
+      "info" = "#${colorScheme.palette.base0A}";
+      "pointer" = "#${colorScheme.palette.base0C}";
+      "marker" = "#${colorScheme.palette.base0C}";
+      "fg+" = "#${colorScheme.palette.base06}";
+      "prompt" = "#${colorScheme.palette.base0A}";
+      "hl+" = "#${colorScheme.palette.base0D}";
     };
   };
 }

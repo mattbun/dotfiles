@@ -13,28 +13,28 @@ in
         font-family: ${config.packageSets.fonts.default}, Roboto, Helvetica, Arial, sans-serif;
         font-size: 16px;
         min-height: 0;
-        color: #${colorScheme.colors.base07};
+        color: #${colorScheme.palette.base07};
     }
 
     window#waybar {
-        background: #${colorScheme.colors.base00};
+        background: #${colorScheme.palette.base00};
         opacity: 1;
-        color: #${colorScheme.colors.base07};
+        color: #${colorScheme.palette.base07};
     }
 
     tooltip {
-      background: #${colorScheme.colors.base00};
+      background: #${colorScheme.palette.base00};
       border: 1px solid #${colorScheme.accentColor};
     }
 
     tooltip label {
-      color: #${colorScheme.colors.base07};
+      color: #${colorScheme.palette.base07};
     }
 
     #workspaces button {
         padding: 0 5px;
         background: transparent;
-        color: #${colorScheme.colors.base07};
+        color: #${colorScheme.palette.base07};
     }
 
     #workspaces button.focused {
@@ -46,47 +46,55 @@ in
     }
 
     #mode {
-        background: #${colorScheme.colors.base01};
+        background: #${colorScheme.palette.base01};
     }
 
     #idle_inhibitor {
-        background-color: #${colorScheme.colors.base0F};
+        background-color: #${colorScheme.palette.base0F};
     }
 
     #pulseaudio {
-        background-color: #${colorScheme.colors.base09};
+        background-color: #${colorScheme.palette.base09};
     }
 
     #disk {
-        background-color: #${colorScheme.colors.base0B};
+        background-color: #${colorScheme.palette.base0B};
     }
 
     #network {
-        background-color: #${colorScheme.colors.base0E};
+        background-color: #${colorScheme.palette.base0E};
     }
 
     #bluetooth {
-        background-color: #${colorScheme.colors.base0C};
+        background-color: #${colorScheme.palette.base0C};
     }
 
     #memory {
-        background-color: #${colorScheme.colors.base0D};
+        background-color: #${colorScheme.palette.base0D};
     }
 
     #cpu {
-        background-color: #${colorScheme.colors.base08};
+        background-color: #${colorScheme.palette.base08};
     }
 
     #clock.date {
-        background-color: #${colorScheme.colors.base02};
+        background-color: #${colorScheme.palette.base02};
     }
 
     #clock.time {
-        background-color: #${colorScheme.colors.base01};
+        background-color: #${colorScheme.palette.base01};
     }
 
     #custom-userhostname {
-        background-color: #${colorScheme.colors.base00};
+        background-color: #${colorScheme.palette.base00};
+    }
+
+    #taskbar button {
+        background-color: #${colorScheme.palette.base01};
+    }
+
+    #taskbar button.active {
+        background-color: #${colorScheme.palette.base02};
     }
   '';
 }

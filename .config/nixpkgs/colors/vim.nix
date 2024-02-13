@@ -2,43 +2,44 @@
 , ...
 }:
 let
-  colorScheme = config.colorScheme; in
+  colorScheme = config.colorScheme;
+in
 {
   xdg.configFile."nvim/colorscheme.vim".text = ''
     " Based on https://github.com/chriskempson/base16-vim, changes are denoted with 'XXX'
     " GUI color definitions
-    let s:gui00        = "${colorScheme.colors.base00}"
-    let g:base16_gui00 = "${colorScheme.colors.base00}"
-    let s:gui01        = "${colorScheme.colors.base01}"
-    let g:base16_gui01 = "${colorScheme.colors.base01}"
-    let s:gui02        = "${colorScheme.colors.base02}"
-    let g:base16_gui02 = "${colorScheme.colors.base02}"
-    let s:gui03        = "${colorScheme.colors.base03}"
-    let g:base16_gui03 = "${colorScheme.colors.base03}"
-    let s:gui04        = "${colorScheme.colors.base04}"
-    let g:base16_gui04 = "${colorScheme.colors.base04}"
-    let s:gui05        = "${colorScheme.colors.base05}"
-    let g:base16_gui05 = "${colorScheme.colors.base05}"
-    let s:gui06        = "${colorScheme.colors.base06}"
-    let g:base16_gui06 = "${colorScheme.colors.base06}"
-    let s:gui07        = "${colorScheme.colors.base07}"
-    let g:base16_gui07 = "${colorScheme.colors.base07}"
-    let s:gui08        = "${colorScheme.colors.base08}"
-    let g:base16_gui08 = "${colorScheme.colors.base08}"
-    let s:gui09        = "${colorScheme.colors.base09}"
-    let g:base16_gui09 = "${colorScheme.colors.base09}"
-    let s:gui0A        = "${colorScheme.colors.base0A}"
-    let g:base16_gui0A = "${colorScheme.colors.base0A}"
-    let s:gui0B        = "${colorScheme.colors.base0B}"
-    let g:base16_gui0B = "${colorScheme.colors.base0B}"
-    let s:gui0C        = "${colorScheme.colors.base0C}"
-    let g:base16_gui0C = "${colorScheme.colors.base0C}"
-    let s:gui0D        = "${colorScheme.colors.base0D}"
-    let g:base16_gui0D = "${colorScheme.colors.base0D}"
-    let s:gui0E        = "${colorScheme.colors.base0E}"
-    let g:base16_gui0E = "${colorScheme.colors.base0E}"
-    let s:gui0F        = "${colorScheme.colors.base0F}"
-    let g:base16_gui0F = "${colorScheme.colors.base0F}"
+    let s:gui00        = "${colorScheme.palette.base00}"
+    let g:base16_gui00 = "${colorScheme.palette.base00}"
+    let s:gui01        = "${colorScheme.palette.base01}"
+    let g:base16_gui01 = "${colorScheme.palette.base01}"
+    let s:gui02        = "${colorScheme.palette.base02}"
+    let g:base16_gui02 = "${colorScheme.palette.base02}"
+    let s:gui03        = "${colorScheme.palette.base03}"
+    let g:base16_gui03 = "${colorScheme.palette.base03}"
+    let s:gui04        = "${colorScheme.palette.base04}"
+    let g:base16_gui04 = "${colorScheme.palette.base04}"
+    let s:gui05        = "${colorScheme.palette.base05}"
+    let g:base16_gui05 = "${colorScheme.palette.base05}"
+    let s:gui06        = "${colorScheme.palette.base06}"
+    let g:base16_gui06 = "${colorScheme.palette.base06}"
+    let s:gui07        = "${colorScheme.palette.base07}"
+    let g:base16_gui07 = "${colorScheme.palette.base07}"
+    let s:gui08        = "${colorScheme.palette.base08}"
+    let g:base16_gui08 = "${colorScheme.palette.base08}"
+    let s:gui09        = "${colorScheme.palette.base09}"
+    let g:base16_gui09 = "${colorScheme.palette.base09}"
+    let s:gui0A        = "${colorScheme.palette.base0A}"
+    let g:base16_gui0A = "${colorScheme.palette.base0A}"
+    let s:gui0B        = "${colorScheme.palette.base0B}"
+    let g:base16_gui0B = "${colorScheme.palette.base0B}"
+    let s:gui0C        = "${colorScheme.palette.base0C}"
+    let g:base16_gui0C = "${colorScheme.palette.base0C}"
+    let s:gui0D        = "${colorScheme.palette.base0D}"
+    let g:base16_gui0D = "${colorScheme.palette.base0D}"
+    let s:gui0E        = "${colorScheme.palette.base0E}"
+    let g:base16_gui0E = "${colorScheme.palette.base0E}"
+    let s:gui0F        = "${colorScheme.palette.base0F}"
+    let g:base16_gui0F = "${colorScheme.palette.base0F}"
 
     let g:base16_accent = "${colorScheme.accentColor}"
 
@@ -93,22 +94,22 @@ let
 
     " Neovim terminal colours
     if has("nvim")
-      let g:terminal_color_0 =  "#${colorScheme.colors.base00}"
-      let g:terminal_color_1 =  "#${colorScheme.colors.base08}"
-      let g:terminal_color_2 =  "#${colorScheme.colors.base0B}"
-      let g:terminal_color_3 =  "#${colorScheme.colors.base0A}"
-      let g:terminal_color_4 =  "#${colorScheme.colors.base0D}"
-      let g:terminal_color_5 =  "#${colorScheme.colors.base0E}"
-      let g:terminal_color_6 =  "#${colorScheme.colors.base0C}"
-      let g:terminal_color_7 =  "#${colorScheme.colors.base05}"
-      let g:terminal_color_8 =  "#${colorScheme.colors.base03}"
-      let g:terminal_color_9 =  "#${colorScheme.colors.base08}"
-      let g:terminal_color_10 = "#${colorScheme.colors.base0B}"
-      let g:terminal_color_11 = "#${colorScheme.colors.base0A}"
-      let g:terminal_color_12 = "#${colorScheme.colors.base0D}"
-      let g:terminal_color_13 = "#${colorScheme.colors.base0E}"
-      let g:terminal_color_14 = "#${colorScheme.colors.base0C}"
-      let g:terminal_color_15 = "#${colorScheme.colors.base07}"
+      let g:terminal_color_0 =  "#${colorScheme.palette.base00}"
+      let g:terminal_color_1 =  "#${colorScheme.palette.base08}"
+      let g:terminal_color_2 =  "#${colorScheme.palette.base0B}"
+      let g:terminal_color_3 =  "#${colorScheme.palette.base0A}"
+      let g:terminal_color_4 =  "#${colorScheme.palette.base0D}"
+      let g:terminal_color_5 =  "#${colorScheme.palette.base0E}"
+      let g:terminal_color_6 =  "#${colorScheme.palette.base0C}"
+      let g:terminal_color_7 =  "#${colorScheme.palette.base05}"
+      let g:terminal_color_8 =  "#${colorScheme.palette.base03}"
+      let g:terminal_color_9 =  "#${colorScheme.palette.base08}"
+      let g:terminal_color_10 = "#${colorScheme.palette.base0B}"
+      let g:terminal_color_11 = "#${colorScheme.palette.base0A}"
+      let g:terminal_color_12 = "#${colorScheme.palette.base0D}"
+      let g:terminal_color_13 = "#${colorScheme.palette.base0E}"
+      let g:terminal_color_14 = "#${colorScheme.palette.base0C}"
+      let g:terminal_color_15 = "#${colorScheme.palette.base07}"
       let g:terminal_color_background = g:terminal_color_0
       let g:terminal_color_foreground = g:terminal_color_5
       if &background == "light"
@@ -117,22 +118,22 @@ let
       endif
     elseif has("terminal")
       let g:terminal_ansi_colors = [
-            \ "#${colorScheme.colors.base00}",
-            \ "#${colorScheme.colors.base08}",
-            \ "#${colorScheme.colors.base0B}",
-            \ "#${colorScheme.colors.base0A}",
-            \ "#${colorScheme.colors.base0D}",
-            \ "#${colorScheme.colors.base0E}",
-            \ "#${colorScheme.colors.base0C}",
-            \ "#${colorScheme.colors.base05}",
-            \ "#${colorScheme.colors.base03}",
-            \ "#${colorScheme.colors.base08}",
-            \ "#${colorScheme.colors.base0B}",
-            \ "#${colorScheme.colors.base0A}",
-            \ "#${colorScheme.colors.base0D}",
-            \ "#${colorScheme.colors.base0E}",
-            \ "#${colorScheme.colors.base0C}",
-            \ "#${colorScheme.colors.base07}",
+            \ "#${colorScheme.palette.base00}",
+            \ "#${colorScheme.palette.base08}",
+            \ "#${colorScheme.palette.base0B}",
+            \ "#${colorScheme.palette.base0A}",
+            \ "#${colorScheme.palette.base0D}",
+            \ "#${colorScheme.palette.base0E}",
+            \ "#${colorScheme.palette.base0C}",
+            \ "#${colorScheme.palette.base05}",
+            \ "#${colorScheme.palette.base03}",
+            \ "#${colorScheme.palette.base08}",
+            \ "#${colorScheme.palette.base0B}",
+            \ "#${colorScheme.palette.base0A}",
+            \ "#${colorScheme.palette.base0D}",
+            \ "#${colorScheme.palette.base0E}",
+            \ "#${colorScheme.palette.base0C}",
+            \ "#${colorScheme.palette.base07}",
             \ ]
     endif
 
