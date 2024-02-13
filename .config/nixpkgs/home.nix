@@ -426,7 +426,7 @@ in
     };
 
     # asdf clone
-    programs.rtx = {
+    programs.mise = {
       enable = true;
     };
 
