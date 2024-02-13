@@ -32,6 +32,7 @@ in
     ./packages/alacritty.nix
     ./packages/kubernetes.nix
     ./packages/sway.nix
+    ./packages/firefox.nix
   ];
 
   options = with lib; {

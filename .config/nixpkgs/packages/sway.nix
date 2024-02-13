@@ -84,6 +84,7 @@ in
     in
     {
       packageSets.fonts.enable = true;
+      packageSets.firefox.enable = true;
 
       home.packages = with pkgs; [
         grim
