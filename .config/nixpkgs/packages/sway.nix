@@ -167,6 +167,7 @@ in
               "${modifier}+Shift+q" = "kill";
               "${modifier}+Shift+s" = "exec ${pkgs.rofi-wayland}/bin/rofi -show ssh";
               "${modifier}+Shift+space" = "floating toggle";
+              "${modifier}+Tab" = "exec ${pkgs.rofi-wayland}/bin/rofi -show window -show-icons";
               "${modifier}+Up" = "focus up";
               "${modifier}+a" = "focus parent";
               "${modifier}+b" = "splith";
