@@ -331,6 +331,10 @@ in
         set-option -g status-interval 5
         set-option -g automatic-rename on
         set-option -g automatic-rename-format '#{b:pane_current_path}'
+
+        # Set terminal title!
+        set-option -g set-titles on
+        set-option -g set-titles-string "#{user}@#{host_short}[#{session_name},#I] #{?#{==:$HOME,#{pane_current_path}},~,#{b:pane_current_path}} #{pane_current_command}"
       '';
     };
 
