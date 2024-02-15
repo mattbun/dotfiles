@@ -34,6 +34,8 @@ in
       location = mkLiteral "center";
       width = 512;
       background-color = mkLiteral "@bg0";
+      border = 1;
+      border-color = mkLiteral "@accent-color";
     };
 
     inputbar = {
