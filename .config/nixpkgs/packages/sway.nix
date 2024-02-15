@@ -165,6 +165,7 @@ in
               "${modifier}+Shift+l" = "move right";
               "${modifier}+Shift+minus" = "move scratchpad";
               "${modifier}+Shift+q" = "kill";
+              "${modifier}+Shift+s" = "exec ${pkgs.rofi-wayland}/bin/rofi -show ssh";
               "${modifier}+Shift+space" = "floating toggle";
               "${modifier}+Up" = "focus up";
               "${modifier}+a" = "focus parent";
