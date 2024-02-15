@@ -31,7 +31,6 @@ in
     };
 
     window = {
-      location = mkLiteral "center";
       width = 512;
       background-color = mkLiteral "@bg0";
       border = 1;

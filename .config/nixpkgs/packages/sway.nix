@@ -60,27 +60,24 @@ in
         pkill --signal USR1 swayidle
       '';
 
-      powerMenu = pkgs.writeShellScript "power-menu" ''
-        swaynag \
-          --background "${colorScheme.palette.base00}" \
-          --border-bottom "#${accentColor}" \
-          --border-bottom-size "0" \
-          --border "#${accentColor}" \
-          --text "${colorScheme.palette.base07}" \
-          --button-text "${colorScheme.palette.base07}" \
-          --button-background "${colorScheme.palette.base00}" \
-          --button-border-size "1" \
-          --font "${config.packageSets.fonts.default} 12" \
-          -y top \
-          -t warning \
-          -m "> > > > >" \
-          -b " 󰗼 exit " "swaymsg exit" \
-          -b " 󰌾 lock " "${lockScreen}" \
-          -b " 󰤄 sleep " "systemctl suspend" \
-          -b " 󰜉 restart " "reboot" \
-          -b " 󰐥 shutdown " "shutdown now" \
-          --dismiss-button " 󱎘 cancel "
+      powerMenuRofi = pkgs.writeShellScript "power-menu-rofi" ''
+        location=''${1:-0}
+        entries="󰌾 lock;󰗼 exit;󰤄 sleep;󰜉 restart;󰐥 shutdown;󱎘 cancel"
+
+        chosen=$(echo -n "$entries" | rofi -p "power" -dmenu -sep ";" -location $location -theme-str 'window {width:256;}')
+
+        case "$chosen" in
+          "󰌾 lock") ${lockScreen} ;;
+          "󰗼 exit") swaymsg exit ;;
+          "󰤄 sleep") systemctl suspend ;;
+          "󰜉 restart") reboot ;;
+          "󰐥 shutdown") shutdown now ;;
+          *) exit 1 ;;
+        esac
       '';
+
+      powerMenuCenter = "${powerMenuRofi} 0";
+      powerMenuUpperRight = "${powerMenuRofi} 3";
     in
     {
       packageSets.fonts.enable = true;
@@ -161,7 +158,7 @@ in
               "${modifier}+Shift+Right" = "move right";
               "${modifier}+Shift+Up" = "move up";
               "${modifier}+Shift+c" = "reload";
-              "${modifier}+Shift+e" = "exec ${powerMenu}";
+              "${modifier}+Shift+e" = "exec ${powerMenuCenter}";
               "${modifier}+Shift+h" = "move left";
               "${modifier}+Shift+j" = "move down";
               "${modifier}+Shift+k" = "move up";
@@ -331,7 +328,7 @@ in
               exec = pkgs.writeShellScript "userhostname" ''
                 echo -e "$(whoami)@$(hostname)\n$(uname -smrn)"
               '';
-              on-click = powerMenu;
+              on-click = powerMenuUpperRight;
             };
           };
         };
@@ -355,6 +352,11 @@ in
         ];
         extraConfig = {
           modi = "drun,run,ssh,combi";
+          hover-select = true;
+
+          # Select menu items with one click
+          me-select-entry = "MousePrimary";
+          me-accept-entry = "!MousePrimary";
         };
       };
 
