@@ -256,7 +256,7 @@ in
                 speaker = "󰓃";
                 default = [ "󰖀" "󰕾" ];
               };
-              on-click = "${config.packageSets.sway.terminal} -e alsamixer";
+              on-click = "${config.packageSets.sway.terminal} -T alsamixer -e alsamixer";
             };
 
             network = {
@@ -265,7 +265,7 @@ in
               format-linked = "󰈀";
               format-disconnected = "󰌙";
               tooltip-format = "{ifname} - {ipaddr}\nGateway: {gwaddr}\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}";
-              on-click = "${config.packageSets.sway.terminal} -e nmtui";
+              on-click = "${config.packageSets.sway.terminal} -T nmtui -e nmtui";
             };
 
             bluetooth = {
@@ -273,7 +273,7 @@ in
               format-off = "󰂲";
               format-on = "󰂯";
               format-connected = "󰂱";
-              on-click = "${config.packageSets.sway.terminal} -e bluetoothctl";
+              on-click = "${config.packageSets.sway.terminal} -T bluetoothctl -e bluetoothctl";
             };
 
             disk = {
@@ -285,13 +285,13 @@ in
             cpu = {
               interval = 10;
               format = " {usage:2}%";
-              on-click = "${config.packageSets.sway.terminal} -e btm-cpu";
+              on-click = "${config.packageSets.sway.terminal} -T btm-cpu -e btm-cpu";
             };
 
             memory = {
               interval = 10;
               format = " {percentage:2}%"; # some other icon ideas: 󱊖 󰠷
-              on-click = "${config.packageSets.sway.terminal} -e btm-mem";
+              on-click = "${config.packageSets.sway.terminal} -T btm-mem -e btm-mem";
             };
 
             "clock#date" = {
