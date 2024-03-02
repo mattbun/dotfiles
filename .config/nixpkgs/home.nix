@@ -75,8 +75,9 @@ in
       gnutar
       gzip
       jq
+      nil
+      nixpkgs-fmt
       ripgrep
-      rnix-lsp
       stylua
       sumneko-lua-language-server
       tmux

@@ -15,12 +15,21 @@ require("mason-lspconfig").setup_handlers({
 
   -- These are configured manually below
   ["lua_ls"] = function() end,
-  ["rnix"] = function() end,
+  ["nil_ls"] = function() end,
 })
 
 -- These language servers are installed via nix so mason doesn't need to manage them
 local lspconfig = require("lspconfig")
-lspconfig.rnix.setup({})
+lspconfig.nil_ls.setup({
+  settings = {
+    ["nil"] = {
+      formatting = {
+        command = { "nixpkgs-fmt" },
+      },
+    },
+  },
+})
+
 lspconfig.lua_ls.setup({
   settings = {
     Lua = {
