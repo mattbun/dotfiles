@@ -2,7 +2,7 @@
 
 ## Starring configurations for...
 
-* [zsh](https://zsh.sourceforge.io/)
+* [fish](https://fishshell.com/)
 * [neovim](https://neovim.io/) (configured almost entirely in lua!)
 * [tmux](https://github.com/tmux/tmux)
 * [alacritty](https://github.com/alacritty/alacritty)

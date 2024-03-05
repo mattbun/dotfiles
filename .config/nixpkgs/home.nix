@@ -82,7 +82,6 @@ in
       sumneko-lua-language-server
       tmux
       unzip
-      zsh
     ];
 
     colorScheme = nix-colors.colorSchemes.helios;
@@ -400,7 +399,7 @@ in
       gti = "git";
       tit = "echo 😱 && git";
 
-      # git aliases, some of these are in oh-my-zsh/git but good to get them in bash too
+      # git aliases, inspired by oh-my-zsh/git
       gcm = "git checkout $(git main-branch)";
       gdca = "git diff --cached";
       gpsup = "git push --set-upstream origin $(git branch --show-current)";
@@ -489,41 +488,6 @@ in
       enable = true;
     };
 
-    programs.zsh = {
-      enable = true;
-      autocd = true;
-      enableAutosuggestions = true;
-      enableCompletion = true;
-      syntaxHighlighting.enable = true;
-      dotDir = ".config/zsh";
-
-      initExtra = ''
-        # Set up shell color scheme
-        sh ${nix-colors-lib.shellThemeFromScheme { scheme = config.colorScheme; }}
-
-        # Set up powerlevel10k, this should always come last
-        [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-      '';
-
-      zplug = {
-        enable = true;
-        plugins = [
-          {
-            name = "plugins/git";
-            tags = [ "from:oh-my-zsh" ];
-          }
-          {
-            name = "plugins/git-auto-fetch";
-            tags = [ "from:oh-my-zsh" ];
-          }
-          {
-            name = "romkatv/powerlevel10k";
-            tags = [ "as:theme" "depth:1" ];
-          }
-        ];
-      };
-    };
-
     programs.fish = {
       enable = true;
       shellAbbrs = { };
@@ -542,7 +506,6 @@ in
     programs.starship = {
       enable = true;
       enableBashIntegration = false;
-      enableZshIntegration = false;
       settings = {
         add_newline = false;
         format = lib.concatStrings [

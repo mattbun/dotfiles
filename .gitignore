@@ -29,8 +29,6 @@
 !.aliases
 !.exports
 !.functions
-!.p10k.zsh
-!.p10k.zsh.colorful
 
 !.tool-versions
 
