@@ -44,7 +44,7 @@ local mappings = {
 
     ["<leader><leader>"] = require("telescope.builtin").find_files,
     ["<leader>["] = "<C-o>",
-    ["<leader>]"] = "<C-o>",
+    ["<leader>]"] = "<C-i>",
     ["<leader>#"] = require("telescope.builtin").grep_string,
     ["<leader>*"] = require("telescope.builtin").grep_string,
     ["<leader>~"] = function()
