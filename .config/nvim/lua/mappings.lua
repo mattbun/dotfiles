@@ -26,6 +26,22 @@ local mappings = {
 
   -- (n)ormal mode
   n = {
+    ["<leader><up>"] = function()
+      vim.cmd("wincmd k")
+    end,
+    ["<leader><down>"] = function()
+      vim.cmd("wincmd j")
+    end,
+    ["<leader><left>"] = function()
+      vim.cmd("wincmd h")
+    end,
+    ["<leader><right>"] = function()
+      vim.cmd("wincmd l")
+    end,
+
+    ["<leader>,"] = "gT",
+    ["<leader>."] = "gt",
+
     ["<leader><leader>"] = require("telescope.builtin").find_files,
     ["<leader>["] = "<C-o>",
     ["<leader>]"] = "<C-o>",
