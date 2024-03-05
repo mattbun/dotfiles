@@ -1,7 +1,6 @@
 set number  "show line numbers on the side
 set mouse=a "enable mouse in all modes
-set ai      "auto indent
-set si      "smart indent
+set ai      "auto indent - use the indent from the previous line
 set ic      "ignore case in searches
 set hls     "highlight search matches. disable temporarily with :noh
 set hidden  "Allow unsaved changes to be hidden in buffers
