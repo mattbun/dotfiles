@@ -114,6 +114,10 @@ in
             border = 2;
             hideEdgeBorders = "both";
           };
+          fonts = {
+            names = [ config.packageSets.fonts.propo ];
+            size = 12.0;
+          };
           bars = [
             {
               command = "${pkgs.waybar}/bin/waybar";
