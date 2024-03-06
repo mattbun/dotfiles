@@ -22,7 +22,7 @@ in
       enable = true;
       settings = {
         main = {
-          font = "${config.packageSets.fonts.default}:size=12";
+          font = "${config.packageSets.fonts.mono}:size=12";
           shell = "${pkgs.tmux}/bin/tmux";
         };
         colors = {

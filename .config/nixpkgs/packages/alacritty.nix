@@ -26,7 +26,7 @@
         };
         font = {
           normal = {
-            family = config.packageSets.fonts.default;
+            family = config.packageSets.fonts.mono;
           };
           size = 13.0;
         };
