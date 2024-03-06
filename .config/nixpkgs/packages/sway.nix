@@ -18,7 +18,6 @@ in
       };
 
       terminal = mkOption {
-        # type = types.pathInStore;
         type = types.path;
         description = "Terminal to use in hotkeys and other shortcuts";
         default = "${pkgs.foot}/bin/foot";
@@ -96,7 +95,7 @@ in
 
       wayland.windowManager.sway = {
         enable = true;
-        config = rec {
+        config = {
           modifier = "Mod4";
           terminal = config.packageSets.sway.terminal;
           startup = [ ];
@@ -130,7 +129,7 @@ in
             let
               modifier = config.wayland.windowManager.sway.config.modifier;
               alt = "Mod1";
-              super = "Mod4";
+              # super = "Mod4";
             in
             lib.mkOptionDefault {
               "${modifier}+1" = "workspace number 1";
@@ -149,7 +148,6 @@ in
               "${modifier}+Shift+1" = "move container to workspace number 1";
               "${modifier}+Shift+2" = "move container to workspace number 2";
               "${modifier}+Shift+3" = "move container to workspace number 3";
-              # "${modifier}+Shift+4" = "exec grim -g $(slurp) ~/$(date -Iseconds).png"; # TODO already mapped
               "${modifier}+Shift+4" = "move container to workspace number 4";
               "${modifier}+Shift+5" = "move container to workspace number 5";
               "${modifier}+Shift+6" = "move container to workspace number 6";
