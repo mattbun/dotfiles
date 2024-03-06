@@ -10,6 +10,7 @@
     ./foot.nix
     ./kubernetes.nix
     ./mako.nix
+    ./rofi.nix
     ./sway.nix
   ];
 }

@@ -19,7 +19,6 @@ in
     ./colors/alacritty.nix
     ./colors/fzf.nix
     ./colors/k9s.nix
-    ./colors/rofi.nix
     ./colors/tmux.nix
     ./colors/vim.nix
     ./colors/waybar.nix

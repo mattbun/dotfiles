@@ -83,6 +83,7 @@ in
       packageSets.firefox.enable = true;
       services.mako.enable = true; # notifications
       programs.bottom.enable = true;
+      programs.rofi.enable = true;
 
       home.packages = with pkgs; [
         grim
@@ -345,25 +346,6 @@ in
               on-click = powerMenuUpperRight;
             };
           };
-        };
-      };
-
-      programs.rofi = {
-        enable = true;
-        package = pkgs.rofi-wayland;
-        terminal = "${config.packageSets.sway.terminal}";
-        font = "${config.packageSets.fonts.default} 12";
-        plugins = with pkgs; [
-          rofi-calc # TODO doesn't work with keybinding
-        ];
-        extraConfig = {
-          modi = "drun,run,ssh,combi";
-          hover-select = true;
-          click-to-exit = true; # TODO doesn't work https://github.com/lbonn/rofi/issues/22
-
-          # Select menu items with one click
-          me-select-entry = "MousePrimary";
-          me-accept-entry = "!MousePrimary";
         };
       };
     }
