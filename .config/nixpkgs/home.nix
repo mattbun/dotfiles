@@ -31,6 +31,7 @@ in
     ./packages/foot.nix
     ./packages/alacritty.nix
     ./packages/kubernetes.nix
+    ./packages/mako.nix
     ./packages/sway.nix
     ./packages/firefox.nix
   ];

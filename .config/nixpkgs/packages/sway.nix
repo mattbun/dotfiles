@@ -81,6 +81,7 @@ in
     {
       packageSets.fonts.enable = true;
       packageSets.firefox.enable = true;
+      services.mako.enable = true; # notifications
 
       home.packages = with pkgs; [
         grim
