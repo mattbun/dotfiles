@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./bottom.nix
     ./docker.nix
     ./fonts.nix
     ./foot.nix

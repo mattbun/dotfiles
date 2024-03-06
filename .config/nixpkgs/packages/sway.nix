@@ -82,6 +82,7 @@ in
       packageSets.fonts.enable = true;
       packageSets.firefox.enable = true;
       services.mako.enable = true; # notifications
+      programs.bottom.enable = true;
 
       home.packages = with pkgs; [
         grim
@@ -358,55 +359,13 @@ in
         extraConfig = {
           modi = "drun,run,ssh,combi";
           hover-select = true;
+          click-to-exit = true; # TODO doesn't work https://github.com/lbonn/rofi/issues/22
 
           # Select menu items with one click
           me-select-entry = "MousePrimary";
           me-accept-entry = "!MousePrimary";
         };
       };
-
-      programs.bottom.enable = true;
-      bun.shellScripts = {
-        # Custom bottom layouts
-        btm-cpu = ''
-          btm -C ${pkgs.writeText "cpu.toml" ''
-            [[row]]
-              [[row.child]]
-                type = "cpu"
-            [[row]]
-              [[row.child]]
-                type = "mem"
-              [[row.child]]
-                type = "net"
-              [[row.child]]
-                type = "temperature"
-            [[row]]
-              ratio = 2
-              [[row.child]]
-                type = "process"
-          ''}
-        '';
-
-        btm-mem = ''
-          btm -C ${pkgs.writeText "mem.toml" ''
-            [[row]]
-              [[row.child]]
-                type = "mem"
-            [[row]]
-              [[row.child]]
-                type = "cpu"
-              [[row.child]]
-                type = "net"
-              [[row.child]]
-                type = "temperature"
-            [[row]]
-              ratio = 2
-              [[row.child]]
-                type = "process"
-          ''}
-        '';
-      };
-
     }
   );
 }
