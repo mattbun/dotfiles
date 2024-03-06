@@ -260,7 +260,8 @@ in
                 speaker = "󰓃";
                 default = [ "󰖀" "󰕾" ];
               };
-              on-click = "${config.packageSets.sway.terminal} -T alsamixer -e alsamixer";
+              on-click = "${config.packageSets.sway.terminal} -T alsamixer -e alsamixer -V playback";
+              on-click-right = "${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
             };
 
             network = {
