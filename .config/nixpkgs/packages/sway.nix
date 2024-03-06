@@ -347,14 +347,6 @@ in
         };
       };
 
-      services.mako = {
-        enable = true;
-        font = "${config.packageSets.fonts.default} 12";
-        backgroundColor = "#${colorScheme.palette.base00}FF";
-        borderColor = "#${accentColor}FF";
-        progressColor = "#${colorScheme.palette.base01}FF"; # notify-send -t 2500 "25%" -h "int:value:25"
-      };
-
       programs.rofi = {
         enable = true;
         package = pkgs.rofi-wayland;
