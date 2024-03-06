@@ -26,14 +26,7 @@ in
     ./lib/path.nix
     ./lib/scripts.nix
     ./lib/search.nix
-    ./packages/docker.nix
-    ./packages/fonts.nix
-    ./packages/foot.nix
-    ./packages/alacritty.nix
-    ./packages/kubernetes.nix
-    ./packages/mako.nix
-    ./packages/sway.nix
-    ./packages/firefox.nix
+    ./packages
   ];
 
   options = with lib; {
