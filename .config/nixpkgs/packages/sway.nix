@@ -200,8 +200,8 @@ in
         };
 
         extraConfig = ''
-          # Property Name         Border  BG      Text    Indicator Child Border
-          client.focused          #${colors.base05} #${accentColor} #${colors.base05} #${accentColor} #${accentColor}
+          # Property Name         Border            BG                Text              Indicator         Child Border
+          client.focused          #${accentColor}   #${colors.base02} #${colors.base05} #${accentColor}   #${accentColor}
           client.focused_inactive #${colors.base01} #${colors.base01} #${colors.base05} #${colors.base03} #${colors.base01}
           client.unfocused        #${colors.base01} #${colors.base00} #${colors.base05} #${colors.base01} #${colors.base01}
           client.urgent           #${colors.base08} #${colors.base08} #${colors.base00} #${colors.base08} #${colors.base08}
