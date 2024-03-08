@@ -113,6 +113,20 @@ in
       screenshotSelection = "${screenshot} selection";
       screenshotWindow = "${screenshot} window";
       screenshotDisplay = "${screenshot} display";
+
+      screenshotRofi = pkgs.writeShellScript "screenshot-rofi" ''
+        entries=" selection; window;󰍹 display"
+
+        # x-offset;-512 seems to be pretty close to the waybar module
+        chosen=$(echo -n "$entries" | rofi -p "screenshot" -dmenu -sep ";" -location 3 -theme-str 'window {width:256;x-offset:-512;}')
+
+        case "$chosen" in
+          " selection") ${screenshotSelection} ;;
+          " window") ${screenshotWindow} ;;
+          "󰍹 display") ${screenshotDisplay} ;;
+          *) exit 1 ;;
+        esac
+      '';
     in
     {
       packageSets.fonts.enable = true;
@@ -382,6 +396,16 @@ in
                 echo -e "$(whoami)@$(hostname)\n$(uname -smrn)"
               '';
               on-click = powerMenuUpperRight;
+            };
+
+            "custom/screenshot-menu" = {
+              interval = "once";
+              format = "󰹑";
+              on-click = screenshotRofi;
+              return-type = "json";
+              exec = ''
+                echo -e '{"tooltip":"screenshot"}'
+              '';
             };
 
             "group/screenshot" = {

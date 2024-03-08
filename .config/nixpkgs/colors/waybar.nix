@@ -41,7 +41,7 @@ in
         background: #${colorScheme.accentColor};
     }
 
-    #mode, #clock, #battery, #tray, #cpu, #memory, #disk, #pulseaudio, #custom-userhostname, #network, #bluetooth, #idle_inhibitor, #custom-screenshot-selection, #custom-screenshot-window, #custom-screenshot-display {
+    #mode, #clock, #battery, #tray, #cpu, #memory, #disk, #pulseaudio, #custom-userhostname, #network, #bluetooth, #idle_inhibitor, #custom-screenshot-menu, #custom-screenshot-selection, #custom-screenshot-window, #custom-screenshot-display {
         padding: 0 10px;
     }
 
@@ -89,7 +89,7 @@ in
         background-color: #${colorScheme.palette.base00};
     }
 
-    #custom-screenshot-selection, #custom-screenshot-window, #custom-screenshot-display, #custom-colorpicker {
+    #custom-screenshot-selection, #custom-screenshot-window, #custom-screenshot-display, #custom-screenshot-menu {
         background-color: #${colorScheme.palette.base01};
     }
 
