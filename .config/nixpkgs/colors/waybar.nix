@@ -41,7 +41,7 @@ in
         background: #${colorScheme.accentColor};
     }
 
-    #mode, #clock, #battery, #tray, #cpu, #memory, #disk, #pulseaudio, #custom-userhostname, #network, #bluetooth, #idle_inhibitor {
+    #mode, #clock, #battery, #tray, #cpu, #memory, #disk, #pulseaudio, #custom-userhostname, #network, #bluetooth, #idle_inhibitor, #custom-screenshot-selection, #custom-screenshot-window, #custom-screenshot-display {
         padding: 0 10px;
     }
 
@@ -87,6 +87,10 @@ in
 
     #custom-userhostname {
         background-color: #${colorScheme.palette.base00};
+    }
+
+    #custom-screenshot-selection, #custom-screenshot-window, #custom-screenshot-display, #custom-colorpicker {
+        background-color: #${colorScheme.palette.base01};
     }
 
     #taskbar button {

@@ -77,6 +77,42 @@ in
 
       powerMenuCenter = "${powerMenuRofi} 0";
       powerMenuUpperRight = "${powerMenuRofi} 3";
+
+      screenshot = pkgs.writeShellScript "screenshot" ''
+        set -e
+
+        mkdir -p ~/screenshots
+        timestamp=$(date -Iseconds)
+        screenshot_path="''${HOME}/screenshots/''${timestamp}.png"
+
+        case "$1" in
+          selection)
+            ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" "''${screenshot_path}"
+            ;;
+
+          window)
+            selection=$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)
+            ${pkgs.grim}/bin/grim -g "''${selection}" "''${screenshot_path}"
+            ;;
+
+          display)
+            # TODO skip selection if there's only one display
+            display=$(slurp -o -f "%o")
+            ${pkgs.grim}/bin/grim -o "''${display}" "''${screenshot_path}"
+        esac
+
+        cat ''${screenshot_path} | ${pkgs.wl-clipboard}/bin/wl-copy
+
+        result=$(${pkgs.libnotify}/bin/notify-send --action 'default=open' "Screenshot" "''${screenshot_path}" --expire-time 2500)
+
+        if [ "''${result}" = "default" ]; then
+          xdg-open "''${screenshot_path}"
+        fi
+      '';
+
+      screenshotSelection = "${screenshot} selection";
+      screenshotWindow = "${screenshot} window";
+      screenshotDisplay = "${screenshot} display";
     in
     {
       packageSets.fonts.enable = true;
@@ -87,6 +123,7 @@ in
 
       home.packages = with pkgs; [
         grim
+        jq # used in screenshot scripts
         libnotify
         mc
         playerctl
@@ -345,6 +382,46 @@ in
                 echo -e "$(whoami)@$(hostname)\n$(uname -smrn)"
               '';
               on-click = powerMenuUpperRight;
+            };
+
+            "group/screenshot" = {
+              orientation = "inherit";
+              modules = [
+                "custom/screenshot-selection"
+                "custom/screenshot-display"
+                "custom/screenshot-window"
+              ];
+            };
+
+            "custom/screenshot-selection" = {
+              interval = "once";
+              format = "";
+              on-click = screenshotSelection;
+              return-type = "json";
+              exec = ''
+                echo -e '{"tooltip":"screenshot selection"}'
+              '';
+            };
+
+            "custom/screenshot-window" = {
+              interval = "once";
+              format = "";
+              on-click = screenshotWindow;
+              return-type = "json";
+              exec = ''
+                echo -e '{"tooltip":"screenshot window"}'
+              '';
+            };
+
+            "custom/screenshot-display" = {
+              interval = "once";
+              format = "󰍹";
+              tooltip-format = "screenshot display";
+              on-click = screenshotDisplay;
+              return-type = "json";
+              exec = ''
+                echo -e '{"tooltip":"screenshot display"}'
+              '';
             };
           };
         };
