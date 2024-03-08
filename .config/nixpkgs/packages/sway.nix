@@ -87,17 +87,17 @@ in
 
         case "$1" in
           selection)
-            ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" "''${screenshot_path}"
+            ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -c '#${accentColor}')" "''${screenshot_path}"
             ;;
 
           window)
-            selection=$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)
+            selection=$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp -c '#${accentColor}')
             ${pkgs.grim}/bin/grim -g "''${selection}" "''${screenshot_path}"
             ;;
 
           display)
             # TODO skip selection if there's only one display
-            display=$(slurp -o -f "%o")
+            display=$(slurp -o -f "%o" -c '#${accentColor}')
             ${pkgs.grim}/bin/grim -o "''${display}" "''${screenshot_path}"
         esac
 
