@@ -198,6 +198,10 @@ in
       call g:Base16hi(a:group, a:guifg, a:guibg, a:ctermfg, a:ctermbg, a:attr, a:guisp)
     endfun
 
+    " XXX https://github.com/tinted-theming/base16-vim/issues/81
+    call <sid>hi("WinSeparator",     s:gui01, s:guibg, s:cterm01, s:ctermbg, "none", "")
+    call <sid>hi("NormalFloat",      "", s:gui00, "", s:cterm00, "", "")
+
     " Vim editor colors
     call <sid>hi("Normal",        s:gui05, s:guibg, s:cterm05, s:ctermbg, "", "")
     call <sid>hi("Bold",          "", "", "", "", "bold", "")
