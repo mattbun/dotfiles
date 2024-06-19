@@ -3,6 +3,7 @@
 {
   imports = [
     ./alacritty.nix
+    ./blink.nix
     ./bottom.nix
     ./docker.nix
     ./firefox.nix
