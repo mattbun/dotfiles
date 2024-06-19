@@ -87,3 +87,7 @@ cmp.setup.filetype("gitcommit", {
     { name = "git_commits" },
   }),
 })
+
+-- Add parentheses after selecting functions or methods
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

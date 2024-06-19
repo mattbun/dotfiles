@@ -268,6 +268,11 @@ in
           config = builtins.readFile ./nvim/null-ls.lua;
         }
         {
+          plugin = nvim-autopairs;
+          type = "lua";
+          config = "require('nvim-autopairs').setup{}";
+        }
+        {
           plugin = nvim-cmp;
           type = "lua";
           config = builtins.readFile ./nvim/cmp.lua;
