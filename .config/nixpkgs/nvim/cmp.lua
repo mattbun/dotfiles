@@ -75,6 +75,10 @@ cmp.setup({
     { name = "calc" },
     { name = "path" },
   },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
 })
 
 cmp.setup.filetype("gitcommit", {
