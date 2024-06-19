@@ -209,6 +209,7 @@ in
         cmp-calc
         cmp-emoji
         cmp-nvim-lsp
+        cmp-nvim-lsp-signature-help
         cmp-path
         cmp-vsnip
         friendly-snippets
