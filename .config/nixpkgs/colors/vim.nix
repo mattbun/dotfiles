@@ -247,9 +247,9 @@ in
     call <sid>hi("PMenuSel",      s:gui06, s:gui02, s:cterm06, s:cterm02, "", "")
     call <sid>hi("PMenuSbar",     "", s:gui03, "", s:cterm03, "", "")
     call <sid>hi("PMenuThumb",    "", s:gui04, "", s:cterm04, "", "")
-    call <sid>hi("TabLine",       s:gui03, s:gui01, s:cterm03, s:cterm01, "none", "")
-    call <sid>hi("TabLineFill",   s:gui03, s:gui01, s:cterm03, s:cterm01, "none", "")
-    call <sid>hi("TabLineSel",    s:gui0B, s:gui01, s:cterm0B, s:cterm01, "none", "")
+    call <sid>hi("TabLine",       s:gui04, s:gui01, s:cterm04, s:cterm01, "none", "") " XXX
+    call <sid>hi("TabLineFill",   s:gui04, s:gui01, s:cterm04, s:cterm01, "none", "") " XXX
+    call <sid>hi("TabLineSel",    s:gui05, s:gui02, s:cterm05, s:cterm02, "none", "") " XXX
 
     " Standard syntax
     call <sid>hi("Boolean",      s:gui09, "", s:cterm09, "", "", "")
