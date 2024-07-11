@@ -330,8 +330,8 @@ in
             };
 
             network = {
-              format-ethernet = "󰈀 {ipaddr}";
-              format-wifi = "󰖩 {ipaddr}";
+              format-ethernet = "󰈀";
+              format-wifi = "󰖩";
               format-linked = "󰈀";
               format-disconnected = "󰌙";
               tooltip-format = "{ifname} - {ipaddr}\nGateway: {gwaddr}\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}";
