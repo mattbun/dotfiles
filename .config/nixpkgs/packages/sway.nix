@@ -46,6 +46,13 @@ in
         description = "How long to wait before turning off displays if there's no activity";
         default = 15 * 60;
       };
+
+      webcamDevice = mkOption {
+        type = types.str;
+        description = "The path to the webcam device";
+        example = "/dev/video0";
+        default = "";
+      };
     };
   };
 
@@ -140,6 +147,7 @@ in
         jq # used in screenshot scripts
         libnotify
         mc
+        mpv
         playerctl
         ranger
         slurp
@@ -281,7 +289,7 @@ in
             layer = "top";
             position = "top";
             modules-left = [ "sway/workspaces" "sway/mode" "wlr/taskbar" ];
-            modules-right = [ "tray" "bluetooth" "network" "pulseaudio" "memory" "cpu" "clock#date" "clock#time" "custom/userhostname" ];
+            modules-right = [ "tray" "group/actions" "pulseaudio" "bluetooth" "network" "memory" "cpu" "clock#date" "clock#time" "custom/userhostname" ];
 
             "wlr/taskbar" = {
               on-click = "activate";
@@ -398,6 +406,17 @@ in
               on-click = powerMenuUpperRight;
             };
 
+            "group/actions" = {
+              orientation = "inherit";
+              modules = [
+                # from left to right
+                (lib.mkIf ((builtins.stringLength config.packageSets.sway.webcamDevice) > 0)
+                  "custom/mirror"
+                )
+                "custom/screenshot-menu"
+              ];
+            };
+
             "custom/screenshot-menu" = {
               interval = "once";
               format = "󰹑";
@@ -405,6 +424,18 @@ in
               return-type = "json";
               exec = ''
                 echo -e '{"tooltip":"screenshot"}'
+              '';
+            };
+
+            "custom/mirror" = {
+              interval = "once";
+              return-type = "json";
+              exec = pkgs.writeShellScript "show-camera" ''
+                echo -e '{"tooltip": "show camera"}'
+              '';
+              format = "󰄀";
+              on-click = pkgs.writeShellScript "camera" ''
+                ${pkgs.mpv}/bin/mpv av://v4l2:${config.packageSets.sway.webcamDevice} --vf=hflip --profile=low-latency
               '';
             };
 
