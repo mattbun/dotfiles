@@ -444,46 +444,6 @@ in
                 ${pkgs.mpv}/bin/mpv av://v4l2:${config.packageSets.sway.webcamDevice} --vf=hflip --profile=low-latency
               '';
             };
-
-            "group/screenshot" = {
-              orientation = "inherit";
-              modules = [
-                "custom/screenshot-selection"
-                "custom/screenshot-display"
-                "custom/screenshot-window"
-              ];
-            };
-
-            "custom/screenshot-selection" = {
-              interval = "once";
-              format = "";
-              on-click = screenshotSelection;
-              return-type = "json";
-              exec = ''
-                echo -e '{"tooltip":"screenshot selection"}'
-              '';
-            };
-
-            "custom/screenshot-window" = {
-              interval = "once";
-              format = "";
-              on-click = screenshotWindow;
-              return-type = "json";
-              exec = ''
-                echo -e '{"tooltip":"screenshot window"}'
-              '';
-            };
-
-            "custom/screenshot-display" = {
-              interval = "once";
-              format = "󰍹";
-              tooltip-format = "screenshot display";
-              on-click = screenshotDisplay;
-              return-type = "json";
-              exec = ''
-                echo -e '{"tooltip":"screenshot display"}'
-              '';
-            };
           };
         };
       };
