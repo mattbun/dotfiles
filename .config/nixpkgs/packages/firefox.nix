@@ -25,6 +25,11 @@
           default = {
             settings = {
               "browser.download.dir" = "${config.home.homeDirectory}/Downloads";
+
+              # Remove most things from the new tab page
+              "browser.newtabpage.activity-stream.feeds.topsites" = false;
+              "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+              "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
             };
 
             search = {
