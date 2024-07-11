@@ -33,7 +33,7 @@ in
 
     #workspaces button {
         padding: 0 5px;
-        background: transparent;
+        background: #${colorScheme.palette.base01};
         color: #${colorScheme.palette.base07};
     }
 
@@ -41,12 +41,12 @@ in
         background: #${colorScheme.accentColor};
     }
 
-    #mode, #clock, #battery, #tray, #cpu, #memory, #disk, #pulseaudio, #custom-userhostname, #network, #bluetooth, #idle_inhibitor, #custom-screenshot-menu, #custom-screenshot-selection, #custom-screenshot-window, #custom-screenshot-display {
+    #mode, #clock, #battery, #tray, #cpu, #memory, #disk, #pulseaudio, #custom-userhostname, #network, #bluetooth, #idle_inhibitor, #custom-screenshot-menu, #custom-mirror {
         padding: 0 10px;
     }
 
     #mode {
-        background: #${colorScheme.palette.base01};
+        background: #${colorScheme.palette.base02};
     }
 
     #idle_inhibitor {
@@ -89,8 +89,16 @@ in
         background-color: #${colorScheme.palette.base00};
     }
 
-    #custom-screenshot-selection, #custom-screenshot-window, #custom-screenshot-display, #custom-screenshot-menu {
+    #custom-screenshot-menu, #custom-mirror {
         background-color: #${colorScheme.palette.base01};
+    }
+
+    #pulseaudio.muted, #bluetooth.disabled, #bluetooth.off, #network.disabled, #network.disconnected {
+        background-color: #${colorScheme.palette.base02};
+    }
+
+    #tray {
+        background-color: #${colorScheme.palette.base00};
     }
 
     #taskbar button {
