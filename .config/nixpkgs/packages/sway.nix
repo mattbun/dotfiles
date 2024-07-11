@@ -158,6 +158,7 @@ in
       wayland.windowManager.sway = {
         enable = true;
         config = {
+          defaultWorkspace = "workspace number 1";
           modifier = "Mod4";
           terminal = config.packageSets.sway.terminal;
           startup = [ ];
