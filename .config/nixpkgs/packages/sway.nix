@@ -270,6 +270,9 @@ in
           client.urgent           #${colors.base08} #${colors.base08} #${colors.base00} #${colors.base08} #${colors.base08}
           client.placeholder      #${colors.base00} #${colors.base00} #${colors.base05} #${colors.base00} #${colors.base00}
           client.background       #${colors.base07}
+
+          bindgesture swipe:3:right workspace prev_on_output
+          bindgesture swipe:3:left workspace next_on_output
         '';
       };
 
