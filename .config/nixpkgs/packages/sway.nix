@@ -204,6 +204,7 @@ in
               "${modifier}+7" = "workspace number 7";
               "${modifier}+8" = "workspace number 8";
               "${modifier}+9" = "workspace number 9";
+              "${modifier}+0" = "workspace number 10";
               "${modifier}+Down" = "focus down";
               "${modifier}+Left" = "focus left";
               "${modifier}+Return" = "exec ${config.packageSets.sway.terminal}";
@@ -217,6 +218,7 @@ in
               "${modifier}+Shift+7" = "move container to workspace number 7";
               "${modifier}+Shift+8" = "move container to workspace number 8";
               "${modifier}+Shift+9" = "move container to workspace number 9";
+              "${modifier}+Shift+0" = "move container to workspace number 10";
               "${modifier}+Shift+Ctrl+4" = "exec ${pkgs.grim}/bin/grim -g $(${pkgs.slurp}/bin/slurp) | ${pkgs.wl-clipboard}/bin/wl-copy";
               "${modifier}+Shift+Down" = "move down";
               "${modifier}+Shift+Left" = "move left";
