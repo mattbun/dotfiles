@@ -524,6 +524,9 @@ in
           format = "[$user]($style)";
           style_user = "bright-black";
           style_root = "red";
+          detect_env_vars = [
+            "SSH_CONNECTION"
+          ];
         };
         hostname = {
           format = "[@$hostname]($style) ";
