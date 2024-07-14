@@ -217,8 +217,7 @@ in
         mason-lspconfig-nvim
         mkdir-nvim
         nvim-lspconfig
-        nvim-treesitter
-        nvim-treesitter-parsers.nix
+        nvim-treesitter.withAllGrammars
         plenary-nvim
         telescope-fzf-native-nvim
         vim-eunuch

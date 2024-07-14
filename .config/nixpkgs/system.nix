@@ -27,11 +27,6 @@ in
     # mosh
   ];
 
-  # Additional treesitter grammars for neovim
-  programs.neovim.plugins = with pkgs.vimPlugins.nvim-treesitter-parsers; [
-    # go
-  ];
-
   bun.shellScripts = {
     # beep = "echo 'boop'";
   };
