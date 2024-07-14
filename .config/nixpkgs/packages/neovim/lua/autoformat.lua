@@ -17,6 +17,21 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
+-- Disable certain lsp formatters when we have better alternatives
+local disabledLSPFormatters = {
+  tsserver = true, -- prettier
+  lua_ls = true, -- stylua
+}
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client ~= nil and disabledLSPFormatters[client.name] then
+      client.server_capabilities.documentFormattingProvider = nil
+      client.server_capabilities.documentRangeFormattingProvider = nil
+    end
+  end,
+})
+
 -- Format lua files with stylua
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = augroup,

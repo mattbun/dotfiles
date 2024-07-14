@@ -20,22 +20,14 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   severity_sort = true,
 })
 
--- Change some language server options when we attach them
+-- Disable LSP semantic tokens.
+-- These look weird with nix files and tsserver ends up changing highlighting after it starts.
+-- TODO probably worth enabling when it works more consistently with treesitter.
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-
-    if client == nil then
-      return
-    end
-
-    -- disable semantic tokens, they look weird. TODO someday I'll hopefully fix this
-    client.server_capabilities.semanticTokensProvider = nil
-
-    -- disable language server formatting when we have better alternatives
-    if client.name == "tsserver" or client.name == "lua_ls" then
-      client.server_capabilities.documentFormattingProvider = nil
-      client.server_capabilities.documentRangeFormattingProvider = nil
+    if client ~= nil then
+      client.server_capabilities.semanticTokensProvider = nil
     end
   end,
 })
