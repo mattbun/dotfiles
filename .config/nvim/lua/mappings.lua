@@ -50,7 +50,7 @@ local mappings = {
     ["<leader>~"] = function()
       require("telescope.builtin").find_files({ cwd = "~" })
     end,
-    ["<leader>`"] = require("nvim-tree.api").tree.open,
+    ["<leader>`"] = require("nvim-tree.api").tree.toggle,
     ["<leader>/"] = require("telescope.builtin").live_grep,
     ["<leader>\\"] = require("telescope.builtin").resume,
     ["<leader>?"] = require("telescope.builtin").help_tags,
