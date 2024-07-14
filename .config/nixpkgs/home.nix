@@ -25,6 +25,7 @@ in
     ./lib/path.nix
     ./lib/scripts.nix
     ./lib/search.nix
+    ./nvim/statusline.nix
     ./packages
   ];
 
@@ -251,11 +252,6 @@ in
           plugin = kommentary;
           type = "lua";
           config = builtins.readFile ./nvim/kommentary.lua;
-        }
-        {
-          plugin = lualine-nvim;
-          type = "lua";
-          config = builtins.readFile ./nvim/lualine.lua;
         }
         {
           plugin = mason-nvim;
