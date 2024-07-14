@@ -108,5 +108,15 @@ in
     #taskbar button.active {
         background-color: #${colorScheme.palette.base02};
     }
+
+    #window {
+        background-color: #${colorScheme.palette.base01};
+        padding: 0 10px;
+    }
+
+    window#waybar.empty #window {
+        background-color: #${colorScheme.palette.base00};
+        padding: 0 0;
+    }
   '';
 }

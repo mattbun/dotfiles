@@ -294,13 +294,13 @@ in
             height = 24;
             layer = "top";
             position = "top";
-            modules-left = [ "sway/workspaces" "sway/mode" "wlr/taskbar" ];
+            modules-left = [ "sway/workspaces" "sway/mode" "sway/window" ];
             modules-right = [ "tray" "group/actions" "pulseaudio" "bluetooth" "network" "memory" "cpu" "clock#date" "clock#time" "custom/userhostname" ];
 
-            "wlr/taskbar" = {
-              on-click = "activate";
-              on-click-middle = "close";
-              on-click-right = "close";
+            "sway/window" = {
+              icon-size = 16;
+              max-length = 64;
+              icon = true;
             };
 
             tray = {
