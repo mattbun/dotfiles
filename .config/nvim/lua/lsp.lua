@@ -45,8 +45,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
 --   [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false,show_header=false}) end]]
 -- )
 
--- Rounded borders for hovers
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+-- Rounded borders for hovers and diagnostics
+-- local border = "rounded"
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = vim.g.border_style })
+
+vim.diagnostic.config({
+  float = {
+    border = vim.g.border_style,
+  },
+})
 
 -- Format on save by default but provide a variable to toggle it on and off
 vim.g.autoformat = true

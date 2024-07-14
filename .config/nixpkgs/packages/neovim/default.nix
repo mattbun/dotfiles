@@ -8,10 +8,12 @@
   programs.neovim = {
     enable = true;
 
-    # The colorscheme needs to be loaded before lualine is started
     extraLuaConfig = ''
       vim.cmd('runtime colorscheme.vim')
       vim.cmd('source ~/.vimrc')
+
+      -- set a global border style variable
+      vim.g.border_style = "rounded"
 
       require("lsp")
       require("mappings")
@@ -31,7 +33,6 @@
       friendly-snippets
       mason-lspconfig-nvim
       mkdir-nvim
-      nvim-lspconfig
       nvim-treesitter.withAllGrammars
       plenary-nvim
       telescope-fzf-native-nvim
@@ -86,6 +87,11 @@
         plugin = nvim-cmp;
         type = "lua";
         config = builtins.readFile ./lua/cmp.lua;
+      }
+      {
+        plugin = nvim-lspconfig;
+        type = "lua";
+        config = "require('lspconfig.ui.windows').default_options.border = vim.g.border_style";
       }
       {
         plugin = nvim-tree-lua;
