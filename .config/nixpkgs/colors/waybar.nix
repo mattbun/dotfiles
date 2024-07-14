@@ -37,6 +37,11 @@ in
         color: #${colorScheme.palette.base07};
     }
 
+    #workspaces button:hover {
+        box-shadow: inherit;
+        text-shadow: inherit;
+    }
+
     #workspaces button.focused {
         background: #${colorScheme.accentColor};
     }
