@@ -84,6 +84,7 @@ local mappings = {
     end,
     ["<leader>h"] = require("telescope.builtin").oldfiles,
     ["<leader>i"] = vim.cmd.IBLToggle,
+    ["<leader>k"] = vim.lsp.buf.hover,
     ["<leader>la"] = require("telescope.builtin").lsp_code_actions,
     ["<leader>ld"] = require("telescope.builtin").lsp_definitions,
     ["<leader>lf"] = vim.lsp.buf.format,
