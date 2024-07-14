@@ -11,7 +11,7 @@
 ## And that's not all!
 
 * A common color scheme provided by [nix-colors](https://github.com/Misterio77/nix-colors)
-* Fallback configurations for bash and regular ol' vim
+* A fallback configuration for bash
 * [direnv](https://direnv.net/) *and* [nix-direnv](https://github.com/nix-community/nix-direnv)
 
 ## Sign me up!

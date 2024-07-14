@@ -113,6 +113,9 @@ local mappings = {
 
     -- `g`-based mappings are often already mapped, be careful adding new ones (use `:help gt`)
     ["gd"] = require("telescope.builtin").lsp_definitions,
+
+    ["oo"] = "o<Esc>k", -- insert a new line below the current one
+    ["OO"] = "O<Esc>j", -- insert a new line above the current one
   },
 
   -- (v)isual mode
@@ -125,6 +128,11 @@ local mappings = {
       require("gitlinker").get_buf_range_url("v", { action_callback = require("gitlinker.actions").copy_to_clipboard })
     end,
     ["<leader>lf"] = vim.lsp.buf.format,
+
+    -- The default mappings for these change the case of the selection, but I've accidentally
+    -- triggered it while trying to do an undo so I just disable them.
+    ["u"] = "<nop>",
+    ["U"] = "<nop>",
   },
 }
 

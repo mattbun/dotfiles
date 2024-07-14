@@ -1,5 +1,3 @@
-{ lib
-, ...
-}: {
-  programs.neovim.extraLuaConfig = lib.mkAfter (builtins.readFile ./lua/statusline.lua);
+{ ... }: {
+  programs.neovim.extraLuaConfig = builtins.readFile ./lua/statusline.lua;
 }

@@ -1,27 +1,16 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     ./autoformat.nix
     ./colors.nix
+    ./diagnostics.nix
+    ./mappings.nix
     ./statusline.nix
   ];
 
   programs.neovim = {
     enable = true;
-
-    extraLuaConfig = ''
-      vim.cmd('runtime colorscheme.vim')
-      vim.cmd('source ~/.vimrc')
-
-      -- set a global border style variable
-      vim.g.border_style = "rounded"
-
-      require("lsp")
-      require("mappings")
-
-      -- show substitutions
-      vim.o.inccommand = "nosplit"
-    '';
+    extraLuaConfig = lib.mkBefore (builtins.readFile ./lua/init.lua);
 
     plugins = with pkgs.vimPlugins; [
       cmp-buffer
