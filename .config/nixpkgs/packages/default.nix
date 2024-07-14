@@ -11,6 +11,7 @@
     ./foot.nix
     ./kubernetes.nix
     ./mako.nix
+    ./neovim
     ./rofi.nix
     ./sway.nix
   ];
