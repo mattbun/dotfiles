@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    ../../colors/vim.nix
+    ./colors.nix
     ./statusline.nix
   ];
 

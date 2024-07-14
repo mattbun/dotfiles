@@ -20,7 +20,6 @@ in
     ./colors/fzf.nix
     ./colors/k9s.nix
     ./colors/tmux.nix
-    ./colors/vim.nix
     ./colors/waybar.nix
     ./lib/path.nix
     ./lib/scripts.nix
