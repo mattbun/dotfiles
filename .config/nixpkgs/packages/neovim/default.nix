@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
+    ./autocomplete.nix
     ./colors.nix
     ./statusline.nix
   ];
