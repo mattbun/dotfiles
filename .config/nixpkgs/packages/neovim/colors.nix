@@ -12,6 +12,16 @@ in
     " Based on https://github.com/tinted-theming/base16-vim/blob/main/templates/default.mustache
     " Changes are denoted with 'XXX'
 
+    " XXX
+    let g:base16_red     = "#${colorScheme.palette.base08}"
+    let g:base16_orange  = "#${colorScheme.palette.base09}"
+    let g:base16_yellow  = "#${colorScheme.palette.base0A}"
+    let g:base16_green   = "#${colorScheme.palette.base0B}"
+    let g:base16_cyan    = "#${colorScheme.palette.base0C}"
+    let g:base16_blue    = "#${colorScheme.palette.base0D}"
+    let g:base16_magenta = "#${colorScheme.palette.base0E}"
+    let g:base16_brown   = "#${colorScheme.palette.base0F}"
+
     " GUI color definitions
     let s:gui00        = "${colorScheme.palette.base00}"
     let g:base16_gui00 = "${colorScheme.palette.base00}"
