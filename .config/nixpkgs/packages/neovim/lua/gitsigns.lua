@@ -79,7 +79,7 @@ gitsigns.setup({
       text = "|",
     },
   },
-  signs_staged_enable = true,
+  signs_staged_enable = false, -- https://github.com/lewis6991/gitsigns.nvim/issues/929
   attach_to_untracked = true,
   current_line_blame_opts = {
     delay = 0,
