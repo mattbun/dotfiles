@@ -1,12 +1,13 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
-    chafa
-    pistol
+    chafa # image previews
+    file # check mime types
   ];
 
-  # pistol is a previewer meant for tools like lf, but I like bat's syntax highlighting more
-  programs.pistol.enable = true;
-  programs.bat.enable = true;
+  programs = {
+    pistol.enable = true; # pistol is a previewer
+    bat.enable = true; # ... but I like bat's syntax highlighting more
+  };
 
   programs.lf = {
     settings = {
