@@ -7,12 +7,17 @@ in
 {
   xdg.configFile."nvim/colorscheme.vim".text = ''
     let base16_background_transparent=1
-    let g:base16_accent = "${colorScheme.accentColor}"
 
-    " Based on https://github.com/tinted-theming/base16-vim/blob/main/templates/default.mustache
-    " Changes are denoted with 'XXX'
-
-    " XXX
+    " Some handy shortcuts to use in other vim configs
+    let g:base16_accent  = "#${colorScheme.accentColor}"
+    let g:base16_00      = "#${colorScheme.palette.base00}"
+    let g:base16_01      = "#${colorScheme.palette.base01}"
+    let g:base16_02      = "#${colorScheme.palette.base02}"
+    let g:base16_03      = "#${colorScheme.palette.base03}"
+    let g:base16_04      = "#${colorScheme.palette.base04}"
+    let g:base16_05      = "#${colorScheme.palette.base05}"
+    let g:base16_06      = "#${colorScheme.palette.base06}"
+    let g:base16_07      = "#${colorScheme.palette.base07}"
     let g:base16_red     = "#${colorScheme.palette.base08}"
     let g:base16_orange  = "#${colorScheme.palette.base09}"
     let g:base16_yellow  = "#${colorScheme.palette.base0A}"
@@ -21,6 +26,9 @@ in
     let g:base16_blue    = "#${colorScheme.palette.base0D}"
     let g:base16_magenta = "#${colorScheme.palette.base0E}"
     let g:base16_brown   = "#${colorScheme.palette.base0F}"
+
+    " Based on https://github.com/tinted-theming/base16-vim/blob/main/templates/default.mustache
+    " Changes are denoted with 'XXX'
 
     " GUI color definitions
     let s:gui00        = "${colorScheme.palette.base00}"

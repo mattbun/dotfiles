@@ -1,46 +1,25 @@
 -- Custom statusline
 -- <3 https://nuxsh.is-a.dev/blog/custom-nvim-statusline.html
 
--- Statusline colors
-local colors = {
-  bg = "#" .. vim.g.base16_gui01,
-  alt_bg = "#" .. vim.g.base16_gui02,
-  dark_fg = "#" .. vim.g.base16_gui03,
-  fg = "#" .. vim.g.base16_gui04,
-  light_fg = "#" .. vim.g.base16_gui05,
-  normal = "#" .. vim.g.base16_accent,
-
-  accent = "#" .. vim.g.base16_accent,
-
-  red = "#" .. vim.g.base16_gui08,
-  orange = "#" .. vim.g.base16_gui09,
-  yellow = "#" .. vim.g.base16_gui0A,
-  green = "#" .. vim.g.base16_gui0B,
-  cyan = "#" .. vim.g.base16_gui0C,
-  blue = "#" .. vim.g.base16_gui0D,
-  purple = "#" .. vim.g.base16_gui0E,
-  brown = "#" .. vim.g.base16_gui0F,
-}
-
 local highlights = {
-  StatuslineAccent = { fg = colors.bg, bg = colors.accent },
-  StatuslineInsertAccent = { fg = colors.bg, bg = colors.green },
-  StatuslineVisualAccent = { fg = colors.bg, bg = colors.blue },
-  StatuslineReplaceAccent = { fg = colors.bg, bg = colors.orange },
-  StatuslineCmdLineAccent = { fg = colors.bg, bg = colors.accent },
-  StatuslineTerminalAccent = { fg = colors.bg, bg = colors.accent },
+  StatuslineAccent = { fg = vim.g.base16_01, bg = vim.g.base16_accent },
+  StatuslineInsertAccent = { fg = vim.g.base16_01, bg = vim.g.base16_green },
+  StatuslineVisualAccent = { fg = vim.g.base16_01, bg = vim.g.base16_blue },
+  StatuslineReplaceAccent = { fg = vim.g.base16_01, bg = vim.g.base16_orange },
+  StatuslineCmdLineAccent = { fg = vim.g.base16_01, bg = vim.g.base16_red },
+  StatuslineTerminalAccent = { fg = vim.g.base16_01, bg = vim.g.base16_accent },
 
-  StatuslineOuter = { fg = colors.light_fg, bg = colors.alt_bg },
-  StatuslineInner = { fg = colors.fg, bg = colors.bg },
+  StatuslineOuter = { fg = vim.g.base16_05, bg = vim.g.base16_02 },
+  StatuslineInner = { fg = vim.g.base16_04, bg = vim.g.base16_01 },
 
-  StatuslineDiagnosticError = { fg = colors.red, bg = colors.bg },
-  StatuslineDiagnosticWarning = { fg = colors.orange, bg = colors.bg },
-  StatuslineDiagnosticInfo = { fg = colors.blue, bg = colors.bg },
-  StatuslineDiagnosticHint = { fg = colors.cyan, bg = colors.bg },
+  StatuslineDiagnosticError = { fg = vim.g.base16_red, bg = vim.g.base16_01 },
+  StatuslineDiagnosticWarning = { fg = vim.g.base16_orange, bg = vim.g.base16_01 },
+  StatuslineDiagnosticInfo = { fg = vim.g.base16_blue, bg = vim.g.base16_01 },
+  StatuslineDiagnosticHint = { fg = vim.g.base16_cyan, bg = vim.g.base16_01 },
 
-  StatuslineGitAdded = { fg = colors.green, bg = colors.bg },
-  StatuslineGitChanged = { fg = colors.blue, bg = colors.bg },
-  StatuslineGitRemoved = { fg = colors.red, bg = colors.bg },
+  StatuslineGitAdded = { fg = vim.g.base16_green, bg = vim.g.base16_01 },
+  StatuslineGitChanged = { fg = vim.g.base16_blue, bg = vim.g.base16_01 },
+  StatuslineGitRemoved = { fg = vim.g.base16_red, bg = vim.g.base16_01 },
 }
 
 for name, colorScheme in pairs(highlights) do
