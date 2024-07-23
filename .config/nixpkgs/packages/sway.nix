@@ -139,8 +139,12 @@ in
       packageSets.fonts.enable = true;
       packageSets.firefox.enable = true;
       services.mako.enable = true; # notifications
-      programs.bottom.enable = true;
-      programs.rofi.enable = true;
+
+      programs = {
+        bottom.enable = true; # cpu/memory usage graphs
+        rofi.enable = true; # menus
+        lf.enable = true; # text-based file manager
+      };
 
       home.packages = with pkgs; [
         grim

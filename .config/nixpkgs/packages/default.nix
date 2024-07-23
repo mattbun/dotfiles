@@ -10,6 +10,7 @@
     ./fonts.nix
     ./foot.nix
     ./kubernetes.nix
+    ./lf.nix
     ./mako.nix
     ./neovim
     ./rofi.nix
