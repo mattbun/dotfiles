@@ -1,45 +1,46 @@
 local gitsigns = require("gitsigns")
 
 local none = "NONE"
-local added = { fg = vim.g.base16_green, bg = none }
-local untracked = { fg = vim.g.base16_yellow, bg = none }
-local changed = { fg = vim.g.base16_blue, bg = none }
-local removed = { fg = vim.g.base16_red, bg = none }
+local highlights = {
+  GitSignsAdd = { fg = vim.g.base16_added, bg = none },
+  GitSignsAddLn = { link = "GitSignsAdd" },
+  GitSignsAddNr = { link = "GitSignsAdd" },
+  GitSignsChange = { fg = vim.g.base16_changed, bg = none },
+  GitSignsChangeLn = { link = "GitSignsChange" },
+  GitSignsChangeNr = { link = "GitSignsChange" },
+  GitSignsChangedelete = { fg = vim.g.base16_deleted, bg = none },
+  GitSignsChangedeleteLn = { link = "GitSignsChangeDelete" },
+  GitSignsChangedeleteNr = { link = "GitSignsChangeDelete" },
+  GitSignsDelete = { fg = vim.g.base16_deleted, bg = none },
+  GitSignsDeleteLn = { link = "GitSignsDelete" },
+  GitSignsDeleteNr = { link = "GitSignsDelete" },
+  GitSignsTopdelete = { fg = vim.g.base16_deleted, bg = none },
+  GitSignsTopdeleteLn = { link = "GitSignsTopDelete" },
+  GitSignsTopdeleteNr = { link = "GitSignsTopDelete" },
+  GitSignsUntracked = { fg = vim.g.base16_untracked, bg = none },
+  GitSignsUntrackedLn = { link = "GitSignsUntracked" },
+  GitSignsUntrackedNr = { link = "GitSignsUntracked" },
 
-vim.api.nvim_set_hl(0, "GitSignsAdd", added)
-vim.api.nvim_set_hl(0, "GitSignsAddLn", { link = "GitSignsAdd" })
-vim.api.nvim_set_hl(0, "GitSignsAddNr", { link = "GitSignsAdd" })
-vim.api.nvim_set_hl(0, "GitSignsChange", changed)
-vim.api.nvim_set_hl(0, "GitSignsChangeLn", { link = "GitSignsChange" })
-vim.api.nvim_set_hl(0, "GitSignsChangeNr", { link = "GitSignsChange" })
-vim.api.nvim_set_hl(0, "GitSignsChangedelete", removed)
-vim.api.nvim_set_hl(0, "GitSignsChangedeleteLn", { link = "GitSignsChangeDelete" })
-vim.api.nvim_set_hl(0, "GitSignsChangedeleteNr", { link = "GitSignsChangeDelete" })
-vim.api.nvim_set_hl(0, "GitSignsDelete", removed)
-vim.api.nvim_set_hl(0, "GitSignsDeleteLn", { link = "GitSignsDelete" })
-vim.api.nvim_set_hl(0, "GitSignsDeleteNr", { link = "GitSignsDelete" })
-vim.api.nvim_set_hl(0, "GitSignsTopdelete", removed)
-vim.api.nvim_set_hl(0, "GitSignsTopdeleteLn", { link = "GitSignsTopDelete" })
-vim.api.nvim_set_hl(0, "GitSignsTopdeleteNr", { link = "GitSignsTopDelete" })
-vim.api.nvim_set_hl(0, "GitSignsUntracked", untracked)
-vim.api.nvim_set_hl(0, "GitSignsUntrackedLn", { link = "GitSignsUntracked" })
-vim.api.nvim_set_hl(0, "GitSignsUntrackedNr", { link = "GitSignsUntracked" })
+  GitSignsStagedAdd = { link = "GitSignsAdd" },
+  GitSignsStagedAddLn = { link = "GitSignsStagedAdd" },
+  GitSignsStagedAddNr = { link = "GitSignsStagedAdd" },
+  GitSignsStagedChange = { link = "GitSignsChange" },
+  GitSignsStagedChangeLn = { link = "GitSignsStagedChange" },
+  GitSignsStagedChangeNr = { link = "GitSignsStagedChange" },
+  GitSignsStagedChangedelete = { link = "GitSignsDelete" },
+  GitSignsStagedChangedeleteLn = { link = "GitSignsStagedChangeDelete" },
+  GitSignsStagedChangedeleteNr = { link = "GitSignsStagedChangeDelete" },
+  GitSignsStagedDelete = { link = "GitSignsDelete" },
+  GitSignsStagedDeleteLn = { link = "GitSignsStagedDelete" },
+  GitSignsStagedDeleteNr = { link = "GitSignsStagedDelete" },
+  GitSignsStagedTopdelete = { link = "GitSignsDelete" },
+  GitSignsStagedTopdeleteLn = { link = "GitSignsStagedTopDelete" },
+  GitSignsStagedTopdeleteNr = { link = "GitSignsStagedTopDelete" },
+}
 
-vim.api.nvim_set_hl(0, "GitSignsStagedAdd", added)
-vim.api.nvim_set_hl(0, "GitSignsStagedAddLn", { link = "GitSignsStagedAdd" })
-vim.api.nvim_set_hl(0, "GitSignsStagedAddNr", { link = "GitSignsStagedAdd" })
-vim.api.nvim_set_hl(0, "GitSignsStagedChange", changed)
-vim.api.nvim_set_hl(0, "GitSignsStagedChangeLn", { link = "GitSignsStagedChange" })
-vim.api.nvim_set_hl(0, "GitSignsStagedChangeNr", { link = "GitSignsStagedChange" })
-vim.api.nvim_set_hl(0, "GitSignsStagedChangedelete", removed)
-vim.api.nvim_set_hl(0, "GitSignsStagedChangedeleteLn", { link = "GitSignsStagedChangeDelete" })
-vim.api.nvim_set_hl(0, "GitSignsStagedChangedeleteNr", { link = "GitSignsStagedChangeDelete" })
-vim.api.nvim_set_hl(0, "GitSignsStagedDelete", removed)
-vim.api.nvim_set_hl(0, "GitSignsStagedDeleteLn", { link = "GitSignsStagedDelete" })
-vim.api.nvim_set_hl(0, "GitSignsStagedDeleteNr", { link = "GitSignsStagedDelete" })
-vim.api.nvim_set_hl(0, "GitSignsStagedTopdelete", removed)
-vim.api.nvim_set_hl(0, "GitSignsStagedTopdeleteLn", { link = "GitSignsStagedTopDelete" })
-vim.api.nvim_set_hl(0, "GitSignsStagedTopdeleteNr", { link = "GitSignsStagedTopDelete" })
+for name, colorScheme in pairs(highlights) do
+  vim.api.nvim_set_hl(0, name, colorScheme)
+end
 
 gitsigns.setup({
   signs = {

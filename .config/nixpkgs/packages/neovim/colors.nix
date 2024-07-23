@@ -27,6 +27,15 @@ in
     let g:base16_magenta = "#${colorScheme.palette.base0E}"
     let g:base16_brown   = "#${colorScheme.palette.base0F}"
 
+    let g:base16_added     = g:base16_green
+    let g:base16_changed   = g:base16_blue
+    let g:base16_deleted   = g:base16_red
+    let g:base16_untracked = g:base16_yellow
+    let g:base16_error     = g:base16_red
+    let g:base16_warning   = g:base16_orange
+    let g:base16_info      = g:base16_blue
+    let g:base16_hint      = g:base16_cyan
+
     " Based on https://github.com/tinted-theming/base16-vim/blob/main/templates/default.mustache
     " Changes are denoted with 'XXX'
 

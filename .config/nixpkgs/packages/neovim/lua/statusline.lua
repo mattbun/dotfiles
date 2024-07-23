@@ -12,14 +12,14 @@ local highlights = {
   StatuslineOuter = { fg = vim.g.base16_05, bg = vim.g.base16_02 },
   StatuslineInner = { fg = vim.g.base16_04, bg = vim.g.base16_01 },
 
-  StatuslineDiagnosticError = { fg = vim.g.base16_red, bg = vim.g.base16_01 },
-  StatuslineDiagnosticWarning = { fg = vim.g.base16_orange, bg = vim.g.base16_01 },
-  StatuslineDiagnosticInfo = { fg = vim.g.base16_blue, bg = vim.g.base16_01 },
-  StatuslineDiagnosticHint = { fg = vim.g.base16_cyan, bg = vim.g.base16_01 },
+  StatuslineDiagnosticError = { fg = vim.g.base16_error, bg = vim.g.base16_01 },
+  StatuslineDiagnosticWarning = { fg = vim.g.base16_warning, bg = vim.g.base16_01 },
+  StatuslineDiagnosticInfo = { fg = vim.g.base16_info, bg = vim.g.base16_01 },
+  StatuslineDiagnosticHint = { fg = vim.g.base16_hint, bg = vim.g.base16_01 },
 
-  StatuslineGitAdded = { fg = vim.g.base16_green, bg = vim.g.base16_01 },
-  StatuslineGitChanged = { fg = vim.g.base16_blue, bg = vim.g.base16_01 },
-  StatuslineGitRemoved = { fg = vim.g.base16_red, bg = vim.g.base16_01 },
+  StatuslineGitAdded = { fg = vim.g.base16_added, bg = vim.g.base16_01 },
+  StatuslineGitChanged = { fg = vim.g.base16_changed, bg = vim.g.base16_01 },
+  StatuslineGitRemoved = { fg = vim.g.base16_removed, bg = vim.g.base16_01 },
 }
 
 for name, colorScheme in pairs(highlights) do
@@ -168,10 +168,10 @@ local vcs = function()
   if git_info.added ~= nil and git_info.added ~= 0 then
     added = "%#StatuslineGitAdded#+" .. git_info.added .. " "
   end
-  if git_info.added ~= nil and git_info.changed ~= 0 then
+  if git_info.changed ~= nil and git_info.changed ~= 0 then
     changed = "%#StatuslineGitChanged#~" .. git_info.changed .. " "
   end
-  if git_info.added ~= nil and git_info.removed ~= 0 then
+  if git_info.removed ~= nil and git_info.removed ~= 0 then
     removed = "%#StatuslineGitRemoved#-" .. git_info.removed .. " "
   end
 
