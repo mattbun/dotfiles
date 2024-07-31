@@ -16,7 +16,6 @@ in
   imports = [
     nix-colors.homeManagerModule
     ./system.nix
-    ./colors/alacritty.nix
     ./colors/fzf.nix
     ./colors/k9s.nix
     ./colors/tmux.nix

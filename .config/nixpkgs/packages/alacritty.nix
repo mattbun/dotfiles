@@ -3,39 +3,67 @@
 , lib
 , ...
 }: {
-  options = with lib; {
-    packageSets.alacritty.enable = mkOption {
-      type = types.bool;
-      description = "Whether or not to install and configure alacritty";
-      default = false;
-    };
-  };
+  packageSets.fonts.enable = lib.mkIf config.programs.alacritty.enable true;
 
-  config = lib.mkIf config.packageSets.alacritty.enable {
-    packageSets.fonts.enable = true;
+  programs.alacritty = {
+    settings = {
+      env = {
+        TERM = "xterm-256color";
+      };
 
-    home.packages = with pkgs; [
-      alacritty
-    ];
+      font = {
+        normal = {
+          family = config.packageSets.fonts.mono;
+        };
+        size = 13.0;
+      };
 
-    programs.alacritty = {
-      enable = true;
-      settings = {
-        env = {
-          TERM = "xterm-256color";
+      selection = {
+        save_to_clipboard = true;
+      };
+
+      shell = {
+        program = "${pkgs.tmux}/bin/tmux";
+      };
+
+      colors = {
+        # Default color;
+        primary = {
+          background = "0x${config.colorScheme.palette.base00}";
+          foreground = "0x${config.colorScheme.palette.base05}";
         };
-        font = {
-          normal = {
-            family = config.packageSets.fonts.mono;
-          };
-          size = 13.0;
+
+        # Colors the cursor will use if `custom_cursor_colors` is tru";
+        cursor = {
+          text = "0x${config.colorScheme.palette.base00}";
+          cursor = "0x${config.colorScheme.palette.base05}";
         };
-        selection = {
-          save_to_clipboard = true;
+
+        # Normal color";
+        normal = {
+          black = "0x${config.colorScheme.palette.base00}";
+          red = "0x${config.colorScheme.palette.base08}";
+          green = "0x${config.colorScheme.palette.base0B}";
+          yellow = "0x${config.colorScheme.palette.base0A}";
+          blue = "0x${config.colorScheme.palette.base0D}";
+          magenta = "0x${config.colorScheme.palette.base0E}";
+          cyan = "0x${config.colorScheme.palette.base0C}";
+          white = "0x${config.colorScheme.palette.base05}";
         };
-        shell = {
-          program = "${pkgs.tmux}/bin/tmux";
+
+        # Bright color";
+        bright = {
+          black = "0x${config.colorScheme.palette.base03}";
+          red = "0x${config.colorScheme.palette.base09}";
+          green = "0x${config.colorScheme.palette.base01}";
+          yellow = "0x${config.colorScheme.palette.base02}";
+          blue = "0x${config.colorScheme.palette.base04}";
+          magenta = "0x${config.colorScheme.palette.base06}";
+          cyan = "0x${config.colorScheme.palette.base0F}";
+          white = "0x${config.colorScheme.palette.base07}";
         };
+
+        draw_bold_text_with_bright_colors = false;
       };
     };
   };

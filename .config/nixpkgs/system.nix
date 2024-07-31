@@ -16,11 +16,14 @@ in
     kubernetes = false;
 
     # Terminals
-    alacritty.enable = false;
     foot.enable = false;
 
     # Desktops
     sway.enable = false;
+  };
+
+  programs = {
+    alacritty.enable = false;
   };
 
   home.packages = with pkgs; [
