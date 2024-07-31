@@ -18,9 +18,7 @@ in
     ./colors/k9s.nix
     ./colors/tmux.nix
     ./colors/waybar.nix
-    ./lib/path.nix
-    ./lib/scripts.nix
-    ./lib/search.nix
+    ./lib
     ./packages
   ];
 
