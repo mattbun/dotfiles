@@ -20,6 +20,10 @@ in
   };
 
   programs = {
+    # Shells
+    bash.enable = true;
+    fish.enable = true;
+
     # Terminals
     alacritty.enable = false;
     foot.enable = false;

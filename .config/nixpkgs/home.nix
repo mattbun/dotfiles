@@ -9,8 +9,6 @@
 let
   gitName = "Matt Rathbun";
   gitEmail = "5514636+mattbun@users.noreply.github.com";
-
-  nix-colors-lib = nix-colors.lib-contrib { inherit pkgs; };
 in
 {
   imports = [
@@ -112,11 +110,6 @@ in
       config = {
         theme = "base16";
       };
-    };
-
-    programs.direnv = {
-      enable = true;
-      nix-direnv.enable = true;
     };
 
     # These options apply to ripgrep and fd (which are used in fzf and neovim)
@@ -342,41 +335,6 @@ in
         nix shell nixpkgs#$1 --command $1 ''${@:2}
       '';
 
-      nixify = ''
-        if [ ! -e ./.envrc ]; then
-          echo "use nix" > .envrc
-          direnv allow
-        fi
-
-        if [[ ! -e shell.nix ]] && [[ ! -e default.nix ]]; then
-          cat > shell.nix <<'EOF'
-        with import <nixpkgs> {};
-        mkShell {
-          nativeBuildInputs = [
-            bashInteractive
-          ];
-        }
-        EOF
-          ''${EDITOR:-vim} shell.nix
-        fi
-      '';
-
-      flakify = ''
-        if [ ! -d .git ]; then
-          git init
-        fi
-
-        if [ ! -e flake.nix ]; then
-          nix flake new -t github:nix-community/nix-direnv .
-          direnv allow
-        elif [ ! -e .envrc ]; then
-          echo "use flake" > .envrc
-          direnv allow
-        fi
-
-        ''${EDITOR:-vim} flake.nix
-      '';
-
       git-pr = ''
         ${if pkgs.stdenv.isDarwin then "open" else "xdg-open"} "$(git-open --print | sed -e 's|/tree/|/pull/new/|')"
       '';
@@ -384,8 +342,6 @@ in
 
     home.sessionVariables = {
       EDITOR = "nvim";
-      DIRENV_LOG_FORMAT = ""; # shh direnv
-      _ZL_HYPHEN = 1; # Tell z.lua to treat hyphens like normal characters and not part of a regex
     };
 
     # This works around some logic that tries to prevent reloading env vars
@@ -393,100 +349,9 @@ in
       unset __HM_SESS_VARS_SOURCED
     '';
 
-    # z
-    programs.z-lua = {
-      enable = true;
-    };
-
     # asdf clone
     programs.mise = {
       enable = true;
-    };
-
-    programs.bash = {
-      enable = true;
-    };
-
-    programs.fish = {
-      enable = true;
-      shellAbbrs = { };
-
-      interactiveShellInit = ''
-        sh ${nix-colors-lib.shellThemeFromScheme { scheme = config.colorScheme; }}
-      '';
-
-      functions = {
-        fish_greeting = "";
-      };
-
-      plugins = [ ];
-    };
-
-    programs.starship = {
-      enable = true;
-      enableBashIntegration = false;
-      settings = {
-        add_newline = false;
-        format = lib.concatStrings [
-          "$username"
-          "$hostname"
-          "$directory"
-          "$git_branch"
-          "$git_state"
-          "$git_status"
-          "$cmd_duration"
-          "$status"
-          "$character"
-        ];
-        username = {
-          format = "[$user]($style)";
-          style_user = "bright-black";
-          style_root = "red";
-          detect_env_vars = [
-            "SSH_CONNECTION"
-          ];
-        };
-        hostname = {
-          format = "[@$hostname]($style) ";
-          style = "bright-black";
-        };
-        directory = {
-          style = "blue";
-          read_only = " [RO]";
-        };
-        git_branch = {
-          format = "[$branch]($style) ";
-          style = "bright-black";
-        };
-        git_status = {
-          format = "[$modified$untracked](bright-black)[$deleted](dimmed green)[$staged$renamed](green)[$conflicted](yellow)[$ahead_behind](cyan)";
-
-          staged = "+$count ";
-          deleted = "×$count ";
-          renamed = "~$count ";
-
-          conflicted = "=$count ";
-          modified = "!$count ";
-          untracked = "?$count ";
-
-          ahead = "⇡$count ";
-          behind = "⇣$count ";
-          diverged = "$ahead_count⇕$behind_count ";
-        };
-        cmd_duration = {
-          format = "[$duration]($style) ";
-          style = "yellow";
-        };
-        status = {
-          format = "[$common_meaning$signal_name\\($status\\)]($style) ";
-          pipestatus_format = "$pipestatus|$common_meaning$signal_name\\($status\\)]($style) ";
-          disabled = false;
-        };
-        character = {
-          success_symbol = "\\$";
-          error_symbol = "[\\$](red)";
-        };
-      };
     };
   };
 }
