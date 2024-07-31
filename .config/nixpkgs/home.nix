@@ -62,11 +62,7 @@ in
       gnutar
       gzip
       jq
-      nil
-      nixpkgs-fmt
       ripgrep
-      stylua
-      sumneko-lua-language-server
       tmux
       unzip
     ];

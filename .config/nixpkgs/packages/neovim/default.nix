@@ -1,4 +1,8 @@
-{ lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ...
+}:
 {
   imports = [
     ./autoformat.nix
@@ -7,6 +11,13 @@
     ./mappings.nix
     ./statusline.nix
   ];
+
+  home.packages = lib.mkIf config.programs.neovim.enable (with pkgs; [
+    nil
+    nixpkgs-fmt
+    stylua
+    sumneko-lua-language-server
+  ]);
 
   programs.neovim = {
     extraLuaConfig = lib.mkBefore (builtins.readFile ./lua/init.lua);
