@@ -348,10 +348,5 @@ in
     home.sessionVariablesExtra = ''
       unset __HM_SESS_VARS_SOURCED
     '';
-
-    # asdf clone
-    programs.mise = {
-      enable = true;
-    };
   };
 }

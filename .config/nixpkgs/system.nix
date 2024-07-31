@@ -24,6 +24,9 @@ in
     bash.enable = true;
     fish.enable = true;
 
+    # Utilities
+    mise.enable = true; # asdf clone
+
     # Terminals
     alacritty.enable = false;
     foot.enable = false;
