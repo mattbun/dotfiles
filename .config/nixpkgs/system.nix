@@ -15,15 +15,14 @@ in
     docker = false;
     kubernetes = false;
 
-    # Terminals
-    foot.enable = false;
-
     # Desktops
     sway.enable = false;
   };
 
   programs = {
+    # Terminals
     alacritty.enable = false;
+    foot.enable = false;
   };
 
   home.packages = with pkgs; [
