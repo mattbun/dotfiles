@@ -338,10 +338,6 @@ in
       '';
     };
 
-    home.sessionVariables = {
-      EDITOR = "nvim";
-    };
-
     # This works around some logic that tries to prevent reloading env vars
     home.sessionVariablesExtra = ''
       unset __HM_SESS_VARS_SOURCED

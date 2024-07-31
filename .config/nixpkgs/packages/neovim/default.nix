@@ -9,7 +9,6 @@
   ];
 
   programs.neovim = {
-    enable = true;
     extraLuaConfig = lib.mkBefore (builtins.readFile ./lua/init.lua);
 
     plugins = with pkgs.vimPlugins; [

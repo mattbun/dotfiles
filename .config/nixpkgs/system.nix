@@ -24,6 +24,12 @@ in
     bash.enable = true;
     fish.enable = true;
 
+    # Editors
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+    };
+
     # Utilities
     mise.enable = true; # asdf clone
 
