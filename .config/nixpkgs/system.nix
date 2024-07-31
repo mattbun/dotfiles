@@ -3,9 +3,6 @@
 , config
 , ...
 }:
-let
-  homeDirectory = config.home.homeDirectory;
-in
 {
   # 04-white, 08-red, 09-orange, 0A-yellow, 0B-green, 0C-cyan, 0D-blue, 0E-magenta
   colorScheme.accentColor = config.colorScheme.palette.base04;
@@ -57,10 +54,10 @@ in
   # These will be added to the PATH environment variable
   path = {
     prepend = [
-      # "${homeDirectory}/.bin"
+      # "${config.home.homeDirectory}/.bin"
     ];
     append = [
-      # "${homeDirectory}/.bin"
+      # "${config.home.homeDirectory}/.bin"
     ];
   };
 }
