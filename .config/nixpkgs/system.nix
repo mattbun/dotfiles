@@ -29,6 +29,7 @@
 
     # Utilities
     bat.enable = true;
+    fzf.enable = true;
     mise.enable = true; # asdf clone
     tealdeer.enable = false; # tldr
 
