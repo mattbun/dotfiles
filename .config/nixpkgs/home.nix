@@ -99,13 +99,6 @@ in
       '';
     };
 
-    programs.bat = {
-      enable = true;
-      config = {
-        theme = "base16";
-      };
-    };
-
     # These options apply to ripgrep and fd (which are used in fzf and neovim)
     # Implemented in ./lib/search.nix
     bun.search = {

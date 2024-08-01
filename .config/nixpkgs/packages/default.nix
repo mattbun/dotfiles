@@ -4,6 +4,7 @@
   imports = [
     ./alacritty.nix
     ./bash.nix
+    ./bat.nix
     ./blink.nix
     ./bottom.nix
     ./direnv.nix
