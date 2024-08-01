@@ -29,6 +29,7 @@
 
     # Utilities
     mise.enable = true; # asdf clone
+    tealdeer.enable = false; # tldr
 
     # Terminals
     alacritty.enable = false;

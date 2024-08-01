@@ -19,6 +19,7 @@
     ./rofi.nix
     ./starship.nix
     ./sway.nix
+    ./tealdeer.nix
     ./z-lua.nix
   ];
 }
