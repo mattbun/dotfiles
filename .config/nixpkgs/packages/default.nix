@@ -7,12 +7,14 @@
     ./bat.nix
     ./blink.nix
     ./bottom.nix
+    ./delta.nix
     ./direnv.nix
     ./docker.nix
     ./firefox.nix
     ./fish.nix
     ./fonts.nix
     ./foot.nix
+    ./git.nix
     ./kubernetes.nix
     ./lf.nix
     ./mako.nix
