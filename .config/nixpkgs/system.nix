@@ -29,8 +29,10 @@
 
     # Utilities
     bat.enable = true;
+    fd.enable = true;
     fzf.enable = true;
     mise.enable = true; # asdf clone
+    ripgrep.enable = true;
     tealdeer.enable = false; # tldr
 
     # Terminals

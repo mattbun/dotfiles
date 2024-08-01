@@ -54,7 +54,6 @@ in
       bat
       curl
       delta
-      fd
       git
       git-open
       glow
@@ -109,14 +108,6 @@ in
       ];
       includedPaths = [
         ".env"
-      ];
-    };
-
-    programs.ripgrep = {
-      enable = true;
-      arguments = [
-        # "Searches case insensitively if the pattern is all lowercase. Search case sensitively otherwise."
-        "--smart-case"
       ];
     };
 
@@ -293,8 +284,8 @@ in
       gpsup = "git push --set-upstream origin $(git branch --show-current)";
 
       # easier to remember commands that search everything
-      fda = "fd --no-ignore --hidden";
-      rga = "rg --no-ignore --hidden";
+      fda = lib.mkIf config.programs.fd.enable "fd --no-ignore --hidden";
+      rga = lib.mkIf config.programs.ripgrep.enable "rg --no-ignore --hidden";
     };
 
     # Implemented in ./lib/scripts.nix

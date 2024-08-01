@@ -17,6 +17,7 @@
     ./lf.nix
     ./mako.nix
     ./neovim
+    ./ripgrep.nix
     ./rofi.nix
     ./starship.nix
     ./sway.nix
