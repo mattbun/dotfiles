@@ -36,6 +36,10 @@
     mise.enable = true; # asdf clone
     ripgrep.enable = true;
     tealdeer.enable = false; # tldr
+    tmux = {
+      enable = true;
+      shell = "${pkgs.fish}/bin/fish";
+    };
 
     # Terminals
     alacritty.enable = false;

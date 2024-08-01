@@ -24,6 +24,7 @@
     ./starship.nix
     ./sway.nix
     ./tealdeer.nix
+    ./tmux.nix
     ./z-lua.nix
   ];
 }
