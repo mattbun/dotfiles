@@ -1,12 +1,11 @@
 { config
-, lib
 , ...
 }:
 let
   colorScheme = config.colorScheme;
 in
 {
-  programs.waybar.style = lib.mkIf config.packageSets.sway.enable ''
+  programs.waybar.style = ''
     * {
         border: none;
         border-radius: 0;

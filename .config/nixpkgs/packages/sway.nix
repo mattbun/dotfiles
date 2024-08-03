@@ -46,17 +46,24 @@ in
         description = "How long to wait before turning off displays if there's no activity";
         default = 15 * 60;
       };
+    };
 
-      webcamDevice = mkOption {
-        type = types.str;
-        description = "The path to the webcam device";
-        example = "/dev/video0";
-        default = "";
-      };
+    wayland.windowManager.sway.camera = mkOption {
+      type = types.str;
+      description = "The path to the camera device";
+      example = "/dev/video0";
+      default = "";
+    };
+
+    programs.waybar.customSettings.camera = mkOption {
+      type = types.str;
+      description = "The path to the camera device";
+      example = "/dev/video0";
+      default = "";
     };
   };
 
-  config = lib.mkIf config.packageSets.sway.enable (
+  config = lib.mkIf config.wayland.windowManager.sway.enable (
     let
       lockScreen = pkgs.writeShellScript "lock-screen" ''
         # Wait a second for input to finish
@@ -160,7 +167,6 @@ in
       ];
 
       wayland.windowManager.sway = {
-        enable = true;
         config = {
           defaultWorkspace = "workspace number 1";
           modifier = "Mod4";
@@ -293,6 +299,11 @@ in
 
       programs.waybar = {
         enable = true;
+
+        customSettings = {
+          camera = config.wayland.windowManager.sway.camera;
+        };
+
         settings = {
           mainBar = {
             height = 24;
@@ -420,7 +431,7 @@ in
               orientation = "inherit";
               modules = [
                 # from left to right
-                (lib.mkIf ((builtins.stringLength config.packageSets.sway.webcamDevice) > 0)
+                (lib.mkIf ((builtins.stringLength config.programs.waybar.customSettings.camera) > 0)
                   "custom/mirror"
                 )
                 "custom/screenshot-menu"
@@ -445,7 +456,7 @@ in
               '';
               format = "󰄀";
               on-click = pkgs.writeShellScript "camera" ''
-                ${pkgs.mpv}/bin/mpv av://v4l2:${config.packageSets.sway.webcamDevice} --vf=hflip --profile=low-latency
+                ${pkgs.mpv}/bin/mpv av://v4l2:${config.programs.waybar.customSettings.camera} --vf=hflip --profile=low-latency
               '';
             };
           };

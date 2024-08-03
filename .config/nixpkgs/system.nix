@@ -7,15 +7,6 @@
   # 04-white, 08-red, 09-orange, 0A-yellow, 0B-green, 0C-cyan, 0D-blue, 0E-magenta
   colorScheme.accentColor = config.colorScheme.palette.base04;
 
-  packageSets = {
-    # Development
-    docker = false;
-    kubernetes = false;
-
-    # Desktops
-    sway.enable = false;
-  };
-
   programs = {
     # Shells
     bash.enable = true;
@@ -44,6 +35,16 @@
     # Terminals
     alacritty.enable = false;
     foot.enable = false;
+  };
+
+  packageSets = {
+    # Development
+    docker = true;
+    kubernetes = false;
+  };
+
+  wayland.windowManager = {
+    sway.enable = false;
   };
 
   home.packages = with pkgs; [
