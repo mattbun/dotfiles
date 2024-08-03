@@ -14,8 +14,10 @@
     ./fish.nix
     ./fonts.nix
     ./foot.nix
+    ./fzf.nix
     ./git.nix
     ./kubernetes.nix
+    ./k9s.nix
     ./lf.nix
     ./mako.nix
     ./neovim

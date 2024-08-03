@@ -1,6 +1,13 @@
 { config
+, lib
+, pkgs
 , ...
 }: {
+  # On mac, k9s tries to read configuration from ~/Library/Application Support/k9s 🤢
+  home.sessionVariables = lib.mkIf pkgs.stdenv.isDarwin {
+    K9SCONFIG = "${config.home.homeDirectory}/.config/k9s";
+  };
+
   programs.k9s.skins.skin = {
     k9s =
       let

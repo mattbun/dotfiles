@@ -6,7 +6,6 @@ let
 in
 {
   programs.fzf = {
-    enable = true;
     colors = {
       "bg+" = "#${colorScheme.palette.base01}";
       "bg" = "#${colorScheme.palette.base00}";

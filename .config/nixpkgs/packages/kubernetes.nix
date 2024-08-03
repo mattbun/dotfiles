@@ -13,7 +13,6 @@
 
   config = lib.mkIf config.packageSets.kubernetes {
     home.packages = with pkgs; [
-      k9s
       kubectl
       kubectx
       kubernetes-helm
@@ -30,13 +29,9 @@
       '';
     };
 
-    # On mac, k9s tries to read configuration from ~/Library/Application Support/k9s 🤢
-    home.sessionVariables = lib.mkIf pkgs.stdenv.isDarwin {
-      K9SCONFIG = "${config.home.homeDirectory}/.config/k9s";
-    };
-
-    programs.k9s = {
-      enable = true;
+    programs = {
+      fzf.enable = true; # for ktx script
+      k9s.enable = true;
     };
   };
 }

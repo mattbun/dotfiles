@@ -9,8 +9,6 @@
   imports = [
     nix-colors.homeManagerModule
     ./system.nix
-    ./colors/fzf.nix
-    ./colors/k9s.nix
     ./lib
     ./packages
   ];
