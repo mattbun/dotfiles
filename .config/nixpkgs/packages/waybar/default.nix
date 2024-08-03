@@ -7,6 +7,10 @@ let
   accentColor = config.colorScheme.accentColor;
 in
 {
+  imports = [
+    ./style.nix
+  ];
+
   options = with lib; {
     programs.waybar.customSettings = {
       camera = mkOption {

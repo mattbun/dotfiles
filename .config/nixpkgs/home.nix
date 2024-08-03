@@ -11,7 +11,6 @@
     ./system.nix
     ./colors/fzf.nix
     ./colors/k9s.nix
-    ./colors/waybar.nix
     ./lib
     ./packages
   ];
