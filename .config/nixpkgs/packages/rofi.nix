@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
   colorScheme = config.colorScheme;
@@ -14,7 +14,6 @@ in
 {
   programs.rofi = {
     package = pkgs.rofi-wayland;
-    terminal = "${config.packageSets.sway.terminal}";
     font = "${config.packageSets.fonts.default} 12";
     plugins = with pkgs; [
       rofi-calc # TODO doesn't work with keybinding
@@ -30,7 +29,7 @@ in
     };
 
     # based on https://github.com/newmanls/rofi-themes-collection/blob/master/themes/squared-material-red.rasi
-    theme = lib.mkIf config.packageSets.sway.enable {
+    theme = {
       "*" = {
         bg0 = mkLiteral "#${colorScheme.palette.base00}";
         fg0 = mkLiteral "#${colorScheme.palette.base06}";

@@ -25,6 +25,7 @@
     ./sway.nix
     ./tealdeer.nix
     ./tmux.nix
+    ./waybar
     ./z-lua.nix
   ];
 }
