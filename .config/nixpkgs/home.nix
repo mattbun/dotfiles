@@ -44,18 +44,12 @@
 
     home.packages = with pkgs; [
       # base
-      bat
       curl
-      delta
-      git
-      git-open
       glow
       gnused
       gnutar
       gzip
       jq
-      ripgrep
-      tmux
       unzip
     ];
 

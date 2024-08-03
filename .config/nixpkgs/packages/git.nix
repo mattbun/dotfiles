@@ -1,4 +1,8 @@
 { pkgs, ... }: {
+  home.packages = with pkgs; [
+    git-open
+  ];
+
   programs.git = {
     userName = "Matt Rathbun";
     userEmail = "5514636+mattbun@users.noreply.github.com";
