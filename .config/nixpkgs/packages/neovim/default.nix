@@ -15,9 +15,10 @@
   home.packages = lib.mkIf config.programs.neovim.enable (with pkgs; [
     nil
     nixpkgs-fmt
-    stylua
     sumneko-lua-language-server
   ]);
+
+  programs.stylua.enable = true;
 
   programs.neovim = {
     extraLuaConfig = lib.mkBefore (builtins.readFile ./lua/init.lua);

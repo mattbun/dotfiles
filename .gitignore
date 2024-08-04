@@ -15,8 +15,6 @@
 !.config/nvim
 !.config/nvim/lua
 !.config/nvim/lua/*.lua
-!.config/stylua
-!.config/stylua/stylua.toml
 !.config/iterm/
 !.config/iterm/**
 !.config/nixpkgs

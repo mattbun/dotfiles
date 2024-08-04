@@ -24,6 +24,7 @@
     ./ripgrep.nix
     ./rofi.nix
     ./starship.nix
+    ./stylua.nix
     ./sway.nix
     ./tealdeer.nix
     ./tmux.nix
