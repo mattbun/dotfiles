@@ -39,7 +39,7 @@
 
   packageSets = {
     # Development
-    docker = true;
+    docker = false;
     kubernetes = false;
   };
 
