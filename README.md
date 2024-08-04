@@ -21,7 +21,7 @@ So I don't have to hard-code the system architecture, username, or home director
 
 ### Cloning this repo
 
-It _should_ (🤞) be possible to clone this repo anywhere, but I usually clone it to my home directory with:
+Nix and Home Manager should be able to handle this repo being cloned anywhere, but I usually clone it to my home directory with:
 
 ```shell
 cd
