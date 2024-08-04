@@ -150,8 +150,7 @@ in
       wayland.windowManager.sway = {
         config = {
           defaultWorkspace = "workspace number 1";
-          modifier = "Mod4";
-          terminal = config.packageSets.sway.terminal;
+          modifier = "Mod4"; # super
           startup = [ ];
           input = {
             "*" = {
