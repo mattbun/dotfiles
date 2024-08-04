@@ -19,7 +19,7 @@ So I don't have to hard-code the system architecture, username, or home director
 
 ## Getting Started
 
-### Cloning this repo
+### Clone this repo
 
 Nix and Home Manager should be able to handle this repo being cloned anywhere, but I usually clone it to my home directory with:
 
@@ -31,7 +31,13 @@ git fetch
 git checkout main
 ```
 
-### NixOS
+### Check out `.config/nixpkgs/system.nix`
+
+[`.config/nixpkgs/system.nix`](https://github.com/mattbun/dotfiles/blob/main/.config/nixpkgs/system.nix) is where system-specific configuration lives. Use it to set an accent color, enable/disable applications, or override configurations from other modules in this repo.
+
+### Installation
+
+#### NixOS
 
 It's possible to use Home Manager's NixOS module to hook this into the system config, but I like to keep them separate for simplicity's sake.
 
@@ -51,7 +57,7 @@ It's possible to use Home Manager's NixOS module to hook this into the system co
     make
     ```
 
-### Arch Linux
+#### Arch Linux
 
 1. Install nix
 
@@ -89,7 +95,7 @@ It's possible to use Home Manager's NixOS module to hook this into the system co
     make
     ```
 
-### Mac
+#### Mac
 
 1. [Install homebrew](https://brew.sh/)
 
