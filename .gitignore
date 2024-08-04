@@ -6,7 +6,6 @@
 !.envrc
 
 !.gitignore
-!.hushlogin
 
 !.setup
 !.setup/**

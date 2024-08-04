@@ -141,5 +141,10 @@
     home.sessionVariablesExtra = ''
       unset __HM_SESS_VARS_SOURCED
     '';
+
+    home.file.".hushlogin" = {
+      enable = true;
+      text = "";
+    };
   };
 }
