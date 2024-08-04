@@ -48,3 +48,7 @@ install-home-manager:
 install-darwin:
 	nix build ./.config/nixpkgs#darwinConfigurations.rathbook.system --impure
 	./result/sw/bin/darwin-rebuild switch --flake ./.config/nixpkgs#rathbook --impure
+
+direnv: .envrc
+.envrc:
+	echo "use nix" > ./.envrc

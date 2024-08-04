@@ -3,8 +3,6 @@
 !README.md
 !Makefile
 !shell.nix
-!.envrc
-
 !.gitignore
 
 !.config

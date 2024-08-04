@@ -44,6 +44,7 @@
       # base
       curl
       glow
+      gnumake
       gnused
       gnutar
       gzip
