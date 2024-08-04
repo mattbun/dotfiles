@@ -24,30 +24,30 @@ install-mac: install-darwin
 update: update-flake switch
 
 update-flake:
-	cd ~/.config/nixpkgs && nix flake update
+	cd ./.config/nixpkgs && nix flake update
 
 echo-os:
 	@echo $(os)
 
 switch-home-manager:
-	home-manager switch --flake ~/.config/nixpkgs#matt --impure
+	home-manager switch --flake ./.config/nixpkgs#matt --impure
 
 switch-darwin:
-	darwin-rebuild switch --flake ~/.config/nixpkgs#rathbook --impure
+	darwin-rebuild switch --flake ./.config/nixpkgs#rathbook --impure
 
 build-home-manager:
-	home-manager build --flake ~/.config/nixpkgs#matt --impure
+	home-manager build --flake ./.config/nixpkgs#matt --impure
 
 build-darwin:
-	darwin-rebuild build --flake ~/.config/nixpkgs#rathbook --impure
+	darwin-rebuild build --flake ./.config/nixpkgs#rathbook --impure
 
 install-home-manager:
-	nix build --experimental-features nix-command --extra-experimental-features flakes --impure --no-link ~/.config/nixpkgs#homeConfigurations.matt.activationPackage
-	$(shell nix path-info --experimental-features nix-command --extra-experimental-features flakes --impure ~/.config/nixpkgs#homeConfigurations.matt.activationPackage)/activate
+	nix build --experimental-features nix-command --extra-experimental-features flakes --impure --no-link ./.config/nixpkgs#homeConfigurations.matt.activationPackage
+	$(shell nix path-info --experimental-features nix-command --extra-experimental-features flakes --impure ./.config/nixpkgs#homeConfigurations.matt.activationPackage)/activate
 
 install-darwin:
-	nix build ~/.config/nixpkgs#darwinConfigurations.rathbook.system --impure
-	./result/sw/bin/darwin-rebuild switch --flake ~/.config/nixpkgs#rathbook --impure
+	nix build ./.config/nixpkgs#darwinConfigurations.rathbook.system --impure
+	./result/sw/bin/darwin-rebuild switch --flake ./.config/nixpkgs#rathbook --impure
 
 packer-sync:
 	nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
