@@ -6,17 +6,22 @@
 * [neovim](https://neovim.io/) (configured almost entirely in lua!)
 * [tmux](https://github.com/tmux/tmux)
 * [alacritty](https://github.com/alacritty/alacritty)
-* ... and more!
+* [sway](https://swaywm.org/)
+* ... and [more](https://github.com/mattbun/dotfiles/tree/main/.config/nixpkgs/packages)!
 
-## And that's not all!
+## It's Nix!
 
-* A common color scheme provided by [nix-colors](https://github.com/Misterio77/nix-colors)
-* A fallback configuration for bash
-* [direnv](https://direnv.net/) *and* [nix-direnv](https://github.com/nix-community/nix-direnv)
+The configuration in this repo relies on [Nix](https://nixos.org/) and [Home Manager](https://github.com/nix-community/home-manager). That doesn't mean it only works on NixOS! I've also used it in macOS (with [nix-darwin](https://github.com/LnL7/nix-darwin)), Arch Linux, and ChromeOS's Crostini.
 
-## Sign me up!
+### Why do all of the nix commands use `--impure`?
 
-First, you need to clone the repo. I clone it directly to my home directory:
+So I don't have to hard-code the system architecture, username, or home directory. The nix configurations in this repo rely on `builtins.currentSystem` and `builtins.getEnv` which don't work in pure evaluations with flakes.
+
+## Getting Started
+
+### Cloning this repo
+
+It _should_ (🤞) be possible to clone this repo anywhere, but I usually clone it to my home directory with:
 
 ```shell
 cd
@@ -26,15 +31,7 @@ git fetch
 git checkout main
 ```
 
-### Nix!
-
-The configuration in this repo relies on [Nix](https://nixos.org/) and [Home Manager](https://github.com/nix-community/home-manager). That doesn't mean it only works on NixOS! I also use it in macOS (with [nix-darwin](https://github.com/LnL7/nix-darwin)) and in Arch Linux.
-
-#### Why do all of the nix commands use `--impure`?
-
-So I don't have to hard-code the system architecture, username, or home directory. The nix configurations in this repo rely on `builtins.currentSystem` and `builtins.getEnv` which don't work in pure evaluations with flakes. There's probably a better way to do this, but that's how it works for now.
-
-#### Installation (NixOS)
+### NixOS
 
 It's possible to use Home Manager's NixOS module to hook this into the system config, but I like to keep them separate for simplicity's sake.
 
@@ -54,7 +51,7 @@ It's possible to use Home Manager's NixOS module to hook this into the system co
     make
     ```
 
-#### Installation (Arch Linux)
+### Arch Linux
 
 1. Install nix
 
@@ -92,7 +89,7 @@ It's possible to use Home Manager's NixOS module to hook this into the system co
     make
     ```
 
-## Installation (Mac)
+### Mac
 
 1. [Install homebrew](https://brew.sh/)
 
