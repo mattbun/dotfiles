@@ -46,6 +46,17 @@
       which-key-nvim # configured in mappings.lua
 
       {
+        plugin = dressing-nvim;
+        type = "lua";
+        config = ''
+          require('dressing').setup({
+            input = {
+              border = vim.g.border_style,
+            },
+          })
+        '';
+      }
+      {
         plugin = gitlinker-nvim;
         type = "lua";
         config = builtins.readFile ./lua/gitlinker.lua;
