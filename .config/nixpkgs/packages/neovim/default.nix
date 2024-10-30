@@ -51,11 +51,6 @@
         config = builtins.readFile ./lua/gitlinker.lua;
       }
       {
-        plugin = glow-nvim;
-        type = "lua";
-        config = "require('glow').setup()";
-      }
-      {
         plugin = gitsigns-nvim;
         type = "lua";
         config = builtins.readFile ./lua/gitsigns.lua;
