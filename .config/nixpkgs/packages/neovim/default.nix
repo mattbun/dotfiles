@@ -43,6 +43,7 @@
       vim-terraform
       vim-vsnip
       vim-vsnip-integ
+      which-key-nvim # configured in mappings.lua
 
       {
         plugin = gitlinker-nvim;
