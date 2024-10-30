@@ -39,7 +39,7 @@
         style = "bright-black";
       };
       git_status = {
-        format = "[$modified$untracked](bright-black)[$deleted](dimmed green)[$staged$renamed](green)[$conflicted](yellow)[$ahead_behind](cyan)";
+        format = "[$modified$untracked](bright-black)[$deleted](red)[$staged$renamed](green)[$conflicted](yellow)[$ahead_behind](cyan)";
 
         staged = "+$count ";
         deleted = "×$count ";
