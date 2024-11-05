@@ -53,6 +53,7 @@ end
 cmp.register_source("git_commits", git_commits_source)
 
 cmp.setup({
+  preselect = cmp.PreselectMode.None,
   snippet = {
     expand = function(args)
       vim.fn["vsnip#anonymous"](args.body)
