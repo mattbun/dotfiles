@@ -67,6 +67,14 @@ cmp.setup({
     ["<CR>"] = cmp.mapping.confirm({ select = false }),
     ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
     ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
+    ["<PageDown>"] = cmp.mapping(
+      cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select, count = 20 }),
+      { "i" }
+    ),
+    ["<PageUp>"] = cmp.mapping(
+      cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select, count = 20 }),
+      { "i" }
+    ),
   },
   sources = {
     { name = "nvim_lsp" },
