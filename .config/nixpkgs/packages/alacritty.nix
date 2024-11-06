@@ -26,6 +26,10 @@
         program = "${pkgs.tmux}/bin/tmux";
       };
 
+      window = {
+        option_as_alt = "Both"; # Allows option to be used as a modifier in mappings
+      };
+
       colors = {
         # Default color;
         primary = {
