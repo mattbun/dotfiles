@@ -37,6 +37,9 @@ in
       # Save screenshots to another location, you may need to do a `mkdir -p ~/Pictures/Screenshots`
       screencapture.location = "~/Pictures/Screenshots";
 
+      # Setting clock to 24-hour time makes screenshots sort alphabetically
+      NSGlobalDomain.AppleICUForce24HourTime = true;
+
       dock = {
         # Don't show recent apps in Dock
         show-recents = false;
