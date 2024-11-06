@@ -225,6 +225,7 @@ local wkMappings = {
 
   -- (v)isual mode
   v = {
+    { "<leader>a", desc = "Code actions", vim.lsp.buf.code_action },
     { "<leader>f", desc = "Format selection", vim.lsp.buf.format },
     { "<leader>g", group = "git" },
     {
@@ -245,6 +246,7 @@ local wkMappings = {
       end,
     },
     { "<leader>l", group = "LSP" },
+    { "<leader>la", desc = "Code actions", vim.lsp.buf.code_action },
     { "<leader>lf", desc = "Format selection", vim.lsp.buf.format },
 
     -- swap these keymaps since I usually want the behavior of the first one
