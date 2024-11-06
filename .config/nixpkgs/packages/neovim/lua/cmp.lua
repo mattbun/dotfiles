@@ -109,10 +109,10 @@ cmp.setup({
     { name = "nvim_lsp" },
     { name = "nvim_lsp_signature_help" },
     { name = "vsnip" },
-    { name = "buffer" },
-    { name = "emoji", insert = true },
     { name = "calc" },
     { name = "path" },
+    { name = "emoji", insert = true },
+    { name = "buffer" },
   },
   window = {
     completion = cmp.config.window.bordered(),
