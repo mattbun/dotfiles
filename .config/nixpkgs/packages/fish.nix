@@ -17,6 +17,13 @@ lib.mkIf config.programs.fish.enable {
         git_auto_fetch
       '';
 
+      shellAbbrs = {
+        "\"**\"" = lib.mkIf config.programs.fzf.enable {
+          function = "fzf_picker";
+          position = "anywhere";
+        };
+      };
+
       functions = {
         fish_greeting = "";
 
@@ -29,6 +36,8 @@ lib.mkIf config.programs.fish.enable {
             end
           '';
         };
+
+        fzf_picker = lib.mkIf config.programs.fzf.enable "${pkgs.fzf}/bin/fzf";
       };
     };
 
