@@ -46,7 +46,7 @@ install-home-manager:
 	$(shell nix path-info --experimental-features nix-command --extra-experimental-features flakes --impure ./.config/nixpkgs#homeConfigurations.matt.activationPackage)/activate
 
 install-darwin:
-	nix build ./.config/nixpkgs#darwinConfigurations.rathbook.system --impure
+	nix build --extra-experimental-features nix-command --extra-experimental-features flakes ./.config/nixpkgs#darwinConfigurations.rathbook.system --impure
 	./result/sw/bin/darwin-rebuild switch --flake ./.config/nixpkgs#rathbook --impure
 
 direnv: .envrc
