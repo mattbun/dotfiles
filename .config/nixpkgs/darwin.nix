@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 let
   username = builtins.getEnv "USER";
@@ -22,7 +22,7 @@ in
 
     casks = [
       "alacritty"
-      "homebrew/cask-fonts/font-hack"
+      "font-hack-nerd-font"
     ];
   };
 
