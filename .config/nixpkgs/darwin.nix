@@ -67,9 +67,9 @@ in
   services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;
 
-  # Create /etc/zshrc that loads the nix-darwin environment.
+  # Configure shells to load the nix-darwin environment.
   programs.zsh.enable = true;
-  # programs.fish.enable = true;
+  programs.fish.enable = true;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
