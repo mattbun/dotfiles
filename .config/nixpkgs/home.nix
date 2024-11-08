@@ -78,7 +78,7 @@
 
     nix = {
       enable = true;
-      package = pkgs.nix;
+      package = lib.mkDefault pkgs.nix; # allow nix-darwin to override this
       extraOptions = ''
         experimental-features = nix-command flakes
       '';
