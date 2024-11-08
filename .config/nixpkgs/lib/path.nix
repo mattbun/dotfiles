@@ -14,10 +14,6 @@
   };
 
   config = {
-    home.sessionVariables = {
-      # Generally you don't want to reference env vars like this in home-manager
-      PATH = builtins.concatStringsSep ":"
-        (config.path.prepend ++ [ "$PATH" ] ++ config.path.append);
-    };
+    home.sessionPath = config.path.prepend ++ config.path.append;
   };
 }
