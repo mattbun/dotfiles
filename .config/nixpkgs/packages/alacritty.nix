@@ -22,8 +22,10 @@
         save_to_clipboard = true;
       };
 
-      shell = {
-        program = "${pkgs.tmux}/bin/tmux";
+      terminal = {
+        shell = {
+          program = "${pkgs.tmux}/bin/tmux";
+        };
       };
 
       window = {
