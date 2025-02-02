@@ -208,7 +208,7 @@ Statusline = {
 
   inactive = function()
     return table.concat({
-      "%F",
+      "%t",
       modified(),
       "%=", -- Right align
       linepercent(),
