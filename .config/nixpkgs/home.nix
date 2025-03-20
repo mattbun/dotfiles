@@ -1,25 +1,16 @@
 { config
 , pkgs
-, nix-colors
+, basix
 , username
 , homeDirectory
 , lib
 , ...
 }: {
   imports = [
-    nix-colors.homeManagerModule
     ./system.nix
     ./lib
     ./packages
   ];
-
-  options = with lib; {
-    colorScheme.accentColor = mkOption {
-      type = types.str;
-      description = "Accent color to use in a few places";
-      default = config.colorScheme.palette.base0E;
-    };
-  };
 
   config = {
     # Home Manager needs a bit of information about you and the
@@ -51,30 +42,6 @@
       jq
       unzip
     ];
-
-    colorScheme = nix-colors.colorSchemes.helios;
-    # colorScheme = {
-    #   slug = "...";
-    #   name = "...";
-    #   colors = {
-    #     base00 = "000000"; # ----
-    #     base01 = "000000"; # ---
-    #     base02 = "000000"; # --
-    #     base03 = "000000"; # -
-    #     base04 = "000000"; # +
-    #     base05 = "000000"; # ++
-    #     base06 = "000000"; # +++
-    #     base07 = "000000"; # ++++
-    #     base08 = "000000"; # red
-    #     base09 = "000000"; # orange
-    #     base0A = "000000"; # yellow
-    #     base0B = "000000"; # green
-    #     base0C = "000000"; # aqua/cyan
-    #     base0D = "000000"; # blue
-    #     base0E = "000000"; # purple
-    #     base0F = "000000"; # brown
-    #   };
-    # };
 
     nix = {
       enable = true;

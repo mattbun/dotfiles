@@ -9,15 +9,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-colors.url = "github:misterio77/nix-colors";
-
     darwin = {
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    basix.url = "github:NotAShelf/Basix";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, nix-colors, darwin, ... }:
+  outputs = { nixpkgs, home-manager, basix, darwin, ... }:
     let
       system = builtins.currentSystem;
       username = builtins.getEnv "USER";
@@ -37,7 +37,7 @@
           # Optionally use extraSpecialArgs
           # to pass through arguments to home.nix
           extraSpecialArgs = {
-            inherit nix-colors username homeDirectory;
+            inherit basix username homeDirectory;
           };
         };
 
@@ -51,7 +51,7 @@
             home-manager.useUserPackages = true;
             home-manager.users."${username}" = import ./home.nix;
             home-manager.extraSpecialArgs = {
-              inherit nix-colors username homeDirectory;
+              inherit basix username homeDirectory;
             };
           }
         ];
