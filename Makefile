@@ -8,16 +8,19 @@ endif
 
 switch: switch-$(os)
 switch-arch: switch-home-manager
+switch-bazzite: switch-home-manager
 switch-nixos: switch-home-manager
 switch-mac: switch-darwin
 
 build: build-$(os)
 build-arch: build-home-manager
+build-bazzite: build-home-manager
 build-nixos: build-home-manager
 build-mac: build-darwin
 
 install: install-$(os)
 install-arch: install-home-manager
+install-bazzite: install-home-manager
 install-nixos: install-home-manager
 install-mac: install-darwin
 
