@@ -1,6 +1,5 @@
 { config
 , pkgs
-, basix
 , username
 , homeDirectory
 , lib
