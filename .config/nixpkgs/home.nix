@@ -114,5 +114,7 @@
       enable = true;
       text = "";
     };
+
+    news.display = "silent";
   };
 }
