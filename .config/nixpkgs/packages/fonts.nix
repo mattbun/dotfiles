@@ -35,7 +35,7 @@
     fonts.fontconfig.enable = true; # pro-tip: see fonts with `fc-list`
 
     home.packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "Hack" ]; })
+      nerd-fonts.hack
     ];
   };
 }
