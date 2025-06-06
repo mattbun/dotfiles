@@ -87,11 +87,6 @@
         config = builtins.readFile ./lua/null-ls.lua;
       }
       {
-        plugin = nvim-autopairs;
-        type = "lua";
-        config = "require('nvim-autopairs').setup{}";
-      }
-      {
         plugin = nvim-cmp;
         type = "lua";
         config = builtins.readFile ./lua/cmp.lua;
