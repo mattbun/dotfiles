@@ -7,4 +7,9 @@ lib.mkIf config.programs.z-lua.enable {
     _ZL_HYPHEN = 1; # Tell z.lua to treat hyphens like normal characters and not part of a regex
     _ZL_MATCH_MODE = 1; # Use enhanced matching
   };
+
+  # Tie into fish's directory history
+  programs.fish.interactiveShellInit = ''
+    set -gx _ZL_CD cd
+  '';
 }
