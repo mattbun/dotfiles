@@ -16,34 +16,20 @@ local capabilities = vim.tbl_deep_extend(
   require("cmp_nvim_lsp").default_capabilities()
 )
 
--- This automatically sets up any new language servers that are installed
-require("mason-lspconfig").setup_handlers({
-  -- default handler
-  function(server_name)
-    require("lspconfig")[server_name].setup({
-      capabilities = capabilities,
-    })
-  end,
-
-  ["gopls"] = function()
-    require("lspconfig").gopls.setup({
-      capabilities = capabilities,
-      settings = {
-        gopls = {
-          experimentalPostfixCompletions = true,
-        },
-      },
-    })
-  end,
-
-  -- These are configured manually below
-  ["lua_ls"] = function() end,
-  ["nil_ls"] = function() end,
+vim.lsp.config("*", {
+  capabilities = capabilities,
 })
 
--- These language servers are installed via nix so mason doesn't need to manage them
-local lspconfig = require("lspconfig")
-lspconfig.nil_ls.setup({
+vim.lsp.config("gopls", {
+  capabilities = capabilities,
+  settings = {
+    gopls = {
+      experimentalPostfixCompletions = true,
+    },
+  },
+})
+
+vim.lsp.config("nil_ls", {
   capabilities = capabilities,
   settings = {
     ["nil"] = {
@@ -55,7 +41,7 @@ lspconfig.nil_ls.setup({
 })
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
-require("lspconfig").lua_ls.setup({
+vim.lsp.config("lua_ls", {
   capabilities = capabilities,
   on_init = function(client)
     -- Don't use neovim config if there's a .luarc.json
