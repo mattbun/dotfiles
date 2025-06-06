@@ -82,7 +82,7 @@
         config = builtins.readFile ./lua/mason.lua;
       }
       {
-        plugin = null-ls-nvim;
+        plugin = none-ls-nvim;
         type = "lua";
         config = builtins.readFile ./lua/null-ls.lua;
       }
