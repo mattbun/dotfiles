@@ -35,9 +35,10 @@
             search = {
               force = true;
               engines = {
-                "Wikipedia (en)".metaData.alias = "w";
+                "wikipedia".metaData.alias = "w";
 
-                "YouTube" = {
+                youtube = {
+                  name = "YouTube";
                   urls = [{
                     template = "https://www.youtube.com/results";
                     params = [
@@ -47,7 +48,8 @@
                   definedAliases = [ "y" ];
                 };
 
-                "Nix Packages" = {
+                nixpkgs = {
+                  name = "Nix Packages";
                   urls = [{
                     template = "https://search.nixos.org/packages";
                     params = [
@@ -59,7 +61,8 @@
                   definedAliases = [ "nixpkgs" ];
                 };
 
-                "Nix Options" = {
+                nixopts = {
+                  name = "Nix Options";
                   urls = [{
                     template = "https://search.nixos.org/options";
                     params = [
@@ -71,7 +74,8 @@
                   definedAliases = [ "nixopts" ];
                 };
 
-                "Home Manager Options" = {
+                hmopts = {
+                  name = "Home Manager Options";
                   urls = [{
                     template = "https://home-manager-options.extranix.com";
                     params = [
