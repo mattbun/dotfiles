@@ -73,6 +73,16 @@ in
         ansi13 = mkOption { type = hexColor; default = palette.base17; }; # bright purple
         ansi14 = mkOption { type = hexColor; default = palette.base15; }; # bright cyan
         ansi15 = mkOption { type = hexColor; default = palette.base07; }; # bright white
+
+        # Colors
+        red = mkOption { type = hexColor; default = palette.base08; };
+        orange = mkOption { type = hexColor; default = palette.base09; };
+        yellow = mkOption { type = hexColor; default = palette.base0A; };
+        green = mkOption { type = hexColor; default = palette.base0B; };
+        cyan = mkOption { type = hexColor; default = palette.base0C; };
+        blue = mkOption { type = hexColor; default = palette.base0D; };
+        purple = mkOption { type = hexColor; default = palette.base0E; };
+        brown = mkOption { type = hexColor; default = palette.base0F; };
       };
     };
   };
