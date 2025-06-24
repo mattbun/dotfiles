@@ -100,6 +100,7 @@ in
 
       "element selected normal, element selected active" = {
         background-color = mkLiteral "@accent-color";
+        text-color = mkLiteral "@bg0";
       };
 
       "element selected urgent" = {
