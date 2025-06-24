@@ -39,6 +39,7 @@ vim.lsp.config("nil_ls", {
     },
   },
 })
+vim.lsp.enable("nil_ls")
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
 vim.lsp.config("lua_ls", {
@@ -76,3 +77,4 @@ vim.lsp.config("lua_ls", {
     Lua = {},
   },
 })
+vim.lsp.enable("lua_ls")
