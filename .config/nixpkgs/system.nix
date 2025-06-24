@@ -17,6 +17,7 @@
       enable = true;
       defaultEditor = true;
     };
+    helix.enable = false;
 
     # Utilities
     bat.enable = true;

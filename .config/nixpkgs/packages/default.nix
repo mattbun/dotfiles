@@ -16,6 +16,7 @@
     ./foot.nix
     ./fzf.nix
     ./git.nix
+    ./helix.nix
     ./kubernetes.nix
     ./k9s.nix
     ./lf.nix
