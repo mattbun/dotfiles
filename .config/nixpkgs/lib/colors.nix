@@ -16,8 +16,11 @@ in
 {
   options = with lib; {
     colorScheme = let palette = config.colorScheme.palette; in {
-      name = mkOption { type = str; };
       slug = mkOption { type = str; };
+      name = mkOption { 
+        type = str;
+        default = config.colorScheme.slug;
+      };
 
       accentColor = mkOption {
         type = hexColor;
