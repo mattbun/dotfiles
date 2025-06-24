@@ -73,7 +73,6 @@ in
       '';
 
       powerMenuCenter = "${powerMenuRofi} 0";
-      powerMenuUpperRight = "${powerMenuRofi} 3";
 
       screenshot = pkgs.writeShellScript "screenshot" ''
         set -e
@@ -110,20 +109,6 @@ in
       screenshotSelection = "${screenshot} selection";
       screenshotWindow = "${screenshot} window";
       screenshotDisplay = "${screenshot} display";
-
-      screenshotRofi = pkgs.writeShellScript "screenshot-rofi" ''
-        entries=" selection; window;󰍹 display"
-
-        # x-offset;-512 seems to be pretty close to the waybar module
-        chosen=$(echo -n "$entries" | rofi -p "screenshot" -dmenu -sep ";" -location 3 -theme-str 'window {width:256;x-offset:-512;}')
-
-        case "$chosen" in
-          " selection") ${screenshotSelection} ;;
-          " window") ${screenshotWindow} ;;
-          "󰍹 display") ${screenshotDisplay} ;;
-          *) exit 1 ;;
-        esac
-      '';
     in
     {
       packageSets.fonts.enable = true;
@@ -281,33 +266,67 @@ in
       programs.waybar = {
         enable = true;
 
+        settings.mainBar = {
+          modules-left = [ "sway/workspaces" "sway/mode" "sway/window" ];
+        };
+
         customSettings = {
           camera = config.wayland.windowManager.sway.customSettings.camera;
           terminal = config.wayland.windowManager.sway.config.terminal;
         };
 
-        settings.mainBar = {
-          modules-left = [ "sway/workspaces" "sway/mode" "sway/window" ];
+        # bunu.entries = [
+        bunu.entries = {
+          shortcuts = [
+            {
+              icon = "";
+              name = "screenshot selection";
+              action = screenshotSelection;
+            }
+            {
+              icon = "";
+              name = "screenshot window";
+              action = screenshotWindow;
+            }
+            {
+              icon = "󰍹";
+              name = "screenshot display";
+              action = screenshotDisplay;
+            }
+          ];
+          power = [
+            {
+              icon = "󰌾";
+              name = "lock";
+              action = toString (pkgs.writeShellScript "lock-screen" ''
+                # Wait a second for input to finish
+                sleep 1
 
-          "group/actions" = {
-            modules = [
-              "custom/screenshot-menu"
-            ];
-          };
-
-          "custom/screenshot-menu" = {
-            interval = "once";
-            format = "󰹑";
-            on-click = screenshotRofi;
-            return-type = "json";
-            exec = ''
-              echo -e '{"tooltip":"screenshot"}'
-            '';
-          };
-
-          "custom/userhostname" = {
-            on-click = powerMenuUpperRight;
-          };
+                # swayidle immediately enters idle state when sent a USR1 signal
+                pkill --signal USR1 swayidle
+              '');
+            }
+            {
+              icon = "󰗼";
+              name = "exit";
+              action = "swaymsg exit";
+            }
+            {
+              icon = "󰤄";
+              name = "sleep";
+              action = "systemctl suspend";
+            }
+            {
+              icon = "󰜉";
+              name = "restart";
+              action = "reboot";
+            }
+            {
+              icon = "󰐥";
+              name = "shutdown";
+              action = "shutdown now";
+            }
+          ];
         };
       };
     }

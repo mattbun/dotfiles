@@ -12,20 +12,50 @@ in
   ];
 
   options = with lib; {
-    programs.waybar.customSettings = {
-      camera = mkOption {
-        type = types.str;
-        description = "The path to the camera device";
-        example = "/dev/video0";
-        default = "";
+    programs.waybar = {
+      customSettings = {
+        camera = mkOption {
+          type = types.str;
+          description = "The path to the camera device";
+          example = "/dev/video0";
+          default = "";
+        };
+
+        terminal = mkOption {
+          type = types.str;
+          description = "The path to the terminal to use when running things in the terminal";
+          example = "\${pkgs.foot}/bin/foot";
+          default = "${pkgs.foot}/bin/foot";
+        };
       };
 
-      terminal = mkOption {
-        type = types.str;
-        description = "The path to the terminal to use when running things in the terminal";
-        example = "\${pkgs.foot}/bin/foot";
-        default = "${pkgs.foot}/bin/foot";
-      };
+      bunu.entries =
+        let
+          entries = (with types; listOf (submodule {
+            options = {
+              icon = mkOption {
+                type = str;
+              };
+
+              name = mkOption {
+                type = str;
+              };
+
+              action = mkOption {
+                type = str;
+              };
+            };
+          }));
+        in
+        {
+          shortcuts = mkOption {
+            type = entries;
+          };
+
+          power = mkOption {
+            type = entries;
+          };
+        };
     };
   };
 
@@ -44,13 +74,21 @@ in
       bottom.enable = true; # for cpu/memory usage graphs
 
       waybar = {
+        bunu.entries.shortcuts = lib.mkIf ((builtins.stringLength config.programs.waybar.customSettings.camera) > 0) [{
+          icon = "󰄀";
+          name = "mirror";
+          action = toString (pkgs.writeShellScript "mirror" ''
+            ${pkgs.mpv}/bin/mpv av://v4l2:${config.programs.waybar.customSettings.camera} --vf=hflip --profile=low-latency
+          '');
+        }];
+
         settings = {
           mainBar = {
             height = 24;
             layer = "top";
             position = "top";
             modules-left = [ ];
-            modules-right = [ "tray" "group/actions" "pulseaudio" "bluetooth" "network" "memory" "cpu" "clock#date" "clock#time" "custom/userhostname" ];
+            modules-right = [ "tray" "mpris" "pulseaudio" "bluetooth" "network" "memory" "cpu" "clock#date" "clock#time" "custom/userhostname" ];
 
             "sway/window" = {
               icon-size = 16;
@@ -159,12 +197,41 @@ in
               '';
             };
 
-            "custom/userhostname" = {
-              interval = "once";
-              exec = pkgs.writeShellScript "userhostname" ''
-                echo -e "$(whoami)@$(hostname)\n$(uname -smrn)"
-              '';
-            };
+            "custom/userhostname" =
+              let
+                separator = {
+                  icon = "---";
+                  name = "";
+                  action = "";
+                };
+                close = {
+                  icon = "󱎘";
+                  name = "close";
+                  action = "";
+                };
+                shortcuts = config.programs.waybar.bunu.entries.shortcuts;
+                power = config.programs.waybar.bunu.entries.power;
+
+                entries = shortcuts ++ [ separator ] ++ power ++ [ separator close ];
+
+                bunuRofi = with builtins; pkgs.writeShellScript "bunu-rofi" ''
+                  entries="${concatStringsSep ";" (map (x: x.icon + " " + x.name) entries)}"
+
+                  chosen=$(echo -n "$entries" | rofi -p "󱄅 " -dmenu -sep ";" -l ${toString (length entries)} -location 3 -theme-str 'window {width:256;}')
+
+                  case "$chosen" in
+                  ${concatStringsSep "\n" (map (x: "  \"" + x.icon + " " + x.name + "\")" + x.action + " ;;") entries )}
+                    *) exit 1 ;;
+                  esac
+                '';
+              in
+              {
+                interval = "once";
+                exec = pkgs.writeShellScript "userhostname" ''
+                  echo -e "$(whoami)@$(hostname)\n$(uname -smrn)"
+                '';
+                on-click = bunuRofi;
+              };
 
             "group/actions" = {
               orientation = "inherit";
@@ -176,16 +243,13 @@ in
               ];
             };
 
-            "custom/mirror" = {
-              interval = "once";
-              return-type = "json";
-              exec = pkgs.writeShellScript "show-camera" ''
-                echo -e '{"tooltip": "show camera"}'
-              '';
-              format = "󰄀";
-              on-click = pkgs.writeShellScript "camera" ''
-                ${pkgs.mpv}/bin/mpv av://v4l2:${config.programs.waybar.customSettings.camera} --vf=hflip --profile=low-latency
-              '';
+            "mpris" = {
+              "format" = "{status_icon}";
+              "status-icons" = {
+                "playing" = "";
+                "paused" = "";
+                "stopped" = "";
+              };
             };
           };
         };
