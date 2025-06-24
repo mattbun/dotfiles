@@ -32,7 +32,8 @@ in
 
     #workspaces button {
         padding: 0 5px;
-        background: #${colorScheme.palette.base01};
+        background: #${colorScheme.palette.base02};
+        border: 2px solid #${colorScheme.palette.base02};
         color: #${colorScheme.palette.base07};
     }
 
@@ -42,11 +43,12 @@ in
     }
 
     #workspaces button.focused {
-        background: #${colorScheme.accentColor};
+        border: 2px solid #${colorScheme.accentColor};
     }
 
-    #mode, #clock, #battery, #tray, #cpu, #memory, #disk, #pulseaudio, #custom-userhostname, #network, #bluetooth, #idle_inhibitor, #custom-screenshot-menu, #custom-mirror {
+    #mode, #clock, #battery, #tray, #cpu, #memory, #disk, #pulseaudio, #custom-userhostname, #network, #bluetooth, #idle_inhibitor, #mpris {
         padding: 0 10px;
+        background-color: #${colorScheme.palette.base01};
     }
 
     #mode {
@@ -54,55 +56,51 @@ in
     }
 
     #idle_inhibitor {
-        background-color: #${colorScheme.palette.base0F};
+        background-color: #${colorScheme.palette.brown};
+    }
+
+    #tray {
+        background-color: #${colorScheme.palette.base01};
+    }
+
+    #mpris.playing {
+        color: #${colorScheme.palette.yellow};
     }
 
     #pulseaudio {
-        background-color: #${colorScheme.palette.base09};
+        color: #${colorScheme.palette.orange};
     }
 
     #disk {
-        background-color: #${colorScheme.palette.base0B};
+        background-color: #${colorScheme.palette.green};
     }
 
     #network {
-        background-color: #${colorScheme.palette.base0E};
+        color: #${colorScheme.palette.purple};
     }
 
     #bluetooth {
-        background-color: #${colorScheme.palette.base0C};
+        color: #${colorScheme.palette.cyan};
+    }
+
+    #pulseaudio.muted, #bluetooth.disabled, #bluetooth.off, #network.disabled, #network.disconnected {
+        color: #${colorScheme.palette.base07};
     }
 
     #memory {
-        background-color: #${colorScheme.palette.base0D};
+        color: #${colorScheme.palette.blue};
     }
 
     #cpu {
-        background-color: #${colorScheme.palette.base08};
+        color: #${colorScheme.palette.red};
     }
 
-    #clock.date {
-        background-color: #${colorScheme.palette.base02};
-    }
-
-    #clock.time {
+    #clock.date, #clock.time {
         background-color: #${colorScheme.palette.base01};
     }
 
     #custom-userhostname {
-        background-color: #${colorScheme.palette.base00};
-    }
-
-    #custom-screenshot-menu, #custom-mirror {
-        background-color: #${colorScheme.palette.base01};
-    }
-
-    #pulseaudio.muted, #bluetooth.disabled, #bluetooth.off, #network.disabled, #network.disconnected {
         background-color: #${colorScheme.palette.base02};
-    }
-
-    #tray {
-        background-color: #${colorScheme.palette.base00};
     }
 
     #taskbar button {
