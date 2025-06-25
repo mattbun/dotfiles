@@ -36,6 +36,8 @@ in
     let g:base16_info      = g:base16_blue
     let g:base16_hint      = g:base16_cyan
 
+    let g:ansi_accent = "${colorScheme.accentAnsi}"
+
     " Based on https://github.com/tinted-theming/base16-vim/blob/main/templates/default.mustache
     " Changes are denoted with 'XXX'
 

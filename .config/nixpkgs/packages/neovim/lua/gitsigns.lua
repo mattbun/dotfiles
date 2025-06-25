@@ -2,22 +2,22 @@ local gitsigns = require("gitsigns")
 
 local none = "NONE"
 local highlights = {
-  GitSignsAdd = { fg = vim.g.base16_added, bg = none },
+  GitSignsAdd = { fg = vim.g.base16_added, bg = none, ctermfg = "green" },
   GitSignsAddLn = { link = "GitSignsAdd" },
   GitSignsAddNr = { link = "GitSignsAdd" },
-  GitSignsChange = { fg = vim.g.base16_changed, bg = none },
+  GitSignsChange = { fg = vim.g.base16_changed, bg = none, ctermfg = "blue" },
   GitSignsChangeLn = { link = "GitSignsChange" },
   GitSignsChangeNr = { link = "GitSignsChange" },
-  GitSignsChangedelete = { fg = vim.g.base16_deleted, bg = none },
+  GitSignsChangedelete = { fg = vim.g.base16_deleted, bg = none, ctermfg = "red" },
   GitSignsChangedeleteLn = { link = "GitSignsChangeDelete" },
   GitSignsChangedeleteNr = { link = "GitSignsChangeDelete" },
-  GitSignsDelete = { fg = vim.g.base16_deleted, bg = none },
+  GitSignsDelete = { fg = vim.g.base16_deleted, bg = none, ctermfg = "red" },
   GitSignsDeleteLn = { link = "GitSignsDelete" },
   GitSignsDeleteNr = { link = "GitSignsDelete" },
-  GitSignsTopdelete = { fg = vim.g.base16_deleted, bg = none },
+  GitSignsTopdelete = { fg = vim.g.base16_deleted, bg = none, ctermfg = "red" },
   GitSignsTopdeleteLn = { link = "GitSignsTopDelete" },
   GitSignsTopdeleteNr = { link = "GitSignsTopDelete" },
-  GitSignsUntracked = { fg = vim.g.base16_untracked, bg = none },
+  GitSignsUntracked = { fg = vim.g.base16_untracked, bg = none, ctermfg = "yellow" },
   GitSignsUntrackedLn = { link = "GitSignsUntracked" },
   GitSignsUntrackedNr = { link = "GitSignsUntracked" },
 

@@ -2,24 +2,106 @@
 -- <3 https://nuxsh.is-a.dev/blog/custom-nvim-statusline.html
 
 local highlights = {
-  StatuslineAccent = { fg = vim.g.base16_01, bg = vim.g.base16_accent },
-  StatuslineInsertAccent = { fg = vim.g.base16_01, bg = vim.g.base16_green },
-  StatuslineVisualAccent = { fg = vim.g.base16_01, bg = vim.g.base16_blue },
-  StatuslineReplaceAccent = { fg = vim.g.base16_01, bg = vim.g.base16_orange },
-  StatuslineCmdLineAccent = { fg = vim.g.base16_01, bg = vim.g.base16_red },
-  StatuslineTerminalAccent = { fg = vim.g.base16_01, bg = vim.g.base16_accent },
+  StatuslineAccent = {
+    fg = vim.g.base16_01,
+    bg = vim.g.base16_accent,
+    ctermfg = "black",
+    ctermbg = vim.g.ansi_accent,
+  },
+  StatuslineInsertAccent = {
+    fg = vim.g.base16_01,
+    bg = vim.g.base16_green,
+    ctermfg = "black",
+    ctermbg = "green",
+  },
+  StatuslineVisualAccent = {
+    fg = vim.g.base16_01,
+    bg = vim.g.base16_blue,
+    ctermfg = "black",
+    ctermbg = "blue",
+  },
+  StatuslineReplaceAccent = {
+    fg = vim.g.base16_01,
+    bg = vim.g.base16_yellow,
+    ctermfg = "black",
+    ctermbg = "yellow",
+  },
+  StatuslineCmdLineAccent = {
+    fg = vim.g.base16_01,
+    bg = vim.g.base16_red,
+    ctermfg = "black",
+    ctermbg = "red",
+  },
+  StatuslineTerminalAccent = {
+    fg = vim.g.base16_01,
+    bg = vim.g.base16_accent,
+    ctermfg = "black",
+    ctermbg = vim.g.ansi_accent,
+  },
 
-  StatuslineOuter = { fg = vim.g.base16_05, bg = vim.g.base16_02 },
-  StatuslineInner = { fg = vim.g.base16_04, bg = vim.g.base16_01 },
+  StatuslineOuter = {
+    fg = vim.g.base16_05,
+    bg = vim.g.base16_02,
+    ctermfg = "white",
+    ctermbg = "darkgray",
+  },
+  StatuslineInner = {
+    fg = vim.g.base16_05,
+    bg = vim.g.base16_01,
+    ctermfg = "white",
+    ctermbg = "darkgray",
+  },
 
-  StatuslineDiagnosticError = { fg = vim.g.base16_error, bg = vim.g.base16_01 },
-  StatuslineDiagnosticWarning = { fg = vim.g.base16_warning, bg = vim.g.base16_01 },
-  StatuslineDiagnosticInfo = { fg = vim.g.base16_info, bg = vim.g.base16_01 },
-  StatuslineDiagnosticHint = { fg = vim.g.base16_hint, bg = vim.g.base16_01 },
+  StatuslineDiagnosticError = {
+    fg = vim.g.base16_error,
+    bg = vim.g.base16_01,
+    ctermfg = "red",
+    ctermbg = "darkgray",
+  },
+  StatuslineDiagnosticWarning = {
+    fg = vim.g.base16_warning,
+    bg = vim.g.base16_01,
+    ctermfg = "yellow",
+    ctermbg = "darkgray",
+  },
+  StatuslineDiagnosticInfo = {
+    fg = vim.g.base16_info,
+    bg = vim.g.base16_01,
+    ctermfg = "blue",
+    ctermbg = "darkgray",
+  },
+  StatuslineDiagnosticHint = {
+    fg = vim.g.base16_hint,
+    bg = vim.g.base16_01,
+    ctermfg = "cyan",
+    ctermbg = "darkgray",
+  },
 
-  StatuslineGitAdded = { fg = vim.g.base16_added, bg = vim.g.base16_01 },
-  StatuslineGitChanged = { fg = vim.g.base16_changed, bg = vim.g.base16_01 },
-  StatuslineGitRemoved = { fg = vim.g.base16_removed, bg = vim.g.base16_01 },
+  StatuslineGitAdded = {
+    fg = vim.g.base16_added,
+    bg = vim.g.base16_01,
+    ctermfg = "green",
+    ctermbg = "darkgray",
+  },
+  StatuslineGitChanged = {
+    fg = vim.g.base16_changed,
+    bg = vim.g.base16_01,
+    ctermfg = "blue",
+    ctermbg = "darkgray",
+  },
+  StatuslineGitRemoved = {
+    fg = vim.g.base16_removed,
+    bg = vim.g.base16_01,
+    ctermfg = "red",
+    ctermbg = "darkgray",
+  },
+
+  StatuslineInactive = {
+    fg = vim.g.base16_04,
+    bg = vim.g.base16_01,
+    ctermfg = "white",
+    ctermbg = "darkgray",
+  },
 }
 
 for name, colorScheme in pairs(highlights) do
@@ -208,6 +290,7 @@ Statusline = {
 
   inactive = function()
     return table.concat({
+      "%#StatuslineInactive#",
       "%t",
       modified(),
       "%=", -- Right align
