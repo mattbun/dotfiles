@@ -18,7 +18,6 @@ in
     window#waybar {
         background: #${colorScheme.palette.base00};
         opacity: 1;
-        color: #${colorScheme.palette.base07};
     }
 
     tooltip {
@@ -33,8 +32,6 @@ in
     #workspaces button {
         padding: 0 5px;
         background: #${colorScheme.palette.base02};
-        border: 2px solid #${colorScheme.palette.base02};
-        color: #${colorScheme.palette.base07};
     }
 
     #workspaces button:hover {
@@ -42,8 +39,16 @@ in
         text-shadow: inherit;
     }
 
-    #workspaces button.focused {
+    #workspaces button.visible {
         border: 2px solid #${colorScheme.accentColor};
+    }
+
+    #workspaces button.focused {
+        background: #${colorScheme.accentColor};
+    }
+
+    #workspaces button.focused label {
+        color: #${colorScheme.palette.base02};
     }
 
     #mode, #clock, #battery, #tray, #cpu, #memory, #disk, #pulseaudio, #custom-userhostname, #network, #bluetooth, #idle_inhibitor, #mpris {
