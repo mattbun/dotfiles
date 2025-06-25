@@ -85,33 +85,33 @@ in
 
       # Colors!
       # default statusbar colors
-      set-option -g status-style "fg=#${colorScheme.palette.base04},bg=#${colorScheme.palette.base01}"
+      set-option -g status-style "fg=white,bg=black"
 
       # default window title colors
-      set-window-option -g window-status-style "fg=#${colorScheme.palette.base04},bg=default"
+      set-window-option -g window-status-style "fg=white,bg=default"
 
       # active window title colors
-      set-window-option -g window-status-current-style "fg=#${colorScheme.palette.base0A},bg=default"
+      set-window-option -g window-status-current-style "fg=${colorScheme.accentAnsi},bg=default"
 
       # pane border
-      set-option -g pane-border-style "fg=#${colorScheme.palette.base01}"
-      set-option -g pane-active-border-style "fg=#${colorScheme.accentColor}"
+      set-option -g pane-border-style "fg=black"
+      set-option -g pane-active-border-style "fg=${colorScheme.accentAnsi}"
 
       # message text
-      set-option -g message-style "fg=#${colorScheme.palette.base05},bg=#${colorScheme.palette.base01}"
+      set-option -g message-style "fg=white,bg=black"
 
       # pane number display
-      set-option -g display-panes-active-colour "#${colorScheme.palette.base0B}"
-      set-option -g display-panes-colour "#${colorScheme.palette.base0A}"
+      set-option -g display-panes-active-colour "${colorScheme.accentAnsi}"
+      set-option -g display-panes-colour "white"
 
       # clock
-      set-window-option -g clock-mode-colour "#${colorScheme.palette.base0B}"
+      set-window-option -g clock-mode-colour "${colorScheme.accentAnsi}"
 
-      # copy mode highligh
-      set-window-option -g mode-style "fg=#${colorScheme.palette.base04},bg=#${colorScheme.palette.base02}"
+      # copy mode highlight, selection in choose-tree
+      set-window-option -g mode-style "fg=black,bg=${colorScheme.accentAnsi}"
 
       # bell
-      set-window-option -g window-status-bell-style "fg=#${colorScheme.palette.base01},bg=#${colorScheme.palette.base08}"
+      set-window-option -g window-status-bell-style "fg=black,bg=${colorScheme.accentAnsi}"
     '';
   };
 }
