@@ -76,7 +76,7 @@ in
     }
 
     #network {
-        color: #${colorScheme.palette.purple};
+        color: #${colorScheme.palette.magenta};
     }
 
     #bluetooth {
