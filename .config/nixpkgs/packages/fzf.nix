@@ -7,18 +7,18 @@ in
 {
   programs.fzf = {
     colors = {
-      "bg+" = "#${colorScheme.palette.base01}";
-      "bg" = "#${colorScheme.palette.base00}";
-      "spinner" = "#${colorScheme.palette.base0C}";
-      "hl" = "#${colorScheme.palette.base0D}";
-      "fg" = "#${colorScheme.palette.base04}";
-      "header" = "#${colorScheme.palette.base0D}";
-      "info" = "#${colorScheme.palette.base0A}";
-      "pointer" = "#${colorScheme.palette.base0C}";
-      "marker" = "#${colorScheme.palette.base0C}";
-      "fg+" = "#${colorScheme.palette.base06}";
-      "prompt" = "#${colorScheme.palette.base0A}";
-      "hl+" = "#${colorScheme.palette.base0D}";
+      "bg+" = "black";
+      "bg" = "-1";
+      "spinner" = "${colorScheme.accentAnsi}";
+      "hl" = "blue";
+      "fg" = "white";
+      "header" = "blue";
+      "info" = "yellow";
+      "pointer" = "${colorScheme.accentAnsi}";
+      "marker" = "${colorScheme.accentAnsi}";
+      "fg+" = "bright-white";
+      "prompt" = "${colorScheme.accentAnsi}";
+      "hl+" = "blue";
     };
   };
 }
