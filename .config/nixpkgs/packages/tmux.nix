@@ -20,10 +20,11 @@ in
       # No status bar!
       set -g status off
 
-      # True Color!
-      # https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6
-      set -g default-terminal "screen-256color"
-      set -ag terminal-overrides ",$TERM:RGB"
+      # Set TERM inside tmux based on how many colors are available
+      if-shell '(( $(tput colors 2>/dev/null) >= 256 ))' { set -g default-terminal "tmux-256color" } { set -g default-terminal "tmux" }
+
+      # Enable truecolor support for xterm-256color
+      set -as terminal-overrides ",xterm-256color:RGB"
 
       # Name windows after the current directory!
       set-option -g status-interval 5
