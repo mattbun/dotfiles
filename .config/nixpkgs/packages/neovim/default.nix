@@ -54,7 +54,7 @@
       {
         plugin = dressing-nvim;
         type = "lua";
-        config = ''
+        config = /* lua */ ''
           require('dressing').setup({
             input = {
               border = vim.g.border_style,
@@ -95,7 +95,7 @@
       {
         plugin = nvim-lspconfig;
         type = "lua";
-        config = "require('lspconfig.ui.windows').default_options.border = vim.g.border_style";
+        config = /* lua */ "require('lspconfig.ui.windows').default_options.border = vim.g.border_style";
       }
       {
         plugin = nvim-tree-lua;
