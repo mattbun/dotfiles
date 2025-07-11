@@ -203,7 +203,14 @@ local wkMappings = {
     { "<leader>lS", desc = "Workspace symbols", require("telescope.builtin").lsp_workspace_symbols },
     { "<leader>lt", desc = "Type definitions", require("telescope.builtin").lsp_type_definitions },
     { "<leader>n", desc = "LSP rename", vim.lsp.buf.rename },
-    { "<leader>q", desc = "LSP hover", hidden = true, vim.lsp.buf.hover }, -- TODO remove
+    {
+      "<leader>q",
+      desc = "LSP hover",
+      hidden = true,
+      function()
+        vim.lsp.buf.hover({ border = vim.g.border_style })
+      end,
+    }, -- TODO replaced by K
     { "<leader>t", group = "Telescope pickers", require("telescope.builtin").builtin },
     { "<leader>u", desc = "Git undo", require("gitsigns").reset_hunk },
     {
@@ -218,6 +225,14 @@ local wkMappings = {
 
     -- `g`-based mappings are often already mapped, be careful adding new ones (use `:help gt`)
     { "gd", desc = "LSP definitions", require("telescope.builtin").lsp_definitions },
+
+    {
+      "K",
+      desc = "LSP hover",
+      function()
+        vim.lsp.buf.hover({ border = vim.g.border_style })
+      end,
+    },
 
     { "oo", desc = "Add line below", "o<Esc>k" },
     { "OO", desc = "Add line above", "O<Esc>j" },
