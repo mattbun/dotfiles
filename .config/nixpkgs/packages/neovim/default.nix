@@ -46,6 +46,13 @@
       which-key-nvim # configured in mappings.lua
 
       {
+        plugin = comment-nvim;
+        type = "lua";
+        config = /* lua */ ''
+          require('Comment').setup()
+        '';
+      }
+      {
         plugin = dressing-nvim;
         type = "lua";
         config = ''
@@ -70,11 +77,6 @@
         plugin = indent-blankline-nvim;
         type = "lua";
         config = builtins.readFile ./lua/indent-blankline.lua;
-      }
-      {
-        plugin = kommentary;
-        type = "lua";
-        config = builtins.readFile ./lua/kommentary.lua;
       }
       {
         plugin = mason-nvim;
