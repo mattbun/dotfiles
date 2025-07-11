@@ -34,7 +34,6 @@
       friendly-snippets
       mason-lspconfig-nvim
       mkdir-nvim
-      nvim-treesitter.withAllGrammars
       plenary-nvim
       telescope-fzf-native-nvim
       vim-eunuch
@@ -102,6 +101,17 @@
         plugin = nvim-tree-lua;
         type = "lua";
         config = builtins.readFile ./lua/nvim-tree.lua;
+      }
+      {
+        plugin = nvim-treesitter.withAllGrammars;
+        type = "lua";
+        config = /* lua */ ''
+          require("nvim-treesitter.configs").setup({
+            highlight = {
+              enable = true,
+            };
+          })
+        '';
       }
       {
         plugin = switch-vim;
