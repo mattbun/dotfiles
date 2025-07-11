@@ -259,8 +259,8 @@ hi! link MsgSeparator WinSeparator
 call <sid>hi('MoreMsg',        s:gui0B, '', s:cterm0B, '', '', '')
 call <sid>hi('NonText',        s:gui03, '', s:cterm03, '', '', '')
 call <sid>hi('Normal',         s:gui05, s:guibg, s:cterm05, s:ctermbg, '', '')
-call <sid>hi('NormalFloat',    s:gui06, s:gui01, s:cterm06, s:cterm01, 'none', '')
-call <sid>hi('FloatBorder',    s:gui06, s:gui01, s:cterm06, s:cterm01, 'none', '')
+call <sid>hi('NormalFloat',    s:gui06, '', s:cterm06, s:cterm01, 'none', '') " XXX
+call <sid>hi('FloatBorder',    s:gui06, '', s:cterm06, s:cterm01, 'none', '') " XXX
 hi! link FloatTitle Title
 hi! link FloatFooter FloatTitle
 hi! link NormalNC None
@@ -388,7 +388,7 @@ if has('nvim-0.8.0')
   hi! link @string.special SpecialComment
   hi! link @string.special.symbol SpecialComment
   call <sid>hi('@string.special.path',        s:gui0D, '', s:cterm0D, '', 'italic', '')
-  call <sid>hi('@string.special.url',         s:gui08, '', s:cterm08, '', 'italic', '')
+  call <sid>hi('@string.special.url',         s:gui03, '', s:cterm03, '', 'italic,underline', '') " XXX
 
   hi! link @character Character
   hi! link @character.special SpecialChar
@@ -563,11 +563,11 @@ call <sid>hi('DiagnosticUnderlineInfo',  '', '', s:ctermbg, s:cterm0C, 'underlin
 call <sid>hi('DiagnosticUnderlineHint',  '', '', s:ctermbg, s:cterm0D, 'underline', s:gui0D)
 call <sid>hi('DiagnosticUnderlineOk',    '', '', s:ctermbg, s:cterm0B, 'underline', s:gui0B)
 
-call <sid>hi('DiagnosticFloatingError',  s:gui08, s:gui01, s:cterm08, s:cterm01, '', '')
-call <sid>hi('DiagnosticFloatingWarn',   s:gui09, s:gui01, s:cterm09, s:cterm01, '', '')
-call <sid>hi('DiagnosticFloatingInfo',   s:gui0C, s:gui01, s:cterm0C, s:cterm01, '', '')
-call <sid>hi('DiagnosticFloatingHint',   s:gui0D, s:gui01, s:cterm0D, s:cterm01, '', '')
-call <sid>hi('DiagnosticFloatingOk',     s:gui0B, s:gui01, s:cterm0B, s:cterm01, '', '')
+call <sid>hi('DiagnosticFloatingError',  s:gui08, '', s:cterm08, s:cterm01, '', '') " XXX
+call <sid>hi('DiagnosticFloatingWarn',   s:gui09, '', s:cterm09, s:cterm01, '', '') " XXX
+call <sid>hi('DiagnosticFloatingInfo',   s:gui0C, '', s:cterm0C, s:cterm01, '', '') " XXX
+call <sid>hi('DiagnosticFloatingHint',   s:gui0D, '', s:cterm0D, s:cterm01, '', '') " XXX
+call <sid>hi('DiagnosticFloatingOk',     s:gui0B, '', s:cterm0B, s:cterm01, '', '') " XXX
 
 call <sid>hi('DiagnosticDeprecated',     '', '', s:cterm0F, s:cterm0F, 'strikethrough', '')
 hi! link DiagnosticUnnecessary Comment
