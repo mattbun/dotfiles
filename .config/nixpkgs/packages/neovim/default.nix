@@ -6,6 +6,7 @@
 {
   imports = [
     ./autoformat.nix
+    ./codecompanion.nix
     ./colors.nix
     ./diagnostics.nix
     ./mappings.nix

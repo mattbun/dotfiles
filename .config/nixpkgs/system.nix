@@ -32,6 +32,23 @@
       shell = "${pkgs.fish}/bin/fish";
     };
 
+    # AI Utilities
+    aichat.enable = false;
+    neovim.codecompanion.enable = false;
+    ollama = {
+      # Only sets up ollama clients, not the server
+      enable = false;
+      # defaultModel = "local:some-model:2b";
+      # connections = {
+      #   local = {
+      #     url = "http://localhost:11434";
+      #     models = [
+      #       "some-model:2b"
+      #     ];
+      #   };
+      # };
+    };
+
     # Terminals
     alacritty.enable = false;
     foot.enable = false;

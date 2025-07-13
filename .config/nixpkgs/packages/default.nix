@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./aichat.nix
     ./alacritty.nix
     ./bash.nix
     ./bat.nix
@@ -22,6 +23,7 @@
     ./lf.nix
     ./mako.nix
     ./neovim
+    ./ollama.nix
     ./ripgrep.nix
     ./rofi.nix
     ./starship.nix
