@@ -8,6 +8,11 @@
     programs.neovim.codecompanion = {
       enable = lib.mkEnableOption "codecompanion";
 
+      defaultAdapter = lib.mkOption {
+        type = lib.types.str;
+        default = "copilot";
+      };
+
       strategies = lib.mkOption {
         type = lib.types.attrsOf lib.types.anything;
         default = { };
@@ -34,11 +39,12 @@
     };
   };
 
-  config = lib.mkIf config.programs.neovim.codecompanion.enable {
+  config = let cfg = config.programs.neovim.codecompanion; in lib.mkIf cfg.enable {
     programs.neovim = {
       codecompanion = {
         strategies = {
           chat = {
+            adapter = lib.mkDefault cfg.defaultAdapter;
             keymaps = {
               # remap clear from 'gx' to 'gc' so 'gx' can opens links in chats
               clear = {
@@ -53,6 +59,12 @@
                 };
               };
             };
+          };
+          inline = {
+            adapter = lib.mkDefault cfg.defaultAdapter;
+          };
+          cmd = {
+            adapter = lib.mkDefault cfg.defaultAdapter;
           };
         };
       };

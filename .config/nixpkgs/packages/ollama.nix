@@ -70,17 +70,7 @@
       };
 
       neovim.codecompanion = {
-        strategies = {
-          chat = {
-            adapter = lib.mkDefault cfg.defaultModel;
-          };
-          inline = {
-            adapter = lib.mkDefault cfg.defaultModel;
-          };
-          cmd = {
-            adapter = lib.mkDefault cfg.defaultModel;
-          };
-        };
+        defaultAdapter = lib.mkDefault cfg.defaultModel;
 
         # TODO make this less awful lol
         adapters = lib.mergeAttrsList (
