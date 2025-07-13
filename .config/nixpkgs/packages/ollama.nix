@@ -10,6 +10,15 @@
       type = types.str;
     };
 
+    defaultConnection = lib.mkOption {
+      type = types.str;
+      default =
+        let
+          connections = lib.attrNames config.programs.ollama.connections;
+        in
+        if ((builtins.length connections) > 0) then (builtins.head connections) else null;
+    };
+
     connections = lib.mkOption {
       type = types.attrsOf (types.submodule {
         options = {
@@ -33,11 +42,15 @@
         ollama
       ];
 
-      shellAliases = (lib.concatMapAttrs
+      shellAliases = lib.mkIf ((builtins.length (lib.attrNames cfg.connections)) > 1) (lib.concatMapAttrs
         (name: connection: {
           "ollama-${name}" = "OLLAMA_HOST=${connection.url} ollama";
         })
         cfg.connections);
+
+      sessionVariables = {
+        "OLLAMA_HOST" = cfg.connections."${cfg.defaultConnection}".url;
+      };
     };
 
     programs = {
