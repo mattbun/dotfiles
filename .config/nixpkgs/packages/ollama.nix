@@ -79,22 +79,28 @@
               builtins.mapAttrs
                 (name: connection:
                   (map
-                    (model: {
-                      "${name}:${model}" = {
-                        adapter = "ollama";
-                        model = model;
-                        settings = {
-                          name = "Ollama (${name}:${model})";
+                    (model:
+                      let modelName = "${name}:${model}"; in {
+                        "${modelName}" = {
+                          adapter = "ollama";
                           model = model;
-                          env = {
-                            url = connection.url;
-                          };
-                          parameters = {
-                            sync = true;
+                          settings = {
+                            name = "${modelName}";
+                            formatted_name = "${modelName}";
+                            schema = {
+                              model = {
+                                default = model;
+                              };
+                            };
+                            env = {
+                              url = connection.url;
+                            };
+                            parameters = {
+                              sync = true;
+                            };
                           };
                         };
-                      };
-                    })
+                      })
                     connection.models
                   )
                 )
