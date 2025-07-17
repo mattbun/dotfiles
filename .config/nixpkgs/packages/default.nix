@@ -3,6 +3,7 @@
 {
   imports = [
     ./aichat.nix
+    ./aider.nix
     ./alacritty.nix
     ./bash.nix
     ./bat.nix

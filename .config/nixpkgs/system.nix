@@ -38,6 +38,7 @@
       # Model-specific settings can be added like this
       # clients.local.models."some-model:2b".supports_vision = true;
     };
+    aider.enable = false;
     neovim.codecompanion.enable = false;
     neovim.minuet = {
       # minuet provides AI completions for providers other than copilot
@@ -62,7 +63,7 @@
     ollama = {
       # Only installs ollama client, not the server
       enable = false;
-      # defaultModel = "local:some-model:2b";
+      # defaultModel = "some-model:2b";
       # connections = {
       #   local = {
       #     url = "http://localhost:11434";
