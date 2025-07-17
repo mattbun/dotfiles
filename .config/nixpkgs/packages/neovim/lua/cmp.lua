@@ -91,7 +91,11 @@ cmp.setup({
   mapping = {
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-Space>"] = cmp.mapping(cmp.mapping.complete({
+      config = {
+        sources = cmp.config.sources(sources.all),
+      },
+    })),
     ["<C-e>"] = cmp.mapping.close(),
     ["<CR>"] = cmp.mapping.confirm({ select = false }),
     ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
@@ -104,15 +108,15 @@ cmp.setup({
       cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select, count = 20 }),
       { "i" }
     ),
+    ["<A-c>"] = cmp.mapping(cmp.mapping.complete({
+      config = {
+        sources = cmp.config.sources(sources.manual),
+      },
+    })),
   },
-  sources = {
-    { name = "nvim_lsp" },
-    { name = "nvim_lsp_signature_help" },
-    { name = "vsnip" },
-    { name = "calc" },
-    { name = "path" },
-    { name = "emoji", insert = true },
-    { name = "buffer" },
+  sources = cmp.config.sources(sources.auto),
+  performance = {
+    fetching_timeout = 2000, -- longer timeout for AI completion
   },
   window = {
     completion = cmp.config.window.bordered(),

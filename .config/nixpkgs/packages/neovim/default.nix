@@ -6,10 +6,12 @@
 {
   imports = [
     ./autoformat.nix
+    ./cmp.nix
     ./codecompanion.nix
     ./colors.nix
     ./diagnostics.nix
     ./mappings.nix
+    ./minuet.nix
     ./statusline.nix
   ];
 
@@ -24,14 +26,9 @@
   programs.neovim = {
     extraLuaConfig = lib.mkBefore (builtins.readFile ./lua/init.lua);
 
+    cmp.enable = lib.mkDefault true;
+
     plugins = with pkgs.vimPlugins; [
-      cmp-buffer
-      cmp-calc
-      cmp-emoji
-      cmp-nvim-lsp
-      cmp-nvim-lsp-signature-help
-      cmp-path
-      cmp-vsnip
       friendly-snippets
       mason-lspconfig-nvim
       mkdir-nvim

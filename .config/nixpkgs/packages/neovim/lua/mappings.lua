@@ -135,6 +135,46 @@ local wkMappings = {
     { "<leader>?", desc = "Search help", require("telescope.builtin").help_tags },
     { "<leader>a", desc = "LSP code actions", vim.lsp.buf.code_action },
     { "<leader>b", desc = "Buffers", require("telescope.builtin").buffers },
+
+    { "<leader>c", group = "CodeCompanion" },
+    { "<leader>ca", desc = "actions", require("codecompanion").actions },
+    {
+      "<leader>cc",
+      desc = "prompt",
+      function()
+        vim.cmd("CodeCompanion")
+      end,
+    },
+    {
+      "<leader>cd",
+      desc = "explain diagnostic",
+      function()
+        vim.cmd("CodeCompanion /lsp")
+      end,
+    },
+    {
+      "<leader>ce",
+      desc = "explain",
+      function()
+        vim.cmd("CodeCompanion /explain")
+      end,
+    },
+    {
+      "<leader>cf",
+      desc = "fix",
+      function()
+        vim.cmd("CodeCompanion /fix")
+      end,
+    },
+    {
+      "<leader>ct",
+      desc = "write unit tests",
+      function()
+        vim.cmd("CodeCompanion /tests")
+      end,
+    },
+    { "<leader>cv", desc = "chat", require("codecompanion").toggle },
+
     { "<leader>d", desc = "Diagnostics for current line", vim.diagnostic.open_float },
     { "<leader>D", desc = "Diagnostics for workspace", require("telescope.builtin").diagnostics },
     { "<leader>f", desc = "LSP format", vim.lsp.buf.format },
@@ -241,6 +281,46 @@ local wkMappings = {
   -- (v)isual mode
   v = {
     { "<leader>a", desc = "Code actions", vim.lsp.buf.code_action },
+
+    { "<leader>c", group = "CodeCompanion" },
+    { "<leader>ca", desc = "actions", require("codecompanion").actions },
+    {
+      "<leader>cc",
+      desc = "prompt",
+      function()
+        vim.cmd("CodeCompanion")
+      end,
+    },
+    {
+      "<leader>cd",
+      desc = "explain diagnostic",
+      function()
+        vim.cmd("CodeCompanion /lsp")
+      end,
+    },
+    {
+      "<leader>ce",
+      desc = "explain",
+      function()
+        vim.cmd("CodeCompanion /explain")
+      end,
+    },
+    {
+      "<leader>cf",
+      desc = "fix",
+      function()
+        vim.cmd("CodeCompanion /fix")
+      end,
+    },
+    {
+      "<leader>ct",
+      desc = "write unit tests",
+      function()
+        vim.cmd("CodeCompanion /tests")
+      end,
+    },
+    { "<leader>cv", desc = "chat", require("codecompanion").chat },
+
     { "<leader>f", desc = "Format selection", vim.lsp.buf.format },
     { "<leader>g", group = "git" },
     {

@@ -33,18 +33,46 @@
     };
 
     # AI Utilities
-    aichat.enable = false;
+    aichat = {
+      enable = false;
+      # Model-specific settings can be added like this
+      # clients.local.models."some-model:2b".supports_vision = true;
+    };
     neovim.codecompanion.enable = false;
+    neovim.minuet = {
+      # minuet provides AI completions for providers other than copilot
+      enable = false;
+      # ollama doesn't configure minuet automatically though
+      # settings = {
+      #   provider = "openai_fim_compatible";
+      #   provider_options = {
+      #     openai_fim_compatible = {
+      #       api_key = "TERM";
+      #       name = "ollama";
+      #       end_point = "${config.programs.ollama.connections.local.url}/v1/completions";
+      #       model = "some-model:2b";
+      #       optional = {
+      #         max_tokens = 128;
+      #         top_p = 0.9;
+      #       };
+      #     };
+      #   };
+      # };
+    };
     ollama = {
-      # Only sets up ollama clients, not the server
+      # Only installs ollama client, not the server
       enable = false;
       # defaultModel = "local:some-model:2b";
       # connections = {
       #   local = {
       #     url = "http://localhost:11434";
-      #     models = [
-      #       "some-model:2b"
-      #     ];
+      #     models = {
+      #       chat = [
+      #         "some-model:2b"
+      #       ];
+      #       embedding = [ ];
+      #       reranker = [ ];
+      #     };
       #   };
       # };
     };

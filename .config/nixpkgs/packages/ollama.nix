@@ -20,19 +20,32 @@
     };
 
     connections = lib.mkOption {
-      type = types.attrsOf (types.submodule {
-        options = {
-          url = lib.mkOption {
-            type = types.str;
-            default = "http://localhost:11434";
-          };
+      type = types.attrsOf
+        (types.submodule {
+          options = {
+            url = lib.mkOption {
+              type = types.str;
+              default = "http://localhost:11434";
+            };
 
-          models = lib.mkOption {
-            type = types.listOf types.str;
-            default = [ ];
+            models = {
+              chat = lib.mkOption {
+                type = types.listOf types.str;
+                default = [ ];
+              };
+
+              embedding = lib.mkOption {
+                type = types.listOf types.str;
+                default = [ ];
+              };
+
+              reranker = lib.mkOption {
+                type = types.listOf types.str;
+                default = [ ];
+              };
+            };
           };
-        };
-      });
+        });
     };
   };
 
@@ -48,23 +61,58 @@
         })
         cfg.connections);
 
-      sessionVariables = {
-        "OLLAMA_HOST" = cfg.connections."${cfg.defaultConnection}".url;
-      };
+      sessionVariables =
+        let
+          defaultUrl = cfg.connections."${cfg.defaultConnection}".url;
+        in
+        {
+          "OLLAMA_HOST" = defaultUrl;
+          "OLLAMA_API_BASE" = lib.mkIf config.programs.aider.enable defaultUrl;
+        };
     };
 
     programs = {
-      aichat.settings = {
-        model = lib.mkDefault config.programs.ollama.defaultModel;
-
-        clients = lib.mapAttrsToList
+      aichat = {
+        settings = {
+          model = lib.mkDefault config.programs.ollama.defaultModel;
+        };
+        clients = lib.mapAttrs
           (name: connection: {
-            type = "openai-compatible";
-            name = name;
-            api_base = "${connection.url}/v1";
+            settings = {
+              type = "openai-compatible";
+              name = name;
+              api_base = "${connection.url}/v1";
+            };
 
-            # TODO this doesn't give any options for configuring each model
-            models = map (x: { name = x; }) connection.models;
+            models = lib.listToAttrs (
+              (map
+                (model: {
+                  name = model;
+                  value = { name = model; };
+                })
+                connection.models.chat
+              ) ++
+              (map
+                (model: {
+                  name = model;
+                  value = {
+                    name = model;
+                    type = "embedding";
+                  };
+                })
+                connection.models.embedding
+              ) ++
+              (map
+                (model: {
+                  name = model;
+                  value = {
+                    name = model;
+                    type = "reranker";
+                  };
+                })
+                connection.models.reranker
+              )
+            );
           })
           cfg.connections;
       };
@@ -101,7 +149,7 @@
                           };
                         };
                       })
-                    connection.models
+                    connection.models.chat
                   )
                 )
                 cfg.connections
