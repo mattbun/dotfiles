@@ -31,6 +31,7 @@
       enable = true;
       shell = "${pkgs.fish}/bin/fish";
     };
+    zk.enable = true;
 
     # AI Utilities
     aichat = {

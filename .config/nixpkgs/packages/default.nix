@@ -34,5 +34,6 @@
     ./tmux.nix
     ./waybar
     ./z-lua.nix
+    ./zk.nix
   ];
 }
