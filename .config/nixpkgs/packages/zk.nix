@@ -41,7 +41,7 @@ lib.mkIf config.programs.zk.enable
       REPO="$(${getRepo})"
 
       case "$SUBCOMMAND" in
-        "new")
+        "new" | "todo")
           zk "$SUBCOMMAND" --extra repo="$REPO" "$ARGS" ;;
 
         "add")
@@ -86,11 +86,19 @@ lib.mkIf config.programs.zk.enable
           paths = [ "weekly" ];
 
           note = {
-            # filename = "{{format-date now '%G-%V'}}";
-            # last/this/next week monday
             filename = "{{format-date now '%Y-%m-%d' }}";
             extension = "md";
             template = "weekly.md";
+          };
+        };
+
+        todo = {
+          paths = [ "todo" ];
+
+          note = {
+            filename = "todo{{#if extra.repo}}-{{ slug extra.repo }}{{/if}}";
+            extension = "md";
+            template = "todo.md";
           };
         };
       };
@@ -131,6 +139,8 @@ lib.mkIf config.programs.zk.enable
         last-week = "zk new --no-input --date 'last week monday' \"$ZK_NOTEBOOK_DIR\/weekly\"";
         next-week = "zk new --no-input --date 'next week monday' \"$ZK_NOTEBOOK_DIR\/weekly\"";
         weeks = "zk edit weekly";
+
+        todo = "zk new --no-input \"$ZK_NOTEBOOK_DIR/todo\" $@";
 
         # `zk add` is a quick way to store a message with a timestamp
         add = (pkgs.writeShellScript "zk-add" ''
@@ -183,6 +193,16 @@ lib.mkIf config.programs.zk.enable
       ## Notes
 
       {{content}}
+    '';
+
+    "zk/templates/todo.md".text = /* markdown */ ''
+      # TODO{{#if extra.repo}} - {{slug extra.repo}}{{/if}}
+
+      {{content}}
+      {{#if extra.repo}}
+
+      #{{slug extra.repo}}
+      {{/if}}
     '';
   };
 

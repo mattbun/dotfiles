@@ -308,6 +308,13 @@ local wkMappings = {
             end,
           },
           {
+            "d",
+            desc = "Open repo TODOs",
+            function()
+              require("zk.commands").get("ZkNew")({ dir = "todo", extra = { repo = repo_name() } })
+            end,
+          },
+          {
             "n",
             desc = "New repo note",
             function()
@@ -362,6 +369,13 @@ local wkMappings = {
                   vim.print(result.path)
                 end)
               end)
+            end,
+          },
+          {
+            "d",
+            desc = "Open TODOs",
+            function()
+              require("zk.commands").get("ZkNew")({ dir = "todo" })
             end,
           },
           {
