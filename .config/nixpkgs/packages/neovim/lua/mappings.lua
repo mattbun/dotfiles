@@ -9,6 +9,24 @@ local function pumswitch(popup_key, not_popup_key)
   end
 end
 
+-- repo_name returns the name of the root directory of the current git repo.
+-- It returns "dotfiles" if the directory is the same as $HOME.
+local function repo_name()
+  local repoPath = vim.trim(vim.fn.system({ "git", "rev-parse", "--show-toplevel" }))
+  local homeDir = os.getenv("HOME")
+
+  if repoPath == homeDir then
+    return "dotfiles"
+  else
+    return vim.trim(vim.fn.system({ "basename", repoPath }))
+  end
+end
+
+-- timestamp returns an ISO 8601 timestamp in the local time zone
+local function timestamp()
+  return os.date("%Y-%m-%dT%H:%M:%S%z")
+end
+
 local mappings = {
   -- Unmap space so it can be used as leader
   [""] = {
@@ -251,6 +269,46 @@ local wkMappings = {
         vim.lsp.buf.hover({ border = vim.g.border_style })
       end,
     }, -- TODO replaced by K
+
+    { "<leader>r", group = "zk (repo-scoped)" },
+    {
+      "<leader>ra",
+      desc = "Add repo note with timestamp",
+      function()
+        vim.ui.input({ prompt = "zk repo add " }, function(content)
+          require("zk.api").new(nil, {
+            title = timestamp(),
+            content = content,
+            extra = { repo = repo_name() },
+            edit = false,
+          }, function(_, result)
+            vim.print(result.path)
+          end)
+        end)
+      end,
+    },
+    {
+      "<leader>rd",
+      desc = "Open repo TODO",
+      function()
+        require("zk.commands").get("ZkNew")({ dir = "todo", extra = { repo = repo_name() } })
+      end,
+    },
+    {
+      "<leader>rn",
+      desc = "New repo note",
+      function()
+        require("zk.commands").get("ZkNew")({ extra = { repo = repo_name() } })
+      end,
+    },
+    {
+      "<leader>rr",
+      desc = "List repo notes",
+      function()
+        require("zk.commands").get("ZkNotes")({ tags = { repo_name() } })
+      end,
+    },
+
     { "<leader>t", group = "Telescope pickers", require("telescope.builtin").builtin },
     { "<leader>u", desc = "Git undo", require("gitsigns").reset_hunk },
     {
@@ -258,6 +316,59 @@ local wkMappings = {
       desc = "Yank file name",
       function()
         vim.fn.setreg("*", vim.fn.expand("%f"))
+      end,
+    },
+
+    { "<leader>z", group = "zk" },
+    {
+      "<leader>z/",
+      desc = "Search notes",
+      function()
+        -- TODO hack until zk.nvim adds their own version of this
+        require("telescope.builtin").live_grep({ cwd = os.getenv("ZK_NOTEBOOK_DIR"), glob_pattern = "*.md" })
+      end,
+    },
+    {
+      "<leader>za",
+      desc = "Add note with timestamp",
+      function()
+        vim.ui.input({ prompt = "zk add " }, function(content)
+          require("zk.api").new(nil, {
+            title = timestamp(),
+            content = content,
+            edit = false,
+          }, function(_, result)
+            vim.print(result.path)
+          end)
+        end)
+      end,
+    },
+    {
+      "<leader>zi",
+      desc = "Refresh index",
+      function()
+        require("zk.commands").get("ZkIndex")()
+      end,
+    },
+    {
+      "<leader>zn",
+      desc = "New note",
+      function()
+        require("zk.commands").get("ZkNew")()
+      end,
+    },
+    {
+      "<leader>zt",
+      desc = "List tags",
+      function()
+        require("zk.commands").get("ZkTags")()
+      end,
+    },
+    {
+      "<leader>zz",
+      desc = "List notes",
+      function()
+        require("zk.commands").get("ZkNotes")()
       end,
     },
 
