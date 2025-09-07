@@ -139,9 +139,16 @@ local wkMappings = {
       end,
     },
 
-    { "<leader>,", desc = "Go to previous tab page", "gT" },
-    { "<leader>.", desc = "Go to next tab page", "gt" },
     { "<leader><leader>", desc = "Find file", require("telescope.builtin").find_files },
+    {
+      "<leader><tab>",
+      desc = "Last accessed tab page",
+      function()
+        vim.cmd("tabnext #")
+      end,
+    },
+    { "<leader>{", desc = "Previous tab page", "gT" },
+    { "<leader>}", desc = "Next tab page", "gt" },
     { "<leader>[", desc = "Previous buffer", "<C-o>" },
     { "<leader>]", desc = "Next buffer", "<C-i>" },
     { "<leader>*", desc = "Search workspace for word (reverse)", require("telescope.builtin").grep_string },
@@ -157,6 +164,45 @@ local wkMappings = {
     { "<leader>/", desc = "Search workspace", require("telescope.builtin").live_grep },
     { "<leader>\\", desc = "Resume search", require("telescope.builtin").resume },
     { "<leader>?", desc = "Search help", require("telescope.builtin").help_tags },
+    {
+      "<leader>,",
+      desc = "Decrease width of split",
+      function()
+        vim.cmd("vertical resize -5")
+      end,
+    },
+    {
+      "<leader>.",
+      desc = "Increase width of split",
+      function()
+        vim.cmd("vertical resize +5")
+      end,
+    },
+    {
+      "<leader><",
+      desc = "Decrease height of split",
+      function()
+        vim.cmd("resize -5")
+      end,
+    },
+    {
+      "<leader>>",
+      desc = "Increase height of split",
+      function()
+        vim.cmd("resize +5")
+      end,
+    },
+
+    { "<leader>1", desc = "Go to tab page 1", hidden = true, "1gt" },
+    { "<leader>2", desc = "Go to tab page 2", hidden = true, "2gt" },
+    { "<leader>3", desc = "Go to tab page 3", hidden = true, "3gt" },
+    { "<leader>4", desc = "Go to tab page 4", hidden = true, "4gt" },
+    { "<leader>5", desc = "Go to tab page 5", hidden = true, "5gt" },
+    { "<leader>6", desc = "Go to tab page 6", hidden = true, "6gt" },
+    { "<leader>7", desc = "Go to tab page 7", hidden = true, "7gt" },
+    { "<leader>8", desc = "Go to tab page 8", hidden = true, "8gt" },
+    { "<leader>9", desc = "Go to tab page 9", hidden = true, "9gt" },
+
     { "<leader>a", desc = "LSP code actions", vim.lsp.buf.code_action },
     { "<leader>b", desc = "Buffers", require("telescope.builtin").buffers },
 
@@ -270,20 +316,41 @@ local wkMappings = {
     { "<leader>ld", desc = "Definitions", require("telescope.builtin").lsp_definitions },
     { "<leader>lf", desc = "Format file", vim.lsp.buf.format },
     { "<leader>li", desc = "Implementations", require("telescope.builtin").lsp_implementations },
-    { "<leader>ln", desc = "Rename", vim.lsp.buf.rename },
-    { "<leader>lr", desc = "References", require("telescope.builtin").lsp_references },
-    { "<leader>ls", desc = "Document symbols", require("telescope.builtin").lsp_document_symbols },
-    { "<leader>lS", desc = "Workspace symbols", require("telescope.builtin").lsp_workspace_symbols },
-    { "<leader>lt", desc = "Type definitions", require("telescope.builtin").lsp_type_definitions },
-    { "<leader>n", desc = "LSP rename", vim.lsp.buf.rename },
     {
-      "<leader>q",
+      "<leader>ll",
       desc = "LSP hover",
       hidden = true,
       function()
         vim.lsp.buf.hover({ border = vim.g.border_style })
       end,
-    }, -- TODO replaced by K
+    },
+    { "<leader>ln", desc = "Rename", vim.lsp.buf.rename },
+    { "<leader>lr", desc = "References", require("telescope.builtin").lsp_references },
+    { "<leader>ls", desc = "Document symbols", require("telescope.builtin").lsp_document_symbols },
+    { "<leader>lS", desc = "Workspace symbols", require("telescope.builtin").lsp_workspace_symbols },
+    { "<leader>lt", desc = "Type definitions", require("telescope.builtin").lsp_type_definitions },
+
+    {
+      "<leader>n",
+      desc = "New tab",
+      function()
+        vim.cmd("tabnew")
+      end,
+    },
+    {
+      "<leader>q",
+      desc = "Close",
+      function()
+        vim.cmd("quit")
+      end,
+    },
+    {
+      "<leader>Q",
+      desc = "Close without saving",
+      function()
+        vim.cmd("quit!")
+      end,
+    },
 
     {
       "<leader>r",
@@ -335,10 +402,24 @@ local wkMappings = {
     { "<leader>t", group = "Telescope pickers", require("telescope.builtin").builtin },
     { "<leader>u", desc = "Git undo", require("gitsigns").reset_hunk },
     {
+      "<leader>v",
+      desc = "New vertical split",
+      function()
+        vim.cmd("vnew")
+      end,
+    },
+    {
       "<leader>y",
       desc = "Yank file name",
       function()
         vim.fn.setreg("*", vim.fn.expand("%f"))
+      end,
+    },
+    {
+      "<leader>x",
+      desc = "New horizontal split",
+      function()
+        vim.cmd("new")
       end,
     },
 
