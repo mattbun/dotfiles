@@ -29,6 +29,12 @@ in
         };
       };
 
+      bunu.exit = mkOption {
+        type = types.lines;
+        description = "Commands to run when 'exit' is selected";
+        default = "";
+      };
+
       bunu.entries =
         let
           entries = (with types; listOf (submodule {
@@ -81,6 +87,40 @@ in
             ${pkgs.mpv}/bin/mpv av://v4l2:${config.programs.waybar.customSettings.camera} --vf=hflip --profile=low-latency
           '');
         }];
+
+        bunu.entries.power = [
+          {
+            icon = "󰌾";
+            name = "lock";
+            action = toString (pkgs.writeShellScript "lock-screen" /* bash */ ''
+              # Wait a second for input to finish
+              sleep 1
+
+              # swayidle immediately enters idle state when sent a USR1 signal
+              pkill --signal USR1 swayidle
+            '');
+          }
+          {
+            icon = "󰗼";
+            name = "exit";
+            action = config.programs.waybar.bunu.exit;
+          }
+          {
+            icon = "󰤄";
+            name = "sleep";
+            action = "systemctl suspend";
+          }
+          {
+            icon = "󰜉";
+            name = "restart";
+            action = "reboot";
+          }
+          {
+            icon = "󰐥";
+            name = "shutdown";
+            action = "shutdown now";
+          }
+        ];
 
         settings = {
           mainBar = {

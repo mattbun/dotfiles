@@ -90,6 +90,7 @@
     kubernetes = false;
   };
 
+  wayland.customWindowManager.niri.enable = false;
   wayland.windowManager = {
     sway.enable = false;
   };

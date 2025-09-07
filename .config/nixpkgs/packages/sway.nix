@@ -275,58 +275,27 @@ in
           terminal = config.wayland.windowManager.sway.config.terminal;
         };
 
-        # bunu.entries = [
-        bunu.entries = {
-          shortcuts = [
-            {
-              icon = "";
-              name = "screenshot selection";
-              action = screenshotSelection;
-            }
-            {
-              icon = "";
-              name = "screenshot window";
-              action = screenshotWindow;
-            }
-            {
-              icon = "󰍹";
-              name = "screenshot display";
-              action = screenshotDisplay;
-            }
-          ];
-          power = [
-            {
-              icon = "󰌾";
-              name = "lock";
-              action = toString (pkgs.writeShellScript "lock-screen" ''
-                # Wait a second for input to finish
-                sleep 1
-
-                # swayidle immediately enters idle state when sent a USR1 signal
-                pkill --signal USR1 swayidle
-              '');
-            }
-            {
-              icon = "󰗼";
-              name = "exit";
-              action = "swaymsg exit";
-            }
-            {
-              icon = "󰤄";
-              name = "sleep";
-              action = "systemctl suspend";
-            }
-            {
-              icon = "󰜉";
-              name = "restart";
-              action = "reboot";
-            }
-            {
-              icon = "󰐥";
-              name = "shutdown";
-              action = "shutdown now";
-            }
-          ];
+        bunu = {
+          exit = "swaymsg exit || true";
+          entries = {
+            shortcuts = [
+              {
+                icon = "";
+                name = "screenshot selection";
+                action = screenshotSelection;
+              }
+              {
+                icon = "";
+                name = "screenshot window";
+                action = screenshotWindow;
+              }
+              {
+                icon = "󰍹";
+                name = "screenshot display";
+                action = screenshotDisplay;
+              }
+            ];
+          };
         };
       };
     }

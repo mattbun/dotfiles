@@ -24,6 +24,7 @@
     ./lf.nix
     ./mako.nix
     ./neovim
+    ./niri.nix
     ./ollama.nix
     ./ripgrep.nix
     ./rofi.nix
