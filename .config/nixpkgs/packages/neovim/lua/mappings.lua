@@ -385,7 +385,10 @@ local wkMappings = {
             "n",
             desc = "New repo note",
             function()
-              require("zk.commands").get("ZkNew")({ extra = { repo = repo_name() } })
+              require("zk.commands").get("ZkNew")({
+                extra = { repo = repo_name() },
+                title = timestamp(),
+              })
             end,
           },
           {
@@ -470,7 +473,7 @@ local wkMappings = {
             "n",
             desc = "New note",
             function()
-              require("zk.commands").get("ZkNew")()
+              require("zk.commands").get("ZkNew")({ title = timestamp() })
             end,
           },
           {
