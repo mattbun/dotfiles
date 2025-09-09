@@ -12,11 +12,12 @@ end
 -- repo_name returns the name of the root directory of the current git repo.
 -- It returns "dotfiles" if the directory is the same as $HOME.
 local function repo_name()
-  local repoPath = vim.trim(vim.fn.system({ "git", "rev-parse", "--show-toplevel" }))
+  local result = vim.system({ "git", "rev-parse", "--show-toplevel" }):wait()
+  local repoPath = vim.trim(result.stdout)
   local homeDir = os.getenv("HOME")
 
   if repoPath == homeDir then
-    return "dotfiles"
+    return os.getenv("ZK_HOME_DIRECTORY_TAG") or ""
   else
     return vim.trim(vim.fn.system({ "basename", repoPath }))
   end
@@ -434,7 +435,7 @@ local wkMappings = {
         return {
           {
             "/",
-            desc = "Search notes",
+            desc = "Search all notes",
             function()
               -- TODO hack until zk.nvim adds their own version of this
               require("telescope.builtin").live_grep({ cwd = os.getenv("ZK_NOTEBOOK_DIR"), glob_pattern = "*.md" })
@@ -442,22 +443,21 @@ local wkMappings = {
           },
           {
             "a",
-            desc = "Add note with timestamp",
+            desc = "List all notes",
             function()
-              vim.ui.input({ prompt = "zk add " }, function(content)
-                require("zk.api").new(nil, {
-                  title = timestamp(),
-                  content = content,
-                  edit = false,
-                }, function(_, result)
-                  vim.print(result.path)
-                end)
-              end)
+              require("zk.commands").get("ZkNotes")({ sort = { "modified" } })
             end,
           },
           {
             "d",
-            desc = "Open TODOs",
+            desc = "Open repo TODOs",
+            function()
+              require("zk.commands").get("ZkNew")({ dir = "todo", extra = { repo = repo_name() } })
+            end,
+          },
+          {
+            "D",
+            desc = "Open global TODOs",
             function()
               require("zk.commands").get("ZkNew")({ dir = "todo" })
             end,
@@ -471,9 +471,32 @@ local wkMappings = {
           },
           {
             "n",
+            desc = "New repo note",
+            function()
+              require("zk.commands").get("ZkNew")({
+                extra = { repo = repo_name() },
+                title = timestamp(),
+              })
+            end,
+          },
+          {
+            "N",
             desc = "New note",
             function()
-              require("zk.commands").get("ZkNew")({ title = timestamp() })
+              require("zk.commands").get("ZkNew")({
+                title = timestamp(),
+              })
+            end,
+          },
+          {
+            "s",
+            desc = "New snippet",
+            function()
+              require("zk.commands").get("ZkNew")({
+                template = "snippet.md",
+                title = timestamp(),
+                extra = { type = vim.bo.filetype },
+              })
             end,
           },
           {
@@ -485,9 +508,48 @@ local wkMappings = {
           },
           {
             "z",
-            desc = "List notes",
+            desc = "List repo notes",
             function()
-              require("zk.commands").get("ZkNotes")()
+              require("zk.commands").get("ZkNotes")({ tags = { repo_name() }, sort = { "modified" } })
+            end,
+          },
+          {
+            "Z",
+            desc = "List all notes",
+            function()
+              require("zk.commands").get("ZkNotes")({ sort = { "modified" } })
+            end,
+          },
+        }
+      end,
+    },
+    {
+      "<leader>Z",
+      group = "zk (global)",
+      cond = requires("zk"),
+      expand = function()
+        return {
+          {
+            "D",
+            desc = "Open global TODOs",
+            function()
+              require("zk.commands").get("ZkNew")({ dir = "todo" })
+            end,
+          },
+          {
+            "N",
+            desc = "New note",
+            function()
+              require("zk.commands").get("ZkNew")({
+                title = timestamp(),
+              })
+            end,
+          },
+          {
+            "Z",
+            desc = "List all notes",
+            function()
+              require("zk.commands").get("ZkNotes")({ sort = { "modified" } })
             end,
           },
         }

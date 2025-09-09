@@ -4,7 +4,7 @@ let
     REPO_PATH="$(git rev-parse --show-toplevel)"
 
     if [ "$REPO_PATH" = "$HOME" ]; then
-      REPO_NAME="dotfiles"
+      REPO_NAME="$ZK_HOME_DIRECTORY_TAG"
     else
       REPO_NAME="$(basename $REPO_PATH)"
     fi
