@@ -23,6 +23,9 @@ in
       # Set TERM inside tmux based on how many colors are available
       if-shell '(( $(tput colors 2>/dev/null) >= 256 ))' { set -g default-terminal "tmux-256color" } { set -g default-terminal "tmux" }
 
+      # Set COLORTERM=truecolor if there's at least 256 colors available
+      if-shell '(( $(tput colors 2>/dev/null) >= 256 ))' { set-environment -g COLORTERM truecolor }
+
       # Enable truecolor support for xterm-256color
       set -as terminal-overrides ",xterm-256color:RGB"
 
