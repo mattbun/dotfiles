@@ -47,6 +47,7 @@ in
       bind-key -n M-8 select-window -t :8
       bind-key -n M-9 select-window -t :9
       bind-key -n M-0 select-window -t :10
+      bind-key -n M-Tab last-window
       bind-key -n M-` choose-tree -Zw
 
       bind-key -n M-! join-pane -t :1
@@ -73,14 +74,23 @@ in
       bind-key -n M-z resize-pane -Z
       bind-key -n M-f resize-pane -Z
 
-      bind-key -n M-c new-window
+      bind-key -n M-j resize-pane -L 5
+      bind-key -n M-l resize-pane -R 5
+      bind-key -n M-k resize-pane -D 5
+      bind-key -n M-i resize-pane -U 5
+      bind-key -n M-, resize-pane -L 5
+      bind-key -n M-. resize-pane -R 5
+      bind-key -n M-< resize-pane -D 5
+      bind-key -n M-> resize-pane -U 5
 
-      bind-key -n M-Enter split-window -h -c "#{pane_current_path}"
       bind-key -n M-v split-window -h -c "#{pane_current_path}"
       bind-key -n M-x split-window -v -c "#{pane_current_path}"
 
       bind-key -n M-V split-window -h -l 33% -c "#{pane_current_path}"
       bind-key -n M-X split-window -v -l 33% -c "#{pane_current_path}"
+
+      bind-key -n M-n new-window
+      bind-key -n M-t new-window
 
       bind-key -n M-: command-prompt
 
