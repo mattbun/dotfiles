@@ -109,8 +109,8 @@ in
 
         bind-key -n M-: command-prompt
 
-        bind-key -n M-s 'capture-pane ; save-buffer "${capturePath}" ; delete-buffer ; display-message -d 2500 "saved visible pane contents to ${capturePath}"'
-        bind-key -n M-S 'capture-pane -S - ; save-buffer "${capturePath}" ; delete-buffer ; display-message -d 2500 "saved all pane contents to ${capturePath}"'
+        bind-key -n M-s 'setenv -F TMUX_CAPTURE_PATH "${capturePath}" ; capture-pane ; save-buffer "#{TMUX_CAPTURE_PATH}" ; delete-buffer ; display-message -d 3000 "saved visible pane contents to #{TMUX_CAPTURE_PATH}"'
+        bind-key -n M-S 'setenv -F TMUX_CAPTURE_PATH "${capturePath}" ; capture-pane -S - ; save-buffer "#{TMUX_CAPTURE_PATH}" ; delete-buffer ; display-message -d 3000 "saved all pane contents to #{TMUX_CAPTURE_PATH}"'
 
         # Colors!
         # default statusbar colors
