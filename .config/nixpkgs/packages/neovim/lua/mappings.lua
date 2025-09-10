@@ -419,6 +419,13 @@ local wkMappings = {
       end,
     },
     {
+      "<leader>V",
+      desc = "Open last in vertical split",
+      function()
+        vim.cmd("vsplit #")
+      end,
+    },
+    {
       "<leader>y",
       desc = "Yank file name",
       function()
@@ -430,6 +437,13 @@ local wkMappings = {
       desc = "New horizontal split",
       function()
         vim.cmd("new")
+      end,
+    },
+    {
+      "<leader>X",
+      desc = "Open last in horizontal split",
+      function()
+        vim.cmd("split #")
       end,
     },
 
