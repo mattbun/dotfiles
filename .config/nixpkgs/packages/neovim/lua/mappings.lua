@@ -403,7 +403,13 @@ local wkMappings = {
       end,
     },
 
-    { "<leader>t", group = "Telescope pickers", require("telescope.builtin").builtin },
+    {
+      "<leader>t",
+      desc = "New tab",
+      function()
+        vim.cmd("tabnew")
+      end,
+    },
     { "<leader>u", desc = "Git undo", require("gitsigns").reset_hunk },
     {
       "<leader>v",
