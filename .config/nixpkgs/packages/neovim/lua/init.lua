@@ -55,6 +55,12 @@ vim.o.clipboard = "unnamedplus"
 -- show substitutions
 vim.o.inccommand = "nosplit"
 
+-- vsplits are opened on the right
+vim.o.splitright = true
+
+-- hsplits are opened on the bottom
+vim.o.splitbelow = true
+
 -- set a global border style variable
 vim.g.border_style = "rounded"
 
