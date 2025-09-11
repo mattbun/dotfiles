@@ -49,51 +49,51 @@ local highlights = {
     fg = vim.g.base16_05,
     bg = vim.g.base16_01,
     ctermfg = "white",
-    ctermbg = "darkgray",
+    ctermbg = "black",
   },
 
   StatuslineDiagnosticError = {
     fg = vim.g.base16_error,
     bg = vim.g.base16_01,
     ctermfg = "red",
-    ctermbg = "darkgray",
+    ctermbg = "black",
   },
   StatuslineDiagnosticWarning = {
     fg = vim.g.base16_warning,
     bg = vim.g.base16_01,
     ctermfg = "yellow",
-    ctermbg = "darkgray",
+    ctermbg = "black",
   },
   StatuslineDiagnosticInfo = {
     fg = vim.g.base16_info,
     bg = vim.g.base16_01,
     ctermfg = "blue",
-    ctermbg = "darkgray",
+    ctermbg = "black",
   },
   StatuslineDiagnosticHint = {
     fg = vim.g.base16_hint,
     bg = vim.g.base16_01,
     ctermfg = "cyan",
-    ctermbg = "darkgray",
+    ctermbg = "black",
   },
 
   StatuslineGitAdded = {
     fg = vim.g.base16_added,
     bg = vim.g.base16_01,
     ctermfg = "green",
-    ctermbg = "darkgray",
+    ctermbg = "black",
   },
   StatuslineGitChanged = {
     fg = vim.g.base16_changed,
     bg = vim.g.base16_01,
     ctermfg = "blue",
-    ctermbg = "darkgray",
+    ctermbg = "black",
   },
   StatuslineGitRemoved = {
     fg = vim.g.base16_removed,
     bg = vim.g.base16_01,
     ctermfg = "red",
-    ctermbg = "darkgray",
+    ctermbg = "black",
   },
 
   StatuslineInactive = {
