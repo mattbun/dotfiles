@@ -76,14 +76,16 @@
           config = /* lua */ ''
             local strategies = vim.json.decode([[${builtins.toJSON config.programs.neovim.codecompanion.strategies}]])
             local adapters = {
-              opts = {
-                show_defaults = false,
-              },
-              ${lib.strings.concatLines (lib.mapAttrsToList (name: adapter: /* lua */ ''
-                ["${name}"] = function()
-                  return require("codecompanion.adapters").extend("${adapter.adapter}", vim.json.decode([[${builtins.toJSON adapter.settings}]]))
-                end,
-              '') config.programs.neovim.codecompanion.adapters)}
+              http = {
+                opts = {
+                  show_defaults = false,
+                },
+                ${lib.strings.concatLines (lib.mapAttrsToList (name: adapter: /* lua */ ''
+                  ["${name}"] = function()
+                    return require("codecompanion.adapters").extend("${adapter.adapter}", vim.json.decode([[${builtins.toJSON adapter.settings}]]))
+                  end,
+                '') config.programs.neovim.codecompanion.adapters)}
+              }
             }
 
             require("codecompanion").setup({
