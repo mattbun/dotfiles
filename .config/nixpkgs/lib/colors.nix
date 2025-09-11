@@ -100,7 +100,7 @@ in
         ansi05 = mkOption { type = hexColor; default = palette.base0E; }; # magenta
         ansi06 = mkOption { type = hexColor; default = palette.base0C; }; # cyan
         ansi07 = mkOption { type = hexColor; default = palette.base05; }; # white
-        ansi08 = mkOption { type = hexColor; default = palette.base03; }; # bright black
+        ansi08 = mkOption { type = hexColor; default = palette.base04; }; # bright black
         ansi09 = mkOption { type = hexColor; default = palette.base12; }; # bright red
         ansi10 = mkOption { type = hexColor; default = palette.base14; }; # bright green
         ansi11 = mkOption { type = hexColor; default = palette.base13; }; # bright yellow
@@ -134,8 +134,8 @@ in
 
   config = {
     colorScheme = {
-      system = "base16";
-      slug = "helios";
+      system = "base24";
+      slug = "0x96f";
 
       palette = basix.schemeData."${config.colorScheme.system}"."${config.colorScheme.slug}".palette;
     };
