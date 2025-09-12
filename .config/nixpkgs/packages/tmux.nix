@@ -44,11 +44,11 @@ in
         # Name windows after the current directory!
         set-option -g status-interval 5
         set-option -g automatic-rename on
-        set-option -g automatic-rename-format '#{b:pane_current_path}'
+        set-option -g automatic-rename-format '#{P:[#{?#{==:${config.home.homeDirectory},#{pane_current_path}},~,#{b:pane_current_path}}/#{pane_current_command}] }'
 
         # Set terminal title!
         set-option -g set-titles on
-        set-option -g set-titles-string "#{user}@#{host_short}[#{session_name},#I] #{?#{==:$HOME,#{pane_current_path}},~,#{b:pane_current_path}} #{pane_current_command}"
+        set-option -g set-titles-string "#{user}@#{host_short}(#{session_name},#I): #{window_name}"
 
         # i3-style bindings!
         set -g base-index 1
