@@ -1,6 +1,25 @@
 { config, lib, pkgs, ... }:
 
+let
+  colorScheme = config.colorScheme;
+in
 {
+  programs.bottom.settings = {
+    styles = {
+      tables = {
+        headers = {
+          color = colorScheme.accentAnsi;
+        };
+      };
+      widgets = {
+        selected_border_color = colorScheme.accentAnsi;
+        selected_text = {
+          bg_color = colorScheme.accentAnsi;
+        };
+      };
+    };
+  };
+
   bun.shellScripts = lib.mkIf config.programs.bottom.enable {
     # Custom bottom layouts
     btm-cpu = ''
