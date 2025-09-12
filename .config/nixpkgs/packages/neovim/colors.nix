@@ -8,7 +8,7 @@ in
 {
   xdg.configFile."nvim/colorscheme.vim".text = /* vim */ ''
     let g:colors_name = "nix-${colorScheme.slug}"
-    let base16_background_transparent=1
+    let g:tinted_background_transparent=1
 
     " Some handy shortcuts to use in other vim configs
     let g:base16_accent  = "#${colorScheme.accentColor}"
