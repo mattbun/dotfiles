@@ -28,6 +28,17 @@ local function timestamp()
   return os.date("%Y-%m-%dT%H:%M:%S%z")
 end
 
+local function zk_weekly_date()
+  local result = {}
+  if vim.loop.os_uname().sysname == "Darwin" then
+    result = vim.system({ "date", "-v", "-Mon", "+%Y-%m-%d" }):wait()
+  else
+    result = vim.system({ "date", "--rfc-3339", "date", "-d", "next-monday - 1 week" }):wait()
+  end
+
+  return vim.trim(result.stdout)
+end
+
 -- requires returns true if the module can be `require`d without error.
 local function requires(module)
   res = pcall(require, module)
@@ -524,6 +535,20 @@ local wkMappings = {
             desc = "List tags",
             function()
               require("zk.commands").get("ZkTags")()
+            end,
+          },
+          {
+            "w",
+            desc = "Open weekly",
+            function()
+              require("zk.commands").get("ZkNew")({ dir = "weekly", date = zk_weekly_date() })
+            end,
+          },
+          {
+            "W",
+            desc = "List weekly notes",
+            function()
+              require("zk.commands").get("ZkNotes")({ hrefs = { "weekly" }, sort = { "title-" } })
             end,
           },
           {
