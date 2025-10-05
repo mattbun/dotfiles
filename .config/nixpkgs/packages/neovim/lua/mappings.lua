@@ -41,7 +41,7 @@ end
 
 -- requires returns true if the module can be `require`d without error.
 local function requires(module)
-  res = pcall(require, module)
+  local res = pcall(require, module)
   return res
 end
 
