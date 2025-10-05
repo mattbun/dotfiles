@@ -104,6 +104,10 @@
       '';
     };
 
+    home.sessionVariables = {
+      "DOTFILES_PATH" = builtins.getEnv "PWD";
+    };
+
     # This works around some logic that tries to prevent reloading env vars
     home.sessionVariablesExtra = ''
       unset __HM_SESS_VARS_SOURCED

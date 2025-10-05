@@ -158,7 +158,7 @@ local wkMappings = {
       "<leader>~",
       desc = "Find file in ~",
       function()
-        require("telescope.builtin").find_files({ cwd = "~" })
+        require("telescope.builtin").find_files({ cwd = os.getenv("DOTFILES_PATH") })
       end,
     },
     { "<leader>`", desc = "Toggle tree", require("nvim-tree.api").tree.toggle },
