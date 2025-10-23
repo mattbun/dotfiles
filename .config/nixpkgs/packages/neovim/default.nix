@@ -8,6 +8,7 @@
     ./autoformat.nix
     ./cmp.nix
     ./codecompanion.nix
+    ./copilot.nix
     ./colors.nix
     ./diagnostics.nix
     ./mappings.nix
