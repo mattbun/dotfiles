@@ -1,5 +1,7 @@
-{ config, ... }: {
+{ config, lib, ... }: {
   programs.git.delta = {
+    enable = lib.mkDefault true;
+
     options = {
       navigate = true; # use n and N to move between diff sections
       line-numbers = true;

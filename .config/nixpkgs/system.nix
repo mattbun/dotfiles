@@ -4,6 +4,11 @@
 , ...
 }:
 {
+  programs.git = {
+    userName = "Matt Rathbun";
+    userEmail = "5514636+mattbun@users.noreply.github.com";
+  };
+
   colorScheme.accent = "white";
 
   programs = {
@@ -22,8 +27,6 @@
     bat.enable = true;
     fd.enable = true;
     fzf.enable = true;
-    git.enable = true;
-    git.delta.enable = true;
     mise.enable = true; # asdf clone
     ripgrep.enable = true;
     tealdeer.enable = false; # tldr
