@@ -183,7 +183,7 @@
 
             Mod+Return { spawn "${cfg.terminal}"; }
             Mod+Escape { spawn "${cfg.browser}"; } // TODO change from escape to something else?
-            Mod+Space { spawn "rofi" "-show" "combi" "-show-icons" "-combi-modes" "drun,run,ssh"; }
+            Mod+Space { spawn "${pkgs.rofi}/bin/rofi" "-show" "combi" "-show-icons" "-combi-modes" "drun,run,ssh"; }
             // Mod+Comma  { consume-window-into-column; }
             // Mod+Period { expel-window-from-column; }
             Mod+Comma { set-column-width "-10%"; }
@@ -194,7 +194,7 @@
             Mod+Shift+Minus { set-window-height "-10%"; }
             Mod+Equal { set-column-width "+10%"; }
             Mod+Shift+Equal { set-window-height "+10%"; }
-            Mod+Apostrophe { spawn "${pkgs.rofi-wayland}/bin/rofi" "-show" "ssh"; } // Next to return
+            Mod+Apostrophe { spawn "${pkgs.rofi}/bin/rofi" "-show" "ssh"; } // Next to return
 
             Mod+B  { consume-window-into-column; }     // TODO is this a good place for this?
             Mod+Shift+B { expel-window-from-column; }  // TODO is this a good place for this?

@@ -13,7 +13,7 @@ let
 in
 {
   programs.rofi = {
-    package = pkgs.rofi-wayland;
+    package = pkgs.rofi;
     font = "${config.packageSets.fonts.default} 12";
     plugins = with pkgs; [
       rofi-calc # TODO doesn't work with keybinding

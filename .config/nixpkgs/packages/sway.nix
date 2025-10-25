@@ -161,7 +161,7 @@ in
             }
           ];
           menu = ''
-            ${pkgs.rofi-wayland}/bin/rofi -show combi -show-icons -combi-modes "drun,run,ssh"
+            ${pkgs.rofi}/bin/rofi -show combi -show-icons -combi-modes "drun,run,ssh"
           '';
           keybindings =
             let
@@ -207,13 +207,13 @@ in
               "${modifier}+Shift+l" = "move right";
               "${modifier}+Shift+minus" = "move scratchpad";
               "${modifier}+Shift+q" = "kill";
-              "${modifier}+Shift+s" = "exec ${pkgs.rofi-wayland}/bin/rofi -show ssh";
+              "${modifier}+Shift+s" = "exec ${pkgs.rofi}/bin/rofi -show ssh";
               "${modifier}+Shift+space" = "floating toggle";
-              "${modifier}+Tab" = "exec ${pkgs.rofi-wayland}/bin/rofi -show window -show-icons";
+              "${modifier}+Tab" = "exec ${pkgs.rofi}/bin/rofi -show window -show-icons";
               "${modifier}+Up" = "focus up";
               "${modifier}+a" = "focus parent";
               "${modifier}+b" = "splith";
-              "${modifier}+d" = "exec ${pkgs.rofi-wayland}/bin/rofi -show combi -show-icons -combi-modes 'drun,run,ssh'";
+              "${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -show combi -show-icons -combi-modes 'drun,run,ssh'";
               "${modifier}+e" = "layout toggle split";
               "${modifier}+f" = "fullscreen toggle";
               "${modifier}+h" = "focus left";
@@ -227,7 +227,7 @@ in
               "${modifier}+v" = "splitv";
               "${modifier}+w" = "layout tabbed";
               "${modifier}+escape" = "exec ${config.wayland.windowManager.sway.customSettings.browser}";
-              "${alt}+F2" = "exec ${pkgs.rofi-wayland}/bin/rofi -show run";
+              "${alt}+F2" = "exec ${pkgs.rofi}/bin/rofi -show run";
               "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
               "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
               "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
