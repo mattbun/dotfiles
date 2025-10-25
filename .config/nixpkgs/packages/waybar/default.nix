@@ -62,10 +62,12 @@ in
         {
           shortcuts = mkOption {
             type = entries;
+            default = [ ];
           };
 
           power = mkOption {
             type = entries;
+            default = [ ];
           };
         };
     };
