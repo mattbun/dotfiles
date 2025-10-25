@@ -4,14 +4,14 @@
 , ...
 }:
 {
-  programs.git = {
-    userName = "Matt Rathbun";
-    userEmail = "5514636+mattbun@users.noreply.github.com";
-  };
-
   colorScheme.accent = "white";
 
   programs = {
+    git.settings.user = {
+      name = "Matt Rathbun";
+      email = "5514636+mattbun@users.noreply.github.com";
+    };
+
     # Shells
     bash.enable = true;
     fish.enable = true;

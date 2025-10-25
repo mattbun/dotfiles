@@ -1,6 +1,7 @@
 { config, lib, ... }: {
-  programs.git.delta = {
+  programs.delta = {
     enable = lib.mkDefault true;
+    enableGitIntegration = true;
 
     options = {
       navigate = true; # use n and N to move between diff sections
