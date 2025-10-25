@@ -24,7 +24,7 @@
       homeDirectory = builtins.getEnv "HOME";
     in
     {
-      homeConfigurations.matt = let pkgs = nixpkgs.legacyPackages.${system}; in
+      homeConfigurations."${username}" = let pkgs = nixpkgs.legacyPackages.${system}; in
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 

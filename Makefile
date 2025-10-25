@@ -6,6 +6,10 @@ else
 	os = $(ID)
 endif
 
+nix := $(shell command -v nix 2> /dev/null)
+nixPath := /nix/var/nix/profiles/default/bin
+home-manager := $(shell command -v home-manager 2> /dev/null)
+
 switch: switch-$(os)
 switch-arch: switch-home-manager
 switch-bazzite: switch-home-manager
@@ -32,26 +36,29 @@ update-flake:
 echo-os:
 	@echo $(os)
 
-switch-home-manager:
-	home-manager switch --flake ./.config/nixpkgs#matt --impure
+install-nix:
+ifndef nix
+	curl -sSf -L https://install.lix.systems/lix | sh -s -- install --no-confirm
+endif
 
-switch-darwin:
-	darwin-rebuild switch --flake ./.config/nixpkgs#rathbook --impure
+install-home-manager: install-nix
+ifndef home-manager
+	PATH=$$PATH:$(nixPath) nix run home-manager/master -- init --switch ./.config/nixpkgs --impure
+	@echo -e "\nAll set! Open a new shell!"
+endif
+
+switch-home-manager:
+	home-manager switch --flake ./.config/nixpkgs --impure -b backup
 
 build-home-manager:
 	home-manager build --flake ./.config/nixpkgs#matt --impure
 
+switch-darwin:
+	darwin-rebuild switch --flake ./.config/nixpkgs#rathbook --impure
+
 build-darwin:
 	darwin-rebuild build --flake ./.config/nixpkgs#rathbook --impure
-
-install-home-manager:
-	nix build --experimental-features nix-command --extra-experimental-features flakes --impure --no-link ./.config/nixpkgs#homeConfigurations.matt.activationPackage
-	$(shell nix path-info --experimental-features nix-command --extra-experimental-features flakes --impure ./.config/nixpkgs#homeConfigurations.matt.activationPackage)/activate
 
 install-darwin:
 	nix build --extra-experimental-features nix-command --extra-experimental-features flakes ./.config/nixpkgs#darwinConfigurations.rathbook.system --impure
 	./result/sw/bin/darwin-rebuild switch --flake ./.config/nixpkgs#rathbook --impure
-
-direnv: .envrc
-.envrc:
-	echo "use nix" > ./.envrc
