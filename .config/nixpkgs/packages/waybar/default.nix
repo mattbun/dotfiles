@@ -78,6 +78,9 @@ in
       alsa-utils
       libnotify
       wl-clipboard
+      pwvucontrol # volume control for pipewire
+      overskride # bluetooth
+      networkmanager # contains nmtui
 
       (lib.mkIf ((builtins.stringLength config.programs.waybar.customSettings.camera) > 0)
         mpv
@@ -166,7 +169,7 @@ in
                 speaker = "󰓃";
                 default = [ "󰖀" "󰕾" ];
               };
-              on-click = "${config.programs.waybar.customSettings.terminal} -T alsamixer -e alsamixer -V playback";
+              on-click = "${pkgs.pwvucontrol}/bin/pwvucontrol";
               on-click-right = "${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
             };
 
@@ -184,7 +187,7 @@ in
               format-off = "󰂲";
               format-on = "󰂯";
               format-connected = "󰂱";
-              on-click = "${config.programs.waybar.customSettings.terminal} -T bluetoothctl -e bluetoothctl";
+              on-click = "${pkgs.overskride}/bin/overskride";
               on-click-right = pkgs.writeShellScript "toggle-bluetooth" ''
                 bluetoothctl show | grep "Powered: yes"
                 if [[ "$?" = "0" ]]; then
