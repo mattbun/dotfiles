@@ -5,9 +5,9 @@
 * [fish](https://fishshell.com/)
 * [neovim](https://neovim.io/) (configured almost entirely in lua!)
 * [tmux](https://github.com/tmux/tmux)
-* [alacritty](https://github.com/alacritty/alacritty)
 * [sway](https://swaywm.org/)
-* ... and [more](https://github.com/mattbun/dotfiles/tree/main/.config/nixpkgs/packages)!
+* [niri](https://github.com/YaLTeR/niri)
+* ... and [a lot more](https://github.com/mattbun/dotfiles/tree/main/.config/nixpkgs/packages)!
 
 ## It's Nix!
 
@@ -19,45 +19,35 @@ So I don't have to hard-code the system architecture, username, or home director
 
 ## Getting Started
 
-### Clone this repo
-
-Nix and Home Manager should be able to handle this repo being cloned anywhere, but I usually clone it to my home directory with:
-
-```shell
-cd
-git init
-git remote add origin git@github.com:mattbun/dotfiles.git
-git fetch
-git checkout main
-```
+Clone this repo anywhere you'd like.
 
 ### Check out `.config/nixpkgs/system.nix`
+
+> [!IMPORTANT]
+> If you don't want your git commits to look like they come from me, change the git `userName` and `userEmail` at the top of `.config/nixpkgs/system.nix`.
 
 [`.config/nixpkgs/system.nix`](https://github.com/mattbun/dotfiles/blob/main/.config/nixpkgs/system.nix) is where system-specific configuration lives. Use it to set an accent color, enable/disable applications, or override configurations from other modules in this repo.
 
 ### Installation
 
-#### NixOS
+Install nix, install home-manager, and apply the home-manager configuration with
 
-It's possible to use Home Manager's NixOS module to hook this into the system config, but I like to keep them separate for simplicity's sake.
+```shell
+make install
+```
 
-1. Install and set up home-manager
+Once installed, you can apply any changes with
 
-    ```shell
-    # If make is already installed
-    make install
+```shell
+make
+```
 
-    # Or you can use the configuration in shell.nix to create an ephemeral shell with 'make' in it
-    nix-shell --command "make install"
-    ```
-
-2. From here on, to apply configuration changes run
-
-    ```shell
-    make
-    ```
+### OS-Specific Instructions
 
 #### Arch Linux
+
+> [!WARNING]
+> These instructions may be out-of-date.
 
 1. Install nix
 
