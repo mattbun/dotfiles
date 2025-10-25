@@ -18,6 +18,7 @@
     ./foot.nix
     ./fzf.nix
     ./git.nix
+    ./git-grab.nix
     ./helix.nix
     ./kubernetes.nix
     ./k9s.nix
