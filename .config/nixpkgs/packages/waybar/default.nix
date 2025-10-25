@@ -29,6 +29,12 @@ in
         };
       };
 
+      bunu.title = mkOption {
+        type = types.str;
+        description = "The title of the menu";
+        default = "󱄅";
+      };
+
       bunu.exit = mkOption {
         type = types.lines;
         description = "Commands to run when 'exit' is selected";
@@ -257,7 +263,7 @@ in
                 bunuRofi = with builtins; pkgs.writeShellScript "bunu-rofi" ''
                   entries="${concatStringsSep ";" (map (x: x.icon + " " + x.name) entries)}"
 
-                  chosen=$(echo -n "$entries" | rofi -p "󱄅 " -dmenu -sep ";" -l ${toString (length entries)} -location 3 -theme-str 'window {width:256;}')
+                  chosen=$(echo -n "$entries" | ${pkgs.rofi}/bin/rofi -p "${config.programs.waybar.bunu.title} " -dmenu -sep ";" -l ${toString (length entries)} -location 3 -theme-str 'window {width:256;}')
 
                   case "$chosen" in
                   ${concatStringsSep "\n" (map (x: "  \"" + x.icon + " " + x.name + "\")" + x.action + " ;;") entries )}
