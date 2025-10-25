@@ -53,29 +53,37 @@
         swaybg
       ];
 
-      programs.waybar = {
-        enable = true;
+      programs = {
+        rofi.enable = true;
 
-        settings.mainBar = {
-          modules-left = [ "niri/workspaces" "niri/window" ];
+        waybar = {
+          enable = true;
 
-          "niri/window" = {
-            separate-outputs = true;
+          settings.mainBar = {
+            modules-left = [ "niri/workspaces" "niri/window" ];
+
+            "niri/window" = {
+              separate-outputs = true;
+            };
           };
-        };
 
-        bunu.exit = "niri msg action quit --skip-confirmation || true";
+          bunu.exit = "niri msg action quit --skip-confirmation || true";
+        };
       };
 
-      services.swayidle = {
-        enable = true;
-        timeouts = [
-          {
-            timeout = config.packageSets.sway.idleTimeoutSeconds;
-            command = "${pkgs.niri}/bin/niri msg action power-off-monitors";
-            resumeCommand = "${pkgs.niri}/bin/niri msg action power-on-monitors'";
-          }
-        ];
+      services = {
+        mako.enable = true;
+
+        swayidle = {
+          enable = true;
+          timeouts = [
+            {
+              timeout = config.packageSets.sway.idleTimeoutSeconds;
+              command = "${pkgs.niri}/bin/niri msg action power-off-monitors";
+              resumeCommand = "${pkgs.niri}/bin/niri msg action power-on-monitors'";
+            }
+          ];
+        };
       };
 
       xdg.configFile."niri/config.kdl".text = cfg.config;
