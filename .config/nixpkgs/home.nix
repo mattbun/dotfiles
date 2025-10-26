@@ -51,24 +51,10 @@
 
     # These options apply to ripgrep and fd (which are used in fzf and neovim)
     # Implemented in ./lib/search.nix
-    bun.search = {
-      includeHidden = true;
-      includeGitignored = false;
-      ignoredPaths = [
-        ".git"
-      ];
-      includedPaths = [
-        ".env"
-      ];
-    };
 
     home.shellAliases = {
       # Make aliases work with sudo
       sudo = "sudo ";
-
-      # easier to remember commands that search everything
-      fda = lib.mkIf config.programs.fd.enable "fd --no-ignore --hidden";
-      rga = lib.mkIf config.programs.ripgrep.enable "rg --no-ignore --hidden";
     };
 
     home.sessionVariables = {

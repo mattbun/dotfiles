@@ -1,8 +1,4 @@
-{ pkgs, lib, config, ... }:
-
-let
-  convertScriptsToPackages = scriptsAttrList: (map (key: (pkgs.writeShellScriptBin key scriptsAttrList."${key}")) (builtins.attrNames scriptsAttrList));
-in
+{ lib, config, ... }:
 {
   options = with lib; {
     bun.search.includeHidden = mkOption {
@@ -53,5 +49,22 @@ in
       + lib.optionalString config.bun.search.includeHidden " --hidden"
       + lib.optionalString config.bun.search.includeGitignored " --no-ignore-vcs"
     );
+
+    bun.search = {
+      includeHidden = true;
+      includeGitignored = false;
+      ignoredPaths = [
+        ".git"
+      ];
+      includedPaths = [
+        ".env"
+      ];
+    };
+
+    home.shellAliases = {
+      # easier to remember commands that search everything
+      fda = lib.mkIf config.programs.fd.enable "fd --no-ignore --hidden";
+      rga = lib.mkIf config.programs.ripgrep.enable "rg --no-ignore --hidden";
+    };
   };
 }
