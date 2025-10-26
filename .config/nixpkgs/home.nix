@@ -9,6 +9,7 @@
     ./system.nix
     ./lib
     ./packages
+    ./scripts
   ];
 
   config = {
