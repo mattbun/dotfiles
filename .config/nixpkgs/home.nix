@@ -32,9 +32,7 @@
     programs.home-manager.enable = true;
 
     home.packages = with pkgs; [
-      # base
       curl
-      glow
       gnumake
       gnused
       gnutar
