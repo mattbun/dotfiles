@@ -7,6 +7,11 @@
   };
 
   config = {
+    home.shellAliases = {
+      "mvbak" = "bak mv";
+      "cpbak" = "bak cp";
+    };
+
     bun.shellScripts = {
       bak = /* bash */ ''
         set -euo pipefail
