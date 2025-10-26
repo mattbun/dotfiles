@@ -16,10 +16,20 @@ in
     package = pkgs.rofi;
     font = "${config.packageSets.fonts.default} 12";
     plugins = with pkgs; [
-      rofi-calc # TODO doesn't work with keybinding
+      rofi-calc
+    ];
+    modes = [
+      "drun"
+      "run"
+      "ssh"
+      "combi"
+
+      {
+        name = "calc";
+        path = "${pkgs.rofi-calc}/lib/rofi/libcalc.so";
+      }
     ];
     extraConfig = {
-      modi = "drun,run,ssh,combi";
       hover-select = true;
       click-to-exit = true; # TODO doesn't work https://github.com/lbonn/rofi/issues/22
 
