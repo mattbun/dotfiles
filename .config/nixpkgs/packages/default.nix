@@ -12,6 +12,7 @@
     ./delta.nix
     ./direnv.nix
     ./docker.nix
+    ./fd.nix
     ./firefox.nix
     ./fish.nix
     ./fonts.nix

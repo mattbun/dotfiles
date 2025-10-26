@@ -34,22 +34,6 @@
       ]
     );
 
-    programs.ripgrep.arguments =
-      lib.optionals config.bun.search.includeHidden [ "--hidden" ]
-      ++ lib.optionals config.bun.search.includeGitignored [ "--no-ignore-vcs" ];
-
-    programs.fzf = {
-      defaultCommand = "fd --type f"
-        + lib.optionalString config.bun.search.includeHidden " --hidden"
-        + lib.optionalString config.bun.search.includeGitignored " --no-ignore-vcs";
-    };
-
-    home.shellAliases.fd = lib.mkIf (config.bun.search.includeHidden || config.bun.search.includeGitignored) (
-      "fd"
-      + lib.optionalString config.bun.search.includeHidden " --hidden"
-      + lib.optionalString config.bun.search.includeGitignored " --no-ignore-vcs"
-    );
-
     bun.search = {
       includeHidden = true;
       includeGitignored = false;
@@ -59,12 +43,6 @@
       includedPaths = [
         ".env"
       ];
-    };
-
-    home.shellAliases = {
-      # easier to remember commands that search everything
-      fda = lib.mkIf config.programs.fd.enable "fd --no-ignore --hidden";
-      rga = lib.mkIf config.programs.ripgrep.enable "rg --no-ignore --hidden";
     };
   };
 }
