@@ -76,6 +76,11 @@
           config = /* lua */ ''
             local strategies = vim.json.decode([[${builtins.toJSON config.programs.neovim.codecompanion.strategies}]])
             local adapters = {
+              acp = {
+                opts = {
+                  show_defaults = false,
+                },
+              },
               http = {
                 opts = {
                   show_defaults = false,
