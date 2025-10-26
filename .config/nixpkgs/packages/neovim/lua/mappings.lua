@@ -28,6 +28,7 @@ local function timestamp()
   return os.date("%Y-%m-%dT%H:%M:%S%z")
 end
 
+-- zk_weekly_date returns the date of the most recent Monday (or today if it's Monday) in YYYY-MM-DD format.
 local function zk_weekly_date()
   local result = {}
   if vim.loop.os_uname().sysname == "Darwin" then
