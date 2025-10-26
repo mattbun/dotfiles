@@ -69,7 +69,7 @@
 
         sessionVariables = {
           "OLLAMA_HOST" = defaultUrl;
-          "OLLAMA_API_BASE" = lib.mkIf config.programs.aider.enable defaultUrl;
+          "OLLAMA_API_BASE" = defaultUrl;
         };
       };
 
