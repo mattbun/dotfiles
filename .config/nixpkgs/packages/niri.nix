@@ -54,7 +54,10 @@
       ];
 
       programs = {
-        rofi.enable = true;
+        rofi = {
+          enable = true;
+          terminal = cfg.terminal;
+        };
 
         waybar = {
           enable = true;
