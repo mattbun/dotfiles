@@ -68,10 +68,6 @@
       # Make aliases work with sudo
       sudo = "sudo ";
 
-      # neovim > vim
-      vim = "nvim";
-      vimdiff = "nvim -d";
-
       # easier to remember commands that search everything
       fda = lib.mkIf config.programs.fd.enable "fd --no-ignore --hidden";
       rga = lib.mkIf config.programs.ripgrep.enable "rg --no-ignore --hidden";

@@ -25,6 +25,9 @@
   programs.stylua.enable = true;
 
   programs.neovim = {
+    vimAlias = true;
+    vimdiffAlias = true;
+
     extraLuaConfig = lib.mkBefore (builtins.readFile ./lua/init.lua);
 
     cmp.enable = lib.mkDefault true;
