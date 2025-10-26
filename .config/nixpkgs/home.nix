@@ -72,15 +72,6 @@
       vim = "nvim";
       vimdiff = "nvim -d";
 
-      # misspellings
-      gti = "git";
-      tit = "echo 😱 && git";
-
-      # git aliases, inspired by oh-my-zsh/git
-      gcm = "git checkout $(git main-branch)";
-      gdca = "git diff --cached";
-      gpsup = "git push --set-upstream origin $(git branch --show-current)";
-
       # easier to remember commands that search everything
       fda = lib.mkIf config.programs.fd.enable "fd --no-ignore --hidden";
       rga = lib.mkIf config.programs.ripgrep.enable "rg --no-ignore --hidden";

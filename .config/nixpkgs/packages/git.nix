@@ -1,7 +1,20 @@
 { lib, pkgs, ... }: {
-  home.packages = with pkgs; [
-    git-open
-  ];
+  home = {
+    packages = with pkgs; [
+      git-open
+    ];
+
+    shellAliases = {
+      # misspellings
+      gti = "git";
+      tit = "echo 😱 && git";
+
+      # git aliases, inspired by oh-my-zsh/git
+      gcm = "git checkout $(git main-branch)";
+      gdca = "git diff --cached";
+      gpsup = "git push --set-upstream origin $(git branch --show-current)";
+    };
+  };
 
   programs.git = {
     enable = lib.mkDefault true;
