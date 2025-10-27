@@ -64,13 +64,12 @@
       #   };
       # };
     };
-    ollama = {
-      # Only installs ollama client, not the server
+    llama-swap = {
+      # Only configures llama-swap connections, not the server itself
       enable = false;
-      # defaultModel = "some-model:2b";
       # connections = {
       #   local = {
-      #     url = "http://localhost:11434";
+      #     url = "http://localhost:9292";
       #     models = {
       #       chat = [
       #         "some-model:2b"

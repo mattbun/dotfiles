@@ -23,6 +23,7 @@
     ./kubernetes.nix
     ./k9s.nix
     ./lf.nix
+    ./llama-swap.nix
     ./mako.nix
     ./neovim
     ./niri.nix
