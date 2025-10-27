@@ -45,7 +45,14 @@ cmp.setup({
       },
     })),
     ["<C-e>"] = cmp.mapping.close(),
-    ["<CR>"] = cmp.mapping.confirm({ select = false }),
+    ["<CR>"] = cmp.mapping(function(fallback)
+      -- use the internal non-blocking call to check if cmp is visible
+      if cmp.core.view:visible() then
+        cmp.confirm({ select = false })
+      else
+        fallback()
+      end
+    end),
     ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
     ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
     ["<PageDown>"] = cmp.mapping(
