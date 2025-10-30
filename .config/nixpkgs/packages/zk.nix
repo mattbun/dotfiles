@@ -66,7 +66,7 @@ lib.mkIf config.programs.zk.enable
 
   programs.zk = {
     settings = {
-      notebook.dir = "${config.home.homeDirectory}/zk";
+      notebook.dir = lib.mkDefault "${config.home.homeDirectory}/zk";
 
       note = {
         filename = "{{id}}";
