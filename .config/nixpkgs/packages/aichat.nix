@@ -28,19 +28,25 @@
 
   config = let cfg = config.programs.aichat; in lib.mkIf cfg.enable
     {
-      programs.aichat.settings.clients = lib.attrValues (
-        lib.mapAttrs
-          (clientName: client: (client.settings // {
-            name = clientName;
-            models = lib.attrValues (lib.mapAttrs
-              (modelName: model: ({
-                name = modelName;
-              } // model))
-              client.models
-            );
-          }))
-          cfg.clients
-      );
+      programs.aichat.settings = {
+        clients = lib.attrValues (
+          lib.mapAttrs
+            (clientName: client: (client.settings // {
+              name = clientName;
+              models = lib.attrValues (lib.mapAttrs
+                (modelName: model: ({
+                  name = modelName;
+                } // model))
+                client.models
+              );
+            }))
+            cfg.clients
+        );
+
+        document_loaders = {
+          "man" = "man $1";
+        };
+      };
 
       programs.fish = {
         interactiveShellInit = ''
