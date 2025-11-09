@@ -49,9 +49,9 @@ cmp.setup({
       -- use the internal non-blocking call to check if cmp is visible
       if cmp.core.view:visible() then
         cmp.confirm({ select = false })
-      else
-        fallback()
       end
+
+      fallback()
     end),
     ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
     ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
