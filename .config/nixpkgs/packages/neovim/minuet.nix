@@ -10,6 +10,11 @@
     settings = lib.mkOption {
       type = lib.types.attrsOf lib.types.anything;
     };
+
+    extraLuaConfig = lib.mkOption {
+      type = lib.types.str;
+      description = "Additional configuration in lua before running `require('minuet').setup(settings)`.";
+    };
   };
 
   config = let cfg = config.programs.neovim.minuet; in lib.mkIf cfg.enable {
@@ -29,7 +34,11 @@
           plugin = minuet-ai-nvim;
           type = "lua";
           config = /* lua */ ''
-            require("minuet").setup(vim.json.decode([[ ${builtins.toJSON cfg.settings} ]]))
+            local settings = vim.json.decode([[ ${builtins.toJSON cfg.settings} ]])
+
+            ${cfg.extraLuaConfig}
+
+            require("minuet").setup(settings)
           '';
         }
       ];
