@@ -20,6 +20,7 @@
     ./fzf.nix
     ./git.nix
     ./helix.nix
+    ./homer.nix
     ./kubernetes.nix
     ./k9s.nix
     ./lf.nix
