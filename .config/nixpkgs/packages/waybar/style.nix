@@ -101,11 +101,12 @@ in
     }
 
     #clock.date, #clock.time {
-        background-color: #${colorScheme.palette.base01};
+        background-color: #${colorScheme.palette.base02};
     }
 
     #custom-userhostname {
-        background-color: #${colorScheme.palette.base02};
+      background-color: #${colorScheme.accentColor};
+      color: #${colorScheme.palette.base00};
     }
 
     #taskbar button {
