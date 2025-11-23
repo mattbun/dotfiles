@@ -23,6 +23,16 @@ local function repo_name()
   end
 end
 
+local function slug(str)
+  -- TODO this probably isn't completely equivalent to zk's slug helper but it's close enough
+  result = string.gsub(str, "%W", "-")
+  return result
+end
+
+local function repo_slug()
+  return slug(repo_name())
+end
+
 -- timestamp returns an ISO 8601 timestamp in the local time zone
 local function timestamp()
   return os.date("%Y-%m-%dT%H:%M:%S%z")
@@ -366,56 +376,6 @@ local wkMappings = {
     },
 
     {
-      "<leader>r",
-      group = "zk (repo-scoped)",
-      cond = requires("zk"),
-      expand = function()
-        return {
-          {
-            "a",
-            desc = "Add repo note with timestamp",
-            function()
-              vim.ui.input({ prompt = "zk repo add " }, function(content)
-                require("zk.api").new(nil, {
-                  title = timestamp(),
-                  content = content,
-                  extra = { repo = repo_name() },
-                  edit = false,
-                }, function(_, result)
-                  vim.print(result.path)
-                end)
-              end)
-            end,
-          },
-          {
-            "d",
-            desc = "Open repo TODOs",
-            function()
-              require("zk.commands").get("ZkNew")({ dir = "todo", extra = { repo = repo_name() } })
-            end,
-          },
-          {
-            "n",
-            desc = "New repo note",
-            function()
-              require("zk.commands").get("ZkNew")({
-                extra = { repo = repo_name() },
-                title = timestamp(),
-              })
-            end,
-          },
-          {
-            "r",
-            desc = "List repo notes",
-            function()
-              require("zk.commands").get("ZkNotes")({ tags = { repo_name() } })
-            end,
-          },
-        }
-      end,
-    },
-
-    {
       "<leader>t",
       desc = "New tab",
       function()
@@ -470,7 +430,10 @@ local wkMappings = {
             desc = "Search all notes",
             function()
               -- TODO hack until zk.nvim adds their own version of this
-              require("telescope.builtin").live_grep({ cwd = os.getenv("ZK_NOTEBOOK_DIR"), glob_pattern = "*.md" })
+              require("telescope.builtin").live_grep({
+                cwd = os.getenv("ZK_NOTEBOOK_DIR"),
+                glob_pattern = "*.md",
+              })
             end,
           },
           {
@@ -484,7 +447,7 @@ local wkMappings = {
             "d",
             desc = "Open repo TODOs",
             function()
-              require("zk.commands").get("ZkNew")({ dir = "todo", extra = { repo = repo_name() } })
+              require("zk.commands").get("ZkNew")({ dir = "todo", extra = { repo = repo_slug() } })
             end,
           },
           {
@@ -506,7 +469,7 @@ local wkMappings = {
             desc = "New repo note",
             function()
               require("zk.commands").get("ZkNew")({
-                extra = { repo = repo_name() },
+                extra = { repo = repo_slug() },
                 title = timestamp(),
               })
             end,
@@ -556,7 +519,7 @@ local wkMappings = {
             "z",
             desc = "List repo notes",
             function()
-              require("zk.commands").get("ZkNotes")({ tags = { repo_name() }, sort = { "modified" } })
+              require("zk.commands").get("ZkNotes")({ tags = { repo_slug() }, sort = { "modified" } })
             end,
           },
           {
