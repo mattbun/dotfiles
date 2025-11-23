@@ -58,9 +58,19 @@ in
           if accent == "orange" then "yellow" else if accent == "brown" then "red" else accent;
       };
 
+      accentBrightAnsi = mkOption {
+        type = enum ansiColors;
+        default = "bright-${config.colorScheme.accentAnsi}";
+      };
+
       accentColor = mkOption {
         type = hexColor;
         default = palette."${config.colorScheme.accent}";
+      };
+
+      accentBrightColor = mkOption {
+        type = hexColor;
+        default = palette."${config.colorScheme.accentBrightAnsi}";
       };
 
       palette = {
