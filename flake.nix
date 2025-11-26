@@ -31,8 +31,8 @@
           # Specify your home configuration modules here, for example,
           # the path to your home.nix.
           modules = [
-            ./home.nix
-            ./system.nix
+            ./.config/nixpkgs/home.nix
+            ./.config/nixpkgs/system.nix
           ];
 
           # Optionally use extraSpecialArgs
@@ -46,7 +46,7 @@
         inherit pkgs;
 
         modules = [
-          ./home.nix
+          ./.config/nixpkgs/home.nix
         ];
 
         extraSpecialArgs = {
@@ -57,13 +57,13 @@
       darwinConfigurations.rathbook = darwin.lib.darwinSystem {
         system = system;
         modules = [
-          ./darwin.nix
-          ./system.nix
+          ./.config/nixpkgs/darwin.nix
+          ./.config/nixpkgs/system.nix
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users."${username}" = import ./home.nix;
+            home-manager.users."${username}" = import ./.config/nixpkgs/home.nix;
             home-manager.extraSpecialArgs = {
               inherit basix username homeDirectory;
             };

@@ -10,6 +10,8 @@ nix := $(shell command -v nix 2> /dev/null)
 nixPath := /nix/var/nix/profiles/default/bin
 home-manager := $(shell command -v home-manager 2> /dev/null)
 
+flakePath := .
+
 switch: switch-$(os)
 switch-arch: switch-home-manager
 switch-bazzite: switch-home-manager
@@ -31,7 +33,7 @@ install-mac: install-darwin
 update: update-flake switch
 
 update-flake:
-	cd ./.config/nixpkgs && nix flake update
+	cd $(flakePath) && nix flake update
 
 echo-os:
 	@echo $(os)
@@ -43,22 +45,25 @@ endif
 
 install-home-manager: install-nix
 ifndef home-manager
-	PATH=$$PATH:$(nixPath) nix run home-manager/master -- init --switch ./.config/nixpkgs --impure
+	PATH=$$PATH:$(nixPath) nix run home-manager/master -- init --switch $(flakePath) --impure
 	@echo -e "\nAll set! Open a new shell!"
 endif
 
 switch-home-manager:
-	home-manager switch --flake ./.config/nixpkgs --impure -b backup
+	home-manager switch --flake $(flakePath) --impure -b backup
 
 build-home-manager:
-	home-manager build --flake ./.config/nixpkgs#matt --impure
+	home-manager build --flake $(flakePath)#matt --impure
 
 switch-darwin:
-	darwin-rebuild switch --flake ./.config/nixpkgs#rathbook --impure
+	darwin-rebuild switch --flake $(flakePath)#rathbook --impure
 
 build-darwin:
-	darwin-rebuild build --flake ./.config/nixpkgs#rathbook --impure
+	darwin-rebuild build --flake $(flakePath)#rathbook --impure
 
 install-darwin:
-	nix build --extra-experimental-features nix-command --extra-experimental-features flakes ./.config/nixpkgs#darwinConfigurations.rathbook.system --impure
-	./result/sw/bin/darwin-rebuild switch --flake ./.config/nixpkgs#rathbook --impure
+	nix build --extra-experimental-features nix-command --extra-experimental-features flakes $(flakePath)#darwinConfigurations.rathbook.system --impure
+	./result/sw/bin/darwin-rebuild switch --flake $(flakePath)#rathbook --impure
+
+rag:
+	aichat --rag dotfiles --rebuild-rag
