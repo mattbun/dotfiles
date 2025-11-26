@@ -54,6 +54,12 @@
         };
       };
 
+      templates = {
+        default = {
+          path = ./templates/flake;
+        };
+      };
+
       darwinConfigurations.rathbook = darwin.lib.darwinSystem {
         system = system;
         modules = [
