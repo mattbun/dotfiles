@@ -32,6 +32,7 @@
           # the path to your home.nix.
           modules = [
             ./home.nix
+            ./system.nix
           ];
 
           # Optionally use extraSpecialArgs
@@ -41,10 +42,23 @@
           };
         };
 
+      homeConfigurations.base = let pkgs = nixpkgs.legacyPackages.${system}; in {
+        inherit pkgs;
+
+        modules = [
+          ./home.nix
+        ];
+
+        extraSpecialArgs = {
+          inherit basix;
+        };
+      };
+
       darwinConfigurations.rathbook = darwin.lib.darwinSystem {
         system = system;
         modules = [
           ./darwin.nix
+          ./system.nix
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

@@ -6,7 +6,6 @@
 , ...
 }: {
   imports = [
-    ./system.nix
     ./lib
     ./packages
     ./scripts
