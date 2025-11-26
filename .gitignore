@@ -11,3 +11,5 @@
 
 !flake.nix
 !flake.lock
+!templates
+!templates/**
