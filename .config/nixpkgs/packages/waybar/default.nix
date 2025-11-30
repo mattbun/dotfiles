@@ -139,7 +139,7 @@ in
             layer = "top";
             position = "top";
             modules-left = [ ];
-            modules-right = [ "tray" "mpris" "pulseaudio" "bluetooth" "network" "memory" "cpu" "clock#date" "clock#time" "custom/userhostname" ];
+            modules-right = [ "tray" "mpris" "battery" "pulseaudio" "bluetooth" "network" "memory" "cpu" "clock#date" "clock#time" "custom/userhostname" ];
 
             "sway/window" = {
               icon-size = 16;
@@ -158,6 +158,17 @@ in
                 activated = "󰅶";
                 deactivated = "󰾪";
               };
+            };
+
+            battery = {
+              interval = 5;
+              states = {
+                warning = 30;
+                critical = 15;
+              };
+              format = "{icon} {capacity}%";
+              format-charging = "󰂄 {capacity}%";
+              format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
             };
 
             pulseaudio = {

@@ -72,6 +72,18 @@ in
         color: #${colorScheme.palette.yellow};
     }
 
+    #battery.warning {
+      color: #${config.colorScheme.palette.yellow};
+    }
+
+    #battery.critical {
+      color: #${config.colorScheme.palette.red};
+    }
+
+    #battery.charging {
+      color: #${config.colorScheme.palette.green};
+    }
+
     #pulseaudio {
         color: #${colorScheme.palette.orange};
     }
