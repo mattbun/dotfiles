@@ -58,6 +58,20 @@
         default = {
           path = ./templates/flake;
         };
+
+        matt = {
+          path = ./templates/matt;
+          description = "Configuration specific to Matt";
+          welcomeText = ''
+            Added `matt.nix`! Now add it as an import in `home.nix` or add it to the home-manager modules in `flake.nix`.
+
+            ```nix
+            imports = [
+              ./matt.nix
+            ];
+            ```
+          '';
+        };
       };
 
       darwinConfigurations.rathbook = darwin.lib.darwinSystem {
