@@ -112,7 +112,6 @@ in
     in
     {
       packageSets.fonts.enable = true;
-      packageSets.firefox.enable = true;
       services.mako.enable = true; # notifications
 
       programs = {

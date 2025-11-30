@@ -3,24 +3,13 @@
 , lib
 , ...
 }: {
-  options = with lib; {
-    packageSets.firefox = {
-      enable = mkOption {
-        type = types.bool;
-        description = "Whether or not to install and configure firefox";
-        default = false;
-      };
-    };
-  };
-
-  config = lib.mkIf config.packageSets.firefox.enable
+  config = lib.mkIf config.programs.firefox.enable
     {
       home.packages = [
         pkgs.nixos-icons
       ];
 
       programs.firefox = {
-        enable = true;
         profiles = {
           default = {
             settings = {
@@ -34,6 +23,8 @@
 
             search = {
               force = true;
+              default = "kagi";
+
               engines = {
                 "wikipedia".metaData.alias = "w";
 
@@ -84,6 +75,18 @@
                   }];
                   icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
                   definedAliases = [ "hmopts" ];
+                };
+
+                kagi = {
+                  name = "Kagi";
+                  definedAliases = [ "k" ];
+                  urls = [{
+                    template = "https://kagi.com/search";
+                    params = [
+                      { name = "q"; value = "{searchTerms}"; }
+                      { name = "personalized"; value = "1"; }
+                    ];
+                  }];
                 };
               };
             };

@@ -35,6 +35,9 @@
     # Terminals
     alacritty.enable = false;
     foot.enable = false;
+
+    # Web browser
+    firefox.enable = false;
   };
 
   # Wayland desktops
