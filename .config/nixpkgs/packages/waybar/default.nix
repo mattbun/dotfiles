@@ -163,7 +163,6 @@ in
             battery = {
               interval = 5;
               states = {
-                warning = 30;
                 critical = 15;
               };
               format = "{icon} {capacity}%";
