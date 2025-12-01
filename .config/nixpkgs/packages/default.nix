@@ -14,7 +14,7 @@
     ./fd.nix
     ./firefox.nix
     ./fish.nix
-    ./fonts.nix
+    ./fonts
     ./foot.nix
     ./fzf.nix
     ./git.nix

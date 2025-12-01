@@ -7,12 +7,12 @@ let
   colors = config.colorScheme.palette;
 in
 {
-  packageSets.fonts.enable = lib.mkIf config.programs.foot.enable true;
+  fonts.fontconfig.enable = lib.mkIf config.programs.foot.enable true;
 
   programs.foot = {
     settings = {
       main = {
-        font = "${config.packageSets.fonts.mono}:size=12";
+        font = "${lib.head config.fonts.fontconfig.defaultFonts.monospace}:size=12";
         shell = "${pkgs.tmux}/bin/tmux";
       };
       colors = {

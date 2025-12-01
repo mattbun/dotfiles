@@ -111,7 +111,7 @@ in
       screenshotDisplay = "${screenshot} display";
     in
     {
-      packageSets.fonts.enable = true;
+      fonts.fontconfig.enable = true;
       services.mako.enable = true; # notifications
 
       programs = {
@@ -151,7 +151,7 @@ in
             hideEdgeBorders = "both";
           };
           fonts = {
-            names = [ config.packageSets.fonts.propo ];
+            names = config.fonts.fontconfig.defaultFonts.proportional;
             size = 12.0;
           };
           bars = [

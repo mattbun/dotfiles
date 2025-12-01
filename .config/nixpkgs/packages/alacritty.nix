@@ -3,7 +3,7 @@
 , lib
 , ...
 }: {
-  packageSets.fonts.enable = lib.mkIf config.programs.alacritty.enable true;
+  fonts.fontconfig.enable = lib.mkIf config.programs.alacritty.enable true;
 
   programs.alacritty = {
     settings = {
@@ -13,7 +13,7 @@
 
       font = {
         normal = {
-          family = config.packageSets.fonts.mono;
+          family = lib.head config.fonts.fontconfig.defaultFonts.monospace;
         };
         size = 13.0;
       };

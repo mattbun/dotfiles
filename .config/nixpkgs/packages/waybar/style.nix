@@ -1,4 +1,5 @@
 { config
+, lib
 , ...
 }:
 let
@@ -9,7 +10,7 @@ in
     * {
         border: none;
         border-radius: 0;
-        font-family: ${config.packageSets.fonts.propo}, Roboto, Helvetica, Arial, sans-serif;
+        font-family: ${lib.head config.fonts.fontconfig.defaultFonts.proportional}, Roboto, Helvetica, Arial, sans-serif;
         font-size: 16px;
         min-height: 0;
         color: #${colorScheme.palette.base07};

@@ -4,5 +4,6 @@
     ./path.nix
     ./search.nix
     ./scripts.nix
+    ./fonts.nix
   ];
 }

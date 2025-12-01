@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   colorScheme = config.colorScheme;
@@ -14,7 +14,7 @@ in
 {
   programs.rofi = {
     package = pkgs.rofi;
-    font = "${config.packageSets.fonts.default} 12";
+    font = "${lib.head config.fonts.fontconfig.defaultFonts.monospace} 12";
     plugins = with pkgs; [
       rofi-calc
     ];
