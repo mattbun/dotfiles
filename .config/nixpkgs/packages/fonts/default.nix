@@ -11,10 +11,10 @@
       # pro-tip: see fonts with `fc-list`
       fontconfig.defaultFonts = {
         monospace = [
-          "Hack Nerd Font"
+          "Hack Nerd Font Mono"
         ];
         proportional = [
-          "Hack Nerd Font"
+          "Hack Nerd Font Propo"
         ];
       };
     };
