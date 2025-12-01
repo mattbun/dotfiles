@@ -149,7 +149,8 @@ in
 
             tray = {
               icon-size = 16;
-              spacing = 10;
+              spacing = 15;
+              reverse-direction = true;
             };
 
             idle_inhibitor = {
