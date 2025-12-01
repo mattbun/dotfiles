@@ -341,6 +341,9 @@
             XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "-c" "backlight" "10%-"; }
             XF86KbdBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "-d" "*::kbd_backlight" "10%+"; }
             XF86KbdBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "-d" "*::kbd_backlight" "10%-"; }
+
+            XF86LaunchA { toggle-overview; }
+            F11 { fullscreen-window; }
         }
       '';
     };
