@@ -87,8 +87,6 @@
   };
 
   packageSets = {
-    # Development
-    docker = false;
     kubernetes = false;
   };
 
