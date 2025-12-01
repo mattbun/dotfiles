@@ -51,6 +51,7 @@
 
       home.packages = with pkgs; [
         swaybg
+        brightnessctl
       ];
 
       programs = {
@@ -335,6 +336,11 @@
             XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
             XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
             XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+
+            XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "-c" "backlight" "10%+"; }
+            XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "-c" "backlight" "10%-"; }
+            XF86KbdBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "-d" "*::kbd_backlight" "10%+"; }
+            XF86KbdBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "-d" "*::kbd_backlight" "10%-"; }
         }
       '';
     };
