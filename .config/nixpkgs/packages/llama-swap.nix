@@ -3,8 +3,6 @@
 , ...
 }: {
   options.programs.llama-swap = with lib; {
-    enable = lib.mkEnableOption "llama-swap";
-
     connections = lib.mkOption {
       type = types.attrsOf
         (types.submodule {
@@ -32,6 +30,7 @@
             };
           };
         });
+      default = { };
     };
   };
 
@@ -39,7 +38,7 @@
     let
       cfg = config.programs.llama-swap;
     in
-    lib.mkIf cfg.enable {
+    {
       programs = {
         aichat = {
           clients = lib.mapAttrs

@@ -66,7 +66,6 @@
     };
     llama-swap = {
       # Only configures llama-swap connections, not the server itself
-      enable = false;
       # connections = {
       #   local = {
       #     url = "http://localhost:9292";
