@@ -83,37 +83,39 @@
         };
 
         neovim.codecompanion = {
-          adapters = lib.mergeAttrsList (
-            lib.flatten (
-              lib.attrValues (
-                builtins.mapAttrs
-                  (name: connection:
-                    (map
-                      (model:
-                        let modelName = "${name}:${model}"; in {
-                          "${modelName}" = {
-                            adapter = "openai";
-                            model = model;
-                            settings = {
-                              name = "${modelName}";
-                              formatted_name = "${modelName}";
-                              url = "${connection.url}/v1/chat/completions";
-                              schema = {
-                                model = {
-                                  default = model;
-                                };
-                              };
-                              stream = true;
-                            };
-                          };
-                        })
-                      connection.models.chat
-                    )
-                  )
-                  cfg.connections
-              )
-            )
-          );
+          adapters =
+            let
+              createAdapter = name: conn: model:
+                let
+                  modelName = "${name}:${model}";
+                in
+                {
+                  "${modelName}" = {
+                    adapter = "openai";
+                    model = model;
+                    settings = {
+                      name = modelName;
+                      formatted_name = modelName;
+                      url = "${conn.url}/v1/chat/completions";
+                      schema = { model = { default = model; }; };
+                      stream = true;
+                    };
+                  };
+                };
+
+              adaptersForConnection = name: conn:
+                lib.foldl' lib.mergeAttrs { } (
+                  map (model: createAdapter name conn model) conn.models.chat
+                );
+
+              allAdapters = lib.foldl' lib.mergeAttrs { } (
+                lib.attrValues (
+                  builtins.mapAttrs (name: conn: adaptersForConnection name conn)
+                    cfg.connections
+                )
+              );
+            in
+            allAdapters;
         };
       };
     };
