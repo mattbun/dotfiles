@@ -88,6 +88,17 @@
                     ];
                   }];
                 };
+
+                aw = {
+                  name = "ArchWiki";
+                  urls = [{
+                    template = "https://wiki.archlinux.org";
+                    params = [
+                      { name = "search"; value = "{searchTerms}"; }
+                    ];
+                  }];
+                  definedAliases = [ "aw" ];
+                };
               };
             };
           };
