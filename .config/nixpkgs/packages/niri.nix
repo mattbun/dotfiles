@@ -169,6 +169,7 @@
             touchpad {
                 tap
                 natural-scroll
+                drag false
             }
         }
 
