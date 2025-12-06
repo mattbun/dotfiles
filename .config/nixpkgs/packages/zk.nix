@@ -1,15 +1,12 @@
 { config, lib, pkgs, ... }:
 let
   getRepo = (pkgs.writeShellScript "zk-get-repo" ''
-    REPO_PATH="$(git rev-parse --show-toplevel)"
-
-    if [ "$REPO_PATH" = "$HOME" ]; then
-      REPO_NAME="$ZK_HOME_DIRECTORY_TAG"
-    else
-      REPO_NAME="$(basename $REPO_PATH)"
+    if [ -z "$ZK_REPOSITORY_TAG" ]; then
+      REPO_PATH="$(git rev-parse --show-toplevel)"
+      ZK_REPOSITORY_TAG="$(basename $REPO_PATH)"
     fi
 
-    echo $REPO_NAME
+    echo $ZK_REPOSITORY_TAG
   '');
 
   batFormat = "${pkgs.bat}/bin/bat -l markdown -p";

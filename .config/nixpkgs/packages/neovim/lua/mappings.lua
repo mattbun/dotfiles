@@ -9,18 +9,18 @@ local function pumswitch(popup_key, not_popup_key)
   end
 end
 
--- repo_name returns the name of the root directory of the current git repo.
--- It returns "dotfiles" if the directory is the same as $HOME.
+-- repo_name returns the name of the root directory of the current git repo or the value of the
+-- environment variable ZK_REPOSITORY_TAG if set.
 local function repo_name()
-  local result = vim.system({ "git", "rev-parse", "--show-toplevel" }):wait()
-  local repoPath = vim.trim(result.stdout)
-  local homeDir = os.getenv("HOME")
+  local repoName = os.getenv("ZK_REPOSITORY_TAG") or ""
 
-  if repoPath == homeDir then
-    return os.getenv("ZK_HOME_DIRECTORY_TAG") or ""
-  else
-    return vim.trim(vim.fn.system({ "basename", repoPath }))
+  if repoName == "" then
+    local result = vim.system({ "git", "rev-parse", "--show-toplevel" }):wait()
+    local repoPath = vim.trim(result.stdout)
+    repoName = vim.trim(vim.fn.system({ "basename", repoPath }))
   end
+
+  return repoName
 end
 
 local function slug(str)
