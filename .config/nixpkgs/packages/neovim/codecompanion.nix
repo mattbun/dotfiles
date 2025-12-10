@@ -94,6 +94,7 @@
             }
 
             require("codecompanion").setup({
+              ignore_warnings = true, -- https://github.com/olimorris/codecompanion.nvim/pull/2439
               strategies = strategies,
               adapters = adapters,
               -- TODO might be nice to expose additional settings in nix

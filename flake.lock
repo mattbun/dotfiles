@@ -7,17 +7,32 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1757733966,
-        "narHash": "sha256-dXHEOY/UZGwAIkoqiz4sLAcRYJcQLbIjODvhUrPCGKw=",
+        "lastModified": 1764388064,
+        "narHash": "sha256-URwr6RV0lGBFFhG/gnC+7i8rFwDWYeU5TgFhEZbS1n8=",
         "owner": "NotAShelf",
         "repo": "Basix",
-        "rev": "3695f133ba36a1de907f411e95a70cebe9aaef3f",
+        "rev": "4f1601cd5696b2511d3f9a5e19e6eee4dc726e01",
         "type": "github"
       },
       "original": {
         "owner": "NotAShelf",
         "repo": "Basix",
         "type": "github"
+      }
+    },
+    "buu": {
+      "locked": {
+        "lastModified": 1764903292,
+        "narHash": "sha256-MJJ6EJQlIp09kIE2E8inGbEOaz420TqOWgTTR+VVwio=",
+        "ref": "refs/heads/main",
+        "rev": "7ef7f9ec9b50dc54cc6de8f8acd0152247a6edbd",
+        "revCount": 187,
+        "type": "git",
+        "url": "ssh://git@github.com/mattbun/buu"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/mattbun/buu"
       }
     },
     "darwin": {
@@ -27,11 +42,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761339987,
-        "narHash": "sha256-IUaawVwItZKi64IA6kF6wQCLCzpXbk2R46dHn8sHkig=",
+        "lastModified": 1765065051,
+        "narHash": "sha256-b7W9WsvyMOkUScNxbzS45KEJp0iiqRPyJ1I3JBE+oEE=",
         "owner": "lnl7",
         "repo": "nix-darwin",
-        "rev": "7cd9aac79ee2924a85c211d21fafd394b06a38de",
+        "rev": "7e22bf538aa3e0937effcb1cee73d5f1bcc26f79",
         "type": "github"
       },
       "original": {
@@ -75,6 +90,21 @@
         "type": "github"
       }
     },
+    "giran": {
+      "locked": {
+        "lastModified": 1764904423,
+        "narHash": "sha256-NmBaF9WrVZxerHHdWgzyI1CIZWu4s33tKGaTO6aVBlY=",
+        "ref": "refs/heads/main",
+        "rev": "88f6a5e1048ce2ff559d9fcbd228fc428ecae138",
+        "revCount": 16,
+        "type": "git",
+        "url": "ssh://git@github.com/mattbun/giran"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/mattbun/giran"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -82,11 +112,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761344779,
-        "narHash": "sha256-6LNSptFYhiAd0M/maJoixJw7V0Kp5BSoMRtIahcfu3M=",
+        "lastModified": 1765337252,
+        "narHash": "sha256-HuWQp8fM25fyWflbuunQkQI62Hg0ecJxWD52FAgmxqY=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "c644cb018f9fdec55f5ac2afb4713a8c7beb757c",
+        "rev": "13cc1efd78b943b98c08d74c9060a5b59bf86921",
         "type": "github"
       },
       "original": {
@@ -125,11 +155,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1761114652,
-        "narHash": "sha256-f/QCJM/YhrV/lavyCVz8iU3rlZun6d+dAiC3H+CDle4=",
+        "lastModified": 1765186076,
+        "narHash": "sha256-hM20uyap1a0M9d344I692r+ik4gTMyj60cQWO+hAYP8=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "01f116e4df6a15f4ccdffb1bcd41096869fb385c",
+        "rev": "addf7cf5f383a3101ecfba091b98d0a1263dc9b8",
         "type": "github"
       },
       "original": {
@@ -142,7 +172,9 @@
     "root": {
       "inputs": {
         "basix": "basix",
+        "buu": "buu",
         "darwin": "darwin",
+        "giran": "giran",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2"
       }
