@@ -28,6 +28,7 @@
     ./neovim
     ./niri.nix
     ./ollama.nix
+    ./opencode.nix
     ./ripgrep.nix
     ./rofi.nix
     ./starship.nix
