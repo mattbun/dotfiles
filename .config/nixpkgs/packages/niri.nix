@@ -82,7 +82,7 @@
           enable = true;
           timeouts = [
             {
-              timeout = config.packageSets.sway.idleTimeoutSeconds;
+              timeout = config.wayland.customWindowManager.niri.idleTimeoutSeconds;
               command = "${pkgs.niri}/bin/niri msg action power-off-monitors";
               resumeCommand = "${pkgs.niri}/bin/niri msg action power-on-monitors'";
             }
