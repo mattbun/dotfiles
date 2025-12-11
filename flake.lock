@@ -20,21 +20,6 @@
         "type": "github"
       }
     },
-    "buu": {
-      "locked": {
-        "lastModified": 1764903292,
-        "narHash": "sha256-MJJ6EJQlIp09kIE2E8inGbEOaz420TqOWgTTR+VVwio=",
-        "ref": "refs/heads/main",
-        "rev": "7ef7f9ec9b50dc54cc6de8f8acd0152247a6edbd",
-        "revCount": 187,
-        "type": "git",
-        "url": "ssh://git@github.com/mattbun/buu"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/mattbun/buu"
-      }
-    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -88,21 +73,6 @@
         "owner": "hercules-ci",
         "repo": "flake-parts",
         "type": "github"
-      }
-    },
-    "giran": {
-      "locked": {
-        "lastModified": 1764904423,
-        "narHash": "sha256-NmBaF9WrVZxerHHdWgzyI1CIZWu4s33tKGaTO6aVBlY=",
-        "ref": "refs/heads/main",
-        "rev": "88f6a5e1048ce2ff559d9fcbd228fc428ecae138",
-        "revCount": 16,
-        "type": "git",
-        "url": "ssh://git@github.com/mattbun/giran"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/mattbun/giran"
       }
     },
     "home-manager": {
@@ -172,9 +142,7 @@
     "root": {
       "inputs": {
         "basix": "basix",
-        "buu": "buu",
         "darwin": "darwin",
-        "giran": "giran",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2"
       }
