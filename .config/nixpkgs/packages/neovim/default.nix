@@ -38,6 +38,7 @@
       mkdir-nvim
       plenary-nvim
       telescope-fzf-native-nvim
+      telescope-ui-select-nvim
       vim-eunuch
       vim-graphql
       vim-nix
@@ -51,17 +52,6 @@
         type = "lua";
         config = /* lua */ ''
           require('Comment').setup()
-        '';
-      }
-      {
-        plugin = dressing-nvim;
-        type = "lua";
-        config = /* lua */ ''
-          require('dressing').setup({
-            input = {
-              border = vim.g.border_style,
-            },
-          })
         '';
       }
       {
