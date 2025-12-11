@@ -19,7 +19,7 @@
   home.packages = lib.mkIf config.programs.neovim.enable (with pkgs; [
     nil
     nixpkgs-fmt
-    sumneko-lua-language-server
+    lua-language-server
   ]);
 
   programs.stylua.enable = true;
