@@ -54,6 +54,8 @@
         };
       };
 
+      homeManagerModule = ./.config/nixpkgs/home.nix;
+
       templates = {
         default = {
           path = ./templates/flake;
