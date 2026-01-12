@@ -20,6 +20,9 @@ else
 	home-manager build --flake . --impure
 endif
 
+clean:
+	rm -f result
+
 update: update-flake switch
 
 update-flake:

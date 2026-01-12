@@ -38,7 +38,8 @@ endif
 # clean - remove stamp files
 .PHONY: clean
 clean:
-	rm -R $(stampPath)
+	rm -Rf $(stampPath)
+	rm -f result
 
 # build-* - build configurations without applying them, see symlink `./result`
 
