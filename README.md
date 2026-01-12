@@ -19,92 +19,35 @@ So I don't have to hard-code the system architecture, username, or home director
 
 ## Getting Started
 
-Clone this repo anywhere you'd like.
+Prerequisites:
 
-### Check out `.config/nixpkgs/system.nix`
+* `nix`
+* `gnumake`
 
-> [!IMPORTANT]
-> If you don't want your git commits to look like they come from me, change the git `userName` and `userEmail` at the top of `.config/nixpkgs/system.nix`.
+1. Use one of the two flake templates. The flake templates set up a `flake.nix` pointing to this repository and provide a `Makefile` to make it easy to apply changes.
 
-[`.config/nixpkgs/system.nix`](https://github.com/mattbun/dotfiles/blob/main/.config/nixpkgs/system.nix) is where system-specific configuration lives. Use it to set an accent color, enable/disable applications, or override configurations from other modules in this repo.
+    * `#default` (probably what you want) - only manages home configuration for the current user. Works on anything that can run nix.
 
-### Installation
+        ```bash
+        nix flake new -t github:mattbun/dotfiles destination-dir
+        ```
 
-Install nix, install home-manager, and apply the home-manager configuration with
+    * `#nixos` - makes a directory structure for separate nixos and home configurations with their own flakes. The provided Makefile applies both configurations. You can combine the two flakes, but I find it works a little better for my usecases to keep them separate.
 
-```shell
-make install
-```
+        ```bash
+        nix flake new -t github:mattbun/dotfiles#nixos destination-dir
+        ```
 
-Once installed, you can apply any changes with
+2. Open the directory
 
-```shell
-make
-```
-
-### OS-Specific Instructions
-
-#### Arch Linux
-
-> [!WARNING]
-> These instructions may be out-of-date.
-
-1. Install nix
-
-    ```shell
-    sudo pacman -S nix
+    ```bash
+    cd destination-dir
     ```
 
-2. Enable nix-daemon
+3. Customize `home.nix` (`#default`) or `home/home.nix` (`#nixos`) to your liking
 
-    ```shell
-    sudo systemctl enable nix-daemon
-    ```
+4. Apply configuration
 
-3. Add user to nix-users group
-
-    ```shell
-    sudo gpasswd -a matt nix-users
-    ```
-
-4. Log out and back in again for the group change to take effect.
-
-5. Install home-manager and get everything set up
-
-    ```shell
-    # If make is installed
-    make install
-
-    # Or you can use the configuration in shell.nix to create an ephemeral shell with 'make' in it
-    nix-shell --command "make install"
-    ```
-
-6. From here on, to apply configuration changes run
-
-    ```shell
+    ```bash
     make
     ```
-
-#### Mac
-
-1. [Install homebrew](https://brew.sh/)
-
-2. [Install nix](https://nix.dev/tutorials/install-nix)
-
-3. Install dependencies and get everything set up
-
-    ```
-    # If make is installed
-    make install
-
-    # Or you can use the configuration in shell.nix to create an ephemeral shell with 'make' in it
-    nix-shell --command "make install"
-    ```
-
-4. From here on, to apply configuration changes run
-
-    ```shell
-    make
-    ```
-
-Note: some of the `system.defaults` options in `darwin.nix` require a Finder or Dock restart to take effect.
