@@ -22,12 +22,15 @@
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
 
-          extraSpecialArgs = base.extraSpecialArgs // {
-            inherit username homeDirectory;
-          };
+          extraSpecialArgs = base.extraSpecialArgs;
 
           modules = base.modules ++ [
             ./home.nix
+            {
+              home = {
+                inherit username homeDirectory;
+              };
+            }
           ];
         };
     };

@@ -33,12 +33,17 @@
           modules = [
             ./.config/nixpkgs/home.nix
             ./.config/nixpkgs/system.nix
+            {
+              home = {
+                inherit username homeDirectory;
+              };
+            }
           ];
 
           # Optionally use extraSpecialArgs
           # to pass through arguments to home.nix
           extraSpecialArgs = {
-            inherit basix username homeDirectory;
+            inherit basix;
           };
         };
 
