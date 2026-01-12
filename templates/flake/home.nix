@@ -23,6 +23,7 @@
 
     # Utilities
     bat.enable = true;
+    bottom.enable = true;
     fd.enable = true;
     fzf.enable = true;
     ripgrep.enable = true;
