@@ -18,6 +18,7 @@
     ./foot.nix
     ./fzf.nix
     ./git.nix
+    ./gowall.nix
     ./helix.nix
     ./homer.nix
     ./kubernetes.nix
