@@ -43,6 +43,14 @@
     let
       cfg = config.wayland.customWindowManager.niri;
       colorScheme = config.colorScheme;
+
+      lockScreen = pkgs.writeShellScript "lock-screen" /* bash */ ''
+        # Wait a second for input to finish
+        sleep 1
+
+        # swayidle immediately enters idle state when sent a USR1 signal
+        pkill --signal USR1 swayidle
+      '';
     in
     lib.mkIf cfg.enable {
       # TODO niri-switcher?
@@ -212,6 +220,7 @@
             Mod+N { focus-workspace 99; } // focus the bottom-most (empty) workspace
             Mod+Shift+P { power-off-monitors; }
             Mod+Q { close-window; }
+            Mod+Ctrl+Q { spawn "${lockScreen}"; }
             Mod+R { switch-preset-column-width; } // TODO remove in favor of M?
             Mod+Shift+R { reset-window-height; }  // TODO remove in favor of M?
             Mod+S { screenshot; }
