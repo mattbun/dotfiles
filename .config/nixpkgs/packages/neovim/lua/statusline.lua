@@ -290,10 +290,12 @@ Statusline = {
 
   inactive = function()
     return table.concat({
-      "%#StatuslineInactive#",
-      "%t",
-      modified(),
+      "%#Statusline#",
+      " %t",
+      " %m",
       "%=", -- Right align
+      "%#Statusline#",
+      filetype(),
       linepercent(),
     })
   end,
