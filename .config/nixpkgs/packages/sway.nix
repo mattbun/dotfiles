@@ -10,7 +10,7 @@ let
 in
 {
   options = with lib; {
-    packageSets.sway = {
+    wayland.windowManager.sway = {
       background = mkOption {
         type = types.str;
         description = "A path to a file to an image to use as background or a color in '#RRGGBB' format";
@@ -143,7 +143,7 @@ in
           };
           output = {
             "*" = {
-              background = "${config.packageSets.sway.background} ${config.packageSets.sway.backgroundMode}";
+              background = "${config.wayland.windowManager.sway.background} ${config.wayland.windowManager.sway.backgroundMode}";
             };
           };
           window = {
@@ -254,7 +254,7 @@ in
         enable = true;
         timeouts = [
           {
-            timeout = config.packageSets.sway.idleTimeoutSeconds;
+            timeout = config.wayland.windowManager.sway.idleTimeoutSeconds;
             command = "${pkgs.sway}/bin/swaymsg 'output * power off'";
             resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * power on'";
           }
