@@ -4,7 +4,6 @@
 , ...
 }:
 let
-  colorScheme = config.colorScheme;
   colors = config.colorScheme.palette;
   accentColor = config.colorScheme.accentColor;
 in
@@ -193,13 +192,13 @@ in
               "${modifier}+Shift+8" = "move container to workspace number 8";
               "${modifier}+Shift+9" = "move container to workspace number 9";
               "${modifier}+Shift+0" = "move container to workspace number 10";
-              "${modifier}+Shift+Ctrl+4" = "exec ${pkgs.grim}/bin/grim -g $(${pkgs.slurp}/bin/slurp) | ${pkgs.wl-clipboard}/bin/wl-copy";
               "${modifier}+Shift+Down" = "move down";
               "${modifier}+Shift+Left" = "move left";
               "${modifier}+Shift+Right" = "move right";
               "${modifier}+Shift+Up" = "move up";
               "${modifier}+Shift+c" = "reload";
               "${modifier}+Shift+e" = "exec ${powerMenuCenter}";
+              "${modifier}+Shift+f" = "floating toggle";
               "${modifier}+Shift+h" = "move left";
               "${modifier}+Shift+j" = "move down";
               "${modifier}+Shift+k" = "move up";
@@ -214,17 +213,21 @@ in
               "${modifier}+b" = "splith";
               "${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -show combi -show-icons -combi-modes 'drun,run,ssh'";
               "${modifier}+e" = "layout toggle split";
-              "${modifier}+f" = "fullscreen toggle";
+              "${modifier}+f" = "focus mode_toggle";
               "${modifier}+h" = "focus left";
               "${modifier}+j" = "focus down";
               "${modifier}+k" = "focus up";
               "${modifier}+l" = "focus right";
               "${modifier}+minus" = "scratchpad show";
+              "${modifier}+q" = "kill";
               "${modifier}+r" = "mode resize";
               "${modifier}+s" = "layout stacking";
-              "${modifier}+space" = "focus mode_toggle";
+              "${modifier}+t" = "layout tabbed";
+              "${modifier}+space" = "exec ${pkgs.rofi}/bin/rofi -show combi -show-icons -combi-modes 'drun,run,ssh'";
               "${modifier}+v" = "splitv";
               "${modifier}+w" = "layout tabbed";
+              "${modifier}+x" = "splith";
+              "${modifier}+z" = "fullscreen toggle"; # like tmux's (z)oom
               "${modifier}+escape" = "exec ${config.wayland.windowManager.sway.customSettings.browser}";
               "${alt}+F2" = "exec ${pkgs.rofi}/bin/rofi -show run";
               "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
