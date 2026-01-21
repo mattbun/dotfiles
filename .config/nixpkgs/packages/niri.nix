@@ -347,8 +347,8 @@
             XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
             XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
-            XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "-c" "backlight" "10%+"; }
-            XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "-c" "backlight" "10%-"; }
+            XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "-c" "backlight" "5%+"; }
+            XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "-c" "backlight" "5%-"; }
             XF86KbdBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "-d" "*::kbd_backlight" "10%+"; }
             XF86KbdBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "-d" "*::kbd_backlight" "10%-"; }
 
