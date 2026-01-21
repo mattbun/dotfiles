@@ -2,62 +2,38 @@
 
 let
   colorScheme = config.colorScheme;
+
+  makeTheme = accent: /* toml */ ''
+    [styles.tables.headers]
+    color = "${accent}"
+
+    [styles.widgets]
+    selected_border_color = "${accent}"
+    selected_text = { bg_color = "${accent}" }
+  '';
+
+  ansiTheme = makeTheme colorScheme.accentAnsi;
+  truecolorTheme = makeTheme "#${colorScheme.accentColor}";
 in
+lib.mkIf config.programs.bottom.enable
 {
-  programs.bottom.settings = {
-    styles = {
-      tables = {
-        headers = {
-          color = colorScheme.accentAnsi;
-        };
-      };
-      widgets = {
-        selected_border_color = colorScheme.accentAnsi;
-        selected_text = {
-          bg_color = colorScheme.accentAnsi;
-        };
-      };
-    };
+  # Make the ansi theme the default if the alias isn't configured
+  xdg.configFile."bottom/bottom.toml".text = ansiTheme;
+
+  home.shellAliases = {
+    btm = "btm-auto";
   };
 
-  bun.shellScripts = lib.mkIf config.programs.bottom.enable {
-    # Custom bottom layouts
-    btm-cpu = ''
-      btm -C ${pkgs.writeText "cpu.toml" ''
-        [[row]]
-          [[row.child]]
-            type = "cpu"
-        [[row]]
-          [[row.child]]
-            type = "mem"
-          [[row.child]]
-            type = "net"
-          [[row.child]]
-            type = "temperature"
-        [[row]]
-          ratio = 2
-          [[row.child]]
-            type = "process"
-      ''}
-    '';
+  bun.shellScripts = {
+    btm-auto = /* bash */ ''
+      ARGS="$@"
+      ACCENT_IS_ANSI=${lib.boolToString colorScheme.accentIsAnsi}
 
-    btm-mem = ''
-      btm -C ${pkgs.writeText "mem.toml" ''
-        [[row]]
-          [[row.child]]
-            type = "mem"
-        [[row]]
-          [[row.child]]
-            type = "cpu"
-          [[row.child]]
-            type = "net"
-          [[row.child]]
-            type = "temperature"
-        [[row]]
-          ratio = 2
-          [[row.child]]
-            type = "process"
-      ''}
+      if [ "$ACCENT_IS_ANSI" != "true" ] && [ "$COLORTERM" = "truecolor" ]; then
+        btm -C ${pkgs.writeText "btm-truecolor.toml" truecolorTheme} $ARGS
+      else
+        btm -C ${pkgs.writeText "btm-ansi.toml" ansiTheme} $ARGS
+      fi
     '';
   };
 }

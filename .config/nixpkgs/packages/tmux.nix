@@ -113,6 +113,9 @@ in
         bind-key -n M-S 'setenv -F TMUX_CAPTURE_PATH "${capturePath}" ; capture-pane -S - ; save-buffer "#{TMUX_CAPTURE_PATH}" ; delete-buffer ; display-message -d 3000 "saved all pane contents to #{TMUX_CAPTURE_PATH}"'
 
         # Colors!
+        ACCENT_COLOR="${colorScheme.accentAnsi}"
+        if-shell '(( $(tput colors 2>/dev/null) >= 256 )) && [ "${lib.boolToString colorScheme.accentIsAnsi}" != "true" ]' { ACCENT_COLOR="#${colorScheme.accentColor}" }
+
         # default statusbar colors
         set-option -g status-style "fg=white,bg=black"
 
@@ -120,27 +123,27 @@ in
         set-window-option -g window-status-style "fg=white,bg=default"
 
         # active window title colors
-        set-window-option -g window-status-current-style "fg=${colorScheme.accentAnsi},bg=default"
+        set-window-option -g window-status-current-style "fg=$ACCENT_COLOR,bg=default"
 
         # pane border
         set-option -g pane-border-style "fg=black"
-        set-option -g pane-active-border-style "fg=${colorScheme.accentAnsi}"
+        set-option -g pane-active-border-style "fg=$ACCENT_COLOR"
 
         # message text
         set-option -g message-style "fg=white,bg=black"
 
         # pane number display
-        set-option -g display-panes-active-colour "${colorScheme.accentAnsi}"
+        set-option -g display-panes-active-colour "$ACCENT_COLOR"
         set-option -g display-panes-colour "white"
 
         # clock
-        set-window-option -g clock-mode-colour "${colorScheme.accentAnsi}"
+        set-window-option -g clock-mode-colour "$ACCENT_COLOR"
 
         # copy mode highlight, selection in choose-tree
-        set-window-option -g mode-style "fg=black,bg=${colorScheme.accentAnsi}"
+        set-window-option -g mode-style "fg=black,bg=$ACCENT_COLOR"
 
         # bell
-        set-window-option -g window-status-bell-style "fg=black,bg=${colorScheme.accentAnsi}"
+        set-window-option -g window-status-bell-style "fg=black,bg=$ACCENT_COLOR"
       '';
     };
 }

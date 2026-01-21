@@ -218,13 +218,13 @@ in
             cpu = {
               interval = 10;
               format = " {usage:2}%";
-              on-click = "${config.programs.waybar.customSettings.terminal} -T btm-cpu -e btm-cpu";
+              on-click = "${config.programs.waybar.customSettings.terminal} -T btm -e btm-auto";
             };
 
             memory = {
               interval = 10;
               format = " {percentage:2}%"; # some other icon ideas: 󱊖 󰠷
-              on-click = "${config.programs.waybar.customSettings.terminal} -T btm-mem -e btm-mem";
+              on-click = "${config.programs.waybar.customSettings.terminal} -T btm -e btm-auto";
             };
 
             "clock#date" = {

@@ -73,6 +73,11 @@ in
         default = palette."${config.colorScheme.accentBrightAnsi}";
       };
 
+      accentIsAnsi = mkOption {
+        type = bool;
+        default = (config.colorScheme.accent != "orange" && config.colorScheme.accent != "brown");
+      };
+
       palette = {
         base00 = mkOption { type = hexColor; }; # ---- (background)
         base01 = mkOption { type = hexColor; }; # ---  (lighter background)
