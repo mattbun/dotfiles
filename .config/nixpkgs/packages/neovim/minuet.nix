@@ -9,11 +9,13 @@
 
     settings = lib.mkOption {
       type = lib.types.attrsOf lib.types.anything;
+      default = { };
     };
 
     extraLuaConfig = lib.mkOption {
       type = lib.types.str;
       description = "Additional configuration in lua before running `require('minuet').setup(settings)`.";
+      default = "";
     };
   };
 
