@@ -72,10 +72,16 @@
           enable = true;
 
           settings.mainBar = {
-            modules-left = [ "niri/workspaces" "niri/window" ];
+            modules-left = [ "custom/overview" "niri/workspaces" "niri/window" ];
 
             "niri/window" = {
               separate-outputs = true;
+            };
+
+            "custom/overview" = {
+              interval = "once";
+              format = "󱄅";
+              on-click = "${pkgs.niri}/bin/niri msg action toggle-overview";
             };
           };
 

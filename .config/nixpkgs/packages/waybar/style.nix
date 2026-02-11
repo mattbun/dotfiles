@@ -6,12 +6,12 @@ let
   colorScheme = config.colorScheme;
 in
 {
-  programs.waybar.style = ''
+  programs.waybar.style = /* css */ ''
     * {
         border: none;
         border-radius: 0;
         font-family: ${lib.head config.fonts.fontconfig.defaultFonts.proportional}, Roboto, Helvetica, Arial, sans-serif;
-        font-size: 16px;
+        font-size: medium;
         min-height: 0;
         color: #${colorScheme.palette.base07};
     }
@@ -31,7 +31,7 @@ in
     }
 
     #workspaces button {
-        padding: 0 5px;
+        padding: 0 0.5em;
         background: #${colorScheme.palette.base02};
     }
 
@@ -45,15 +45,15 @@ in
     }
 
     #workspaces button.focused {
-        background: #${colorScheme.accentColor};
+        background: #${colorScheme.palette.base03};
     }
 
     #workspaces button.focused label {
-        color: #${colorScheme.palette.base02};
+        color: #${colorScheme.palette.base07};
     }
 
     #mode, #clock, #battery, #tray, #cpu, #memory, #disk, #pulseaudio, #custom-userhostname, #network, #bluetooth, #idle_inhibitor, #mpris {
-        padding: 0 10px;
+        padding: 0 0.75em;
         background-color: #${colorScheme.palette.base01};
     }
 
@@ -128,12 +128,18 @@ in
 
     #window {
         background-color: #${colorScheme.palette.base01};
-        padding: 0 10px;
+        padding: 0 0.75em;
     }
 
     window#waybar.empty #window {
         background-color: #${colorScheme.palette.base00};
         padding: 0 0;
+    }
+
+    #custom-overview {
+        background-color: #${colorScheme.accentColor};
+        color: #${colorScheme.palette.base00};
+        min-width: 2em;
     }
   '';
 }
