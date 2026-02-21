@@ -1,3 +1,3 @@
 { ... }: {
-  programs.neovim.extraLuaConfig = builtins.readFile ./lua/statusline.lua;
+  programs.neovim.initLua = builtins.readFile ./lua/statusline.lua;
 }

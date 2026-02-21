@@ -1,3 +1,3 @@
 { ... }: {
-  programs.neovim.extraLuaConfig = builtins.readFile ./lua/mappings.lua;
+  programs.neovim.initLua = builtins.readFile ./lua/mappings.lua;
 }

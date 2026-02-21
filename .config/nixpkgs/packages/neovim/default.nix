@@ -28,7 +28,7 @@
     vimAlias = true;
     vimdiffAlias = true;
 
-    extraLuaConfig = lib.mkBefore (builtins.readFile ./lua/init.lua);
+    initLua = lib.mkBefore (builtins.readFile ./lua/init.lua);
 
     cmp.enable = lib.mkDefault true;
 
@@ -98,7 +98,7 @@
         plugin = nvim-treesitter.withAllGrammars;
         type = "lua";
         config = /* lua */ ''
-          require("nvim-treesitter.configs").setup({
+          require("nvim-treesitter").setup({
             highlight = {
               enable = true,
             };
