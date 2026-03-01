@@ -1,8 +1,5 @@
 require("mason").setup({
   PATH = "append", -- prefer packages installed via nix to work around nixos linking issues
-  ui = {
-    border = vim.g.border_style,
-  },
 })
 
 require("mason-lspconfig").setup({

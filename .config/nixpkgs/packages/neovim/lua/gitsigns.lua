@@ -85,7 +85,4 @@ gitsigns.setup({
   current_line_blame_opts = {
     delay = 0,
   },
-  preview_config = {
-    border = vim.g.border_style,
-  },
 })

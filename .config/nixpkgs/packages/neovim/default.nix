@@ -36,6 +36,7 @@
       friendly-snippets
       mason-lspconfig-nvim
       mkdir-nvim
+      nvim-lspconfig
       plenary-nvim
       telescope-fzf-native-nvim
       telescope-ui-select-nvim
@@ -83,11 +84,6 @@
         plugin = nvim-cmp;
         type = "lua";
         config = builtins.readFile ./lua/cmp.lua;
-      }
-      {
-        plugin = nvim-lspconfig;
-        type = "lua";
-        config = /* lua */ "require('lspconfig.ui.windows').default_options.border = vim.g.border_style";
       }
       {
         plugin = nvim-tree-lua;

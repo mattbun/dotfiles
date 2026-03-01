@@ -61,11 +61,8 @@ vim.o.splitright = true
 -- hsplits are opened on the bottom
 vim.o.splitbelow = true
 
--- set a global border style variable
-vim.g.border_style = "rounded"
-
--- Rounded borders for hovers
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = vim.g.border_style })
+-- Use rounded borders
+vim.o.winborder = "rounded"
 
 -- Disable LSP semantic tokens because...
 -- * nix files look weird with it

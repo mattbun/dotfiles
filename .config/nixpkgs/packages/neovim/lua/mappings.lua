@@ -343,9 +343,7 @@ local wkMappings = {
       "<leader>ll",
       desc = "LSP hover",
       hidden = true,
-      function()
-        vim.lsp.buf.hover({ border = vim.g.border_style })
-      end,
+      vim.lsp.buf.hover,
     },
     { "<leader>ln", desc = "Rename", vim.lsp.buf.rename },
     { "<leader>lr", desc = "References", require("telescope.builtin").lsp_references },
@@ -573,9 +571,7 @@ local wkMappings = {
     {
       "K",
       desc = "LSP hover",
-      function()
-        vim.lsp.buf.hover({ border = vim.g.border_style })
-      end,
+      vim.lsp.buf.hover,
     },
 
     { "oo", desc = "Add line below", "o<Esc>k" },

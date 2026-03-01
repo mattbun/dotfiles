@@ -19,10 +19,3 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   update_in_insert = false,
   severity_sort = true,
 })
-
--- Use global border style for diagnostics
-vim.diagnostic.config({
-  float = {
-    border = vim.g.border_style,
-  },
-})
