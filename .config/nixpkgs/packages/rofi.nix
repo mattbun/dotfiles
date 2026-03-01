@@ -15,19 +15,11 @@ in
   programs.rofi = {
     package = pkgs.rofi;
     font = "${lib.head config.fonts.fontconfig.defaultFonts.monospace} 12";
-    plugins = with pkgs; [
-      rofi-calc
-    ];
     modes = [
       "drun"
       "run"
       "ssh"
       "combi"
-
-      {
-        name = "calc";
-        path = "${pkgs.rofi-calc}/lib/rofi/libcalc.so";
-      }
     ];
     extraConfig = {
       hover-select = true;
