@@ -71,6 +71,11 @@
         waybar = {
           enable = true;
 
+          systemd = {
+            enable = true;
+            target = "niri.service";
+          };
+
           settings.mainBar = {
             modules-left = [ "custom/overview" "niri/workspaces" "niri/window" ];
 
@@ -94,6 +99,9 @@
 
         swayidle = {
           enable = true;
+
+          systemdTarget = "niri.service";
+
           timeouts = [
             {
               timeout = config.wayland.customWindowManager.niri.idleTimeoutSeconds;
