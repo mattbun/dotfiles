@@ -159,7 +159,6 @@
         }
 
         spawn-at-startup "${pkgs.swaybg}/bin/swaybg" "-i" "${cfg.background}" "-m" "${cfg.backgroundMode}"
-        spawn-at-startup "waybar"
 
         // Uncomment this line to ask the clients to omit their client-side decorations if possible.
         // If the client will specifically ask for CSD, the request will be honored.
