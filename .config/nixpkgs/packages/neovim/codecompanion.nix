@@ -70,6 +70,7 @@
       };
 
       plugins = with pkgs.vimPlugins; [
+        codecompanion-spinner-nvim
         {
           plugin = codecompanion-nvim;
           type = "lua";
@@ -78,12 +79,16 @@
             local adapters = {
               acp = {
                 opts = {
-                  show_defaults = false,
+                  show_presets = false,
                 },
+                opencode = function()
+                  return require("codecompanion.adapters").extend("opencode", {})
+                end,
               },
               http = {
                 opts = {
-                  show_defaults = false,
+                  show_presets = false,
+                  show_model_choices = true,
                 },
                 ${lib.strings.concatLines (lib.mapAttrsToList (name: adapter: /* lua */ ''
                   ["${name}"] = function()
@@ -94,7 +99,16 @@
             }
 
             require("codecompanion").setup({
-              ignore_warnings = true, -- https://github.com/olimorris/codecompanion.nvim/pull/2439
+              display = {
+                chat = {
+                  icons = {
+                    chat_fold = "+-- [zo to unfold]",
+                  },
+                },
+              },
+              extensions = {
+                spinner = {},
+              },
               strategies = strategies,
               adapters = adapters,
               -- TODO might be nice to expose additional settings in nix
