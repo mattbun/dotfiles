@@ -46,6 +46,9 @@ vim.api.nvim_create_autocmd("FileType", {
 -- don't add a newline at the end if it's missing
 vim.o.fixendofline = false
 
+-- keep folds (like the ones from treesitter) open by default
+vim.o.foldlevelstart = 99
+
 -- show a guide line at 101 characters (the line is at the beginning of what's past 100 chars)
 vim.o.colorcolumn = "101"
 

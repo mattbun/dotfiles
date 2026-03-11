@@ -94,10 +94,17 @@
         plugin = nvim-treesitter.withAllGrammars;
         type = "lua";
         config = /* lua */ ''
-          require("nvim-treesitter").setup({
-            highlight = {
-              enable = true,
-            };
+          -- enable treesitter when possible
+          vim.api.nvim_create_autocmd("FileType", {
+            pattern = "*",
+            callback = function()
+              -- ignore errors since not all buffers can have treesitter enabled
+              pcall(vim.treesitter.start)
+
+              -- treesitter-based folding
+              vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+              vim.wo[0][0].foldmethod = 'expr'
+            end,
           })
         '';
       }
