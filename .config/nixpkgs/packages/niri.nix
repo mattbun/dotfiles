@@ -73,7 +73,7 @@
 
           systemd = {
             enable = true;
-            target = "niri.service";
+            targets = [ "niri.service" ];
           };
 
           settings.mainBar = {
@@ -100,7 +100,7 @@
         swayidle = {
           enable = true;
 
-          systemdTarget = "niri.service";
+          systemdTargets = [ "niri.service" ];
 
           timeouts = [
             {

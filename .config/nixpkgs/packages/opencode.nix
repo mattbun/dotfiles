@@ -1,14 +1,18 @@
 { ... }:
 {
-  programs.opencode.settings = {
-    theme = "system";
+  programs.opencode = {
+    tui = {
+      theme = "system";
 
-    keybinds = {
-      "app_exit" = "ctrl+c,ctrl+d,<leader>q";
+      keybinds = {
+        "app_exit" = "ctrl+c,ctrl+d,<leader>q";
+      };
     };
 
-    disabled_providers = [
-      "opencode"
-    ];
+    settings = {
+      disabled_providers = [
+        "opencode"
+      ];
+    };
   };
 }

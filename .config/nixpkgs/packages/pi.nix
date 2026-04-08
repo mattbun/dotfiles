@@ -28,8 +28,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # TODO requires a flake update
-    # home.packages = with pkgs; [ pi-coding-agent ];
+    home.packages = with pkgs; [ pi-coding-agent ];
 
     home.sessionVariables = {
       # Don't show "Update Available" message on startup
