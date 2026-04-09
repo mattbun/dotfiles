@@ -295,7 +295,6 @@ Statusline = {
       " %m",
       "%=", -- Right align
       "%#Statusline#",
-      filetype(),
       linepercent(),
     })
   end,
