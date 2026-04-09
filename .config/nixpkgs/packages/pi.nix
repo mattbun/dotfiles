@@ -6,7 +6,6 @@
 
 let
   accentColor = config.colorScheme.accentColor;
-  palette = config.colorScheme.palette;
   cfg = config.programs.pi;
 in
 
