@@ -48,78 +48,66 @@ in
         name = "dotfiles";
 
         vars = {
-          accent = "#${accentColor}";
-          base00 = "#${palette.base00}";
-          base01 = "#${palette.base01}";
-          base02 = "#${palette.base02}";
-          base03 = "#${palette.base03}";
-          base04 = "#${palette.base04}";
-          base05 = "#${palette.base05}";
-          base06 = "#${palette.base06}";
-          base07 = "#${palette.base07}";
-          base08 = "#${palette.base08}";
-          base09 = "#${palette.base09}";
-          base0A = "#${palette.base0A}";
-          base0B = "#${palette.base0B}";
-          base0C = "#${palette.base0C}";
-          base0D = "#${palette.base0D}";
-          base0E = "#${palette.base0E}";
-          base0F = "#${palette.base0F}";
-
-          red = "#${palette.base08}";
-          yellow = "#${palette.base0A}";
-          green = "#${palette.base0B}";
-          cyan = "#${palette.base0C}";
-          blue = "#${palette.base0D}";
-          magenta = "#${palette.base0E}";
+          # Use hex value for accent if it's not one of the first 16 ansi colors
+          accent = if config.colorScheme.accentIsAnsi then config.colorScheme.accentAnsiNumber else "#${accentColor}";
+          black = 0;
+          red = 1;
+          green = 2;
+          yellow = 3;
+          blue = 4;
+          magenta = 5;
+          cyan = 6;
+          white = 7;
+          bright-black = 8;
+          bright-white = 15;
         };
 
         colors = {
           # Core UI
           accent = "accent";
-          border = "base03";
+          border = "bright-black";
           borderAccent = "accent";
-          borderMuted = "base02";
+          borderMuted = "black";
           success = "green";
           error = "red";
           warning = "yellow";
-          muted = "base04";
-          dim = "base03";
+          muted = "bright-black";
+          dim = "bright-black";
           text = "";
-          thinkingText = "base04";
+          thinkingText = "bright-black";
 
           # Backgrounds & Content
-          selectedBg = "base02";
-          userMessageBg = "base01";
+          selectedBg = "black";
+          userMessageBg = "black";
           userMessageText = "";
-          customMessageBg = "base01";
+          customMessageBg = "black";
           customMessageText = "";
           customMessageLabel = "accent";
-          toolPendingBg = "base01";
-          toolSuccessBg = "base01";
-          toolErrorBg = "base01";
+          toolPendingBg = "black";
+          toolSuccessBg = "black";
+          toolErrorBg = "black";
           toolTitle = "accent";
           toolOutput = "";
 
           # Markdown
           mdHeading = "accent";
           mdLink = "accent";
-          mdLinkUrl = "base04";
+          mdLinkUrl = "bright-black";
           mdCode = "blue";
           mdCodeBlock = "";
-          mdCodeBlockBorder = "base03";
-          mdQuote = "base04";
-          mdQuoteBorder = "base03";
-          mdHr = "base03";
+          mdCodeBlockBorder = "bright-black";
+          mdQuote = "bright-black";
+          mdQuoteBorder = "bright-black";
+          mdHr = "bright-black";
           mdListBullet = "cyan";
 
           # Tool Diffs
           toolDiffAdded = "green";
           toolDiffRemoved = "red";
-          toolDiffContext = "base04";
+          toolDiffContext = "bright-black";
 
           # Syntax Highlighting
-          syntaxComment = "base03";
+          syntaxComment = "bright-black";
           syntaxKeyword = "accent";
           syntaxFunction = "blue";
           syntaxVariable = "yellow";
@@ -127,10 +115,10 @@ in
           syntaxNumber = "magenta";
           syntaxType = "blue";
           syntaxOperator = "accent";
-          syntaxPunctuation = "base03";
+          syntaxPunctuation = "bright-black";
 
           # Thinking Level Borders
-          thinkingOff = "base03";
+          thinkingOff = "bright-black";
           thinkingMinimal = "accent";
           thinkingLow = "blue";
           thinkingMedium = "cyan";
