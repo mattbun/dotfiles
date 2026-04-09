@@ -34,6 +34,9 @@ in
       PI_SKIP_VERSION_CHECK = "1";
     };
 
+    # Enable npm for installing pi packages
+    programs.npm.enable = true;
+
     programs.pi.settings = {
       theme = "dotfiles";
       quietStartup = true;

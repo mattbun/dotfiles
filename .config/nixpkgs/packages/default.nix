@@ -28,6 +28,7 @@
     ./mako.nix
     ./neovim
     ./niri.nix
+    ./npm.nix
     ./pi.nix
     ./ollama.nix
     ./opencode.nix
