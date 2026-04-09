@@ -379,5 +379,23 @@ vim.api.nvim_create_autocmd({ "ModeChanged" }, {
   end,
 })
 
+-- Disable statusline in Telescope windows
+-- NOTE this started happening in neovim 0.12.0, maybe there's a better fix
+vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter", "FileType" }, {
+  group = "Statusline",
+  pattern = "TelescopePrompt",
+  callback = function()
+    vim.wo.statusline = ""
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave", "FileType" }, {
+  group = "Statusline",
+  pattern = "TelescopePrompt",
+  callback = function()
+    vim.wo.statusline = ""
+  end,
+})
+
 -- hide mode since it's part of the status line
 vim.opt.showmode = false
