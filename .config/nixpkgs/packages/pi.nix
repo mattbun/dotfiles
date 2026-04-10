@@ -110,22 +110,22 @@ in
 
           # Syntax Highlighting
           syntaxComment = "bright-black";
-          syntaxKeyword = "accent";
+          syntaxKeyword = "magenta";
           syntaxFunction = "blue";
           syntaxVariable = "yellow";
           syntaxString = "green";
           syntaxNumber = "magenta";
           syntaxType = "blue";
-          syntaxOperator = "accent";
+          syntaxOperator = "cyan";
           syntaxPunctuation = "bright-black";
 
           # Thinking Level Borders
           thinkingOff = "bright-black";
-          thinkingMinimal = "accent";
-          thinkingLow = "blue";
-          thinkingMedium = "cyan";
-          thinkingHigh = "magenta";
-          thinkingXhigh = "red";
+          thinkingMinimal = "blue";
+          thinkingLow = "cyan";
+          thinkingMedium = "yellow";
+          thinkingHigh = "red";
+          thinkingXhigh = "magenta";
 
           # Bash Mode
           bashMode = "yellow";
