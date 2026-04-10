@@ -58,6 +58,11 @@ in
           if accent == "orange" then "yellow" else if accent == "brown" then "red" else accent;
       };
 
+      accentAnsiNumber = mkOption {
+        type = int;
+        default = (lib.lists.findFirstIndex (x: x == config.colorScheme.accentAnsi) 7 ansiColors);
+      };
+
       accentBrightAnsi = mkOption {
         type = enum ansiColors;
         default = "bright-${config.colorScheme.accentAnsi}";
