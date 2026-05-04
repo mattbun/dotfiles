@@ -7,11 +7,14 @@ require("mason-lspconfig").setup({
 })
 
 -- extend neovim's LSP capabilities with the ones from cmp.nvim
-local capabilities = vim.tbl_deep_extend(
-  "force",
-  vim.lsp.protocol.make_client_capabilities(),
-  require("cmp_nvim_lsp").default_capabilities()
-)
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+if pcall(require, "cmp") then
+  capabilities = vim.tbl_deep_extend(
+    "force",
+    vim.lsp.protocol.make_client_capabilities(),
+    require("cmp_nvim_lsp").default_capabilities()
+  )
+end
 
 vim.lsp.config("*", {
   capabilities = capabilities,

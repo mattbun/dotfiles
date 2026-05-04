@@ -16,13 +16,13 @@
       ];
 
       plugins = with pkgs.vimPlugins; [
-        {
+        (lib.mkIf config.programs.neovim.cmp.enable {
           plugin = copilot-cmp;
           type = "lua";
           config = /* lua */ ''
             require("copilot_cmp").setup()
           '';
-        }
+        })
 
         {
           plugin = copilot-lua;

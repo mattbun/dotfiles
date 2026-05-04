@@ -24,6 +24,7 @@
       minuet.settings = {
         n_completions = lib.mkDefault 1;
         context_window = lib.mkDefault 512;
+        request_timeout = 3;
       };
 
       # Minuet completion can only be triggered manually
@@ -31,11 +32,24 @@
         { name = "minuet"; }
       ];
 
+      blink = {
+        sources = [ "minuet" ];
+        settings.sources.providers.minuet = {
+          name = "minuet";
+          module = "minuet.blink";
+          async = true;
+          timeout_ms = cfg.settings.request_timeout * 1000;
+          score_offset = 50; # Gives minuet higher priority among suggestions
+        };
+      };
+
       plugins = with pkgs.vimPlugins; [
         {
           plugin = minuet-ai-nvim;
           type = "lua";
-          config = /* lua */ ''
+
+          # Needs to be configured after blink.cmp
+          config = /* lua */ lib.mkAfter ''
             local settings = vim.json.decode([[ ${builtins.toJSON cfg.settings} ]])
 
             ${cfg.extraLuaConfig}

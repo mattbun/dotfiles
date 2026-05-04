@@ -264,7 +264,7 @@ call <sid>hi('FloatBorder',    s:gui06, '', s:cterm06, s:cterm01, 'none', '') " 
 hi! link FloatTitle Title
 hi! link FloatFooter FloatTitle
 hi! link NormalNC None
-call <sid>hi('PMenu',           s:gui05, s:gui01, s:cterm05, s:cterm01, 'none', '')
+call <sid>hi('PMenu',           s:gui05, '', s:cterm05, '', 'none', '') " XXX
 call <sid>hi('PMenuSel', s:gui06, s:gui02, s:cterm06, s:cterm02, 'none', '')
 hi! link PMenuKind PMenu
 hi! link PMenuKindSel PMenuSel

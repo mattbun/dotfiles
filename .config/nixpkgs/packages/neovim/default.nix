@@ -6,6 +6,7 @@
 {
   imports = [
     ./autoformat.nix
+    ./blink.nix
     ./cmp.nix
     ./codecompanion.nix
     ./copilot.nix
@@ -31,6 +32,7 @@
     initLua = lib.mkBefore (builtins.readFile ./lua/init.lua);
 
     cmp.enable = lib.mkDefault true;
+    blink.enable = lib.mkDefault false;
 
     plugins = with pkgs.vimPlugins; [
       friendly-snippets
@@ -79,11 +81,6 @@
         plugin = none-ls-nvim;
         type = "lua";
         config = builtins.readFile ./lua/null-ls.lua;
-      }
-      {
-        plugin = nvim-cmp;
-        type = "lua";
-        config = builtins.readFile ./lua/cmp.lua;
       }
       {
         plugin = nvim-tree-lua;

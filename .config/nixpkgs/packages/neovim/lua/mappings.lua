@@ -65,10 +65,23 @@ local mappings = {
   -- (c)ommand mode
   c = {
     -- Make arrows move, select, and cancel in wildmenu (like when tab completing a command like ':e')
-    ["<up>"] = { pumswitch("<c-p>", "<up>"), { noremap = true, expr = true } },
-    ["<down>"] = { pumswitch("<c-n>", "<down>"), { noremap = true, expr = true } },
-    ["<left>"] = { pumswitch("<c-e>", "<left>"), { noremap = true, expr = true } },
-    ["<right>"] = { pumswitch("<c-y>", "<right>"), { noremap = true, expr = true } },
+    ["<up>"] = { pumswitch("<c-p>", "<up>"), { expr = true } },
+    ["<down>"] = { pumswitch("<c-n>", "<down>"), { expr = true } },
+    ["<left>"] = { pumswitch("<c-e>", "<left>"), { expr = true } },
+    ["<right>"] = { pumswitch("<c-y>", "<right>"), { expr = true } },
+
+    -- if blink is visible, hide it instead of exiting command mode
+    ["<Esc>"] = {
+      function()
+        if requires("blink.cmp") and require("blink.cmp").is_visible() then
+          require("blink.cmp").cancel()
+          return ""
+        else
+          return "<C-c>"
+        end
+      end,
+      { expr = true },
+    },
   },
 }
 
