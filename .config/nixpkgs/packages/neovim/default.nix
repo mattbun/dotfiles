@@ -29,6 +29,10 @@
     vimAlias = true;
     vimdiffAlias = true;
 
+    # Get rid of some home-manager warnings
+    withRuby = false;
+    withPython3 = false;
+
     initLua = lib.mkBefore (builtins.readFile ./lua/init.lua);
 
     cmp.enable = lib.mkDefault true;
