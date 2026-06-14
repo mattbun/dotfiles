@@ -513,9 +513,43 @@ local wkMappings = {
           },
           {
             "t",
+            desc = "New repo note in tab",
+            function()
+              require("zk.api").new(nil, {
+                extra = { repo = repo_slug() },
+                title = timestamp(),
+                edit = false,
+              }, function(err, res)
+                if err then
+                  vim.print(err)
+                else
+                  vim.cmd("tabe " .. res.path)
+                end
+              end)
+            end,
+          },
+          {
+            "T",
             desc = "List tags",
             function()
               require("zk.commands").get("ZkTags")()
+            end,
+          },
+          {
+            "v",
+            desc = "New repo note in vertical split",
+            function()
+              require("zk.api").new(nil, {
+                extra = { repo = repo_slug() },
+                title = timestamp(),
+                edit = false,
+              }, function(err, res)
+                if err then
+                  vim.print(err)
+                else
+                  vim.cmd("vsplit " .. res.path)
+                end
+              end)
             end,
           },
           {
@@ -530,6 +564,23 @@ local wkMappings = {
             desc = "List weekly notes",
             function()
               require("zk.commands").get("ZkNotes")({ hrefs = { "weekly" }, sort = { "title-" } })
+            end,
+          },
+          {
+            "x",
+            desc = "New repo note in horizontal split",
+            function()
+              require("zk.api").new(nil, {
+                extra = { repo = repo_slug() },
+                title = timestamp(),
+                edit = false,
+              }, function(err, res)
+                if err then
+                  vim.print(err)
+                else
+                  vim.cmd("split " .. res.path)
+                end
+              end)
             end,
           },
           {
