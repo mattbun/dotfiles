@@ -147,10 +147,6 @@ local function relativeFilePath()
   return "%f "
 end
 
-local function dirname(file)
-  return vim.fn.fnamemodify(file, ":~:h:t")
-end
-
 local function lsp()
   local errors = ""
   local warnings = ""
@@ -278,14 +274,13 @@ Statusline = {
     })
   end,
 
-  tree_active = function(file)
+  extension_active = function(filetype)
     return table.concat({
       "%#Statusline#",
       modeHighlight(),
-      -- " F ",
       modeName(),
       "%#StatuslineOuter# ",
-      dirname(file),
+      "[" .. filetype .. "]",
       " %#StatuslineInner#",
       rightAlign(),
       modeHighlight(),
@@ -293,35 +288,41 @@ Statusline = {
     })
   end,
 
-  tree_inactive = function(file)
+  extension_inactive = function(filetype)
     return table.concat({
+      "%#Statusline#",
       " -  ",
-      dirname(file),
+      "[" .. filetype .. "]",
       rightAlign(),
       linepercent(),
     })
   end,
 }
 
+-- Buffers for these filetypes will have the extension statusline
+local extension_filetypes = {
+  NvimTree = "NvimTree",
+  codecompanion = "CodeCompanion",
+}
+
 -- These autocmds keep the statusline updated
 vim.api.nvim_create_augroup("Statusline", { clear = false })
 
-vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
+vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter", "FileType" }, {
   group = "Statusline",
   pattern = "*",
   callback = function(event)
     local buftype = vim.bo[event.buf].buftype
     local filetype = vim.bo[event.buf].filetype
 
-    if filetype == "NvimTree" then
-      vim.wo.statusline = "%!v:lua.Statusline.tree_active('" .. event.file .. "')"
-      return
-    elseif buftype == "nofile" then
+    -- Only regular ("") buffers, terminal buffers, and certain extensions get status lines
+    if extension_filetypes[filetype] ~= nil then
+      vim.wo.statusline = "%!v:lua.Statusline.extension_active('" .. extension_filetypes[filetype] .. "')"
+    elseif buftype == "" or buftype == "terminal" then
+      vim.wo.statusline = "%!v:lua.Statusline.active()"
+    else
       vim.wo.statusline = ""
-      return
     end
-
-    vim.wo.statusline = "%!v:lua.Statusline.active()"
   end,
 })
 
@@ -332,15 +333,14 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
     local buftype = vim.bo[event.buf].buftype
     local filetype = vim.bo[event.buf].filetype
 
-    if filetype == "NvimTree" then
-      vim.wo.statusline = "%!v:lua.Statusline.tree_inactive('" .. event.file .. "')"
-      return
-    elseif buftype == "nofile" then
+    -- Only regular ("") buffers, terminal buffers, and certain extensions get status lines
+    if extension_filetypes[filetype] ~= nil then
+      vim.wo.statusline = "%!v:lua.Statusline.extension_inactive('" .. extension_filetypes[filetype] .. "')"
+    elseif buftype == "" or buftype == "terminal" then
+      vim.wo.statusline = "%!v:lua.Statusline.inactive()"
+    else
       vim.wo.statusline = ""
-      return
     end
-
-    vim.wo.statusline = "%!v:lua.Statusline.inactive()"
   end,
 })
 
