@@ -109,68 +109,42 @@ for name, colorScheme in pairs(highlights) do
 end
 
 -- Statusline component functions
+
+-- https://neovim.io/doc/user/vimfn/#mode()
+-- Not exhaustive. `modeName()` and `modeHighlight()` only look at the first character.
 local modes = {
-  ["n"] = "NORMAL",
-  ["no"] = "NORMAL",
-  ["v"] = "VISUAL",
-  ["V"] = "VISUAL LINE",
-  [""] = "VISUAL BLOCK",
-  ["s"] = "SELECT",
-  ["S"] = "SELECT LINE",
-  [""] = "SELECT BLOCK",
-  ["i"] = "INSERT",
-  ["ic"] = "INSERT",
-  ["R"] = "REPLACE",
-  ["Rv"] = "VISUAL REPLACE",
-  ["c"] = "COMMAND",
-  ["cv"] = "VIM EX",
-  ["ce"] = "EX",
-  ["r"] = "PROMPT",
-  ["rm"] = "MOAR",
-  ["r?"] = "CONFIRM",
-  ["!"] = "SHELL",
-  ["t"] = "TERMINAL",
+  ["!"] = { name = "!", highlight = "StatuslineCmdLineAccent" }, -- Shell or command is executing
+  ["c"] = { name = "C", highlight = "StatuslineCmdLineAccent" }, -- Command
+  ["i"] = { name = "I", highlight = "StatuslineInsertAccent" }, -- Insert
+  ["n"] = { name = "N", highlight = "StatuslineAccent" }, -- Normal
+  ["r"] = { name = "?", highlight = "StatuslineAccent" }, -- prompt, confirmation
+  ["R"] = { name = "R", highlight = "StatuslineReplaceAccent" }, -- Replace
+  ["s"] = { name = "S", highlight = "StatuslineVisualAccent" }, -- Select by char
+  ["S"] = { name = "S", highlight = "StatuslineVisualAccent" }, -- Select by line
+  [""] = { name = "S", highlight = "StatuslineVisualAccent" }, -- Select blockwise
+  ["t"] = { name = "T", highlight = "StatuslineAccent" }, -- Terminal
+  ["v"] = { name = "V", highlight = "StatuslineVisualAccent" }, -- Visual by char
+  ["V"] = { name = "V", highlight = "StatuslineVisualAccent" }, -- Visual by line
+  [""] = { name = "V", highlight = "StatuslineVisualAccent" }, -- Visual blockwise
+
+  default = { name = "?", highlight = "StatuslineAccent" },
 }
 
 local function mode()
   local current_mode = vim.api.nvim_get_mode().mode
-  return string.format(" %s ", modes[current_mode]):upper()
+  return modes[current_mode:sub(1, 1)] or modes.default
 end
 
-local function update_mode_colors()
-  local current_mode = vim.api.nvim_get_mode().mode
-  local mode_color = "%#StatusLineAccent#"
-  if current_mode == "n" then
-    mode_color = "%#StatuslineAccent#"
-  elseif current_mode == "i" or current_mode == "ic" then
-    mode_color = "%#StatuslineInsertAccent#"
-  elseif current_mode == "v" or current_mode == "V" or current_mode == "" then
-    mode_color = "%#StatuslineVisualAccent#"
-  elseif current_mode == "R" then
-    mode_color = "%#StatuslineReplaceAccent#"
-  elseif current_mode == "c" then
-    mode_color = "%#StatuslineCmdLineAccent#"
-  elseif current_mode == "t" then
-    mode_color = "%#StatuslineTerminalAccent#"
-  end
-  return mode_color
+local function modeName()
+  return string.format(" %s ", mode().name)
 end
 
-local function filepath()
-  local fpath = vim.fn.expand("%:~:.:h")
-  if fpath == "" or fpath == "." then
-    return ""
-  end
-
-  return string.format("%%<%s/", fpath)
+local function modeHighlight()
+  return string.format("%%#%s#", mode().highlight)
 end
 
-local function filename()
-  local fname = vim.fn.expand("%:t")
-  if fname == "" then
-    return "[No Name] "
-  end
-  return fname .. " "
+local function relativeFilePath()
+  return "%f "
 end
 
 local function dirname(file)
@@ -228,13 +202,12 @@ local function modified()
   end
 end
 
--- Falls back to mode if git branch is unavailable
-local gitbranch = function()
-  local git_info = vim.b.gitsigns_status_dict
-  if not git_info or git_info.head == "" then
-    return mode()
+local function readOnly()
+  if vim.bo.readonly then
+    return "%r "
+  else
+    return ""
   end
-  return " " .. git_info.head .. " "
 end
 
 local vcs = function()
@@ -265,25 +238,29 @@ local vcs = function()
   })
 end
 
+local function rightAlign()
+  return "%="
+end
+
 -- These functions determine the layout of the statusline
 Statusline = {
   active = function()
     return table.concat({
       "%#Statusline#",
-      update_mode_colors(),
-      mode(),
+      modeHighlight(),
+      modeName(),
       "%#StatuslineOuter# ",
-      filepath(),
-      filename(),
+      relativeFilePath(),
+      readOnly(),
       modified(),
       "%#StatuslineInner#",
       lsp(),
       vcs(),
-      "%=", -- Right align
+      rightAlign(),
       filetype(),
       "%#StatuslineOuter#",
       lineinfo(),
-      update_mode_colors(),
+      modeHighlight(),
       linepercent(),
     })
   end,
@@ -291,9 +268,11 @@ Statusline = {
   inactive = function()
     return table.concat({
       "%#Statusline#",
-      " %t",
-      " %m",
-      "%=", -- Right align
+      " -  ",
+      relativeFilePath(),
+      readOnly(),
+      modified(),
+      rightAlign(),
       "%#Statusline#",
       linepercent(),
     })
@@ -302,21 +281,23 @@ Statusline = {
   tree_active = function(file)
     return table.concat({
       "%#Statusline#",
-      update_mode_colors(),
-      " TREE ",
+      modeHighlight(),
+      -- " F ",
+      modeName(),
       "%#StatuslineOuter# ",
       dirname(file),
       " %#StatuslineInner#",
-      "%=", -- Right align
-      update_mode_colors(),
+      rightAlign(),
+      modeHighlight(),
       linepercent(),
     })
   end,
 
   tree_inactive = function(file)
     return table.concat({
+      " -  ",
       dirname(file),
-      "%=", -- Right align
+      rightAlign(),
       linepercent(),
     })
   end,
@@ -328,7 +309,18 @@ vim.api.nvim_create_augroup("Statusline", { clear = false })
 vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
   group = "Statusline",
   pattern = "*",
-  callback = function()
+  callback = function(event)
+    local buftype = vim.bo[event.buf].buftype
+    local filetype = vim.bo[event.buf].filetype
+
+    if filetype == "NvimTree" then
+      vim.wo.statusline = "%!v:lua.Statusline.tree_active('" .. event.file .. "')"
+      return
+    elseif buftype == "nofile" then
+      vim.wo.statusline = ""
+      return
+    end
+
     vim.wo.statusline = "%!v:lua.Statusline.active()"
   end,
 })
@@ -336,37 +328,19 @@ vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
 vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
   group = "Statusline",
   pattern = "*",
-  callback = function()
+  callback = function(event)
+    local buftype = vim.bo[event.buf].buftype
+    local filetype = vim.bo[event.buf].filetype
+
+    if filetype == "NvimTree" then
+      vim.wo.statusline = "%!v:lua.Statusline.tree_inactive('" .. event.file .. "')"
+      return
+    elseif buftype == "nofile" then
+      vim.wo.statusline = ""
+      return
+    end
+
     vim.wo.statusline = "%!v:lua.Statusline.inactive()"
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter", "FileType" }, {
-  group = "Statusline",
-  pattern = "*NvimTree*",
-  callback = function(event)
-    vim.wo.statusline = "%!v:lua.Statusline.tree_active('" .. event.file .. "')"
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave", "FileType" }, {
-  group = "Statusline",
-  pattern = "*NvimTree*",
-  callback = function(event)
-    vim.wo.statusline = "%!v:lua.Statusline.tree_inactive('" .. event.file .. "')"
-  end,
-})
-
-vim.api.nvim_create_autocmd("DiagnosticChanged", {
-  callback = function()
-    vim.wo.statusline = "%!v:lua.Statusline.active()"
-  end,
-})
-
-vim.api.nvim_create_autocmd("User", {
-  pattern = "GitSignsUpdate",
-  callback = function()
-    vim.wo.statusline = "%!v:lua.Statusline.active()"
   end,
 })
 
@@ -375,24 +349,6 @@ vim.api.nvim_create_autocmd({ "ModeChanged" }, {
   pattern = { "[^c]:*" },
   callback = function()
     vim.print("")
-  end,
-})
-
--- Disable statusline in Telescope windows
--- NOTE this started happening in neovim 0.12.0, maybe there's a better fix
-vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter", "FileType" }, {
-  group = "Statusline",
-  pattern = "TelescopePrompt",
-  callback = function()
-    vim.wo.statusline = ""
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave", "FileType" }, {
-  group = "Statusline",
-  pattern = "TelescopePrompt",
-  callback = function()
-    vim.wo.statusline = ""
   end,
 })
 
