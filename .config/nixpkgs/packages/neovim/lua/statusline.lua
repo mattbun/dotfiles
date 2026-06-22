@@ -90,7 +90,7 @@ local highlights = {
     ctermbg = "black",
   },
   StatuslineGitRemoved = {
-    fg = vim.g.base16_removed,
+    fg = vim.g.base16_deleted,
     bg = vim.g.base16_01,
     ctermfg = "red",
     ctermbg = "black",
@@ -108,201 +108,172 @@ for name, colorScheme in pairs(highlights) do
   vim.api.nvim_set_hl(0, name, colorScheme)
 end
 
--- Statusline component functions
-
--- https://neovim.io/doc/user/vimfn/#mode()
--- Not exhaustive. `modeName()` and `modeHighlight()` only look at the first character.
-local modes = {
-  ["!"] = { name = "!", highlight = "StatuslineCmdLineAccent" }, -- Shell or command is executing
-  ["c"] = { name = "C", highlight = "StatuslineCmdLineAccent" }, -- Command
-  ["i"] = { name = "I", highlight = "StatuslineInsertAccent" }, -- Insert
-  ["n"] = { name = "N", highlight = "StatuslineAccent" }, -- Normal
-  ["r"] = { name = "?", highlight = "StatuslineAccent" }, -- prompt, confirmation
-  ["R"] = { name = "R", highlight = "StatuslineReplaceAccent" }, -- Replace
-  ["s"] = { name = "S", highlight = "StatuslineVisualAccent" }, -- Select by char
-  ["S"] = { name = "S", highlight = "StatuslineVisualAccent" }, -- Select by line
-  [""] = { name = "S", highlight = "StatuslineVisualAccent" }, -- Select blockwise
-  ["t"] = { name = "T", highlight = "StatuslineAccent" }, -- Terminal
-  ["v"] = { name = "V", highlight = "StatuslineVisualAccent" }, -- Visual by char
-  ["V"] = { name = "V", highlight = "StatuslineVisualAccent" }, -- Visual by line
-  [""] = { name = "V", highlight = "StatuslineVisualAccent" }, -- Visual blockwise
-
-  default = { name = "?", highlight = "StatuslineAccent" },
-}
-
-local function mode()
-  local current_mode = vim.api.nvim_get_mode().mode
-  return modes[current_mode:sub(1, 1)] or modes.default
-end
-
-local function modeName()
-  return string.format(" %s ", mode().name)
-end
-
-local function modeHighlight()
-  return string.format("%%#%s#", mode().highlight)
-end
-
-local function relativeFilePath()
-  return "%f "
-end
-
-local function lsp()
-  local errors = ""
-  local warnings = ""
-  local hints = ""
-  local info = ""
-
-  local count = vim.diagnostic.count(0)
-  local severity = vim.diagnostic.severity
-
-  if count[severity.ERROR] ~= nil then
-    errors = "%#StatuslineDiagnosticError# E:" .. count[severity.ERROR]
-  end
-  if count[severity.WARN] ~= nil then
-    warnings = "%#StatuslineDiagnosticWarning# W:" .. count[severity.WARN]
-  end
-  if count[severity.HINT] ~= nil then
-    hints = "%#StatuslineDiagnosticHint# H:" .. count[severity.HINT]
-  end
-  if count[severity.INFO] ~= nil then
-    info = "%#StatuslineDiagnosticInfo# I:" .. count[severity.INFO]
-  end
-
-  return errors .. warnings .. hints .. info .. " %#StatuslineInner#"
-end
-
-local function filetype()
-  if vim.bo.filetype == "" then
-    return ""
-  end
-  return string.format(" %s ", vim.bo.filetype)
-end
-
-local function lineinfo()
-  if vim.bo.filetype == "alpha" then
-    return ""
-  end
-  return " %l:%c "
-end
-
-local function linepercent()
-  return " %P "
-end
-
-local function modified()
-  if vim.bo.modified then
-    return "%m "
-  else
-    return ""
-  end
-end
-
-local function readOnly()
-  if vim.bo.readonly then
-    return "%r "
-  else
-    return ""
-  end
-end
-
-local vcs = function()
-  local git_info = vim.b.gitsigns_status_dict
-  if not git_info or git_info.head == "" then
-    return ""
-  end
-
-  local added = ""
-  local changed = ""
-  local removed = ""
-
-  if git_info.added ~= nil and git_info.added ~= 0 then
-    added = "%#StatuslineGitAdded#+" .. git_info.added .. " "
-  end
-  if git_info.changed ~= nil and git_info.changed ~= 0 then
-    changed = "%#StatuslineGitChanged#~" .. git_info.changed .. " "
-  end
-  if git_info.removed ~= nil and git_info.removed ~= 0 then
-    removed = "%#StatuslineGitRemoved#-" .. git_info.removed .. " "
-  end
-
-  return table.concat({
-    added,
-    changed,
-    removed,
-    " %#StatusLineInner#",
-  })
-end
-
-local function rightAlign()
-  return "%="
-end
-
--- These functions determine the layout of the statusline
 Statusline = {
-  active = function()
-    return table.concat({
-      "%#Statusline#",
-      modeHighlight(),
-      modeName(),
-      "%#StatuslineOuter# ",
-      relativeFilePath(),
-      readOnly(),
-      modified(),
-      "%#StatuslineInner#",
-      lsp(),
-      vcs(),
-      rightAlign(),
-      filetype(),
-      "%#StatuslineOuter#",
-      lineinfo(),
-      modeHighlight(),
-      linepercent(),
-    })
+  -- Show statusline on these buftypes
+  buftypes = {
+    [""] = true, -- regular buffer
+    ["help"] = true,
+    ["terminal"] = true,
+  },
+
+  -- Show statusline on these filetypes regardless of buftype
+  filetypes = {
+    ["codecompanion"] = true,
+    ["NvimTree"] = true,
+  },
+
+  -- https://neovim.io/doc/user/vimfn/#mode()
+  -- Matched only on first character
+  modes = {
+    ["!"] = { name = "!", highlight = "StatuslineCmdLineAccent" }, -- Shell or command is executing
+    ["c"] = { name = "C", highlight = "StatuslineCmdLineAccent" }, -- Command
+    ["i"] = { name = "I", highlight = "StatuslineInsertAccent" }, -- Insert
+    ["n"] = { name = "N", highlight = "StatuslineAccent" }, -- Normal
+    ["r"] = { name = "?", highlight = "StatuslineAccent" }, -- prompt, confirmation
+    ["R"] = { name = "R", highlight = "StatuslineReplaceAccent" }, -- Replace
+    ["s"] = { name = "S", highlight = "StatuslineVisualAccent" }, -- Select by char
+    ["S"] = { name = "S", highlight = "StatuslineVisualAccent" }, -- Select by line
+    [""] = { name = "S", highlight = "StatuslineVisualAccent" }, -- Select blockwise
+    ["t"] = { name = "T", highlight = "StatuslineInsertAccent" }, -- Terminal
+    ["v"] = { name = "V", highlight = "StatuslineVisualAccent" }, -- Visual by char
+    ["V"] = { name = "V", highlight = "StatuslineVisualAccent" }, -- Visual by line
+    [""] = { name = "V", highlight = "StatuslineVisualAccent" }, -- Visual blockwise
+
+    default = { name = "?", highlight = "StatuslineAccent" },
+    inactive = { name = "-", highlight = "Statusline" },
+  },
+
+  mode = function(active)
+    if active then
+      local modeName = vim.api.nvim_get_mode().mode
+      return Statusline.modes[modeName:sub(1, 1)] or Statusline.modes.default
+    else
+      return Statusline.modes.inactive
+    end
   end,
 
-  inactive = function()
-    return table.concat({
-      "%#Statusline#",
-      " -  ",
-      relativeFilePath(),
-      readOnly(),
-      modified(),
-      rightAlign(),
-      "%#Statusline#",
-      linepercent(),
-    })
+  filename = function(bufnr)
+    local buf = vim.bo[bufnr]
+
+    if buf.buftype == "help" then
+      return "[help/%f]"
+    elseif buf.buftype == "terminal" then
+      return string.format("[%s]", vim.b[bufnr].term_title)
+    elseif buf.buftype == "" then
+      local bufname = vim.api.nvim_buf_get_name(bufnr)
+      if bufname == "" then
+        return "[No Name]" -- empty file
+      else
+        return vim.fn.fnamemodify(bufname, ":~:.:f")
+      end
+    else
+      return string.format("[%s]", buf.filetype or buf.buftype)
+    end
   end,
 
-  extension_active = function(filetype)
-    return table.concat({
-      "%#Statusline#",
-      modeHighlight(),
-      modeName(),
-      "%#StatuslineOuter# ",
-      "[" .. filetype .. "]",
-      " %#StatuslineInner#",
-      rightAlign(),
-      modeHighlight(),
-      linepercent(),
-    })
-  end,
+  build = function(bufnr, active)
+    local buf = vim.bo[bufnr]
 
-  extension_inactive = function(filetype)
-    return table.concat({
-      "%#Statusline#",
-      " -  ",
-      "[" .. filetype .. "]",
-      rightAlign(),
-      linepercent(),
-    })
-  end,
-}
+    local isActive = (active == 1)
+    local isRegularBuffer = (buf.buftype == "")
 
--- Buffers for these filetypes will have the extension statusline
-local extension_filetypes = {
-  NvimTree = "NvimTree",
-  codecompanion = "CodeCompanion",
+    local mode = Statusline.mode(isActive)
+    local diagnostics = vim.diagnostic.count(bufnr) or {}
+    local vcs = vim.b[bufnr].gitsigns_status_dict or {}
+    local hasVcs = (vcs.head ~= "")
+
+    local components = {
+      { hi = mode.highlight },
+      { text = " " .. mode.name .. " " },
+
+      { hi = "StatuslineOuter", cond = isActive },
+      { text = " " .. Statusline.filename(bufnr) .. " " },
+      { text = "[RO] ", cond = buf.readonly and buf.buftype ~= "help" },
+      { text = "[+] ", cond = buf.modified },
+
+      { hi = "StatuslineInner", cond = isActive },
+      -- diagnostics
+      {
+        fn = function()
+          return " E" .. diagnostics[vim.diagnostic.severity.ERROR]
+        end,
+        hi = "StatuslineDiagnosticError",
+        cond = isActive and diagnostics[vim.diagnostic.severity.ERROR] ~= nil,
+      },
+      {
+        fn = function()
+          return " W" .. diagnostics[vim.diagnostic.severity.WARN]
+        end,
+        hi = "StatuslineDiagnosticWarning",
+        cond = isActive and diagnostics[vim.diagnostic.severity.WARN] ~= nil,
+      },
+      {
+        fn = function()
+          return " H" .. diagnostics[vim.diagnostic.severity.HINT]
+        end,
+        hi = "StatuslineDiagnosticHint",
+        cond = isActive and diagnostics[vim.diagnostic.severity.HINT] ~= nil,
+      },
+      {
+        fn = function()
+          return " I" .. diagnostics[vim.diagnostic.severity.INFO]
+        end,
+        hi = "StatuslineDiagnosticInfo",
+        cond = isActive and diagnostics[vim.diagnostic.severity.INFO] ~= nil,
+      },
+      -- vcs
+      {
+        fn = function()
+          return " +" .. vcs.added
+        end,
+        hi = "StatuslineGitAdded",
+        cond = isActive and hasVcs and vcs.added ~= nil and vcs.added > 0,
+      },
+      {
+        fn = function()
+          return " ~" .. vcs.changed
+        end,
+        hi = "StatuslineGitChanged",
+        cond = isActive and hasVcs and vcs.changed ~= nil and vcs.changed > 0,
+      },
+      {
+        fn = function()
+          return " -" .. vcs.removed
+        end,
+        hi = "StatuslineGitRemoved",
+        cond = isActive and hasVcs and vcs.removed ~= nil and vcs.removed > 0,
+      },
+      { hi = "StatuslineInner", cond = isActive }, -- undo any formatting from previous components
+
+      { text = "%=" }, -- right align
+
+      { text = " " .. buf.filetype .. " ", cond = isActive and isRegularBuffer },
+
+      { hi = "StatuslineOuter", cond = isActive },
+      { text = " %l:%c ", cond = isActive }, -- line info
+
+      { hi = mode.highlight },
+      { text = " %P " }, -- line percent
+    }
+
+    local statusline = ""
+    for _, s in ipairs(components) do
+      if s.cond == nil or s.cond then
+        local content = s.text or ""
+
+        if s.fn ~= nil then
+          content = s.fn()
+        end
+
+        if s.hi ~= nil then
+          content = string.format("%%#%s#%s", s.hi, content)
+        end
+
+        statusline = statusline .. content
+      end
+    end
+    return statusline
+  end,
 }
 
 -- These autocmds keep the statusline updated
@@ -315,11 +286,8 @@ vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter", "FileType" }, {
     local buftype = vim.bo[event.buf].buftype
     local filetype = vim.bo[event.buf].filetype
 
-    -- Only regular ("") buffers, terminal buffers, and certain extensions get status lines
-    if extension_filetypes[filetype] ~= nil then
-      vim.wo.statusline = "%!v:lua.Statusline.extension_active('" .. extension_filetypes[filetype] .. "')"
-    elseif buftype == "" or buftype == "terminal" then
-      vim.wo.statusline = "%!v:lua.Statusline.active()"
+    if Statusline.buftypes[buftype] or Statusline.filetypes[filetype] then
+      vim.wo.statusline = "%!v:lua.Statusline.build(" .. event.buf .. ", 1)"
     else
       vim.wo.statusline = ""
     end
@@ -333,14 +301,24 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
     local buftype = vim.bo[event.buf].buftype
     local filetype = vim.bo[event.buf].filetype
 
-    -- Only regular ("") buffers, terminal buffers, and certain extensions get status lines
-    if extension_filetypes[filetype] ~= nil then
-      vim.wo.statusline = "%!v:lua.Statusline.extension_inactive('" .. extension_filetypes[filetype] .. "')"
-    elseif buftype == "" or buftype == "terminal" then
-      vim.wo.statusline = "%!v:lua.Statusline.inactive()"
+    if Statusline.buftypes[buftype] or Statusline.filetypes[filetype] then
+      vim.wo.statusline = "%!v:lua.Statusline.build(" .. event.buf .. ", 0)"
     else
       vim.wo.statusline = ""
     end
+  end,
+})
+
+vim.api.nvim_create_autocmd("DiagnosticChanged", {
+  callback = function(event)
+    vim.wo.statusline = "%!v:lua.Statusline.build(" .. event.buf .. ", 1)"
+  end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "GitSignsUpdate",
+  callback = function(event)
+    vim.wo.statusline = "%!v:lua.Statusline.build(" .. event.buf .. ", 1)"
   end,
 })
 
