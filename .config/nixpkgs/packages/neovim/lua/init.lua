@@ -86,3 +86,8 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
   command = "if mode() != 'c' | checktime | endif",
   pattern = "*",
 })
+
+-- Start terminals in insert mode
+vim.api.nvim_create_autocmd({ "TermOpen" }, {
+  command = "startinsert",
+})
