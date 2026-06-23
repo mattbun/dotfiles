@@ -108,6 +108,29 @@ for name, colorScheme in pairs(highlights) do
   vim.api.nvim_set_hl(0, name, colorScheme)
 end
 
+-- shared helpers for statusline and tabline
+Bunline = {
+  build = function(components)
+    local statusline = ""
+    for _, s in ipairs(components) do
+      if s.cond == nil or s.cond then
+        local content = s.text or ""
+
+        if s.fn ~= nil then
+          content = s.fn()
+        end
+
+        if s.hi ~= nil then
+          content = string.format("%%#%s#%s", s.hi, content)
+        end
+
+        statusline = statusline .. content
+      end
+    end
+    return statusline
+  end,
+}
+
 Statusline = {
   -- Show statusline on these buftypes
   buftypes = {
@@ -256,25 +279,75 @@ Statusline = {
       { text = " %P " }, -- line percent
     }
 
-    local statusline = ""
-    for _, s in ipairs(components) do
-      if s.cond == nil or s.cond then
-        local content = s.text or ""
-
-        if s.fn ~= nil then
-          content = s.fn()
-        end
-
-        if s.hi ~= nil then
-          content = string.format("%%#%s#%s", s.hi, content)
-        end
-
-        statusline = statusline .. content
-      end
-    end
-    return statusline
+    return Bunline.build(components)
   end,
 }
+
+Tabline = {
+  filename = function(bufnr)
+    local buf = vim.bo[bufnr]
+
+    if buf.buftype == "help" then
+      local bufname = vim.api.nvim_buf_get_name(bufnr)
+      return string.format("h/%s", vim.fn.fnamemodify(bufname, ":t"))
+    elseif buf.buftype == "terminal" then
+      return vim.b[bufnr].term_title
+    elseif buf.buftype == "" then
+      local bufname = vim.api.nvim_buf_get_name(bufnr)
+      local modified = (buf.modified and "+") or ""
+
+      if bufname == "" then
+        return string.format("No Name", modified) -- empty file
+      else
+        return string.format("%s%s", vim.fn.fnamemodify(bufname, ":t"), modified)
+      end
+    else
+      return buf.filetype or buf.buftype
+    end
+  end,
+
+  build = function()
+    local components = {
+      { hi = "Statusline" },
+    }
+
+    local tabs = vim.api.nvim_list_tabpages()
+    local activeTab = vim.api.nvim_get_current_tabpage()
+    for i, tab in ipairs(tabs) do
+      if tab == activeTab then
+        table.insert(components, { hi = "StatuslineOuter" })
+      else
+        table.insert(components, { hi = "Statusline" })
+      end
+
+      table.insert(components, { text = string.format("%%%dT", i) }) -- make mouse work
+      table.insert(components, { text = string.format(" %d: ", i) })
+
+      local wins = vim.api.nvim_tabpage_list_wins(tab)
+      for _, win in ipairs(wins) do
+        local bufnr = vim.api.nvim_win_get_buf(win)
+        local buf = vim.bo[bufnr]
+
+        if Statusline.buftypes[buf.buftype] ~= nil or Statusline.filetypes[buf.filetype] ~= nil then
+          table.insert(components, {
+            text = string.format("[%s] ", Tabline.filename(bufnr)),
+          })
+        end
+      end
+    end
+
+    -- end tabs
+    table.insert(components, {
+      text = "%T", -- end clickable tab areas
+      hi = "Statusline",
+    })
+
+    return Bunline.build(components)
+  end,
+}
+
+-- Set custom tabline
+vim.o.tabline = "%!v:lua.Tabline.build()"
 
 -- These autocmds keep the statusline updated
 vim.api.nvim_create_augroup("Statusline", { clear = false })
@@ -321,6 +394,9 @@ vim.api.nvim_create_autocmd("User", {
     vim.wo.statusline = "%!v:lua.Statusline.build(" .. event.buf .. ", 1)"
   end,
 })
+
+-- update tabline on certain terminal control sequences (including term title changes)
+vim.api.nvim_create_autocmd("TermRequest", { command = "redrawtabline" })
 
 -- hide messages below the status bar when changing mode
 vim.api.nvim_create_autocmd({ "ModeChanged" }, {
