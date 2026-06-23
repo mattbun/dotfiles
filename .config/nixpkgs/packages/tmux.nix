@@ -50,6 +50,9 @@ in
         set-option -g set-titles on
         set-option -g set-titles-string "#{user}@#{host_short}(#{session_name},#I): #{window_name}"
 
+        # Pass focus events to applications! (used for neovim auto-reload)
+        set -g focus-events
+
         # i3-style bindings!
         set -g base-index 1
         bind-key -n M-1 select-window -t :1
