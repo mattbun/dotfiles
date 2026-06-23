@@ -50,6 +50,10 @@ in
         set-option -g set-titles on
         set-option -g set-titles-string "#{user}@#{host_short}(#{session_name},#I): #{window_name}"
 
+        # Enable extended-keys so `Shift+Enter` and `Ctrl+Enter` can be used!
+        set -g extended-keys on
+        set -g extended-keys-format csi-u
+
         # Pass focus events to applications! (used for neovim auto-reload)
         set -g focus-events
 
