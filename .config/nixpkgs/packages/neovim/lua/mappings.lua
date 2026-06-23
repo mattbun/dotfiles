@@ -648,6 +648,10 @@ local wkMappings = {
     { "OO", desc = "Add line above", "O<Esc>j" },
   },
 
+  t = {
+    { "<C-Esc>", "<C-\\><C-n>" },
+  },
+
   -- (v)isual mode
   v = {
     { "<leader>a", desc = "Code actions", vim.lsp.buf.code_action },
