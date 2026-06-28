@@ -1,31 +1,4 @@
-{ ... }:
-
-let
-  username = builtins.getEnv "USER";
-  homeDirectory = builtins.getEnv "HOME";
-in
-{
-  users.users."${username}" = {
-    name = username;
-    home = homeDirectory;
-  };
-
-  homebrew = {
-    enable = true;
-
-    brews = [
-      "colima" # docker desktop alternative
-      "docker"
-      "docker-compose"
-      "yarn"
-    ];
-
-    casks = [
-      "alacritty"
-      "font-hack-nerd-font"
-    ];
-  };
-
+{ ... }: {
   system = {
     defaults = {
       # Dark mode always
@@ -58,18 +31,6 @@ in
 
   # TODO Add ability to used TouchID for sudo authentication
   # security.pam.enableSudoTouchIdAuth = true;
-
-  # Use a custom configuration.nix location.
-  # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
-  # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
-
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
-  # nix.package = pkgs.nix;
-
-  # Configure shells to load the nix-darwin environment.
-  programs.zsh.enable = true;
-  programs.fish.enable = true;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
