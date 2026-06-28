@@ -18,20 +18,18 @@
       system = builtins.currentSystem;
     in
     {
-      homeConfigurations.${username} = let base = dotfiles.homeConfigurations.base; in
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
+      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
 
-          extraSpecialArgs = base.extraSpecialArgs;
-
-          modules = base.modules ++ [
-            ./home.nix
-            {
-              home = {
-                inherit username homeDirectory;
-              };
-            }
-          ];
-        };
+        modules = [
+          ./home.nix
+          dotfiles.homeModule
+          {
+            home = {
+              inherit username homeDirectory;
+            };
+          }
+        ];
+      };
     };
 }

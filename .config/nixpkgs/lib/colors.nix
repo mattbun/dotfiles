@@ -1,6 +1,5 @@
 { lib
 , config
-, basix
 , ...
 }:
 with lib;
@@ -156,8 +155,6 @@ in
     colorScheme = {
       system = "base24";
       slug = "0x96f";
-
-      palette = basix.schemeData."${config.colorScheme.system}"."${config.colorScheme.slug}".palette;
     };
   };
 }

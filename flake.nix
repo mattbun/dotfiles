@@ -9,87 +9,32 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    darwin = {
-      url = "github:lnl7/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     basix.url = "github:NotAShelf/Basix";
   };
 
-  outputs = { nixpkgs, home-manager, basix, darwin, ... }:
-    let
-      system = builtins.currentSystem;
-      username = builtins.getEnv "USER";
-      homeDirectory = builtins.getEnv "HOME";
-    in
-    {
-      homeConfigurations."${username}" = let pkgs = nixpkgs.legacyPackages.${system}; in
-        home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+  outputs = { basix, ... }: {
+    homeModule = { config, ... }: {
+      imports = [
+        ./.config/nixpkgs/home.nix
+      ];
 
-          # Specify your home configuration modules here, for example,
-          # the path to your home.nix.
-          modules = [
-            ./.config/nixpkgs/home.nix
-            ./.config/nixpkgs/system.nix
-            {
-              home = {
-                inherit username homeDirectory;
-              };
-            }
-          ];
+      colorScheme.palette = basix.schemeData."${config.colorScheme.system}"."${config.colorScheme.slug}".palette;
+    };
 
-          # Optionally use extraSpecialArgs
-          # to pass through arguments to home.nix
-          extraSpecialArgs = {
-            inherit basix;
-          };
-        };
+    darwinModule = ./.config/nixpkgs/darwin.nix;
 
-      homeConfigurations.base = let pkgs = nixpkgs.legacyPackages.${system}; in {
-        inherit pkgs;
-
-        modules = [
-          ./.config/nixpkgs/home.nix
-        ];
-
-        extraSpecialArgs = {
-          inherit basix;
-        };
+    templates = {
+      default = {
+        path = ./templates/flake;
       };
 
-      homeManagerModule = ./.config/nixpkgs/home.nix;
-
-      templates = {
-        default = {
-          path = ./templates/flake;
-        };
-
-        nixos = {
-          path = ./templates/nixos;
-          description = "Template for a unified NixOS and home configuration repository but with separate flakes for each";
-          welcomeText = ''
-            Add NixOS configuration to the `nixos` directory or generate a new config with `make nixos-config`
-          '';
-        };
-      };
-
-      darwinConfigurations.rathbook = darwin.lib.darwinSystem {
-        system = system;
-        modules = [
-          ./.config/nixpkgs/darwin.nix
-          ./.config/nixpkgs/system.nix
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users."${username}" = import ./.config/nixpkgs/home.nix;
-            home-manager.extraSpecialArgs = {
-              inherit basix username homeDirectory;
-            };
-          }
-        ];
+      nixos = {
+        path = ./templates/nixos;
+        description = "Template for a unified NixOS and home configuration repository but with separate flakes for each";
+        welcomeText = ''
+          Add NixOS configuration to the `nixos` directory or generate a new config with `make nixos-config`
+        '';
       };
     };
+  };
 }
