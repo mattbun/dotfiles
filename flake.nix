@@ -25,7 +25,7 @@
 
     templates = {
       default = {
-        path = ./templates/flake;
+        path = ./templates/default;
       };
 
       nixos = {
