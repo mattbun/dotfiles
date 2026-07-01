@@ -23,18 +23,6 @@
 
     darwinModule = ./.config/nixpkgs/darwin.nix;
 
-    templates = {
-      default = {
-        path = ./templates/default;
-      };
-
-      nixos = {
-        path = ./templates/nixos;
-        description = "Template for a unified NixOS and home configuration repository but with separate flakes for each";
-        welcomeText = ''
-          Add NixOS configuration to the `nixos` directory or generate a new config with `make nixos-config`
-        '';
-      };
-    };
+    templates.default.path = ./templates/default;
   };
 }

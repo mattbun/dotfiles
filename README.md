@@ -19,24 +19,18 @@ So I don't have to hard-code the system architecture, username, or home director
 
 ## Getting Started
 
+### Creating a new flake with the template
+
 Prerequisites:
 
 * `nix`
 * `gnumake`
 
-1. Use one of the two flake templates. The flake templates set up a `flake.nix` pointing to this repository and provide a `Makefile` to make it easy to apply changes.
+1. Use the flake template:
 
-    * `#default` (probably what you want) - only manages home configuration for the current user. Works on anything that can run nix.
-
-        ```bash
-        nix flake new -t github:mattbun/dotfiles destination-dir
-        ```
-
-    * `#nixos` - makes a directory structure for separate nixos and home configurations with their own flakes. The provided Makefile applies both configurations. You can combine the two flakes, but I find it works a little better for my usecases to keep them separate.
-
-        ```bash
-        nix flake new -t github:mattbun/dotfiles#nixos destination-dir
-        ```
+    ```bash
+    nix flake new -t github:mattbun/dotfiles destination-dir
+    ```
 
 2. Open the directory
 
@@ -44,10 +38,38 @@ Prerequisites:
     cd destination-dir
     ```
 
-3. Customize `home.nix` (`#default`) or `home/home.nix` (`#nixos`) to your liking
+3. Customize `home.nix` to your liking
 
 4. Apply configuration
 
     ```bash
     make
     ```
+
+### Adding to an existing home-manager flake
+
+```nix
+{
+  inputs = {
+    # ...
+
+    # Add to inputs
+    dotfiles.url = "github:mattbun/dotfiles";
+  };
+
+  outputs = { dotfiles, ... }: {
+      homeConfigurations.matt = home-manager.lib.homeManagerConfiguration {
+        # ...
+
+        modules = [
+          # ...
+
+          # Add to modules
+          dotfiles.homeModule
+        ];
+      };
+    };
+}
+```
+
+See [templates/default/flake.nix](https://github.com/mattbun/dotfiles/blob/main/templates/default/flake.nix) for a full example.
