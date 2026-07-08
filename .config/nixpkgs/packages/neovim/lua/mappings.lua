@@ -378,6 +378,43 @@ local wkMappings = {
       end,
     },
     {
+      "<leader>p",
+      group = "pi",
+      cond = vim.fn.executable("pi"),
+      expand = function()
+        return {
+          {
+            "n",
+            desc = "Run in new buffer",
+            function()
+              vim.cmd("edit term://pi")
+            end,
+          },
+          {
+            "t",
+            desc = "Run in new tab",
+            function()
+              vim.cmd("tabedit term://pi")
+            end,
+          },
+          {
+            "v",
+            desc = "Run in vertical split",
+            function()
+              vim.cmd("vsplit term://pi")
+            end,
+          },
+          {
+            "x",
+            desc = "Run in horizontal split",
+            function()
+              vim.cmd("split term://pi")
+            end,
+          },
+        }
+      end,
+    },
+    {
       "<leader>q",
       desc = "Close",
       function()
