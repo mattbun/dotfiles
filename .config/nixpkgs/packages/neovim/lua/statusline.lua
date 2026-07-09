@@ -383,16 +383,14 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
 })
 
 vim.api.nvim_create_autocmd("DiagnosticChanged", {
-  callback = function(event)
-    vim.wo.statusline = "%!v:lua.Statusline.build(" .. event.buf .. ", 1)"
-  end,
+  group = "Statusline",
+  command = "redrawstatus",
 })
 
 vim.api.nvim_create_autocmd("User", {
+  group = "Statusline",
   pattern = "GitSignsUpdate",
-  callback = function(event)
-    vim.wo.statusline = "%!v:lua.Statusline.build(" .. event.buf .. ", 1)"
-  end,
+  command = "redrawstatus",
 })
 
 -- update tabline on certain terminal control sequences (including term title changes)
