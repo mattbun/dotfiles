@@ -60,6 +60,7 @@
       home.packages = with pkgs; [
         swaybg
         brightnessctl
+        qogir-icon-theme
       ];
 
       programs = {
@@ -198,6 +199,7 @@
 
         cursor {
           hide-when-typing
+          xcursor-theme "Qogir"
         }
 
         gestures {
