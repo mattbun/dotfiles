@@ -26,8 +26,10 @@
     ./lf.nix
     ./llama-swap.nix
     ./mako.nix
+    ./nautilus.nix
     ./neovim
     ./niri.nix
+    ./niri/gnome.nix
     ./npm.nix
     ./pi.nix
     ./ollama.nix
