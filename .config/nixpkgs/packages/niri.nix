@@ -171,11 +171,13 @@
           skip-at-startup
         }
 
-        // Rounded corners on windows
-        // window-rule {
-        //   geometry-corner-radius 4
-        //   clip-to-geometry true
-        // }
+        window-rule {
+          // Cut out client-side window shadows and borders (like in GTK apps)
+          clip-to-geometry true
+
+          // Rounded corners on windows
+          // geometry-corner-radius 4
+        }
 
         // Work around WezTerm's initial configure bug
         // by setting an empty default-column-width.
