@@ -8,6 +8,8 @@ let
     color = "${accent}"
 
     [styles.widgets]
+    border_color = "darkgray"
+    widget_title = { bold = true }
     selected_border_color = "${accent}"
     selected_text = { bg_color = "${accent}" }
   '';
