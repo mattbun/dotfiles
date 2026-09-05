@@ -15,7 +15,7 @@ in
         font = "${lib.head config.fonts.fontconfig.defaultFonts.monospace}:size=12";
         shell = "${pkgs.tmux}/bin/tmux";
       };
-      colors = {
+      colors-dark = {
         # https://github.com/tinted-theming/base16-foot/blob/main/templates/default.mustache
         foreground = colors.base05;
         background = colors.base00;
