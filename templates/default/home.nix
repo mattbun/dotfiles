@@ -43,8 +43,10 @@
 
   # Wayland desktops
   wayland = {
-    customWindowManager.niri.enable = false;
-    windowManager.niri.gnome-apps.enable = false; # install a minimal set of gnome apps
+    windowManager.niri = {
+      enable = false;
+      gnome-apps.enable = false; # install a minimal set of gnome apps
+    };
     windowManager.sway.enable = false;
   };
 

@@ -1,8 +1,6 @@
 { config, lib, pkgs, ... }:
 {
-  options.wayland.customWindowManager.niri = {
-    enable = lib.mkEnableOption "niri";
-
+  options.wayland.windowManager.niri = {
     idleTimeoutSeconds = lib.mkOption {
       type = lib.types.ints.positive;
       description = "How long to wait before turning off displays if there's no activity";
@@ -41,7 +39,7 @@
 
   config =
     let
-      cfg = config.wayland.customWindowManager.niri;
+      cfg = config.wayland.windowManager.niri;
       colorScheme = config.colorScheme;
 
       lockScreen = pkgs.writeShellScript "lock-screen" /* bash */ ''
@@ -105,7 +103,7 @@
 
           timeouts = [
             {
-              timeout = config.wayland.customWindowManager.niri.idleTimeoutSeconds;
+              timeout = cfg.idleTimeoutSeconds;
               command = "${pkgs.niri}/bin/niri msg action power-off-monitors";
               resumeCommand = "${pkgs.niri}/bin/niri msg action power-on-monitors'";
             }
@@ -113,9 +111,7 @@
         };
       };
 
-      xdg.configFile."niri/config.kdl".text = cfg.config;
-
-      wayland.customWindowManager.niri.config = /* kdl */ ''
+      wayland.windowManager.niri.extraConfig = /* kdl */ ''
         // https://github.com/YaLTeR/niri/wiki/Configuration:-Overview
         layout {
             gaps 0
