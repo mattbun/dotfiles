@@ -10,8 +10,14 @@
       ];
 
       programs.firefox = {
+        # Firefox will use the old path (`~/.mozilla/firefox`) if it exists.
+        # Be sure to move it first: `mv ~/.mozilla ~/.config/mozilla`
+        configPath = "${config.xdg.configHome}/mozilla/firefox";
+
         profiles = {
           default = {
+            isDefault = true;
+
             settings = {
               "browser.download.dir" = "${config.home.homeDirectory}/Downloads";
 

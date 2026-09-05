@@ -126,7 +126,7 @@ lib.mkIf config.programs.zk.enable
             # zk's date parser defaults to looking backward when looking for "monday" on a Monday.
             # https://stackoverflow.com/questions/6497525/print-date-for-the-monday-of-the-current-week-in-bash
             thisWeek =
-              if pkgs.stdenv.isDarwin then
+              if pkgs.stdenv.hostPlatform.isDarwin then
                 "date -v -Mon +%Y-%m-%d"
               else
                 "date --rfc-3339 date -d 'next-monday - 1 week'"
