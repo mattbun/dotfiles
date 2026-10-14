@@ -42,6 +42,7 @@
     ./tealdeer.nix
     ./tmux.nix
     ./waybar
+    ./wiremix.nix
     ./z-lua.nix
     ./zk.nix
   ];

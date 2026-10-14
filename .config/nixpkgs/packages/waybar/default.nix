@@ -78,9 +78,9 @@ in
       alsa-utils
       libnotify
       wl-clipboard
-      pwvucontrol # volume control for pipewire
       overskride # bluetooth
       networkmanager # contains nmtui
+      wiremix # volume control
 
       (lib.mkIf ((builtins.stringLength config.programs.waybar.customSettings.camera) > 0)
         mpv
@@ -89,6 +89,7 @@ in
 
     programs = {
       bottom.enable = true; # for cpu/memory usage graphs
+      wiremix.enable = true;
 
       waybar = {
         bunu.entries.shortcuts = lib.mkIf ((builtins.stringLength config.programs.waybar.customSettings.camera) > 0) [{
@@ -180,7 +181,7 @@ in
                 speaker = "󰓃";
                 default = [ "󰖀" "󰕾" ];
               };
-              on-click = "${pkgs.pwvucontrol}/bin/pwvucontrol";
+              on-click = "${config.programs.waybar.customSettings.terminal} -T wiremix -e wiremix --tab output";
               on-click-right = "${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
             };
 
