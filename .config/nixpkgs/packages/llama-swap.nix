@@ -40,48 +40,6 @@
     in
     {
       programs = {
-        aichat = {
-          clients = lib.mapAttrs
-            (name: connection: {
-              settings = {
-                type = "openai-compatible";
-                name = name;
-                api_base = "${connection.url}/v1";
-              };
-
-              models = lib.listToAttrs (
-                (map
-                  (model: {
-                    name = model;
-                    value = { name = model; };
-                  })
-                  connection.models.chat
-                ) ++
-                (map
-                  (model: {
-                    name = model;
-                    value = {
-                      name = model;
-                      type = "embedding";
-                    };
-                  })
-                  connection.models.embedding
-                ) ++
-                (map
-                  (model: {
-                    name = model;
-                    value = {
-                      name = model;
-                      type = "reranker";
-                    };
-                  })
-                  connection.models.reranker
-                )
-              );
-            })
-            cfg.connections;
-        };
-
         neovim.codecompanion = {
           adapters =
             let
