@@ -190,6 +190,7 @@
                 tap
                 natural-scroll
                 drag false
+                click-method "clickfinger"
             }
         }
 
