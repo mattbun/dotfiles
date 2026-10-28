@@ -111,6 +111,19 @@
         };
       };
 
+      wayland.windowManager.niri.settings = {
+        input = {
+          focus-follows-mouse = { };
+
+          touchpad = {
+            tap = { };
+            natural-scroll = { };
+            drag = false;
+            click-method = "clickfinger";
+          };
+        };
+      };
+
       wayland.windowManager.niri.extraConfig = /* kdl */ ''
         // https://github.com/YaLTeR/niri/wiki/Configuration:-Overview
         layout {
@@ -181,17 +194,6 @@
         window-rule {
             match app-id=r#"^org\.wezfurlong\.wezterm$"#
             default-column-width {}
-        }
-
-        input {
-            focus-follows-mouse
-
-            touchpad {
-                tap
-                natural-scroll
-                drag false
-                click-method "clickfinger"
-            }
         }
 
         cursor {
