@@ -53,6 +53,7 @@
       home.packages = with pkgs; [
         swaybg
         brightnessctl
+        playerctl
         qogir-icon-theme
       ];
 
@@ -333,6 +334,19 @@
           "Mod+Shift+7".move-column-to-workspace = 7;
           "Mod+Shift+8".move-column-to-workspace = 8;
           "Mod+Shift+9".move-column-to-workspace = 9;
+
+          "XF86AudioPrev" = {
+            _props.allow-when-locked = true;
+            spawn = [ "${pkgs.playerctl}/bin/playerctl" "previous" ];
+          };
+          "XF86AudioPlay" = {
+            _props.allow-when-locked = true;
+            spawn = [ "${pkgs.playerctl}/bin/playerctl" "play-pause" ];
+          };
+          "XF86AudioNext" = {
+            _props.allow-when-locked = true;
+            spawn = [ "${pkgs.playerctl}/bin/playerctl" "next" ];
+          };
 
           # Example volume keys mappings for PipeWire & WirePlumber.
           # The allow-when-locked=true property makes them work even when the session is locked.
