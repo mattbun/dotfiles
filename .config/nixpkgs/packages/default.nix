@@ -39,6 +39,7 @@
     ./sway.nix
     ./tealdeer.nix
     ./tmux.nix
+    ./vicinae.nix
     ./waybar
     ./wiremix.nix
     ./z-lua.nix
