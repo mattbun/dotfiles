@@ -191,7 +191,7 @@
 
           "Mod+Return" = { spawn = [ "${cfg.terminal}" ]; };
           "Mod+Escape" = { spawn = [ "${cfg.browser}" ]; }; # TODO change from escape to something else?
-          "Mod+Space" = { spawn = [ "${pkgs.rofi}/bin/rofi" "-show" "combi" "-show-icons" "-combi-modes" "drun,run,ssh" ]; };
+          "Mod+Space" = lib.mkDefault { spawn = [ "${pkgs.rofi}/bin/rofi" "-show" "combi" "-show-icons" "-combi-modes" "drun,run,ssh" ]; };
           # Mod+Comma  { consume-window-into-column; }
           # Mod+Period { expel-window-from-column; }
           "Mod+Comma".set-column-width = "-10%";

@@ -1,4 +1,8 @@
-{ config, ... }: {
+{ config, lib, pkgs, ... }: {
+  wayland.windowManager.niri.settings.binds."Mod+Space" = lib.mkIf config.programs.vicinae.enable {
+    spawn = [ "${pkgs.vicinae}/bin/vicinae" "toggle" ];
+  };
+
   programs.vicinae = {
     enable = true;
 
