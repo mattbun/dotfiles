@@ -4,7 +4,7 @@
   };
 
   programs.vicinae = {
-    enable = true;
+    systemd.enable = true;
 
     themes.dotfiles = {
       meta = {
