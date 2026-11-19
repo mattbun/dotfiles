@@ -60,7 +60,7 @@
       programs = {
         rofi = {
           enable = true;
-          terminal = cfg.terminal;
+          settings.terminal = cfg.terminal;
         };
 
         waybar = {

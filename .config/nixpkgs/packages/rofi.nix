@@ -14,14 +14,16 @@ in
 {
   programs.rofi = {
     package = pkgs.rofi;
-    font = "${lib.head config.fonts.fontconfig.defaultFonts.monospace} 12";
-    modes = [
-      "drun"
-      "run"
-      "ssh"
-      "combi"
-    ];
-    extraConfig = {
+    settings = {
+      font = "${lib.head config.fonts.fontconfig.defaultFonts.monospace} 12";
+
+      modes = [
+        "drun"
+        "run"
+        "ssh"
+        "combi"
+      ];
+
       hover-select = true;
       click-to-exit = true; # TODO doesn't work https://github.com/lbonn/rofi/issues/22
 
