@@ -15,6 +15,7 @@
     ./fonts
     ./foot.nix
     ./fzf.nix
+    ./ghostty.nix
     ./git.nix
     ./gowall.nix
     ./helix.nix
