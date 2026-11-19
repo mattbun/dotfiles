@@ -218,9 +218,10 @@
           "Mod+Ctrl+Q" = { spawn = [ "${lockScreen}" ]; };
           "Mod+R".switch-preset-column-width = { }; # TODO remove in favor of M?
           "Mod+Shift+R".reset-window-height = { }; # TODO remove in favor of M?
-          "Mod+S".screenshot = { };
-          "Mod+Shift+S".screenshot-window = { };
-          "Mod+Ctrl+S".screenshot-screen = { };
+          "Mod+S".screenshot-screen = { };
+          "Mod+Alt+S".screenshot-window = { };
+          "Mod+Ctrl+S".screenshot-window = { };
+          "Mod+Shift+S".screenshot = { };
           "Mod+T" = { spawn = [ "${cfg.terminal}" ]; };
           "Mod+Z".maximize-column = { };
           "Mod+Shift+Z".fullscreen-window = { };
@@ -359,6 +360,17 @@
           "XF86MonBrightnessDown" = { _props.allow-when-locked = true; spawn = [ "brightnessctl" "set" "-c" "backlight" "5%-" ]; };
           "XF86KbdBrightnessUp" = { _props.allow-when-locked = true; spawn = [ "brightnessctl" "set" "-d" "*::kbd_backlight" "10%+" ]; };
           "XF86KbdBrightnessDown" = { _props.allow-when-locked = true; spawn = [ "brightnessctl" "set" "-d" "*::kbd_backlight" "10%-" ]; };
+
+          "Print".screenshot-screen = { };
+          "Alt+Print".screenshot-window = { }; # TODO could be handled by tmux?
+          "Ctrl+Print".screenshot-window = { };
+          "Shift+Print".screenshot = { };
+
+          # With Mod, prtscr acts similar to the `s` bindings
+          "Mod+Print".screenshot-screen = { };
+          "Mod+Alt+Print".screenshot-window = { };
+          "Mod+Ctrl+Print".screenshot-window = { };
+          "Mod+Shift+Print".screenshot = { };
 
           "XF86LaunchA".toggle-overview = { };
           "F11".fullscreen-window = { };
